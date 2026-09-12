@@ -17,3 +17,9 @@ ClientBin/
 # OS junk
 Thumbs.db
 Desktop.ini
+
+# Local tooling / runtime artifacts
+.claude/settings.local.json
+/Log/
+*.log
+

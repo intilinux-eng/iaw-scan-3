@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace System.Runtime.CompilerServices
-{
-    [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class
-         | AttributeTargets.Method)]
-    public sealed class ExtensionAttribute : Attribute { }
-}
-
 namespace IES_2
 {
     static class Program
