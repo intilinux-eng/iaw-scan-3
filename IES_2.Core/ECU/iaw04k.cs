@@ -42,7 +42,7 @@ using IES_2.Res;
 
 namespace IES_2.ECU
 {
-    class iaw04k : ecu
+    public class iaw04k : ecu
     {
         public const string name = "IAW-04K.P8";
         public const string longName = "Weber-Marelli IAW-04K.P8 MPI";

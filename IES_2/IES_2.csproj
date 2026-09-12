@@ -19,7 +19,10 @@
 
   <ItemGroup>
     <PackageReference Include="ZedGraph" Version="5.2.1" />
-    <PackageReference Include="System.IO.Ports" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IES_2.Core\IES_2.Core.csproj" />
   </ItemGroup>
 
 </Project>

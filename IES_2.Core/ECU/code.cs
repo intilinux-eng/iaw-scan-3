@@ -3,7 +3,7 @@ using IES_2.Res;
 
 namespace IES_2.ECU
 {
-    class code : ecu
+    public class code : ecu
     {
         public const string name = "FIAT CODE";
         public const string longName = "FIAT CODE Immobiliser";

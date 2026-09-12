@@ -22,21 +22,21 @@ namespace IES_2.Res {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class lang {
+    public class lang {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal lang() {
+        public lang() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("IES_2.Res.lang", typeof(lang).Assembly);
@@ -51,7 +51,7 @@ namespace IES_2.Res {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to AC Relay.
         /// </summary>
-        internal static string ACrelay {
+        public static string ACrelay {
             get {
                 return ResourceManager.GetString("ACrelay", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to [A].
         /// </summary>
-        internal static string Act {
+        public static string Act {
             get {
                 return ResourceManager.GetString("Act", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to AC Gain Parameter (med. load).
         /// </summary>
-        internal static string ADGAIN {
+        public static string ADGAIN {
             get {
                 return ResourceManager.GetString("ADGAIN", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to ADJUSTING: {0}....
         /// </summary>
-        internal static string Adjusting {
+        public static string Adjusting {
             get {
                 return ResourceManager.GetString("Adjusting", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to AC Offset Parameter (min. load).
         /// </summary>
-        internal static string ADOFFPL {
+        public static string ADOFFPL {
             get {
                 return ResourceManager.GetString("ADOFFPL", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to AC Offset Parameter (min. load, EVAP on).
         /// </summary>
-        internal static string ADOFFPURG {
+        public static string ADOFFPURG {
             get {
                 return ResourceManager.GetString("ADOFFPURG", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to AC Offset Parameter (min. load, EVAP off).
         /// </summary>
-        internal static string ADOFFSET {
+        public static string ADOFFSET {
             get {
                 return ResourceManager.GetString("ADOFFSET", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Stepper Correction from FLT.
         /// </summary>
-        internal static string ALFAFTR {
+        public static string ALFAFTR {
             get {
                 return ResourceManager.GetString("ALFAFTR", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle Stepper Motor Position.
         /// </summary>
-        internal static string ALFAR {
+        public static string ALFAR {
             get {
                 return ResourceManager.GetString("ALFAR", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Autocalibration Correction.
         /// </summary>
-        internal static string ALFAU {
+        public static string ALFAU {
             get {
                 return ResourceManager.GetString("ALFAU", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Autocalibration Correction with A/C.
         /// </summary>
-        internal static string ALFAUC {
+        public static string ALFAUC {
             get {
                 return ResourceManager.GetString("ALFAUC", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Throttle Opening Angle.
         /// </summary>
-        internal static string ANG_PAP0 {
+        public static string ANG_PAP0 {
             get {
                 return ResourceManager.GetString("ANG_PAP0", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Above MAX.
         /// </summary>
-        internal static string AtMAX {
+        public static string AtMAX {
             get {
                 return ResourceManager.GetString("AtMAX", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Below MIN.
         /// </summary>
-        internal static string AtMIN {
+        public static string AtMIN {
             get {
                 return ResourceManager.GetString("AtMIN", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Automatic Detection.
         /// </summary>
-        internal static string autodetect {
+        public static string autodetect {
             get {
                 return ResourceManager.GetString("autodetect", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Ignition Advance.
         /// </summary>
-        internal static string AVANCE {
+        public static string AVANCE {
             get {
                 return ResourceManager.GetString("AVANCE", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to CANCELLED.
         /// </summary>
-        internal static string Cancelled {
+        public static string Cancelled {
             get {
                 return ResourceManager.GetString("Cancelled", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Clearing error codes....
         /// </summary>
-        internal static string ClearingErrors {
+        public static string ClearingErrors {
             get {
                 return ResourceManager.GetString("ClearingErrors", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Coil 1.
         /// </summary>
-        internal static string Coil1 {
+        public static string Coil1 {
             get {
                 return ResourceManager.GetString("Coil1", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Coil 2.
         /// </summary>
-        internal static string Coil2 {
+        public static string Coil2 {
             get {
                 return ResourceManager.GetString("Coil2", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to No ECU Response.
         /// </summary>
-        internal static string CommLost {
+        public static string CommLost {
             get {
                 return ResourceManager.GetString("CommLost", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Interface port ERROR.
         /// </summary>
-        internal static string COMnotValid {
+        public static string COMnotValid {
             get {
                 return ResourceManager.GetString("COMnotValid", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to An error has occured while openenig the {0} port..
         /// </summary>
-        internal static string COMopenError {
+        public static string COMopenError {
             get {
                 return ResourceManager.GetString("COMopenError", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Consumption Meter.
         /// </summary>
-        internal static string ConMeter {
+        public static string ConMeter {
             get {
                 return ResourceManager.GetString("ConMeter", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to CONNECTED TO:.
         /// </summary>
-        internal static string ConnectedTo {
+        public static string ConnectedTo {
             get {
                 return ResourceManager.GetString("ConnectedTo", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Please turn ON the ignition....
         /// </summary>
-        internal static string Connecting {
+        public static string Connecting {
             get {
                 return ResourceManager.GetString("Connecting", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle Engine Speed.
         /// </summary>
-        internal static string CONS_REG {
+        public static string CONS_REG {
             get {
                 return ResourceManager.GetString("CONS_REG", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Stepper Correction (Delta).
         /// </summary>
-        internal static string DELREG {
+        public static string DELREG {
             get {
                 return ResourceManager.GetString("DELREG", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to EGR Valve.
         /// </summary>
-        internal static string EGR {
+        public static string EGR {
             get {
                 return ResourceManager.GetString("EGR", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Please ensure the ignition is ON and engine is STOPPED..
         /// </summary>
-        internal static string EnsureIgnOnEngStop {
+        public static string EnsureIgnOnEngStop {
             get {
                 return ResourceManager.GetString("EnsureIgnOnEngStop", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Autocallibration Parameter.
         /// </summary>
-        internal static string ErrACParam {
+        public static string ErrACParam {
             get {
                 return ResourceManager.GetString("ErrACParam", resourceCulture);
             }
@@ -342,7 +342,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Air Conditioner.
         /// </summary>
-        internal static string ErrAirCo {
+        public static string ErrAirCo {
             get {
                 return ResourceManager.GetString("ErrAirCo", resourceCulture);
             }
@@ -351,7 +351,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Automatic Transmission.
         /// </summary>
-        internal static string ErrAutoTrans {
+        public static string ErrAutoTrans {
             get {
                 return ResourceManager.GetString("ErrAutoTrans", resourceCulture);
             }
@@ -360,7 +360,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Backdoor Acivated.
         /// </summary>
-        internal static string ErrBackdoor {
+        public static string ErrBackdoor {
             get {
                 return ResourceManager.GetString("ErrBackdoor", resourceCulture);
             }
@@ -369,7 +369,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Battery Voltage.
         /// </summary>
-        internal static string ErrBattV {
+        public static string ErrBattV {
             get {
                 return ResourceManager.GetString("ErrBattV", resourceCulture);
             }
@@ -378,7 +378,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Unknown CODE ERROR (4).
         /// </summary>
-        internal static string ErrC4 {
+        public static string ErrC4 {
             get {
                 return ResourceManager.GetString("ErrC4", resourceCulture);
             }
@@ -387,7 +387,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Cam sensor.
         /// </summary>
-        internal static string ErrCam {
+        public static string ErrCam {
             get {
                 return ResourceManager.GetString("ErrCam", resourceCulture);
             }
@@ -396,7 +396,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Error Counter.
         /// </summary>
-        internal static string ErrCnt {
+        public static string ErrCnt {
             get {
                 return ResourceManager.GetString("ErrCnt", resourceCulture);
             }
@@ -405,7 +405,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Ignition Coil 1.
         /// </summary>
-        internal static string ErrCoil1 {
+        public static string ErrCoil1 {
             get {
                 return ResourceManager.GetString("ErrCoil1", resourceCulture);
             }
@@ -414,7 +414,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Ignition Coil 2.
         /// </summary>
-        internal static string ErrCoil2 {
+        public static string ErrCoil2 {
             get {
                 return ResourceManager.GetString("ErrCoil2", resourceCulture);
             }
@@ -423,7 +423,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Consumption Meter.
         /// </summary>
-        internal static string ErrConMet {
+        public static string ErrConMet {
             get {
                 return ResourceManager.GetString("ErrConMet", resourceCulture);
             }
@@ -432,7 +432,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to CPU.
         /// </summary>
-        internal static string ErrCPU {
+        public static string ErrCPU {
             get {
                 return ResourceManager.GetString("ErrCPU", resourceCulture);
             }
@@ -441,7 +441,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Digimatic signal.
         /// </summary>
-        internal static string ErrDigimatic {
+        public static string ErrDigimatic {
             get {
                 return ResourceManager.GetString("ErrDigimatic", resourceCulture);
             }
@@ -450,7 +450,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Water Temperature Sensor.
         /// </summary>
-        internal static string ErrECT {
+        public static string ErrECT {
             get {
                 return ResourceManager.GetString("ErrECT", resourceCulture);
             }
@@ -459,7 +459,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to EEPROM.
         /// </summary>
-        internal static string ErrEEPROM {
+        public static string ErrEEPROM {
             get {
                 return ResourceManager.GetString("ErrEEPROM", resourceCulture);
             }
@@ -468,7 +468,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to EGR Control.
         /// </summary>
-        internal static string ErrEGRCtrl {
+        public static string ErrEGRCtrl {
             get {
                 return ResourceManager.GetString("ErrEGRCtrl", resourceCulture);
             }
@@ -477,7 +477,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to EGR Valve.
         /// </summary>
-        internal static string ErrEGRVal {
+        public static string ErrEGRVal {
             get {
                 return ResourceManager.GetString("ErrEGRVal", resourceCulture);
             }
@@ -486,7 +486,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to EPROM.
         /// </summary>
-        internal static string ErrEPROM {
+        public static string ErrEPROM {
             get {
                 return ResourceManager.GetString("ErrEPROM", resourceCulture);
             }
@@ -495,7 +495,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to EVAP Valve.
         /// </summary>
-        internal static string ErrEVAP {
+        public static string ErrEVAP {
             get {
                 return ResourceManager.GetString("ErrEVAP", resourceCulture);
             }
@@ -504,7 +504,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Unknown FUNC ERROR (7).
         /// </summary>
-        internal static string ErrF7 {
+        public static string ErrF7 {
             get {
                 return ResourceManager.GetString("ErrF7", resourceCulture);
             }
@@ -513,7 +513,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Unknown FUNC ERROR (8).
         /// </summary>
-        internal static string ErrF8 {
+        public static string ErrF8 {
             get {
                 return ResourceManager.GetString("ErrF8", resourceCulture);
             }
@@ -522,7 +522,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Fuel Pump.
         /// </summary>
-        internal static string ErrFuelPump {
+        public static string ErrFuelPump {
             get {
                 return ResourceManager.GetString("ErrFuelPump", resourceCulture);
             }
@@ -531,7 +531,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Generic System Relay.
         /// </summary>
-        internal static string ErrGenRel {
+        public static string ErrGenRel {
             get {
                 return ResourceManager.GetString("ErrGenRel", resourceCulture);
             }
@@ -540,7 +540,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Unknown INPUT ERROR (2).
         /// </summary>
-        internal static string ErrI2 {
+        public static string ErrI2 {
             get {
                 return ResourceManager.GetString("ErrI2", resourceCulture);
             }
@@ -549,7 +549,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Unknown INPUT ERROR (8).
         /// </summary>
-        internal static string ErrI8 {
+        public static string ErrI8 {
             get {
                 return ResourceManager.GetString("ErrI8", resourceCulture);
             }
@@ -558,7 +558,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Air Temperature Sensor.
         /// </summary>
-        internal static string ErrIAT {
+        public static string ErrIAT {
             get {
                 return ResourceManager.GetString("ErrIAT", resourceCulture);
             }
@@ -567,7 +567,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle Stepper Motor.
         /// </summary>
-        internal static string ErrIAV {
+        public static string ErrIAV {
             get {
                 return ResourceManager.GetString("ErrIAV", resourceCulture);
             }
@@ -576,7 +576,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle Regulation.
         /// </summary>
-        internal static string ErrIdleReg {
+        public static string ErrIdleReg {
             get {
                 return ResourceManager.GetString("ErrIdleReg", resourceCulture);
             }
@@ -585,7 +585,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injector.
         /// </summary>
-        internal static string ErrInj {
+        public static string ErrInj {
             get {
                 return ResourceManager.GetString("ErrInj", resourceCulture);
             }
@@ -594,7 +594,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injectors (group 1).
         /// </summary>
-        internal static string ErrInj1 {
+        public static string ErrInj1 {
             get {
                 return ResourceManager.GetString("ErrInj1", resourceCulture);
             }
@@ -603,7 +603,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injectors (group 2).
         /// </summary>
-        internal static string ErrInj2 {
+        public static string ErrInj2 {
             get {
                 return ResourceManager.GetString("ErrInj2", resourceCulture);
             }
@@ -612,7 +612,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injectors.
         /// </summary>
-        internal static string ErrInjs {
+        public static string ErrInjs {
             get {
                 return ResourceManager.GetString("ErrInjs", resourceCulture);
             }
@@ -621,7 +621,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Key Code Error.
         /// </summary>
-        internal static string ErrKeyCode {
+        public static string ErrKeyCode {
             get {
                 return ResourceManager.GetString("ErrKeyCode", resourceCulture);
             }
@@ -630,7 +630,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Knocking sensor.
         /// </summary>
-        internal static string ErrKnock {
+        public static string ErrKnock {
             get {
                 return ResourceManager.GetString("ErrKnock", resourceCulture);
             }
@@ -639,7 +639,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Knocking Sensor.
         /// </summary>
-        internal static string ErrKnockS {
+        public static string ErrKnockS {
             get {
                 return ResourceManager.GetString("ErrKnockS", resourceCulture);
             }
@@ -648,7 +648,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Lambda Sensor.
         /// </summary>
-        internal static string ErrLambda {
+        public static string ErrLambda {
             get {
                 return ResourceManager.GetString("ErrLambda", resourceCulture);
             }
@@ -657,7 +657,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to No Code Received or Link Down.
         /// </summary>
-        internal static string ErrLinkDown {
+        public static string ErrLinkDown {
             get {
                 return ResourceManager.GetString("ErrLinkDown", resourceCulture);
             }
@@ -666,7 +666,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to MAP Sensor.
         /// </summary>
-        internal static string ErrMAP {
+        public static string ErrMAP {
             get {
                 return ResourceManager.GetString("ErrMAP", resourceCulture);
             }
@@ -675,7 +675,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to MIL Lamp.
         /// </summary>
-        internal static string ErrMIL {
+        public static string ErrMIL {
             get {
                 return ResourceManager.GetString("ErrMIL", resourceCulture);
             }
@@ -684,7 +684,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Mixture ratio.
         /// </summary>
-        internal static string ErrMixRatio {
+        public static string ErrMixRatio {
             get {
                 return ResourceManager.GetString("ErrMixRatio", resourceCulture);
             }
@@ -693,7 +693,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Neutral/drive signal.
         /// </summary>
-        internal static string ErrNeutralGear {
+        public static string ErrNeutralGear {
             get {
                 return ResourceManager.GetString("ErrNeutralGear", resourceCulture);
             }
@@ -702,7 +702,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to ECU not synchronized with CODE.
         /// </summary>
-        internal static string ErrNoSync {
+        public static string ErrNoSync {
             get {
                 return ResourceManager.GetString("ErrNoSync", resourceCulture);
             }
@@ -711,7 +711,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Unknkown OUTPUT Error (1a).
         /// </summary>
-        internal static string ErrO1a {
+        public static string ErrO1a {
             get {
                 return ResourceManager.GetString("ErrO1a", resourceCulture);
             }
@@ -720,7 +720,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Unknkown OUTPUT Error (2a).
         /// </summary>
-        internal static string ErrO2a {
+        public static string ErrO2a {
             get {
                 return ResourceManager.GetString("ErrO2a", resourceCulture);
             }
@@ -729,7 +729,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Unknkown OUTPUT Error (3a).
         /// </summary>
-        internal static string ErrO3a {
+        public static string ErrO3a {
             get {
                 return ResourceManager.GetString("ErrO3a", resourceCulture);
             }
@@ -738,7 +738,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Unknkown OUTPUT Error (4a).
         /// </summary>
-        internal static string ErrO4a {
+        public static string ErrO4a {
             get {
                 return ResourceManager.GetString("ErrO4a", resourceCulture);
             }
@@ -747,7 +747,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to ERRORS:.
         /// </summary>
-        internal static string Errors {
+        public static string Errors {
             get {
                 return ResourceManager.GetString("Errors", resourceCulture);
             }
@@ -756,7 +756,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to RAM.
         /// </summary>
-        internal static string ErrRAM {
+        public static string ErrRAM {
             get {
                 return ResourceManager.GetString("ErrRAM", resourceCulture);
             }
@@ -765,7 +765,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to ROM.
         /// </summary>
-        internal static string ErrROM {
+        public static string ErrROM {
             get {
                 return ResourceManager.GetString("ErrROM", resourceCulture);
             }
@@ -774,7 +774,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to TDC/RPM Sensor.
         /// </summary>
-        internal static string ErrRPMSens {
+        public static string ErrRPMSens {
             get {
                 return ResourceManager.GetString("ErrRPMSens", resourceCulture);
             }
@@ -783,7 +783,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to SMOT sensor.
         /// </summary>
-        internal static string ErrSMOT {
+        public static string ErrSMOT {
             get {
                 return ResourceManager.GetString("ErrSMOT", resourceCulture);
             }
@@ -792,7 +792,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Signal Panel Sequence.
         /// </summary>
-        internal static string ErrSPS {
+        public static string ErrSPS {
             get {
                 return ResourceManager.GetString("ErrSPS", resourceCulture);
             }
@@ -801,7 +801,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to ECU Disallowed to Start Engine.
         /// </summary>
-        internal static string ErrStartDis {
+        public static string ErrStartDis {
             get {
                 return ResourceManager.GetString("ErrStartDis", resourceCulture);
             }
@@ -810,7 +810,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Throttle Position Sensor.
         /// </summary>
-        internal static string ErrTPS {
+        public static string ErrTPS {
             get {
                 return ResourceManager.GetString("ErrTPS", resourceCulture);
             }
@@ -819,7 +819,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to ECU has received the &apos;Universal Code&apos;.
         /// </summary>
-        internal static string ErrUniCode {
+        public static string ErrUniCode {
             get {
                 return ResourceManager.GetString("ErrUniCode", resourceCulture);
             }
@@ -828,7 +828,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Incorrect or Unrecognized Code.
         /// </summary>
-        internal static string ErrUnrCode {
+        public static string ErrUnrCode {
             get {
                 return ResourceManager.GetString("ErrUnrCode", resourceCulture);
             }
@@ -837,7 +837,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to VAE blocked open or closed.
         /// </summary>
-        internal static string ErrVAE {
+        public static string ErrVAE {
             get {
                 return ResourceManager.GetString("ErrVAE", resourceCulture);
             }
@@ -846,7 +846,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Waste Gate.
         /// </summary>
-        internal static string ErrWasteG {
+        public static string ErrWasteG {
             get {
                 return ResourceManager.GetString("ErrWasteG", resourceCulture);
             }
@@ -855,7 +855,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Press [Esc] to Cancel.
         /// </summary>
-        internal static string EscCancel {
+        public static string EscCancel {
             get {
                 return ResourceManager.GetString("EscCancel", resourceCulture);
             }
@@ -864,7 +864,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to EVAP Valve.
         /// </summary>
-        internal static string EVAP {
+        public static string EVAP {
             get {
                 return ResourceManager.GetString("EVAP", resourceCulture);
             }
@@ -873,7 +873,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to [F10] Connect.
         /// </summary>
-        internal static string F10_Connect {
+        public static string F10_Connect {
             get {
                 return ResourceManager.GetString("F10_Connect", resourceCulture);
             }
@@ -882,7 +882,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to [F10] Disconnect.
         /// </summary>
-        internal static string F10_Disconnect {
+        public static string F10_Disconnect {
             get {
                 return ResourceManager.GetString("F10_Disconnect", resourceCulture);
             }
@@ -891,7 +891,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Press [F11] to confirm.
         /// </summary>
-        internal static string F11_Confirm {
+        public static string F11_Confirm {
             get {
                 return ResourceManager.GetString("F11_Confirm", resourceCulture);
             }
@@ -900,7 +900,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Self-Adaptation Activated in EEPROM.
         /// </summary>
-        internal static string FABEEAT {
+        public static string FABEEAT {
             get {
                 return ResourceManager.GetString("FABEEAT", resourceCulture);
             }
@@ -909,7 +909,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle Self-Adaptation Activated in EEPROM.
         /// </summary>
-        internal static string FABEEATi {
+        public static string FABEEATi {
             get {
                 return ResourceManager.GetString("FABEEATi", resourceCulture);
             }
@@ -918,7 +918,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Self-Adaptation Activated in EPROM.
         /// </summary>
-        internal static string FABEPAT {
+        public static string FABEPAT {
             get {
                 return ResourceManager.GetString("FABEPAT", resourceCulture);
             }
@@ -927,7 +927,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle Self-Adaptation Activated in EPROM.
         /// </summary>
-        internal static string FABEPATi {
+        public static string FABEPATi {
             get {
                 return ResourceManager.GetString("FABEPATi", resourceCulture);
             }
@@ -936,7 +936,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to FAILED.
         /// </summary>
-        internal static string Failed {
+        public static string Failed {
             get {
                 return ResourceManager.GetString("Failed", resourceCulture);
             }
@@ -945,7 +945,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Lambda in Closed Loop.
         /// </summary>
-        internal static string FLGSMA {
+        public static string FLGSMA {
             get {
                 return ResourceManager.GetString("FLGSMA", resourceCulture);
             }
@@ -954,7 +954,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Fuel Pump Relay.
         /// </summary>
-        internal static string FuelPump {
+        public static string FuelPump {
             get {
                 return ResourceManager.GetString("FuelPump", resourceCulture);
             }
@@ -963,7 +963,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Generic Relay.
         /// </summary>
-        internal static string GenericRelay {
+        public static string GenericRelay {
             get {
                 return ResourceManager.GetString("GenericRelay", resourceCulture);
             }
@@ -972,7 +972,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to INIT. FAIL.
         /// </summary>
-        internal static string InitFailed {
+        public static string InitFailed {
             get {
                 return ResourceManager.GetString("InitFailed", resourceCulture);
             }
@@ -981,7 +981,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injection Timing Angle.
         /// </summary>
-        internal static string INJ_AVA {
+        public static string INJ_AVA {
             get {
                 return ResourceManager.GetString("INJ_AVA", resourceCulture);
             }
@@ -990,7 +990,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injector.
         /// </summary>
-        internal static string Injector {
+        public static string Injector {
             get {
                 return ResourceManager.GetString("Injector", resourceCulture);
             }
@@ -999,7 +999,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injector 1.
         /// </summary>
-        internal static string Injector1 {
+        public static string Injector1 {
             get {
                 return ResourceManager.GetString("Injector1", resourceCulture);
             }
@@ -1008,7 +1008,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injector 2.
         /// </summary>
-        internal static string Injector2 {
+        public static string Injector2 {
             get {
                 return ResourceManager.GetString("Injector2", resourceCulture);
             }
@@ -1017,7 +1017,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injector 3.
         /// </summary>
-        internal static string Injector3 {
+        public static string Injector3 {
             get {
                 return ResourceManager.GetString("Injector3", resourceCulture);
             }
@@ -1026,7 +1026,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injector 4.
         /// </summary>
-        internal static string Injector4 {
+        public static string Injector4 {
             get {
                 return ResourceManager.GetString("Injector4", resourceCulture);
             }
@@ -1035,7 +1035,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injectors.
         /// </summary>
-        internal static string Injectors {
+        public static string Injectors {
             get {
                 return ResourceManager.GetString("Injectors", resourceCulture);
             }
@@ -1044,7 +1044,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to PENDING....
         /// </summary>
-        internal static string InProceed {
+        public static string InProceed {
             get {
                 return ResourceManager.GetString("InProceed", resourceCulture);
             }
@@ -1053,7 +1053,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle Stepper Integral Gain.
         /// </summary>
-        internal static string INTEGR {
+        public static string INTEGR {
             get {
                 return ResourceManager.GetString("INTEGR", resourceCulture);
             }
@@ -1062,7 +1062,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Lambda Probe Correction.
         /// </summary>
-        internal static string K_O2 {
+        public static string K_O2 {
             get {
                 return ResourceManager.GetString("K_O2", resourceCulture);
             }
@@ -1071,7 +1071,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Lambda Probe Voltage.
         /// </summary>
-        internal static string K_O2_RAW {
+        public static string K_O2_RAW {
             get {
                 return ResourceManager.GetString("K_O2_RAW", resourceCulture);
             }
@@ -1096,7 +1096,7 @@ namespace IES_2.Res {
         ///    &lt;resheader name=&quot;resmimetype&quot;&gt;text/microsoft-resx&lt;/resheader&gt;
         ///    &lt;resheader n [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string lang_it {
+        public static string lang_it {
             get {
                 return ResourceManager.GetString("lang_it", resourceCulture);
             }
@@ -1105,7 +1105,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Max LEAN.
         /// </summary>
-        internal static string MaxLEAN {
+        public static string MaxLEAN {
             get {
                 return ResourceManager.GetString("MaxLEAN", resourceCulture);
             }
@@ -1114,7 +1114,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Max RICH.
         /// </summary>
-        internal static string MaxRICH {
+        public static string MaxRICH {
             get {
                 return ResourceManager.GetString("MaxRICH", resourceCulture);
             }
@@ -1123,7 +1123,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to MIL Lamp.
         /// </summary>
-        internal static string MIL {
+        public static string MIL {
             get {
                 return ResourceManager.GetString("MIL", resourceCulture);
             }
@@ -1132,7 +1132,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Manifold Absolute Pressure.
         /// </summary>
-        internal static string MP2_MP8 {
+        public static string MP2_MP8 {
             get {
                 return ResourceManager.GetString("MP2_MP8", resourceCulture);
             }
@@ -1141,7 +1141,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Manifold Absolute Pressure (TURBO).
         /// </summary>
-        internal static string MP2_MP8t {
+        public static string MP2_MP8t {
             get {
                 return ResourceManager.GetString("MP2_MP8t", resourceCulture);
             }
@@ -1150,7 +1150,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Air Temperature.
         /// </summary>
-        internal static string MT_AIR_L {
+        public static string MT_AIR_L {
             get {
                 return ResourceManager.GetString("MT_AIR_L", resourceCulture);
             }
@@ -1159,7 +1159,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Water Temperature.
         /// </summary>
-        internal static string MT_EAU_L {
+        public static string MT_EAU_L {
             get {
                 return ResourceManager.GetString("MT_EAU_L", resourceCulture);
             }
@@ -1168,7 +1168,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to No Air.
         /// </summary>
-        internal static string NoAir {
+        public static string NoAir {
             get {
                 return ResourceManager.GetString("NoAir", resourceCulture);
             }
@@ -1177,7 +1177,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Autocalibration Injection Offset @ ZONE 1.
         /// </summary>
-        internal static string OFFSET1 {
+        public static string OFFSET1 {
             get {
                 return ResourceManager.GetString("OFFSET1", resourceCulture);
             }
@@ -1186,7 +1186,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Autocalibration Injection Offset @ ZONE 2.
         /// </summary>
-        internal static string OFFSET2 {
+        public static string OFFSET2 {
             get {
                 return ResourceManager.GetString("OFFSET2", resourceCulture);
             }
@@ -1195,7 +1195,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Autocalibration Injection Offset @ ZONE 3.
         /// </summary>
-        internal static string OFFSET3 {
+        public static string OFFSET3 {
             get {
                 return ResourceManager.GetString("OFFSET3", resourceCulture);
             }
@@ -1204,7 +1204,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Autocalibration Injection Offset @ ZONE 4.
         /// </summary>
-        internal static string OFFSET4 {
+        public static string OFFSET4 {
             get {
                 return ResourceManager.GetString("OFFSET4", resourceCulture);
             }
@@ -1213,7 +1213,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Autocalibration Injection Offset @ ZONE 5.
         /// </summary>
-        internal static string OFFSET5 {
+        public static string OFFSET5 {
             get {
                 return ResourceManager.GetString("OFFSET5", resourceCulture);
             }
@@ -1222,7 +1222,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Autocalibration Injection Offset @ ZONE 6.
         /// </summary>
-        internal static string OFFSET6 {
+        public static string OFFSET6 {
             get {
                 return ResourceManager.GetString("OFFSET6", resourceCulture);
             }
@@ -1231,7 +1231,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Autocalibration Injection Offset @ IDLE.
         /// </summary>
-        internal static string OFFSETm {
+        public static string OFFSETm {
             get {
                 return ResourceManager.GetString("OFFSETm", resourceCulture);
             }
@@ -1240,7 +1240,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle Engine Speed Offset.
         /// </summary>
-        internal static string OFNNTR {
+        public static string OFNNTR {
             get {
                 return ResourceManager.GetString("OFNNTR", resourceCulture);
             }
@@ -1249,7 +1249,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Open Circuit.
         /// </summary>
-        internal static string OpenCircuit {
+        public static string OpenCircuit {
             get {
                 return ResourceManager.GetString("OpenCircuit", resourceCulture);
             }
@@ -1258,7 +1258,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Over Boost.
         /// </summary>
-        internal static string OverB {
+        public static string OverB {
             get {
                 return ResourceManager.GetString("OverB", resourceCulture);
             }
@@ -1267,7 +1267,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to PARAMETERS:.
         /// </summary>
-        internal static string Parameters {
+        public static string Parameters {
             get {
                 return ResourceManager.GetString("Parameters", resourceCulture);
             }
@@ -1276,7 +1276,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to PASSED.
         /// </summary>
-        internal static string Passed {
+        public static string Passed {
             get {
                 return ResourceManager.GetString("Passed", resourceCulture);
             }
@@ -1285,7 +1285,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Engine Speed.
         /// </summary>
-        internal static string PERIODE {
+        public static string PERIODE {
             get {
                 return ResourceManager.GetString("PERIODE", resourceCulture);
             }
@@ -1294,7 +1294,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Press [F10] to close connection or [F12] to try to reconnect.
         /// </summary>
-        internal static string Press_F10 {
+        public static string Press_F10 {
             get {
                 return ResourceManager.GetString("Press_F10", resourceCulture);
             }
@@ -1303,7 +1303,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Previously selected port {0} is no longer available. Please select another port..
         /// </summary>
-        internal static string PreviouslySelectedPort {
+        public static string PreviouslySelectedPort {
             get {
                 return ResourceManager.GetString("PreviouslySelectedPort", resourceCulture);
             }
@@ -1312,7 +1312,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle Stepper Proportional Gain.
         /// </summary>
-        internal static string PROP {
+        public static string PROP {
             get {
                 return ResourceManager.GetString("PROP", resourceCulture);
             }
@@ -1321,7 +1321,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to REV Meter.
         /// </summary>
-        internal static string REVmeter {
+        public static string REVmeter {
             get {
                 return ResourceManager.GetString("REVmeter", resourceCulture);
             }
@@ -1330,7 +1330,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to RPM.
         /// </summary>
-        internal static string rpm {
+        public static string rpm {
             get {
                 return ResourceManager.GetString("rpm", resourceCulture);
             }
@@ -1339,7 +1339,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Short to GND.
         /// </summary>
-        internal static string ShortToGND {
+        public static string ShortToGND {
             get {
                 return ResourceManager.GetString("ShortToGND", resourceCulture);
             }
@@ -1348,7 +1348,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Short to GND/Open.
         /// </summary>
-        internal static string ShortToGNDorOpen {
+        public static string ShortToGNDorOpen {
             get {
                 return ResourceManager.GetString("ShortToGNDorOpen", resourceCulture);
             }
@@ -1357,7 +1357,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Short to +Vcc.
         /// </summary>
-        internal static string ShortToVcc {
+        public static string ShortToVcc {
             get {
                 return ResourceManager.GetString("ShortToVcc", resourceCulture);
             }
@@ -1366,7 +1366,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to SIMULATION MODE!!!.
         /// </summary>
-        internal static string Simulation {
+        public static string Simulation {
             get {
                 return ResourceManager.GetString("Simulation", resourceCulture);
             }
@@ -1375,7 +1375,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to ABS active.
         /// </summary>
-        internal static string StaABSON {
+        public static string StaABSON {
             get {
                 return ResourceManager.GetString("StaABSON", resourceCulture);
             }
@@ -1384,7 +1384,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Ignition Advance Decrased for Knocking.
         /// </summary>
-        internal static string StaAdvDecr {
+        public static string StaAdvDecr {
             get {
                 return ResourceManager.GetString("StaAdvDecr", resourceCulture);
             }
@@ -1393,7 +1393,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Air Conditioner ON.
         /// </summary>
-        internal static string StaAirCoON {
+        public static string StaAirCoON {
             get {
                 return ResourceManager.GetString("StaAirCoON", resourceCulture);
             }
@@ -1402,7 +1402,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Lambda Sensor in Closed Loop.
         /// </summary>
-        internal static string StaClLoop {
+        public static string StaClLoop {
             get {
                 return ResourceManager.GetString("StaClLoop", resourceCulture);
             }
@@ -1411,7 +1411,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Engine Running.
         /// </summary>
-        internal static string StaEngRun {
+        public static string StaEngRun {
             get {
                 return ResourceManager.GetString("StaEngRun", resourceCulture);
             }
@@ -1420,7 +1420,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Gear Engaged.
         /// </summary>
-        internal static string StaGearEng {
+        public static string StaGearEng {
             get {
                 return ResourceManager.GetString("StaGearEng", resourceCulture);
             }
@@ -1429,7 +1429,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Mixture AutoCalibration ENABLED.
         /// </summary>
-        internal static string StaMixACOK {
+        public static string StaMixACOK {
             get {
                 return ResourceManager.GetString("StaMixACOK", resourceCulture);
             }
@@ -1438,7 +1438,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Power Latch Line OK.
         /// </summary>
-        internal static string StaPLatchOK {
+        public static string StaPLatchOK {
             get {
                 return ResourceManager.GetString("StaPLatchOK", resourceCulture);
             }
@@ -1447,7 +1447,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to &amp;Start.
         /// </summary>
-        internal static string Start {
+        public static string Start {
             get {
                 return ResourceManager.GetString("Start", resourceCulture);
             }
@@ -1456,7 +1456,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Sensor Signals OK.
         /// </summary>
-        internal static string StaSensOK {
+        public static string StaSensOK {
             get {
                 return ResourceManager.GetString("StaSensOK", resourceCulture);
             }
@@ -1465,7 +1465,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Signal panel OK.
         /// </summary>
-        internal static string StaSigPanOK {
+        public static string StaSigPanOK {
             get {
                 return ResourceManager.GetString("StaSigPanOK", resourceCulture);
             }
@@ -1474,7 +1474,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Stepper AutoCalibration ENABLED.
         /// </summary>
-        internal static string StaStepACOK {
+        public static string StaStepACOK {
             get {
                 return ResourceManager.GetString("StaStepACOK", resourceCulture);
             }
@@ -1483,7 +1483,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Throttle at Min/Max.
         /// </summary>
-        internal static string StaThrMM {
+        public static string StaThrMM {
             get {
                 return ResourceManager.GetString("StaThrMM", resourceCulture);
             }
@@ -1492,7 +1492,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to VAE Self Cleaning underway.
         /// </summary>
-        internal static string StaVAESC {
+        public static string StaVAESC {
             get {
                 return ResourceManager.GetString("StaVAESC", resourceCulture);
             }
@@ -1501,7 +1501,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Stepper motor (idle actuator).
         /// </summary>
-        internal static string Stepper {
+        public static string Stepper {
             get {
                 return ResourceManager.GetString("Stepper", resourceCulture);
             }
@@ -1510,7 +1510,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle stepper autocalibration reset.
         /// </summary>
-        internal static string StepReset {
+        public static string StepReset {
             get {
                 return ResourceManager.GetString("StepReset", resourceCulture);
             }
@@ -1519,7 +1519,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to steps.
         /// </summary>
-        internal static string steps {
+        public static string steps {
             get {
                 return ResourceManager.GetString("steps", resourceCulture);
             }
@@ -1528,7 +1528,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Set stepper correction (ALFAFTR).
         /// </summary>
-        internal static string StepSet {
+        public static string StepSet {
             get {
                 return ResourceManager.GetString("StepSet", resourceCulture);
             }
@@ -1537,7 +1537,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to [S].
         /// </summary>
-        internal static string Sto {
+        public static string Sto {
             get {
                 return ResourceManager.GetString("Sto", resourceCulture);
             }
@@ -1546,7 +1546,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to &amp;Stop.
         /// </summary>
-        internal static string Stop {
+        public static string Stop {
             get {
                 return ResourceManager.GetString("Stop", resourceCulture);
             }
@@ -1555,7 +1555,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Injection Duration.
         /// </summary>
-        internal static string T_INJ_AP {
+        public static string T_INJ_AP {
             get {
                 return ResourceManager.GetString("T_INJ_AP", resourceCulture);
             }
@@ -1564,7 +1564,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to VAE Duty Cycle (Idle Control).
         /// </summary>
-        internal static string T_VAE {
+        public static string T_VAE {
             get {
                 return ResourceManager.GetString("T_VAE", resourceCulture);
             }
@@ -1573,7 +1573,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to If test takes longer than {0}s please turn ignition OFF and close the application!.
         /// </summary>
-        internal static string TestDuration {
+        public static string TestDuration {
             get {
                 return ResourceManager.GetString("TestDuration", resourceCulture);
             }
@@ -1582,7 +1582,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to TESTING: {0}....
         /// </summary>
-        internal static string Testing {
+        public static string Testing {
             get {
                 return ResourceManager.GetString("Testing", resourceCulture);
             }
@@ -1591,7 +1591,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Short to GND/+Vcc/Therm.
         /// </summary>
-        internal static string Therm {
+        public static string Therm {
             get {
                 return ResourceManager.GetString("Therm", resourceCulture);
             }
@@ -1600,7 +1600,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to TIMEOUT.
         /// </summary>
-        internal static string Timeout {
+        public static string Timeout {
             get {
                 return ResourceManager.GetString("Timeout", resourceCulture);
             }
@@ -1609,7 +1609,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Toggle idle stepper autocalibration.
         /// </summary>
-        internal static string ToggleStepAC {
+        public static string ToggleStepAC {
             get {
                 return ResourceManager.GetString("ToggleStepAC", resourceCulture);
             }
@@ -1618,7 +1618,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Toggle fuel trim autocalibration.
         /// </summary>
-        internal static string ToggleTrimAC {
+        public static string ToggleTrimAC {
             get {
                 return ResourceManager.GetString("ToggleTrimAC", resourceCulture);
             }
@@ -1627,7 +1627,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Too Much Air.
         /// </summary>
-        internal static string TooMuchAir {
+        public static string TooMuchAir {
             get {
                 return ResourceManager.GetString("TooMuchAir", resourceCulture);
             }
@@ -1636,7 +1636,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Trimmer Position.
         /// </summary>
-        internal static string TRIMRAM {
+        public static string TRIMRAM {
             get {
                 return ResourceManager.GetString("TRIMRAM", resourceCulture);
             }
@@ -1645,7 +1645,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Fuel trim autocalibration reset.
         /// </summary>
-        internal static string TrimReset {
+        public static string TrimReset {
             get {
                 return ResourceManager.GetString("TrimReset", resourceCulture);
             }
@@ -1654,7 +1654,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Set trimmer position (TRIMRAM).
         /// </summary>
-        internal static string TrimSet {
+        public static string TrimSet {
             get {
                 return ResourceManager.GetString("TrimSet", resourceCulture);
             }
@@ -1663,7 +1663,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Please turn OFF the ignition....
         /// </summary>
-        internal static string TurnOFF {
+        public static string TurnOFF {
             get {
                 return ResourceManager.GetString("TurnOFF", resourceCulture);
             }
@@ -1672,7 +1672,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Unknown.
         /// </summary>
-        internal static string UnknownISO {
+        public static string UnknownISO {
             get {
                 return ResourceManager.GetString("UnknownISO", resourceCulture);
             }
@@ -1681,7 +1681,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to ECU could not be recognized, please turn OFF the ignition....
         /// </summary>
-        internal static string UnrecECU {
+        public static string UnrecECU {
             get {
                 return ResourceManager.GetString("UnrecECU", resourceCulture);
             }
@@ -1690,7 +1690,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Battery Voltage.
         /// </summary>
-        internal static string V_BATT {
+        public static string V_BATT {
             get {
                 return ResourceManager.GetString("V_BATT", resourceCulture);
             }
@@ -1699,7 +1699,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to Idle Control Valve (VAE).
         /// </summary>
-        internal static string VAE {
+        public static string VAE {
             get {
                 return ResourceManager.GetString("VAE", resourceCulture);
             }
@@ -1708,7 +1708,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to [V].
         /// </summary>
-        internal static string Ver {
+        public static string Ver {
             get {
                 return ResourceManager.GetString("Ver", resourceCulture);
             }
@@ -1717,7 +1717,7 @@ namespace IES_2.Res {
         /// <summary>
         ///   Looks up a localized string similar to YES;;NO.
         /// </summary>
-        internal static string yes_no {
+        public static string yes_no {
             get {
                 return ResourceManager.GetString("yes_no", resourceCulture);
             }
