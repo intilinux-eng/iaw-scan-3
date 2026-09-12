@@ -1,0 +1,19 @@
+# Visual Studio build output
+[Bb]in/
+[Oo]bj/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ReSharper / VS temp
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# Publish / bootstrapper
+publish/
+ClientBin/
+
+# OS junk
+Thumbs.db
+Desktop.ini
