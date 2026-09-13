@@ -7,6 +7,12 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <AssemblyTitle>IAW Scan 3</AssemblyTitle>
+    <Product>IAW Scan 3</Product>
+    <Company>https://github.com/intilinux-eng/iaw-scan-3</Company>
+    <Copyright>Copyright © TzOk 2011-2015</Copyright>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <FileVersion>3.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

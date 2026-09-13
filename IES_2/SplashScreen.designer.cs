@@ -48,7 +48,7 @@
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(297, 36);
             this.lblStatus.TabIndex = 0;
-            this.lblStatus.Text = "IAW Scan 2";
+            this.lblStatus.Text = "IAW Scan 3";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblVer

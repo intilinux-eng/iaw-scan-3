@@ -1650,7 +1650,7 @@ Errors</value>
     <value>[F5] Graphs</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>IAW Scan 2</value>
+    <value>IAW Scan 3</value>
   </data>
   <data name="btnUncheckAll.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 374</value>

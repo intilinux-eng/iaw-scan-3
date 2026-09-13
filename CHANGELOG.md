@@ -1,12 +1,17 @@
 # Changelog
 
-All notable changes made in this fork relative to the original upstream release are documented here. The fork starts from **IAW Scan 2 v0.85** (Tomasz Orczyk / "TzOk", 2015-05-11, http://iaw-scan2.sourceforge.net), the last upstream release.
+All notable changes made in this fork relative to the original upstream release are documented here. This project **starts from the official, last upstream release, IAW Scan 2 v0.85** (Tomasz Orczyk / "TzOk", 2015-05-11, http://iaw-scan2.sourceforge.net). No ECU protocol work here has been reverse-engineered from scratch — that comes from upstream.
 
 ## Goal of this fork
 
-Modernize IAW Scan 2 for **longevity on current and future operating systems**: move to a long-term-supported .NET runtime and, as work progresses, to a modern cross-platform UI — while keeping the ECU communication logic, already field-proven over more than a decade of use, intact.
+Give IAW Scan **longevity**: a long-term-supported .NET runtime instead of .NET Framework 2.0 (unmaintained since 2015), and a UI that isn't tied to Windows — including **Linux on a Raspberry Pi**, so the tool can run as a small, cheap unit permanently installed **in the car** instead of a Windows laptop carried in and out. The ECU communication logic itself, field-proven for over a decade, is kept intact.
+
+Developed and tested primarily on a **Fiat Coupé 2.0 16V naturally aspirated**.
 
 ## [Unreleased]
+
+### Renamed
+- Project renamed to **IAW Scan 3**, continuing the upstream naming (IAW ECU Scan → IAW Scan 2 → IAW Scan 3). Window titles, splash screen, and assembly metadata updated accordingly; the original attribution (Copyright TzOk 2011-2015) is kept wherever it applies.
 
 ### Added
 - New `IES_2.Core` project: a shared library isolating the ECU communication logic (`ECU/*.cs`, `DataStructs.cs`) and localized strings (`Res/lang*.resx`), reusable from both the existing WinForms UI and the new UI.

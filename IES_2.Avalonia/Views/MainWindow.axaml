@@ -6,7 +6,7 @@
         xmlns:conv="using:Avalonia.Data.Converters"
         x:Class="IES_2.Avalonia.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Title="IAW Scan 2"
+        Title="IAW Scan 3"
         Width="960" Height="640">
 
     <Window.Styles>
