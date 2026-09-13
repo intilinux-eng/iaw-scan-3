@@ -5,6 +5,105 @@
 
     <Application.Styles>
         <FluentTheme />
+
+        <!-- Shared design system for the diagnostic screens (Parameters/Errors/Tests/Graphs/Adjustments). -->
+        <Style Selector="Border.badge">
+            <Setter Property="Background" Value="#3B5BDB" />
+        </Style>
+        <Style Selector="Border.chip">
+            <Setter Property="Background" Value="#22808080" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="10,4" />
+            <Setter Property="Margin" Value="0,0,6,6" />
+        </Style>
+
+        <Style Selector="TextBlock.sectionTitle">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+        <Style Selector="TextBlock.colHeader">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Opacity" Value="0.6" />
+        </Style>
+
+        <Style Selector="Border.tableHeader">
+            <Setter Property="BorderBrush" Value="#40808080" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Padding" Value="8,6" />
+        </Style>
+        <Style Selector="Border.tableRow">
+            <Setter Property="BorderBrush" Value="#18808080" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Padding" Value="8,7" />
+        </Style>
+        <Style Selector="Border.tableRow:pointerover">
+            <Setter Property="Background" Value="#10808080" />
+        </Style>
+
+        <Style Selector="Border.card">
+            <Setter Property="BorderBrush" Value="#30808080" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Padding" Value="14" />
+        </Style>
+
+        <Style Selector="Border.pill">
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="8,2" />
+        </Style>
+        <Style Selector="Border.pill-ok">
+            <Setter Property="Background" Value="#2F9E44" />
+        </Style>
+        <Style Selector="Border.pill-warn">
+            <Setter Property="Background" Value="#E8590C" />
+        </Style>
+        <Style Selector="Border.pill-danger">
+            <Setter Property="Background" Value="#E03531" />
+        </Style>
+        <Style Selector="Border.pill-neutral">
+            <Setter Property="Background" Value="#40808080" />
+        </Style>
+        <Style Selector="TextBlock.pillText">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style Selector="TextBlock.monoValue">
+            <Setter Property="FontFamily" Value="Consolas,Cascadia Mono,monospace" />
+            <Setter Property="FontWeight" Value="Medium" />
+        </Style>
+
+        <!-- Compact tile used by the Parameters screen's wrap-grid, instead of one row per parameter. -->
+        <Style Selector="Border.paramCard">
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Margin" Value="0,0,10,10" />
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="BorderBrush" Value="#28808080" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="#08808080" />
+        </Style>
+        <Style Selector="Border.paramCard-active">
+            <Setter Property="BorderBrush" Value="#3B5BDB" />
+            <Setter Property="Background" Value="#123B5BDB" />
+        </Style>
+
+        <!-- Plain hyperlink-style button, used for the About dialog's project links. -->
+        <Style Selector="Button.linkButton">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Foreground" Value="#3B5BDB" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style Selector="Button.linkButton:pointerover">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#5B7CFF" />
+        </Style>
     </Application.Styles>
 
 </Application>

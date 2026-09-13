@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:IES_2.Avalonia.ViewModels"
+             xmlns:models="using:IES_2.Avalonia.Models"
+             x:Class="IES_2.Avalonia.Views.ParametersView"
+             x:DataType="vm:ParametersViewModel">
+
+    <Grid RowDefinitions="Auto,*" Margin="16">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto" Margin="0,0,0,12">
+            <TextBlock Grid.Column="0" Text="Parametri motore" Classes="sectionTitle" VerticalAlignment="Center" />
+            <Button Grid.Column="1" Content="Seleziona tutti" Command="{Binding CheckAllCommand}" Margin="0,0,8,0" />
+            <Button Grid.Column="2" Content="Deseleziona tutti" Command="{Binding UncheckAllCommand}" />
+        </Grid>
+
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding Rows}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="models:ParameterRow">
+                        <Border Classes="paramCard" Classes.paramCard-active="{Binding IsChecked}">
+                            <Grid RowDefinitions="Auto,Auto">
+                                <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Margin="0,0,0,6">
+                                    <CheckBox Grid.Column="0" IsChecked="{Binding IsChecked}" Margin="-8,0,4,0" />
+                                    <TextBlock Grid.Column="1" Text="{Binding Description}" FontSize="11.5" Opacity="0.8"
+                                               TextWrapping="Wrap" MaxLines="2" TextTrimming="CharacterEllipsis"
+                                               VerticalAlignment="Center" />
+                                </Grid>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="4" VerticalAlignment="Bottom">
+                                    <TextBlock Text="{Binding Value}" Classes="monoValue" FontSize="18" />
+                                    <TextBlock Text="{Binding Unit}" FontSize="11" Opacity="0.6" Margin="0,0,0,2" VerticalAlignment="Bottom" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

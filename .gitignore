@@ -20,6 +20,6 @@ Desktop.ini
 
 # Local tooling / runtime artifacts
 .claude/settings.local.json
-/Log/
+Log/
 *.log
 

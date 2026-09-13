@@ -1,0 +1,52 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:IES_2.Avalonia.ViewModels"
+             xmlns:models="using:IES_2.Avalonia.Models"
+             xmlns:conv="using:Avalonia.Data.Converters"
+             x:Class="IES_2.Avalonia.Views.ErrorsView"
+             x:DataType="vm:ErrorsViewModel">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Margin="16">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+            <TextBlock Grid.Column="0" Text="Errori memorizzati" Classes="sectionTitle" VerticalAlignment="Center" />
+            <Button Grid.Column="1" Content="Azzera codici [C]" Command="{Binding ClearCodesCommand}" />
+        </Grid>
+
+        <TextBlock Grid.Row="1" Text="{Binding StatusMessage}" Margin="0,0,0,10" TextWrapping="Wrap"
+                   IsVisible="{Binding StatusMessage, Converter={x:Static conv:ObjectConverters.IsNotNull}}" />
+
+        <Border Grid.Row="2" Classes="tableHeader">
+            <Grid ColumnDefinitions="*,180,90,60">
+                <TextBlock Grid.Column="0" Text="ANOMALIA" Classes="colHeader" />
+                <TextBlock Grid.Column="1" Text="CAUSA" Classes="colHeader" />
+                <TextBlock Grid.Column="2" Text="STATO" Classes="colHeader" />
+                <TextBlock Grid.Column="3" Text="MIL" Classes="colHeader" HorizontalAlignment="Center" />
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="3">
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding Rows}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="models:ErrorRow">
+                            <Border Classes="tableRow" IsVisible="{Binding IsVisible}">
+                                <Grid ColumnDefinitions="*,180,90,60">
+                                    <TextBlock Grid.Column="0" Text="{Binding Description}" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                    <TextBlock Grid.Column="1" Text="{Binding Reason}" VerticalAlignment="Center" TextWrapping="Wrap" Opacity="0.85" />
+                                    <TextBlock Grid.Column="2" Text="{Binding StateText}" VerticalAlignment="Center" Opacity="0.85" />
+                                    <Border Grid.Column="3" Classes="pill" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Classes.pill-danger="{Binding IsMilOn}" Classes.pill-neutral="{Binding !IsMilOn}">
+                                        <TextBlock Text="MIL" Classes="pillText" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <TextBlock Text="Nessun errore attivo, verificato o memorizzato." Opacity="0.6" Margin="8,16"
+                           IsVisible="{Binding !HasVisibleErrors}" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

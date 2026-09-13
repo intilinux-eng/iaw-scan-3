@@ -35,7 +35,11 @@ Developed and tested primarily on a **Fiat Coupé 2.0 16V naturally aspirated** 
 
 - **`IES_3/`** — the original WinForms UI, ported to .NET 10 (mechanical port, behavior unchanged from upstream v0.85).
 - **`IES_3.Core/`** — shared library with the ECU protocol/communication logic and localized strings, used by both UIs below. Its source files (the actual ECU decoding logic) come unchanged from the original IES_2 codebase, just relocated here.
-- **`IES_3.Avalonia/`** — new cross-platform UI (Windows/Linux/macOS) built with [Avalonia](https://avaloniaui.net/) and MVVM. Work in progress: the ECU selection/connection screen is done; the live parameters, errors, tests, graph, and adjustments tabs from the WinForms UI are not ported yet.
+- **`IES_3.Avalonia/`** — new cross-platform UI (Windows/Linux/macOS) built with [Avalonia](https://avaloniaui.net/) and MVVM. All the original screens are ported: ECU/vehicle selection and connecting, live parameters, error codes, actuator tests, a real-time graph with CSV export, and adjustments.
+
+## Beta downloads
+
+Pre-built, self-contained packages of the new cross-platform interface (`IES_3.Avalonia`) - no need to install .NET yourself - are published on demand to a rolling **[Beta release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/beta)**: a Windows `.exe` and a Linux `.deb`. These are beta builds straight from `main`, not tested releases - see "Testing status" below for what has and hasn't been confirmed on real hardware. A proper versioned-release process (release branches, version tags) will come later.
 
 ## Building
 

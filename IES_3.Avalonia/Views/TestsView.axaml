@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:IES_2.Avalonia.ViewModels"
+             xmlns:models="using:IES_2.Avalonia.Models"
+             x:Class="IES_2.Avalonia.Views.TestsView"
+             x:DataType="vm:TestsViewModel">
+
+    <Grid RowDefinitions="Auto,Auto,*" Margin="16">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto" Margin="0,0,0,12">
+            <TextBlock Grid.Column="0" Text="Test attuatori" Classes="sectionTitle" VerticalAlignment="Center" />
+            <Button Grid.Column="1" Content="Annulla" Command="{Binding CancelCommand}" Margin="0,0,8,0" />
+            <Button Grid.Column="2" Content="Esegui [E]" Command="{Binding ExecuteCommand}" />
+        </Grid>
+
+        <Border Grid.Row="1" Classes="tableHeader">
+            <Grid ColumnDefinitions="*,150">
+                <TextBlock Grid.Column="0" Text="PROVA" Classes="colHeader" />
+                <TextBlock Grid.Column="1" Text="ESITO" Classes="colHeader" />
+            </Grid>
+        </Border>
+
+        <ListBox Grid.Row="2" ItemsSource="{Binding Rows}" SelectedItem="{Binding SelectedRow}">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="models:TestRow">
+                    <Grid ColumnDefinitions="*,150" Margin="0,4">
+                        <TextBlock Grid.Column="0" Text="{Binding Description}" TextWrapping="Wrap" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Text="{Binding Result}" VerticalAlignment="Center" Opacity="0.85" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

@@ -8,6 +8,7 @@ namespace IES_2.Avalonia.Services
         public string? IsoCode { get; init; }
         public string? RepCode { get; init; }
         public string? CarModel { get; init; }
+        public DiagnosticsSession? Session { get; init; }
 
         public static ConnectResult Failure(string message) => new() { Success = false, ErrorMessage = message };
     }

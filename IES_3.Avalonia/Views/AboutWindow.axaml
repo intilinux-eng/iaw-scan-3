@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:IES_2.Avalonia.ViewModels"
+        x:Class="IES_2.Avalonia.Views.AboutWindow"
+        x:DataType="vm:AboutViewModel"
+        Title="Informazioni"
+        Width="480" Height="580" MinWidth="420" MinHeight="420"
+        WindowStartupLocation="CenterOwner">
+
+    <Grid RowDefinitions="Auto,*,Auto" Margin="20">
+
+        <StackPanel Grid.Row="0" Spacing="3" Margin="0,0,0,12">
+            <TextBlock Text="{Binding ProductName}" Classes="sectionTitle" />
+            <TextBlock Text="{Binding VersionText}" Opacity="0.75" />
+            <TextBlock Text="{Binding ForkCopyright}" Opacity="0.85" Margin="0,6,0,0" />
+            <Button Content="{Binding ForkRepoUrl}" Classes="linkButton" Click="OnForkLinkClick" />
+
+            <Border BorderBrush="#30808080" BorderThickness="0,1,0,0" Margin="0,10,0,0" Padding="0,10,0,0">
+                <StackPanel Spacing="4">
+                    <TextBlock Text="{Binding OriginalProjectLine}" TextWrapping="Wrap" FontSize="12" Opacity="0.85" />
+                    <Button Content="{Binding OriginalProjectUrl}" Classes="linkButton" Click="OnOriginalLinkClick" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Spacing="14">
+                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="12" />
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Licenza del progetto originale (si applica anche a questo fork)" FontSize="11" FontWeight="SemiBold" Opacity="0.7" />
+                    <TextBlock Text="{Binding LicenseText}" TextWrapping="Wrap" FontSize="11" Opacity="0.75"
+                               FontFamily="Consolas,Cascadia Mono,monospace" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button Grid.Row="2" Content="OK" HorizontalAlignment="Right" Margin="0,12,0,0" Click="OnOkClick" />
+    </Grid>
+</Window>

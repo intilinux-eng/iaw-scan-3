@@ -13,19 +13,14 @@ namespace IES_2.Avalonia.Services
     /// Thin wrapper around the IES_2.Core ECU classes that turns the connect
     /// flow (real hardware or simulation) into an awaitable, cancellable
     /// operation returning a result, instead of the accelerator-driven
-    /// state machine in the original frmMain. Keeps the connected port/ECU
-    /// instance alive after a successful connect (for Disconnect and for
-    /// later milestones that will need to poll it), so ConnectAsync is
-    /// intentionally not disposing on the success path.
+    /// state machine in the original frmMain. On success the result carries
+    /// a ready-to-use DiagnosticsSession that owns the live ECU/port for the
+    /// rest of the connected session (parameters, errors, tests, ...).
     /// </summary>
     public class EcuConnectionService
     {
         private const string DemoIso = "55D085029440";
         private const string DemoCodric = "6160206301";
-
-        private SerialPort? _activePort;
-
-        public bool IsConnected => _activePort != null;
 
         public async Task<ConnectResult> ConnectAsync(EcuOption option, string? portName, bool simulation, CancellationToken ct)
         {
@@ -36,23 +31,6 @@ namespace IES_2.Avalonia.Services
                 return ConnectResult.Failure("Seleziona una porta COM.");
 
             return await Task.Run(() => ConnectReal(option, portName, ct), ct);
-        }
-
-        public void Disconnect()
-        {
-            if (_activePort == null) return;
-            try
-            {
-                if (_activePort.IsOpen) _activePort.Close();
-            }
-            finally
-            {
-                _activePort.Dispose();
-                _activePort = null;
-                ecu.connected = false;
-                ecu.ISO = null;
-                ecu.CODRIC = null;
-            }
         }
 
         private ConnectResult ConnectSimulated(EcuOption option)
@@ -69,9 +47,8 @@ namespace IES_2.Avalonia.Services
                 return ConnectResult.Failure("Tipo di ECU non valido.");
             }
 
-            _activePort = port;
             instance.hasIMMO = true;
-            return BuildSuccess(option.DisplayName, instance);
+            return BuildSuccess(option.DisplayName, instance, port, simulation: true);
         }
 
         private ConnectResult ConnectReal(EcuOption option, string portName, CancellationToken ct)
@@ -107,8 +84,7 @@ namespace IES_2.Avalonia.Services
                 resolved.ReadISO();
 
             resolved.hasIMMO = ecu.CheckCODE(ref serial);
-            _activePort = serial;
-            return BuildSuccess(option.DisplayName, resolved);
+            return BuildSuccess(option.DisplayName, resolved, serial, simulation: false);
         }
 
         /// <summary>
@@ -169,17 +145,25 @@ namespace IES_2.Avalonia.Services
             };
         }
 
-        private static ConnectResult BuildSuccess(string ecuTypeDisplayName, ecu instance)
+        private static ConnectResult BuildSuccess(string ecuTypeDisplayName, ecu instance, SerialPort port, bool simulation)
         {
             var iso = ecu.ISO;
             var codric = ecu.CODRIC;
+            var isoText = iso != null ? Regex.Replace(iso, @"(\w{2})(\w{2})(\w{2})(\w{2})(\w{2})(\w{2})", "$1-$2-$3-$4-$5-$6") : "-";
+            var repText = codric != null ? Regex.Replace(codric, @"(\w{5})(\w{3})(\w{2})", "$1.$2.$3") : "-";
+            var carModel = instance.GetCarModel();
+            var typeText = ecuTypeDisplayName + (instance.hasIMMO ? "" : " ECOL");
+
+            var session = new DiagnosticsSession(instance, port, simulation, typeText, isoText, repText, carModel);
+
             return new ConnectResult
             {
                 Success = true,
-                EcuTypeDisplayName = ecuTypeDisplayName + (instance.hasIMMO ? "" : " ECOL"),
-                IsoCode = iso != null ? Regex.Replace(iso, @"(\w{2})(\w{2})(\w{2})(\w{2})(\w{2})(\w{2})", "$1-$2-$3-$4-$5-$6") : "-",
-                RepCode = codric != null ? Regex.Replace(codric, @"(\w{5})(\w{3})(\w{2})", "$1.$2.$3") : "-",
-                CarModel = instance.GetCarModel(),
+                EcuTypeDisplayName = typeText,
+                IsoCode = isoText,
+                RepCode = repText,
+                CarModel = carModel,
+                Session = session,
             };
         }
     }

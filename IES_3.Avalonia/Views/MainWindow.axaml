@@ -2,124 +2,182 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:IES_2.Avalonia.ViewModels"
         xmlns:models="using:IES_2.Avalonia.Models"
+        xmlns:views="using:IES_2.Avalonia.Views"
         xmlns:sys="using:System"
         xmlns:conv="using:Avalonia.Data.Converters"
         x:Class="IES_2.Avalonia.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Title="IAW Scan 3"
-        Width="960" Height="640">
+        Width="1120" Height="720" MinWidth="820" MinHeight="560">
+
+    <Window.KeyBindings>
+        <KeyBinding Gesture="F2" Command="{Binding GoToParametersCommand}" />
+        <KeyBinding Gesture="F3" Command="{Binding GoToErrorsCommand}" />
+        <KeyBinding Gesture="F4" Command="{Binding GoToTestsCommand}" />
+        <KeyBinding Gesture="F5" Command="{Binding GoToGraphsCommand}" />
+        <KeyBinding Gesture="F6" Command="{Binding GoToAdjustmentsCommand}" />
+        <KeyBinding Gesture="F10" Command="{Binding ConnectToggleShortcutCommand}" />
+        <KeyBinding Gesture="Ctrl+F10" Command="{Binding ConnectSimulatedCommand}" />
+        <KeyBinding Gesture="A" Command="{Binding CheckAllParametersCommand}" />
+        <KeyBinding Gesture="N" Command="{Binding UncheckAllParametersCommand}" />
+        <KeyBinding Gesture="C" Command="{Binding ClearCodesShortcutCommand}" />
+        <KeyBinding Gesture="S" Command="{Binding ToggleRecordingShortcutCommand}" />
+        <KeyBinding Gesture="E" Command="{Binding ExecuteTestShortcutCommand}" />
+    </Window.KeyBindings>
 
     <Window.Styles>
-        <Style Selector="Border.badge">
-            <Setter Property="Background" Value="#3B5BDB" />
-        </Style>
-        <Style Selector="Border.chip">
-            <Setter Property="Background" Value="#22808080" />
-            <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="10,4" />
-            <Setter Property="Margin" Value="0,0,6,6" />
+        <Style Selector="TabControl.workspace WrapPanel">
+            <Setter Property="Background" Value="Transparent" />
         </Style>
     </Window.Styles>
 
-    <Grid RowDefinitions="Auto,*,Auto" Margin="14">
+    <Grid RowDefinitions="Auto,Auto,*">
 
-        <TextBlock Grid.Row="0" Text="Seleziona ECU" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,8" />
+        <!-- Top bar: always visible product identity + (when connected) live ECU summary. -->
+        <Border Grid.Row="0" BorderBrush="#30808080" BorderThickness="0,0,0,1" Padding="16,10">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                    <Border Classes="badge" Width="30" Height="30" CornerRadius="6">
+                        <TextBlock Text="IS3" Foreground="White" FontSize="10" FontWeight="Bold"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <StackPanel VerticalAlignment="Center" Spacing="0">
+                        <TextBlock Text="IAW Scan 3" FontSize="15" FontWeight="Bold" />
+                        <TextBlock Text="Diagnosi centraline motore" FontSize="11" Opacity="0.6" />
+                    </StackPanel>
+                </StackPanel>
 
-        <Grid Grid.Row="1" ColumnDefinitions="300,*">
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="18" HorizontalAlignment="Center"
+                            VerticalAlignment="Center" IsVisible="{Binding IsConnected}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="Centralina:" Opacity="0.6" />
+                        <TextBlock Text="{Binding EcuTypeText}" FontWeight="Medium" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="Veicolo:" Opacity="0.6" />
+                        <TextBlock Text="{Binding CarModelText}" FontWeight="Medium" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="ISO:" Opacity="0.6" />
+                        <TextBlock Text="{Binding IsoCodeText}" Classes="monoValue" FontSize="12" />
+                    </StackPanel>
+                </StackPanel>
 
-            <ListBox Grid.Column="0"
-                     ItemsSource="{Binding EcuOptions}"
-                     SelectedItem="{Binding SelectedEcuOption}"
-                     Margin="0,0,10,0">
-                <ListBox.ItemTemplate>
-                    <DataTemplate x:DataType="models:EcuOption">
-                        <Border CornerRadius="8" Padding="10,8">
-                            <Grid ColumnDefinitions="46,10,*">
-                                <Border Grid.Column="0" Classes="badge"
-                                        Height="30" CornerRadius="6" VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding Badge}" Foreground="White" FontSize="10" FontWeight="Bold"
-                                               HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" />
-                                </Border>
-                                <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding DisplayName}" TextWrapping="Wrap" FontWeight="Medium" />
-                                    <TextBlock Text="{Binding VehicleCount, StringFormat='{}{0} veicoli supportati'}"
-                                               FontSize="11" Opacity="0.65" />
-                                </StackPanel>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="8">
+                    <Button Content="Disconnetti [F10]" Command="{Binding DisconnectCommand}" IsVisible="{Binding IsConnected}" />
+                    <Button Content="ℹ Informazioni" Command="{Binding ShowAboutCommand}" />
+                </StackPanel>
+            </Grid>
+        </Border>
 
-            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" CornerRadius="4" Padding="10">
-                <DockPanel>
-                    <TextBox DockPanel.Dock="Top" PlaceholderText="Cerca veicolo..." Text="{Binding SearchText}" Margin="0,0,0,10" />
-                    <ScrollViewer>
-                        <ItemsControl ItemsSource="{Binding FilteredVehicleGroups}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate x:DataType="models:VehicleGroup">
-                                    <StackPanel Margin="0,0,0,12">
-                                        <TextBlock Text="{Binding Brand}" FontWeight="SemiBold" Margin="0,0,0,6" />
-                                        <ItemsControl ItemsSource="{Binding Vehicles}">
-                                            <ItemsControl.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <WrapPanel />
-                                                </ItemsPanelTemplate>
-                                            </ItemsControl.ItemsPanel>
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate x:DataType="sys:String">
-                                                    <Border Classes="chip">
-                                                        <TextBlock Text="{Binding}" FontSize="12" />
-                                                    </Border>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
+        <!-- Communication-lost banner. -->
+        <Border Grid.Row="1" Background="#E03531" Padding="14,8"
+                IsVisible="{Binding CommunicationLostMessage, Converter={x:Static conv:ObjectConverters.IsNotNull}}">
+            <Grid ColumnDefinitions="*,Auto,Auto">
+                <TextBlock Grid.Column="0" Text="{Binding CommunicationLostMessage}" Foreground="White" VerticalAlignment="Center" TextWrapping="Wrap" />
+                <Button Grid.Column="1" Content="Riconnetti [F12]" Command="{Binding ReconnectAfterCommLossCommand}" Margin="8,0" />
+                <Button Grid.Column="2" Content="Disconnetti" Command="{Binding DisconnectCommand}" />
+            </Grid>
+        </Border>
+
+        <!-- Pre-connect: ECU + vehicle selection and connection setup. -->
+        <Grid Grid.Row="2" IsVisible="{Binding !IsConnected}" Margin="16" RowDefinitions="Auto,*,Auto">
+
+            <TextBlock Grid.Row="0" Text="Seleziona centralina" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,8" />
+
+            <Grid Grid.Row="1" ColumnDefinitions="300,*">
+
+                <ListBox Grid.Column="0"
+                         ItemsSource="{Binding EcuOptions}"
+                         SelectedItem="{Binding SelectedEcuOption}"
+                         Margin="0,0,10,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:EcuOption">
+                            <Border CornerRadius="8" Padding="10,8">
+                                <Grid ColumnDefinitions="46,10,*">
+                                    <Border Grid.Column="0" Classes="badge"
+                                            Height="30" CornerRadius="6" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Badge}" Foreground="White" FontSize="10" FontWeight="Bold"
+                                                   HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" />
+                                    </Border>
+                                    <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding DisplayName}" TextWrapping="Wrap" FontWeight="Medium" />
+                                        <TextBlock Text="{Binding VehicleCount, StringFormat='{}{0} veicoli supportati'}"
+                                                   FontSize="11" Opacity="0.65" />
                                     </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </ScrollViewer>
-                </DockPanel>
-            </Border>
-        </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
-        <Grid Grid.Row="2" RowDefinitions="Auto,Auto,Auto" Margin="0,12,0,0">
-
-            <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto,Auto,Auto" Margin="0,0,0,8">
-                <TextBlock Grid.Column="0" Text="Porta COM:" VerticalAlignment="Center" Margin="0,0,8,0" />
-                <ComboBox Grid.Column="1" ItemsSource="{Binding ComPorts}" SelectedItem="{Binding SelectedComPort}"
-                          HorizontalAlignment="Left" MinWidth="140" />
-                <CheckBox Grid.Column="2" Content="Modalità simulazione (nessun hardware)"
-                          IsChecked="{Binding IsSimulationMode}" Margin="16,0" VerticalAlignment="Center" />
-                <Button Grid.Column="3" Content="Connetti" Command="{Binding ConnectCommand}" Margin="0,0,8,0" />
-                <Button Grid.Column="4" Content="Annulla" Command="{Binding CancelConnectCommand}"
-                        IsVisible="{Binding IsConnecting}" Margin="0,0,8,0" />
-                <Button Content="Disconnetti" Command="{Binding DisconnectCommand}"
-                        IsVisible="{Binding IsConnected}" Grid.Column="4" />
+                <Border Grid.Column="1" Classes="card">
+                    <DockPanel>
+                        <TextBox DockPanel.Dock="Top" PlaceholderText="Cerca veicolo..." Text="{Binding SearchText}" Margin="0,0,0,10" />
+                        <ScrollViewer>
+                            <ItemsControl ItemsSource="{Binding FilteredVehicleGroups}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate x:DataType="models:VehicleGroup">
+                                        <StackPanel Margin="0,0,0,12">
+                                            <TextBlock Text="{Binding Brand}" FontWeight="SemiBold" Margin="0,0,0,6" />
+                                            <ItemsControl ItemsSource="{Binding Vehicles}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate x:DataType="sys:String">
+                                                        <Border Classes="chip">
+                                                            <TextBlock Text="{Binding}" FontSize="12" />
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </DockPanel>
+                </Border>
             </Grid>
 
-            <TextBlock Grid.Row="1" Text="{Binding ErrorMessage}" Foreground="Red"
-                       IsVisible="{Binding ErrorMessage, Converter={x:Static conv:ObjectConverters.IsNotNull}}"
-                       Margin="0,0,0,8" TextWrapping="Wrap" />
+            <Grid Grid.Row="2" RowDefinitions="Auto,Auto" Margin="0,12,0,0">
+                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto,Auto,Auto" Margin="0,0,0,8">
+                    <TextBlock Grid.Column="0" Text="Porta COM:" VerticalAlignment="Center" Margin="0,0,8,0" />
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding ComPorts}" SelectedItem="{Binding SelectedComPort}"
+                              HorizontalAlignment="Left" MinWidth="140" />
+                    <CheckBox Grid.Column="2" Content="Modalità simulazione (nessun hardware)"
+                              IsChecked="{Binding IsSimulationMode}" Margin="16,0" VerticalAlignment="Center" />
+                    <Button Grid.Column="3" Content="Connetti [F10]" Command="{Binding ConnectCommand}" Margin="0,0,8,0" />
+                    <Button Grid.Column="4" Content="Annulla" Command="{Binding CancelConnectCommand}"
+                            IsVisible="{Binding IsConnecting}" />
+                </Grid>
 
-            <Grid Grid.Row="2" ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
-                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,0,0,4">
-                    <TextBlock Text="Tipo ECU: " FontWeight="SemiBold" />
-                    <TextBlock Text="{Binding EcuTypeText}" />
-                </StackPanel>
-                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,4">
-                    <TextBlock Text="Modello auto: " FontWeight="SemiBold" />
-                    <TextBlock Text="{Binding CarModelText}" />
-                </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-                    <TextBlock Text="Codice ISO: " FontWeight="SemiBold" />
-                    <TextBlock Text="{Binding IsoCodeText}" />
-                </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                    <TextBlock Text="Codice del pezzo: " FontWeight="SemiBold" />
-                    <TextBlock Text="{Binding RepCodeText}" />
-                </StackPanel>
+                <TextBlock Grid.Row="1" Text="{Binding ErrorMessage}" Foreground="Red"
+                           IsVisible="{Binding ErrorMessage, Converter={x:Static conv:ObjectConverters.IsNotNull}}"
+                           TextWrapping="Wrap" />
             </Grid>
         </Grid>
+
+        <!-- Connected: tabbed workspace over the five diagnostic screens. -->
+        <TabControl Grid.Row="2" IsVisible="{Binding IsConnected}" SelectedIndex="{Binding SelectedTabIndex}" Classes="workspace">
+            <TabItem Header="[F2] Parametri">
+                <views:ParametersView DataContext="{Binding Parameters}" />
+            </TabItem>
+            <TabItem Header="[F3] Errori">
+                <views:ErrorsView DataContext="{Binding Errors}" />
+            </TabItem>
+            <TabItem Header="[F4] Test">
+                <views:TestsView DataContext="{Binding Tests}" />
+            </TabItem>
+            <TabItem Header="[F5] Grafici">
+                <views:GraphsView DataContext="{Binding Graphs}" />
+            </TabItem>
+            <TabItem Header="[F6] Regolazioni">
+                <views:AdjustmentsView DataContext="{Binding Adjustments}" />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

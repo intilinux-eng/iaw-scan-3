@@ -1,0 +1,148 @@
+name: Build beta packages
+
+# Manual, on-demand packaging of the cross-platform UI (IES_3.Avalonia) for sharing the
+# current state of `main` before this project has a real versioned-release process (release
+# branches + version tags). Produces a self-contained Windows .exe and a Linux .deb, and
+# publishes both to a single rolling "beta" GitHub Release (re-running this workflow replaces
+# the previous beta build). Always marked as a GitHub pre-release.
+#
+# Once the project starts cutting real releases from dedicated release branches, extend the
+# `on:` trigger below with `push: tags: ['v*']` and branch the release job on how it was
+# triggered, instead of always reusing the `beta` tag.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version label for this build (e.g. 0.1.0-beta)"
+        required: true
+        default: "0.1.0-beta"
+
+env:
+  DOTNET_VERSION: "10.0.x"
+  PROJECT_PATH: IES_3.Avalonia/IES_3.Avalonia.csproj
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Publish win-x64 (self-contained, single file)
+        run: >
+          dotnet publish ${{ env.PROJECT_PATH }}
+          -c Release -r win-x64 --self-contained true
+          -p:Version=${{ inputs.version }}
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:DebugType=None
+          -o publish/win-x64
+
+      - name: Rename artifact
+        shell: pwsh
+        run: |
+          $dest = "IAWScan3-${{ inputs.version }}-win-x64.exe"
+          Copy-Item "publish/win-x64/IES_3.Avalonia.exe" $dest
+          echo "ASSET_PATH=$dest" >> $env:GITHUB_ENV
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-exe
+          path: ${{ env.ASSET_PATH }}
+          if-no-files-found: error
+
+  build-linux-deb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Publish linux-x64 (self-contained, single file)
+        run: >
+          dotnet publish ${{ env.PROJECT_PATH }}
+          -c Release -r linux-x64 --self-contained true
+          -p:Version=${{ inputs.version }}
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:DebugType=None
+          -o publish/linux-x64
+
+      - name: Build .deb package
+        run: |
+          set -euo pipefail
+          VERSION="${{ inputs.version }}"
+          DEB_VERSION="${VERSION/-/\~}"  # e.g. 0.1.0-beta -> 0.1.0~beta (correct Debian pre-release ordering)
+          PKGROOT="pkgroot"
+
+          rm -rf "$PKGROOT"
+          mkdir -p "$PKGROOT/DEBIAN" "$PKGROOT/opt/iaw-scan3" "$PKGROOT/usr/bin" "$PKGROOT/usr/share/applications"
+
+          cp -r publish/linux-x64/. "$PKGROOT/opt/iaw-scan3/"
+          chmod +x "$PKGROOT/opt/iaw-scan3/IES_3.Avalonia"
+          ln -s /opt/iaw-scan3/IES_3.Avalonia "$PKGROOT/usr/bin/iaw-scan3"
+
+          cat > "$PKGROOT/DEBIAN/control" <<EOF
+          Package: iaw-scan3
+          Version: $DEB_VERSION
+          Section: utils
+          Priority: optional
+          Architecture: amd64
+          Maintainer: IAW Scan 3 project <https://github.com/intilinux-eng/iaw-scan-3>
+          Description: IAW Scan 3 (BETA) - Fiat/Lancia/Alfa OBD-I diagnostic tool
+           Diagnostic software for Marelli IAW/FIAT CODE engine control units over an
+           ISO-KKL (K-line) interface. This is a beta build published straight from the
+           main branch - expect rough edges, and see the project page for known issues.
+          EOF
+
+          cat > "$PKGROOT/usr/share/applications/iaw-scan3.desktop" <<EOF
+          [Desktop Entry]
+          Type=Application
+          Name=IAW Scan 3
+          Comment=Fiat/Lancia/Alfa OBD-I diagnostic tool (beta)
+          Exec=/opt/iaw-scan3/IES_3.Avalonia
+          Terminal=false
+          Categories=Utility;
+          EOF
+
+          DEB_FILE="iaw-scan3_${DEB_VERSION}_amd64.deb"
+          dpkg-deb --build --root-owner-group "$PKGROOT" "$DEB_FILE"
+          echo "ASSET_PATH=$DEB_FILE" >> "$GITHUB_ENV"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-deb
+          path: ${{ env.ASSET_PATH }}
+          if-no-files-found: error
+
+  publish-release:
+    needs: [build-windows, build-linux-deb]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Publish rolling beta release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: beta
+          name: "IAW Scan 3 ${{ inputs.version }} (Beta)"
+          prerelease: true
+          target_commitish: ${{ github.sha }}
+          body: |
+            Build beta automatica dal branch `main`, non ancora sottoposta a test estesi su hardware reale.
+            Segnala eventuali problemi aprendo una Issue sul repository.
+
+            Questa release viene sostituita ad ogni nuova build beta (il tag `beta` viene spostato sull'ultimo commit incluso).
+          files: |
+            artifacts/windows-exe/*
+            artifacts/linux-deb/*
