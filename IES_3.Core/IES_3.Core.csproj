@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>IES_2</RootNamespace>
-    <AssemblyName>IES_2.Core</AssemblyName>
+    <AssemblyName>IES_3.Core</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

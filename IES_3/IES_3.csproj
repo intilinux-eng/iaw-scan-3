@@ -5,7 +5,7 @@
     <TargetFramework>net10.0-windows7.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>IES_2</RootNamespace>
-    <AssemblyName>IES_2</AssemblyName>
+    <AssemblyName>IES_3</AssemblyName>
     <ApplicationIcon>Res\MIL.ico</ApplicationIcon>
     <StartupObject>IES_2.Program</StartupObject>
     <AssemblyTitle>IAW Scan 3</AssemblyTitle>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IES_2.Core\IES_2.Core.csproj" />
+    <ProjectReference Include="..\IES_3.Core\IES_3.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -33,28 +33,28 @@ Developed and tested primarily on a **Fiat Coupé 2.0 16V naturally aspirated** 
 
 ## Project structure
 
-- **`IES_2/`** — the original WinForms UI, ported to .NET 10 (mechanical port, behavior unchanged from upstream v0.85).
-- **`IES_2.Core/`** — shared library with the ECU protocol/communication logic and localized strings, used by both UIs below.
-- **`IES_2.Avalonia/`** — new cross-platform UI (Windows/Linux/macOS) built with [Avalonia](https://avaloniaui.net/) and MVVM. Work in progress: the ECU selection/connection screen is done; the live parameters, errors, tests, graph, and adjustments tabs from the WinForms UI are not ported yet.
+- **`IES_3/`** — the original WinForms UI, ported to .NET 10 (mechanical port, behavior unchanged from upstream v0.85).
+- **`IES_3.Core/`** — shared library with the ECU protocol/communication logic and localized strings, used by both UIs below. Its source files (the actual ECU decoding logic) come unchanged from the original IES_2 codebase, just relocated here.
+- **`IES_3.Avalonia/`** — new cross-platform UI (Windows/Linux/macOS) built with [Avalonia](https://avaloniaui.net/) and MVVM. Work in progress: the ECU selection/connection screen is done; the live parameters, errors, tests, graph, and adjustments tabs from the WinForms UI are not ported yet.
 
 ## Building
 
 Requires the [.NET 10 SDK](https://dotnet.microsoft.com/download) or later.
 
 ```
-dotnet build IES_2.sln
+dotnet build IES_3.sln
 ```
 
 Run the original WinForms UI (Windows only):
 
 ```
-dotnet run --project IES_2/IES_2.csproj
+dotnet run --project IES_3/IES_3.csproj
 ```
 
 Run the new cross-platform UI:
 
 ```
-dotnet run --project IES_2.Avalonia/IES_2.Avalonia.csproj
+dotnet run --project IES_3.Avalonia/IES_3.Avalonia.csproj
 ```
 
 Both UIs support a simulation mode that requires no ECU hardware (a checkbox in the new UI; Ctrl+click the Connect button, or Ctrl+F10, in the WinForms UI).

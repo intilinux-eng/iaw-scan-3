@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IES_2", "IES_2\IES_2.csproj", "{024BEE99-BBE9-4F6F-8DB0-A6C645A50ED0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IES_3", "IES_3\IES_3.csproj", "{024BEE99-BBE9-4F6F-8DB0-A6C645A50ED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IES_2.Core", "IES_2.Core\IES_2.Core.csproj", "{8D343A44-63E7-489E-9FF6-CD6FDBEB77CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IES_3.Core", "IES_3.Core\IES_3.Core.csproj", "{8D343A44-63E7-489E-9FF6-CD6FDBEB77CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IES_2.Avalonia", "IES_2.Avalonia\IES_2.Avalonia.csproj", "{EAE56B45-C9CA-43C3-AEFB-2942C83497C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IES_3.Avalonia", "IES_3.Avalonia\IES_3.Avalonia.csproj", "{EAE56B45-C9CA-43C3-AEFB-2942C83497C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
