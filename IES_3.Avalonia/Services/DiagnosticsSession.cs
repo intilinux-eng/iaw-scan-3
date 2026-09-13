@@ -290,6 +290,11 @@ namespace IES_2.Avalonia.Services
 
         private ActiveOutcome RunTestCore(testElement test, CancellationToken ct)
         {
+            // Matches the original bgwTest_DoWork: the 500ms timeout covers the whole active-diag
+            // sequence (init + RequestSet + result wait), not just the final wait - otherwise init
+            // and RequestSet queries would run under the passive loop's shorter 300ms timeout.
+            ecu.SetReadTimeout(ref _port, 500);
+
             if (!InitActiveDiag(out _))
                 return ActiveOutcome.InitFailed;
 
@@ -305,7 +310,6 @@ namespace IES_2.Avalonia.Services
                 }
             }
 
-            ecu.SetReadTimeout(ref _port, 500);
             var sw = Stopwatch.StartNew();
             while (_port.BytesToRead == 0 && sw.ElapsedMilliseconds < (test.TimeOut + 1) * 1000)
             {
@@ -351,6 +355,10 @@ namespace IES_2.Avalonia.Services
                 await PauseLoopAsync().ConfigureAwait(false);
                 try
                 {
+                    // Matches the original ExecAdjustment, which sets this explicitly rather than
+                    // relying on whatever the passive loop happened to leave the port set to.
+                    await Task.Run(() => ecu.SetReadTimeout(ref _port, 300), CancellationToken.None).ConfigureAwait(false);
+
                     byte status = 0;
                     if (adjust.StatusByte != 0x00)
                     {
