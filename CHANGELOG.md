@@ -19,3 +19,4 @@ First public beta. Published as a private-source fork turned public repository, 
 - **The list of supported vehicles is now always visible and searchable**, instead of only showing up if you hovered the mouse over it.
 - **Beta builds are now available to download** without building from source: a self-contained Windows `.exe` and a Linux `.deb`, published on demand to a rolling "beta" release on the project page. These are unverified builds straight from the main branch, not tested releases - see "Testing status" in the README for what has and hasn't been confirmed on real hardware.
 - **Added screenshots of the new interface to the README**, taken in simulation mode.
+- **Made the "no warranty" terms of the license explicit in plain language** in the README and in the beta release notes, not just in the legal text of license.txt.

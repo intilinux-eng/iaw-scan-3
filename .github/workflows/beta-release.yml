@@ -143,6 +143,8 @@ jobs:
             Segnala eventuali problemi aprendo una Issue sul repository.
 
             Questa release viene sostituita ad ogni nuova build beta (il tag `beta` viene spostato sull'ultimo commit incluso).
+
+            **Fornita senza alcuna garanzia** (nessuna garanzia implicita o esplicita, incluso il corretto funzionamento della diagnosi) - vedi la sezione License nel README.
           files: |
             artifacts/windows-exe/*
             artifacts/linux-deb/*

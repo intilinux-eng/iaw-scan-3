@@ -4,7 +4,7 @@ Diagnostic software for FIAT/Lancia/Alfa Romeo OBD-I engine control units (Marel
 
 **This project starts from the official, last upstream release of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 by Tomasz Orczyk ("TzOk")** — itself the successor of the original IAW ECU Scan. Nothing about the ECU communication protocol has been reverse-engineered from scratch here: that work, already field-proven for over a decade, comes from the upstream project. See [readme.txt](readme.txt) for the full upstream changelog and supported vehicle list, and [CHANGELOG.md](CHANGELOG.md) for a plain-language summary of what this fork changes on top of it.
 
-> **This is a first beta.** The new interface below is functionally complete but not yet verified against real hardware for every supported ECU - see "Testing status" for exactly what has and hasn't been confirmed. Feedback and issue reports are very welcome.
+> **This is a first beta.** The new interface below is functionally complete but not yet verified against real hardware for every supported ECU - see "Testing status" for exactly what has and hasn't been confirmed. Feedback and issue reports are very welcome. **Provided with no warranty of any kind - use at your own risk** (see License below).
 
 ## Screenshots
 
@@ -62,7 +62,7 @@ Developed and tested primarily on a **Fiat Coupé 2.0 16V naturally aspirated** 
 
 ## Beta downloads
 
-Pre-built, self-contained packages of the new cross-platform interface (`IES_3.Avalonia`) - no need to install .NET yourself - are published on demand to a rolling **[Beta release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/beta)**: a Windows `.exe` and a Linux `.deb`. These are beta builds straight from `main`, not tested releases - see "Testing status" below for what has and hasn't been confirmed on real hardware. A proper versioned-release process (release branches, version tags) will come later.
+Pre-built, self-contained packages of the new cross-platform interface (`IES_3.Avalonia`) - no need to install .NET yourself - are published on demand to a rolling **[Beta release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/beta)**: a Windows `.exe` and a Linux `.deb`. These are beta builds straight from `main`, not tested releases - see "Testing status" below for what has and hasn't been confirmed on real hardware. A proper versioned-release process (release branches, version tags) will come later. Provided with no warranty, as with the rest of the project - see License.
 
 ## Building
 
@@ -89,3 +89,5 @@ Both UIs support a simulation mode that requires no ECU hardware (a checkbox in 
 ## License
 
 Modified BSD license (see [license.txt](license.txt)), Copyright (c) 2011, Tomasz Orczyk. The WinForms UI's chart control, [ZedGraph](https://github.com/discomurray/ZedGraph), is LGPLv3-licensed and consumed as an unmodified NuGet package.
+
+**In plain words: no warranty.** This software is provided "as is", with no warranty of any kind, express or implied - including no warranty that it will correctly diagnose your vehicle. The author(s) and contributors are not liable for any damage, to your car or otherwise, arising from its use. See [license.txt](license.txt) for the exact legal text.
