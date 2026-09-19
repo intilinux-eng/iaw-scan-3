@@ -2,7 +2,7 @@
 
 Diagnostic software for FIAT/Lancia/Alfa Romeo OBD-I engine control units (Marelli IAW 6F/8F/16F/18F/18FD/04K.P8 and the FIAT CODE immobiliser), communicating over an ISO-KKL (K-line) interface.
 
-**This project starts from the official, last upstream release of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 by Tomasz Orczyk ("TzOk")** — itself the successor of the original IAW ECU Scan. Nothing about the ECU communication protocol has been reverse-engineered from scratch here: that work, already field-proven for over a decade, comes from the upstream project. See [readme.txt](readme.txt) for the full upstream changelog and supported vehicle list, and [CHANGELOG.md](CHANGELOG.md) for a plain-language summary of what this fork changes on top of it.
+**This project starts from the official, last upstream release of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 by Tomasz Orczyk ("TzOk")** — itself the successor of the original IAW ECU Scan. Nothing about the ECU communication protocol has been reverse-engineered from scratch here: that work, already field-proven for over a decade, comes from the upstream project. See the [Supported vehicles and ECUs](#supported-vehicles-and-ecus) section below for the complete vehicle compatibility list, [readme.txt](readme.txt) for the original upstream changelog, and [CHANGELOG.md](CHANGELOG.md) for a plain-language summary of what this fork changes on top of it.
 
 > **This is a first beta.** The new interface below is functionally complete but not yet verified against real hardware for every supported ECU - see "Testing status" for exactly what has and hasn't been confirmed. Feedback and issue reports are very welcome. **Provided with no warranty of any kind - use at your own risk** (see License below).
 
@@ -24,6 +24,77 @@ The new cross-platform interface (`IES_3.Avalonia`), shown here in simulation mo
 <td width="50%"></td>
 </tr>
 </table>
+
+## Supported vehicles and ECUs
+
+IAW Scan 3 is designed for 1990s Italian OBD-I vehicles (Fiat, Lancia, Alfa Romeo) equipped with **Magneti-Marelli / Weber-Marelli IAW** engine management systems and the **FIAT CODE** immobiliser, communicating over an ISO-KKL (K-line) interface via the 3-pin Fiat diagnostic port.
+
+### By vehicle
+
+#### Fiat
+| Model | Engine / Specification | Fuel System | ECU |
+|---|---|---|---|
+| **Cinquecento** | 899cc (0.9) SPI (ECE F2) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Cinquecento Sporting** | 1108cc (1.1) FIRE SPI (ECE F2) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Seicento** | 899cc (0.9) SPI (CM, F2) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Panda** (141) | 899cc SPI (ECE F2) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Panda** (141) | 1000cc (1.0) FIRE SPI (ECOL / ECE F2) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Panda / Selecta** (141) | 1108cc (1.1) FIRE SPI CA (ECE F2) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Panda 4x4** (141) | 1108cc (1.1) FIRE SPI 4x4 (ECE F2) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Punto 55** (176) | 1.1 FIRE SPI (5M/6M, ECE F2 / Em.04 Est Europa) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Punto 60 / Selecta** (176) | 1.2 (1242cc) FIRE SPI (CM, ECE F2 T.i.T.) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Punto 75** (176) | 1.2 (1242cc) FIRE 8V MPI (ECE F2 / ECOL) | MPI | Magneti-Marelli IAW-8F / 18F |
+| **Punto 85 16V** (176) | 1.2 (1242cc) FIRE 16V MPI (CEE F2) | MPI | Magneti-Marelli IAW-18FD |
+| **Coupé 2.0 16V** | 2.0 16V N/A (Lampredi / Pratola Serra) | MPI | Weber-Marelli IAW-04K.P8 |
+| **Coupé 2.0 16V Turbo** | 2.0 16V Turbo / Plus (T/C, ESSE) | MPI | Weber-Marelli IAW-04K.P8 |
+| **Tipo** | 1.4 / 1372cc SPI (ECE 04, TOFAS) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Tipo / Tempra** | 1.6 SPI (USA'83 / Em.04, TOFAS) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Tipo / Tempra** | 1.8 8V MPI (Bn/Sw, ECE F2) | MPI | Magneti-Marelli IAW-8F / 18F |
+| **Tipo 2000 16V** | 2.0 16V Sedicivalvole (Tipo 2.0 16V) | MPI | Weber-Marelli IAW-04K.P8 |
+| **Tempra 2.0** | 2.0 8V (M/T, A/T, 4x4) | MPI | Weber-Marelli IAW-04K.P8 |
+| **Palio** | 1.0 8V (IAW-1G7SD) | MPI | Magneti-Marelli IAW-18FD / 1G7 |
+| **Palio** | 1.2 FIRE 8V (ECE F2) | MPI | Magneti-Marelli IAW-8F / 18F |
+| **Siena** | 1.4 8V (IAW-1G7SP) | MPI | Magneti-Marelli IAW-18FD / 1G7 |
+| **131** (TOFAS / Şahin / Doğan / Kartal) | 1.6 SPI USA'83 (Bn/Sw) | SPI | Magneti-Marelli IAW-6F / 16F |
+
+#### Lancia
+| Model | Engine / Specification | Fuel System | ECU |
+|---|---|---|---|
+| **Y / Ypsilon** (840) | 1.2 (1242cc) SPI (CM / CA, ECE F2) | SPI | Magneti-Marelli IAW-6F / 16F |
+| **Delta II (Nuova Delta 836)** | 1.8 8V MPI (90 CV / Bn / Sw, ECE F2) | MPI | Magneti-Marelli IAW-8F / 18F |
+| **Delta II (Nuova Delta 836)** | 2.0 16V N/A | MPI | Weber-Marelli IAW-04K.P8 |
+| **Delta II HF Turbo (Nuova Delta 836)** | 2.0 16V Turbo / T/C (4x2) | MPI | Weber-Marelli IAW-04K.P8 |
+| **Delta II (Nuova Delta 836)** | 2.0 8V T/C | MPI | Weber-Marelli IAW-04K.P8 |
+| **Delta HF Integrale** | Evoluzione 2.0 16V 4x4 (Evo 1 / Evo 2 Kat ECO) | MPI | Weber-Marelli IAW-04K.P8 |
+| **Dedra** (835) | 1.8 8V MPI (Bn / Sw, ECE F2) | MPI | Magneti-Marelli IAW-8F / 18F |
+| **Dedra** (835) | 2.0 8V (A/T) | MPI | Weber-Marelli IAW-04K.P8 |
+| **Dedra** (835) | 2.0 16V FWD & Integrale 4x4 | MPI | Weber-Marelli IAW-04K.P8 |
+
+#### Alfa Romeo
+| Model | Engine / Specification | Fuel System | ECU |
+|---|---|---|---|
+| **145** (930) | 1.3 / 1351cc Boxer MPI (ECE F2) | MPI | Magneti-Marelli IAW-8F / 18F |
+| **146** (930) | 1.3 / 1351cc Boxer MPI (ECE F2) | MPI | Magneti-Marelli IAW-8F / 18F |
+| **155** (167) | 2.0 16V Q4 / 4x4 Turbo | MPI | Weber-Marelli IAW-04K.P8 |
+| **33** (907) | 1.3 / 1360cc Boxer MPI CM (Late Boxer) | MPI | Magneti-Marelli IAW-8F.68 |
+
+### Supported ECU systems
+
+| ECU Identifier | Fuel Injection | Diagnostic Protocol | Typical Applications |
+|---|---|---|---|
+| **Magneti-Marelli IAW-6F / IAW-16F** | Single-Point (SPI) | ISO 9141 (K-Line), 7680 baud | Fiat Cinquecento, Seicento, Panda, Punto 55/60, Tipo/Tempra 1.4/1.6, Lancia Y 1.2 |
+| **Magneti-Marelli IAW-8F / IAW-18F** | Multi-Point (MPI) | ISO 9141 (K-Line), 7680 baud | Fiat Punto 75, Palio 1.2, Tipo/Tempra 1.8, Lancia Delta/Dedra 1.8, Alfa Romeo 145/146 1.3 Boxer |
+| **Magneti-Marelli IAW-18FD / IAW-1G7** | Multi-Point (MPI) | ISO 9141 (K-Line), 7680 baud | Fiat Punto 85 16V (1.2 FIRE 16V), Palio 1.0, Siena 1.4 |
+| **Magneti-Marelli IAW-8F.68** | Multi-Point (MPI) | ISO 9141 (K-Line), 7680 baud | Alfa Romeo 33 1.3 Boxer |
+| **Weber-Marelli IAW-04K.P8** | Multi-Point (MPI) | ISO 9141 (K-Line), 7680 baud | Fiat Coupé 2.0 16V & Turbo, Tipo 2.0 16V, Lancia Delta HF Integrale Evo, Nuova Delta 2.0 16V/Turbo, Dedra 2.0 16V/Integrale, Alfa Romeo 155 Q4 |
+| **FIAT CODE** | Factory Immobiliser | ISO 9141 (K-Line), 7680 baud | First-generation immobiliser diagnostic readouts and error status across all equipped vehicles |
+
+### Diagnostic interface & adapter cable
+
+To connect your computer to these pre-OBD-II (OBD-I) vehicles, standard ELM327 Bluetooth/USB scanners will **not** work. You need:
+
+1. **USB-to-K-line (ISO-KKL) interface cable:** A standard **VAG-COM KKL 409.1** USB cable (adapters using the genuine **FTDI FT232** chipset are strongly recommended for timing stability).
+2. **Fiat 3-pin to OBD-II 16-pin adapter:** Pre-OBD-II Fiat group vehicles use a triangular **3-pin diagnostic connector** (usually found under the hood near the firewall or strut turret, or under the passenger glovebox for the FIAT CODE immobiliser unit). This adapter includes red/black alligator clips that connect directly to the vehicle's **12V battery**, because the 3-pin port does not supply 12V power to the diagnostic interface.
 
 ## Goal
 
