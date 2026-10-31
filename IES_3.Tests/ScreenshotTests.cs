@@ -42,7 +42,16 @@ namespace IES_2.Tests
             using var ui = new UiFixture(language, theme);
             SampleSessions.Write(ui.Shell.Store.Root, language);
 
-            ui.Shell.Connect.SearchText = "coupe";
+            // There may be no cable where these are generated: show the page as it looks with one.
+            var connect = ui.Shell.Connect;
+            connect.Deactivate();
+            connect.SearchText = "coupe";
+            connect.Ports.Clear();
+            connect.Ports.Add(new SerialPortInfo("COM5", "USB-SERIAL CH340", true));
+            connect.SelectedPortInfo = connect.Ports[0];
+            connect.SelectedVehicle = connect.Vehicles.First(v => v.Name == "Coupe S 2.0");
+            connect.CableTestPassed = true;
+            connect.CableTestMessage = Loc.T("Connect_TestOk");
             UiFixture.Pump();
             if (!dashboardOnly) ui.Save(Path.Combine(target, "01-connect.png"));
 

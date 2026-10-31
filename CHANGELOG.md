@@ -4,8 +4,17 @@ Plain-language summary of what has changed, for people using this tool to diagno
 
 **The diagnostic engine is unchanged.** Every reading and error code is calculated exactly as it was in IAW Scan 2 - nothing here has been recalculated or reinterpreted. An automated test now checks this on every build.
 
-## Unreleased
+## 0.2.1-beta
 
+The first version tried with a real USB cable, a CH340 one on Windows 11. Still not on a car.
+
+- **New: Test the cable.** A button on the Connect page that works with no car. Transmit and receive share one wire, so a working cable hands back every byte it sends: this checks that, at both speeds the ECUs use, and says if the cable works or is missing its 12 V.
+- **The list of ports says what each one is:** `COM5 · USB-SERIAL CH340` instead of a bare `COM5`, with the cable first. Useful as soon as there's more than one port.
+- **A failed connection says why.** With no answer at all, not even the cable's own echo, the program now stops and says the cable's K-line side isn't answering, instead of connecting and then reporting lost communication. If the cable answers but the ECU doesn't, it connects as before and says so.
+- **A cable with no working driver is pointed out** on the Connect page, with a link to the chip maker's page. Not yet seen on a real computer: Windows 11 installed this cable's driver by itself.
+- **Windows' 2 ms timer is back while connected.** The original asked for it and the new interface had lost it, so the short pauses between requests could take up to 15.6 ms and values could update less often.
+- **Corrected the advice about the cable.** FTDI chips are no longer recommended: this CH340 cable answers in 3.4 ms at 7680 baud. Nothing needs installing on Windows 11. And the adapter's 12 V clips are needed: with them off, 0 of 24 test bytes came back, with them on, all 24.
+- **Downloads now carry the version in their names,** so they don't overwrite each other. A test now checks the README's download links against the version.
 - **`license.txt` no longer carries the LGPL text.** It was there for ZedGraph, the graph library of the original Windows Forms interface, which left the project with that interface. What remains is the original project's Modified BSD license, unchanged.
 
 ## Beta 2 (0.2.0-beta)

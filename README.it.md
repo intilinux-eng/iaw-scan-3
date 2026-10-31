@@ -10,12 +10,13 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/IAWScan3-win-x64.exe"><img alt="Scarica per Windows (.exe)" src="https://img.shields.io/badge/Scarica%20per%20Windows-.exe-2563eb?style=for-the-badge"></a>
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe"><img alt="Scarica per Windows (.exe)" src="https://img.shields.io/badge/Scarica%20per%20Windows-.exe-2563eb?style=for-the-badge"></a>
   &nbsp;
-  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/iaw-scan3_amd64.deb"><img alt="Scarica per Linux (.deb)" src="https://img.shields.io/badge/Scarica%20per%20Linux-.deb-2563eb?style=for-the-badge"></a>
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb"><img alt="Scarica per Linux (.deb)" src="https://img.shields.io/badge/Scarica%20per%20Linux-.deb-2563eb?style=for-the-badge"></a>
 </p>
 
 <p align="center">
+  Versione 0.2.1-beta ·
   <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest">Tutti i download e le note di rilascio</a> ·
   <a href="#installare-lapp-desktop">Installa</a> ·
   <a href="docs/desktop/guida-utente.md">Guida utente</a> ·
@@ -53,16 +54,16 @@
 
 ### Windows
 
-1. Scarica **[`IAWScan3-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/IAWScan3-win-x64.exe)**.
+1. Scarica **[`IAWScan3-0.2.1-beta-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe)**.
 2. Avvialo. Non c'è niente da installare e .NET è incluso. Windows può avvisare che il file viene da un editore sconosciuto, perché non è firmato: clicca **Ulteriori informazioni**, poi **Esegui comunque**.
-3. Collega il cavo K-line. Di solito Windows installa da solo il driver. Se in Gestione dispositivi non compare una porta COM, installa il [driver VCP FTDI](https://ftdichip.com/drivers/vcp-drivers/).
+3. Collega il cavo K-line. **Non c'è niente da installare:** la prima volta, Windows 11 scarica da solo il driver da internet. Poi il cavo compare nell'elenco del programma. [Come controllarlo](docs/desktop/guida-utente.md#controllare-il-cavo-su-windows-11).
 
 ### Linux (Debian, Ubuntu e derivate, 64 bit)
 
-1. Scarica **[`iaw-scan3_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/iaw-scan3_amd64.deb)**.
+1. Scarica **[`iaw-scan3_0.2.1-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb)**.
 2. Dalla cartella in cui l'hai scaricato, installalo con `apt`, che scarica anche le librerie necessarie:
    ```
-   sudo apt install ./iaw-scan3_amd64.deb
+   sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb
    ```
 3. Autorizza il tuo utente a usare il cavo, poi **esci e rientra nella sessione**:
    ```
@@ -80,16 +81,55 @@ Nella pagina **Connetti**, scegli un'auto, attiva **Simulazione** e clicca **Con
 
 Ti servono:
 
-1. **Un cavo USB K-line:** il classico tipo **VAG-COM KKL 409.1**. È fortemente consigliato un chip **FTDI** originale, per la stabilità dei tempi. Gli scanner ELM327 con queste auto **non** funzionano.
-2. **Un adattatore Fiat da 3 poli a OBD-II 16 poli:** queste auto hanno una presa diagnostica triangolare a 3 poli, di solito nel vano motore vicino alla paratia o al duomo, oppure sotto il cassetto portaoggetti per l'immobilizer FIAT CODE. Le pinze dell'adattatore vanno sulla batteria, perché la presa non alimenta l'interfaccia.
+1. **Un cavo USB K-line:** il classico tipo **VAG-COM KKL 409.1**. [Tutto sul cavo](#il-cavo). Gli scanner ELM327 con queste auto **non** funzionano.
+2. **Un adattatore Fiat da 3 poli a OBD-II 16 poli:** queste auto hanno una presa diagnostica triangolare a 3 poli, di solito nel vano motore vicino alla paratia o al duomo, oppure sotto il cassetto portaoggetti per l'immobilizer FIAT CODE. Le pinze dell'adattatore vanno sulla batteria: quella presa non ha i 12 V, e al cavo servono.
 
-Poi, con il quadro acceso: cerca la tua auto nell'elenco, controlla la porta del cavo e clicca **Connetti**. La [guida utente](docs/desktop/guida-utente.md) spiega ogni schermata.
+Poi, con il quadro acceso: cerca la tua auto nell'elenco, controlla il cavo e clicca **Connetti**. **Prova il cavo** lo controlla prima, anche senza auto. La [guida utente](docs/desktop/guida-utente.md) spiega ogni schermata.
+
+## Il cavo
+
+<img src="docs/screenshots/cable/kkl-vag-com.jpg" width="210" align="right" alt="L'etichetta del cavo: KKL VAG-COM for 409.1">
+
+Questo è il cavo con cui il progetto viene provato:
+
+| | |
+|---|---|
+| **Cavo** | Da USB a OBD-II, con l'etichetta **KKL VAG-COM for 409.1** |
+| **Chip USB** | **CH340** (ID USB `1A86:7523`) |
+| **Su Windows 11** | Niente da installare: la prima volta che lo colleghi, Windows scarica da solo il driver da internet. Poi compare come `USB-SERIAL CH340 (COM5)` |
+| **Adattatore** | Da Fiat 3 poli a OBD-II 16 poli, con le pinze per la batteria |
+
+Il programma non dipende dal chip, quindi i cavi con chip FTDI, l'altro tipo diffuso, dovrebbero funzionare allo stesso modo. Qualunque sia il tuo, **Prova il cavo** ti dice a che punto sei.
+
+<br clear="right">
+
+### Le pinze a 12 V servono
+
+Il cavo ha due lati. Il lato USB è alimentato dal computer, per questo la porta compare anche a pinze staccate. Il lato K-line, quello che parla con la centralina, è alimentato dai 12 V delle pinze, e la presa Fiat a 3 poli non li fornisce.
+
+Puoi verificarlo senza auto. Trasmissione e ricezione condividono un solo filo, quindi un lato K-line che funziona rimanda indietro ogni byte che invia. Misurato su questo cavo, 8 byte ciascuno a 1200, 7680 e 9600 baud:
+
+| 12 V | Byte tornati indietro | Andata e ritorno a 7680 baud |
+|---|---|---|
+| Spenti | 0 su 24 | - |
+| Accesi | **24 su 24**, tutti esatti | 3,4 ms |
+
+### Come lo gestisce il programma
+
+- **Trovarlo.** L'elenco delle porte si aggiorna da solo ogni 2 secondi e dice cos'è ciascuna: `COM5 · USB-SERIAL CH340`. I cavi vengono per primi, e quello usato l'ultima volta viene ricordato.
+- **Provarlo.** **Prova il cavo** funziona senza auto: invia 3 byte a 1200 baud e 6 a 7680, le due velocità usate dalle centraline, e si aspetta che tornino tutti. Poi dice se il cavo funziona, se sembrano mancare i 12 V, o se la linea non è pulita.
+- **Se Windows non ha il driver.** Un cavo con un chip noto, collegato ma senza un driver funzionante, viene segnalato nella pagina Connetti, con un link alla pagina del produttore del chip. I driver non sono inclusi nel programma: li fornisce già Windows Update, e la licenza di FTDI avverte che il suo driver può danneggiare i chip non originali, che i cavi economici possono usare.
+- **Collegarsi.** 8 bit di dati, nessuna parità, 1 bit di stop, DTR e RTS spenti. Ascolta a 1200 baud per un massimo di 10 secondi la centralina che si annuncia, invia i byte di risveglio `0F AA CC` e prosegue a 7680 baud.
+- **Se non risponde nessuno.** Controlla l'eco. Se manca, si ferma e dice che il lato K-line del cavo non risponde. Se c'è, si collega come faceva l'originale e dice che il cavo risponde ma la centralina non si è identificata, così puoi accendere il quadro e riconnetterti.
+- **Leggere.** Un byte alla volta: invia la richiesta, scarta l'eco, legge la risposta aspettando fino a 300 ms, con una pausa di 4 ms prima della successiva. Due richieste di fila senza risposta significano comunicazione persa.
+- **Tempi su Windows.** Durante il collegamento il programma chiede a Windows un timer da 2 ms, come faceva l'originale, così quelle pause sono davvero così brevi.
+- **Su Linux.** Il driver fa parte del kernel, e il tuo utente deve essere nel gruppo `dialout`. Su Ubuntu, il pacchetto `brltty` può prendersi i cavi CH340 e far sparire la porta: in quel caso `sudo apt remove brltty`, a meno che tu non usi un display braille. Un cavo vero su Linux non è ancora stato provato.
 
 ## L'app desktop in breve
 
 <table>
 <tr>
-<td width="50%"><img src="docs/screenshots/it/01-connect.png" alt="Cercare la propria auto"><br><sub><b>Connetti:</b> cerca la tua auto, il cavo viene rilevato da solo</sub></td>
+<td width="50%"><img src="docs/screenshots/it/01-connect.png" alt="Cercare la propria auto"><br><sub><b>Connetti:</b> cerca la tua auto; il cavo viene trovato da solo, e si può provare senza auto</sub></td>
 <td width="50%"><img src="docs/screenshots/it/03-parameters.png" alt="Parametri"><br><sub><b>Parametri:</b> scegli cosa leggere, con i valori dal vivo</sub></td>
 </tr>
 <tr>
@@ -135,7 +175,7 @@ Questo progetto è un fork di [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.
 | **Interfaccia** | Windows Forms, schede e tabelle | Nuova: barra laterale, lancette, tema scuro e chiaro |
 | **Lingue dell'interfaccia** | 7 (inglese, tedesco, croato, italiano, polacco, portoghese, serbo) | Inglese e italiano per ora |
 | **Trovare la centralina** | Scelta della famiglia; rilevamento automatico dal codice ISO | Cerca l'auto per nome, o scegli la famiglia. Il rilevamento automatico è stato tolto perché su hardware reale si è rivelato inaffidabile |
-| **Cavo collegato dopo l'avvio** | Le porte vengono elencate solo all'avvio: bisogna riavviare il programma | Compare da solo |
+| **Trovare il cavo** | Un elenco di soli nomi di porte, letto una volta all'avvio: un cavo collegato dopo significa riavviare il programma. Quando la connessione fallisce, niente distingue il cavo dall'auto | L'elenco si aggiorna da solo e dice cos'è ciascuna porta (`COM5 · USB-SERIAL CH340`), con il cavo per primo. **Prova il cavo** funziona senza auto e dice se mancano i 12 V. Una connessione fallita dice se il problema è il cavo o la centralina, e un driver mancante viene segnalato |
 | **Provarlo senza auto** | Un Ctrl+clic nascosto | Un interruttore nella pagina Connetti |
 | **Valori dal vivo** | Una tabella | Lancette con valori minimi e massimi, storia recente, disposizione a piacere, schermo intero |
 | **Parametri che condividono un byte** | Spegnerne uno congelava l'altro senza avvisare | Ciascuno continua ad aggiornarsi |
@@ -225,6 +265,7 @@ La vecchia interfaccia Windows Forms non è più inclusa. Modifica per modifica,
 | **Formule di decodifica** | Ogni parametro ed errore di ogni centralina, su una serie di valori grezzi: 2745 risultati registrati dal codice originale non modificato, e confrontati a ogni build |
 | **L'intera applicazione** | Test automatici in simulazione, su Windows e Linux. L'`.exe` finale per Windows guidato dai suoi veri controlli. Il pacchetto Linux verificato con un'installazione di prova di `apt` (nessuna modifica al sistema), estratto e avviato, sotto WSL |
 | **Porta seriale su Linux** | L'intero flusso di connessione, lettura, codici di errore, test, azzeramento e comunicazione persa, automatico, contro una centralina emulata su uno pseudo-terminale Linux, compreso l'insolito baud rate 7680 |
+| **Un vero cavo USB su Windows** | Un cavo CH340 su Windows 11, senza auto: trovato da solo, prova del cavo e flusso di connessione eseguiti davvero, eco misurata con e senza i suoi 12 V |
 | **Una centralina vera su Windows** | Il motore e la logica di connessione sono quelli con cui le beta precedenti di questo fork hanno girato su una Fiat Coupé 2.0 16V. **Questa nuova interfaccia non è ancora stata provata su un'auto vera** |
 | **Un vero cavo USB su Linux** | **Non ancora** |
 | **L'unità in auto su UNO Q** | **Solo in simulazione.** Mai eseguita su una scheda reale o in auto |

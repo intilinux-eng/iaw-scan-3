@@ -10,12 +10,13 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/IAWScan3-win-x64.exe"><img alt="Download for Windows (.exe)" src="https://img.shields.io/badge/Download%20for%20Windows-.exe-2563eb?style=for-the-badge"></a>
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe"><img alt="Download for Windows (.exe)" src="https://img.shields.io/badge/Download%20for%20Windows-.exe-2563eb?style=for-the-badge"></a>
   &nbsp;
-  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/iaw-scan3_amd64.deb"><img alt="Download for Linux (.deb)" src="https://img.shields.io/badge/Download%20for%20Linux-.deb-2563eb?style=for-the-badge"></a>
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb"><img alt="Download for Linux (.deb)" src="https://img.shields.io/badge/Download%20for%20Linux-.deb-2563eb?style=for-the-badge"></a>
 </p>
 
 <p align="center">
+  Version 0.2.1-beta ·
   <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest">All downloads and release notes</a> ·
   <a href="#install-the-desktop-app">Install</a> ·
   <a href="docs/desktop/user-guide.md">User guide</a> ·
@@ -53,16 +54,16 @@
 
 ### Windows
 
-1. Download **[`IAWScan3-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/IAWScan3-win-x64.exe)**.
+1. Download **[`IAWScan3-0.2.1-beta-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe)**.
 2. Run it. There's nothing to install, and .NET is included. Windows may warn that the file comes from an unknown publisher, because it isn't signed: click **More info**, then **Run anyway**.
-3. Plug in the K-line cable. Windows normally installs its driver by itself. If no COM port appears in Device Manager, install the [FTDI VCP driver](https://ftdichip.com/drivers/vcp-drivers/).
+3. Plug in the K-line cable. **There's nothing to install:** the first time, Windows 11 downloads the driver from the internet by itself. The cable then shows up in the program's list. [How to check it](docs/desktop/user-guide.md#checking-the-cable-on-windows-11).
 
 ### Linux (Debian, Ubuntu and derivatives, 64-bit)
 
-1. Download **[`iaw-scan3_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/iaw-scan3_amd64.deb)**.
+1. Download **[`iaw-scan3_0.2.1-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb)**.
 2. From the folder you downloaded it to, install it with `apt`, which also fetches the libraries it needs:
    ```
-   sudo apt install ./iaw-scan3_amd64.deb
+   sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb
    ```
 3. Allow your user to use the cable, then **log out and back in**:
    ```
@@ -80,16 +81,55 @@ On the **Connect** page, pick a car, turn on **Simulation** and click **Connect*
 
 You need:
 
-1. **A USB K-line cable:** a standard **VAG-COM KKL 409.1** type. A genuine **FTDI** chip is strongly recommended for stable timing. ELM327 scanners will **not** work with these cars.
-2. **A Fiat 3-pin to OBD-II 16-pin adapter:** these cars have a triangular 3-pin diagnostic socket, usually under the bonnet near the firewall or strut turret, or under the passenger glovebox for the FIAT CODE immobiliser. The adapter's clips go on the battery, because the socket doesn't power the interface.
+1. **A USB K-line cable:** a standard **VAG-COM KKL 409.1** type. [All about the cable](#the-cable). ELM327 scanners will **not** work with these cars.
+2. **A Fiat 3-pin to OBD-II 16-pin adapter:** these cars have a triangular 3-pin diagnostic socket, usually under the bonnet near the firewall or strut turret, or under the passenger glovebox for the FIAT CODE immobiliser. The adapter's clips go on the battery: that socket has no 12 V, and the cable needs it.
 
-Then, with the ignition on: find your car in the list, check the cable's port, and click **Connect**. The [user guide](docs/desktop/user-guide.md) explains every screen.
+Then, with the ignition on: find your car in the list, check the cable, and click **Connect**. **Test the cable** checks it first, even with no car. The [user guide](docs/desktop/user-guide.md) explains every screen.
+
+## The cable
+
+<img src="docs/screenshots/cable/kkl-vag-com.jpg" width="210" align="right" alt="The cable's label: KKL VAG-COM for 409.1">
+
+This is the cable the project is tested with:
+
+| | |
+|---|---|
+| **Cable** | USB to OBD-II, labelled **KKL VAG-COM for 409.1** |
+| **USB chip** | **CH340** (USB ID `1A86:7523`) |
+| **On Windows 11** | Nothing to install: the first time it's plugged in, Windows downloads the driver from the internet by itself. It then appears as `USB-SERIAL CH340 (COM5)` |
+| **Adapter** | Fiat 3-pin to OBD-II 16-pin, with clips for the battery |
+
+The program doesn't depend on the chip, so cables with an FTDI chip, the other common kind, should work the same way. Whatever you have, **Test the cable** tells you where you stand.
+
+<br clear="right">
+
+### The 12 V clips are needed
+
+The cable has two sides. The USB side runs on the computer's power, which is why the port appears even with the clips off. The K-line side, which talks to the ECU, runs on the 12 V from the clips, and Fiat's 3-pin socket doesn't supply it.
+
+You can check this with no car. Transmit and receive share one wire, so a K-line side that works hands back every byte it sends. Measured on this cable, 8 bytes each at 1200, 7680 and 9600 baud:
+
+| 12 V | Bytes that came back | Round trip at 7680 baud |
+|---|---|---|
+| Off | 0 of 24 | - |
+| On | **24 of 24**, all correct | 3.4 ms |
+
+### How the program handles it
+
+- **Finding it.** The list of ports updates by itself every 2 seconds and says what each one is: `COM5 · USB-SERIAL CH340`. Cables come first, and the one used last time is remembered.
+- **Testing it.** **Test the cable** works with no car: it sends 3 bytes at 1200 baud and 6 at 7680, the two speeds the ECUs use, and expects each one back. It then says whether the cable works, whether the 12 V seems to be missing, or whether the line isn't clean.
+- **If Windows has no driver.** A cable with a known chip that's plugged in without a working driver is reported on the Connect page, with a link to the chip maker's page. Drivers aren't bundled with the program: Windows Update already provides them, and FTDI's license warns that its driver can damage non-genuine chips, which cheap cables may use.
+- **Connecting.** 8 data bits, no parity, 1 stop bit, DTR and RTS off. It listens at 1200 baud for up to 10 seconds for the ECU announcing itself, sends the wake-up bytes `0F AA CC`, and carries on at 7680 baud.
+- **If nothing answers.** It checks the echo. With none, it stops and says the cable's K-line side isn't answering. With an echo, it connects as the original did and says the cable answers but the ECU didn't identify itself, so you can turn the ignition on and reconnect.
+- **Reading.** One byte at a time: send the request, discard the echo, read the reply, waiting up to 300 ms, with a 4 ms pause before the next. Two requests in a row without an answer mean communication is lost.
+- **Timing on Windows.** While connected, the program asks Windows for a 2 ms timer, as the original did, so those pauses really are that short.
+- **On Linux.** The driver is part of the kernel, and your user needs to be in the `dialout` group. On Ubuntu, the `brltty` package can grab CH340 cables and make the port disappear: if so, `sudo apt remove brltty`, unless you use a braille display. A real cable hasn't been tried on Linux yet.
 
 ## The desktop app at a glance
 
 <table>
 <tr>
-<td width="50%"><img src="docs/screenshots/en/01-connect.png" alt="Finding your car"><br><sub><b>Connect:</b> search for your car, the cable is detected by itself</sub></td>
+<td width="50%"><img src="docs/screenshots/en/01-connect.png" alt="Finding your car"><br><sub><b>Connect:</b> search for your car; the cable is found by itself, and can be tested with no car</sub></td>
 <td width="50%"><img src="docs/screenshots/en/03-parameters.png" alt="Parameters"><br><sub><b>Parameters:</b> choose what to read, with live values</sub></td>
 </tr>
 <tr>
@@ -135,7 +175,7 @@ This project is a fork of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 b
 | **Interface** | Windows Forms, tabs and tables | New: sidebar, gauges, dark and light themes |
 | **Interface languages** | 7 (English, German, Croatian, Italian, Polish, Portuguese, Serbian) | English and Italian for now |
 | **Finding your ECU** | Choose the ECU family; automatic detection from the ISO code | Search for your car by name, or choose the family. Automatic detection was removed after proving unreliable on real hardware |
-| **Cable plugged in late** | Ports are only listed at start-up: restart the program | Appears by itself |
+| **Finding the cable** | A list of bare port names, read once at start-up: a cable plugged in later means restarting the program. When a connection fails, nothing tells the cable from the car | The list updates by itself and says what each port is (`COM5 · USB-SERIAL CH340`), cable first. **Test the cable** works with no car and says if the 12 V is missing. A failed connection says whether it's the cable or the ECU, and a missing driver is pointed out |
 | **Trying it without a car** | A hidden Ctrl+click | A switch on the Connect page |
 | **Live values** | One table | Gauges with lowest and highest values, recent history, your own layout, full screen |
 | **Parameters sharing a byte** | Turning one off silently froze the other | Each keeps updating |
@@ -225,6 +265,7 @@ The original Windows Forms interface is no longer included. Change by change, in
 | **Decoding formulas** | Every parameter and fault of every ECU, over a set of raw values: 2745 results recorded from the untouched original code, and compared on every build |
 | **The whole application** | Automated tests in simulation, on Windows and Linux. The final Windows `.exe` driven through its real controls. The Linux package checked with a trial `apt` install (nothing changed on the system), unpacked and started, under WSL |
 | **Serial port on Linux** | The full connect, polling, fault codes, tests, clearing and lost-communication flow, automated, against an emulated ECU on a Linux pseudo-terminal, including the unusual 7680 baud |
+| **A real USB cable on Windows** | A CH340 cable on Windows 11, with no car: found by itself, cable test and connection flow run for real, echo measured with and without its 12 V |
 | **A real ECU on Windows** | The engine and the connection logic are those the earlier betas of this fork ran with on a Fiat Coupé 2.0 16V. **This new interface hasn't been run on a real car yet** |
 | **A real USB cable on Linux** | **Not yet** |
 | **The UNO Q in-car unit** | **Only in simulation.** Never run on a real board or in a car |

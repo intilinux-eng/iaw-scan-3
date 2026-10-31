@@ -72,7 +72,7 @@
                         <StackPanel Spacing="6">
                             <TextBlock Text="{DynamicResource Connect_Cable}" Classes="label" />
                             <Grid ColumnDefinitions="*,Auto" ColumnSpacing="6" IsEnabled="{Binding !IsSimulation}">
-                                <ComboBox ItemsSource="{Binding Ports}" SelectedItem="{Binding SelectedPort}" HorizontalAlignment="Stretch" AutomationProperties.Name="{DynamicResource Connect_Cable}"
+                                <ComboBox ItemsSource="{Binding Ports}" SelectedItem="{Binding SelectedPortInfo}" HorizontalAlignment="Stretch" AutomationProperties.Name="{DynamicResource Connect_Cable}"
                                           PlaceholderText="{DynamicResource Connect_NoPorts}" />
                                 <Button Grid.Column="1" Classes="icon" Command="{Binding RefreshPortsCommand}" ToolTip.Tip="{DynamicResource Connect_RefreshPorts}" AutomationProperties.Name="{DynamicResource Connect_RefreshPorts}">
                                     <PathIcon Data="{StaticResource IconRefresh}" />
@@ -80,6 +80,20 @@
                             </Grid>
                             <TextBlock Text="{DynamicResource Connect_PlugCable}" Classes="small muted" TextWrapping="Wrap"
                                        IsVisible="{Binding !HasPort}" />
+                            <Border Background="{DynamicResource WarnSoftBrush}" CornerRadius="9" Padding="12,8"
+                                    IsVisible="{Binding DriverMessage, Converter={x:Static conv:ObjectConverters.IsNotNull}}">
+                                <StackPanel Spacing="8">
+                                    <TextBlock Text="{Binding DriverMessage}" Classes="small" TextWrapping="Wrap" />
+                                    <Button Classes="ghost" Padding="10,6" Content="{DynamicResource Connect_DriverGet}" Command="{Binding GetDriverCommand}" IsVisible="{Binding HasDriverPage}" />
+                                </StackPanel>
+                            </Border>
+                            <Button Classes="ghost" Padding="10,6" Margin="0,2,0,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" IsVisible="{Binding HasPort}"
+                                    Content="{DynamicResource Connect_TestCable}" Command="{Binding TestCableCommand}" ToolTip.Tip="{DynamicResource Connect_TestCableTip}" />
+                            <TextBlock Text="{DynamicResource Connect_TestRunning}" Classes="small muted" IsVisible="{Binding IsTestingCable}" />
+                            <Border Classes="cableResult" Classes.ok="{Binding CableTestPassed}" CornerRadius="9" Padding="12,8"
+                                    IsVisible="{Binding CableTestMessage, Converter={x:Static conv:ObjectConverters.IsNotNull}}">
+                                <TextBlock Text="{Binding CableTestMessage}" Classes="small" TextWrapping="Wrap" />
+                            </Border>
                         </StackPanel>
 
                         <Grid ColumnDefinitions="*,Auto">

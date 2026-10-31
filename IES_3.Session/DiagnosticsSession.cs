@@ -42,6 +42,7 @@ namespace IES_2.Session
         private const int IdleDelayMs = 20;
 
         private SerialPort _port;
+        private readonly FineTimer? _timer;
         private readonly Random _random = new();
         private readonly SimulatedByte?[] _simulated = new SimulatedByte?[255];
         private readonly SemaphoreSlim _activeOpGate = new(1, 1);
@@ -68,10 +69,11 @@ namespace IES_2.Session
         public event Action<Exception>? CommunicationLost;
 
         internal DiagnosticsSession(ecu ecuInstance, SerialPort port, bool simulation,
-            string ecuTypeDisplayName, string isoCodeText, string repCodeText, string carModelText)
+            string ecuTypeDisplayName, string isoCodeText, string repCodeText, string carModelText, FineTimer? timer = null)
         {
             Ecu = ecuInstance;
             _port = port;
+            _timer = timer;
             IsSimulation = simulation;
             EcuTypeDisplayName = ecuTypeDisplayName;
             IsoCodeText = isoCodeText;
@@ -528,6 +530,7 @@ namespace IES_2.Session
                 _port.Dispose();
             }
             catch { /* best-effort shutdown */ }
+            _timer?.Dispose();
             ecu.connected = false;
             ecu.ISO = null;
             ecu.CODRIC = null;

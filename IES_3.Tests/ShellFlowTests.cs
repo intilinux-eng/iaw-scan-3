@@ -69,7 +69,8 @@ namespace IES_2.Tests
         {
             using var ui = new UiFixture();
             var connect = ui.Shell.Connect;
-            connect.SelectedPort = null;
+            connect.Deactivate();
+            connect.SelectedPortInfo = null;
 
             Assert.False(connect.ConnectCommand.CanExecute(null));
 
@@ -534,6 +535,73 @@ namespace IES_2.Tests
             public Task<string?> PickCsvAsync() => Task.FromResult<string?>(_path);
             public void OpenFolder(string path) { }
             public void OpenUrl(string url) { }
+        }
+
+        [AvaloniaFact]
+        public async Task TheCableTestSaysWhenThePortCantBeOpened()
+        {
+            using var ui = new UiFixture();
+            var connect = ui.Shell.Connect;
+            connect.Deactivate();
+            connect.Ports.Clear();
+            connect.Ports.Add(new SerialPortInfo("NOT_A_PORT"));
+            connect.SelectedPortInfo = connect.Ports[0];
+            Assert.True(connect.TestCableCommand.CanExecute(null));
+
+            await connect.TestCableCommand.ExecuteAsync(null);
+
+            Assert.False(connect.CableTestPassed);
+            Assert.Contains("NOT_A_PORT", connect.CableTestMessage);
+            Assert.True(connect.TestCableCommand.CanExecute(null));
+
+            connect.SelectedPortInfo = null;
+            Assert.Null(connect.CableTestMessage);
+            Assert.False(connect.TestCableCommand.CanExecute(null));
+        }
+
+        [AvaloniaFact]
+        public void TheCableTestIsNotOfferedInSimulation()
+        {
+            using var ui = new UiFixture();
+            var connect = ui.Shell.Connect;
+            connect.Deactivate();
+            connect.Ports.Clear();
+            connect.Ports.Add(new SerialPortInfo("COM5", "USB-SERIAL CH340", true));
+            connect.SelectedPortInfo = connect.Ports[0];
+
+            connect.IsSimulation = true;
+
+            Assert.False(connect.TestCableCommand.CanExecute(null));
+        }
+
+        [AvaloniaFact]
+        public void ACableWithoutADriverIsPointedAtItsMaker()
+        {
+            using var ui = new UiFixture();
+            var connect = ui.Shell.Connect;
+            connect.Deactivate();
+            var files = new OpenedUrls();
+            ui.Shell.Files = files;
+
+            connect.CableWithoutDriver = UsbSerialDevices.Identify(0x1A86, 0x7523);
+            UiFixture.Pump();
+
+            Assert.Contains("CH340", connect.DriverMessage);
+            Assert.True(connect.HasDriverPage);
+            connect.GetDriverCommand.Execute(null);
+            Assert.Contains("wch-ic.com", Assert.Single(files.Urls));
+
+            connect.CableWithoutDriver = null;
+            Assert.Null(connect.DriverMessage);
+        }
+
+        private sealed class OpenedUrls : IUserFiles
+        {
+            public System.Collections.Generic.List<string> Urls { get; } = new();
+            public Task<Stream?> PickSaveAsync(string suggestedName) => Task.FromResult<Stream?>(null);
+            public Task<string?> PickCsvAsync() => Task.FromResult<string?>(null);
+            public void OpenFolder(string path) { }
+            public void OpenUrl(string url) => Urls.Add(url);
         }
 
         [AvaloniaFact]

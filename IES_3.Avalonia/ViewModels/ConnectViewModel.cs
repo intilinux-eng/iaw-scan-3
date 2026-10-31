@@ -28,10 +28,11 @@ namespace IES_2.Avalonia.ViewModels
         private readonly DispatcherTimer _portWatcher;
         private CancellationTokenSource? _connectCts;
         private ConnectResult? _lastFailure;
+        private CableCheckResult? _lastCableTest;
 
         public ObservableCollection<EcuFilter> Filters { get; } = new();
         public ObservableCollection<VehicleChoice> Vehicles { get; } = new();
-        public ObservableCollection<string> Ports { get; } = new();
+        public ObservableCollection<SerialPortInfo> Ports { get; } = new();
 
         [ObservableProperty]
         private string searchText = "";
@@ -47,22 +48,39 @@ namespace IES_2.Avalonia.ViewModels
         private EcuFilter? selectedFilter;
 
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(HasPort))]
-        [NotifyCanExecuteChangedFor(nameof(ConnectCommand))]
-        private string? selectedPort;
+        [NotifyPropertyChangedFor(nameof(HasPort), nameof(SelectedPort))]
+        [NotifyCanExecuteChangedFor(nameof(ConnectCommand), nameof(TestCableCommand))]
+        private SerialPortInfo? selectedPortInfo;
 
         [ObservableProperty]
-        [NotifyCanExecuteChangedFor(nameof(ConnectCommand))]
+        [NotifyCanExecuteChangedFor(nameof(ConnectCommand), nameof(TestCableCommand))]
         private bool isSimulation;
 
         [ObservableProperty]
-        [NotifyCanExecuteChangedFor(nameof(ConnectCommand), nameof(CancelCommand))]
+        [NotifyCanExecuteChangedFor(nameof(ConnectCommand), nameof(CancelCommand), nameof(TestCableCommand))]
         private bool isConnecting;
+
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(ConnectCommand), nameof(TestCableCommand))]
+        private bool isTestingCable;
+
+        [ObservableProperty]
+        private string? cableTestMessage;
+
+        [ObservableProperty]
+        private bool cableTestPassed;
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(DriverMessage), nameof(HasDriverPage))]
+        private UsbSerialChip? cableWithoutDriver;
 
         [ObservableProperty]
         private string? errorMessage;
 
-        public bool HasPort => !string.IsNullOrEmpty(SelectedPort);
+        public string? SelectedPort => SelectedPortInfo?.Name;
+        public bool HasPort => SelectedPortInfo != null;
+        public string? DriverMessage => CableWithoutDriver == null ? null : Loc.F("Connect_DriverMissing", CableWithoutDriver.Name);
+        public bool HasDriverPage => CableWithoutDriver?.DriverPage != null;
         public bool HasChoice => ChosenEcu != null;
 
         /// <summary>The ECU the connection will talk to: the chosen car's, or the chosen family.</summary>
@@ -130,21 +148,72 @@ namespace IES_2.Avalonia.ViewModels
             OnPropertyChanged(nameof(ChosenTitle));
             OnPropertyChanged(nameof(ChosenSubtitle));
             if (_lastFailure != null) ErrorMessage = Describe(_lastFailure);
+            ShowCableTest();
+            OnPropertyChanged(nameof(DriverMessage));
         }
 
         [RelayCommand]
         private void RefreshPorts()
         {
-            var ports = SerialPorts.List();
-            if (ports.SequenceEqual(Ports)) return;
+            CableWithoutDriver = UsbSerialDevices.FindCableWithoutDriver();
 
+            var names = SerialPorts.List();
+            if (names.OrderBy(n => n, StringComparer.Ordinal).SequenceEqual(Ports.Select(p => p.Name).OrderBy(n => n, StringComparer.Ordinal))) return;
+
+            var ports = SerialPorts.Describe(names);
             var keep = SelectedPort;
             Ports.Clear();
             foreach (var port in ports) Ports.Add(port);
 
-            if (keep != null && ports.Contains(keep)) SelectedPort = keep;
-            else if (_shell.Settings.LastPort is { } last && ports.Contains(last)) SelectedPort = last;
-            else SelectedPort = ports.FirstOrDefault();
+            SelectedPortInfo = ports.FirstOrDefault(p => p.Name == keep)
+                ?? ports.FirstOrDefault(p => p.Name == _shell.Settings.LastPort)
+                ?? ports.FirstOrDefault();
+        }
+
+        partial void OnSelectedPortInfoChanged(SerialPortInfo? value)
+        {
+            _lastCableTest = null;
+            CableTestMessage = null;
+        }
+
+        private bool CanTestCable() => !IsConnecting && !IsTestingCable && !IsSimulation && HasPort;
+
+        /// <summary>Works with no car: see CableCheck. The port is only held for the moment this takes.</summary>
+        [RelayCommand(CanExecute = nameof(CanTestCable))]
+        private async Task TestCable()
+        {
+            var port = SelectedPort;
+            if (port == null) return;
+            IsTestingCable = true;
+            CableTestMessage = null;
+            try
+            {
+                _lastCableTest = await Task.Run(() => CableCheck.Run(port));
+                ShowCableTest();
+            }
+            finally
+            {
+                IsTestingCable = false;
+            }
+        }
+
+        private void ShowCableTest()
+        {
+            if (_lastCableTest == null) return;
+            CableTestPassed = _lastCableTest.Condition == CableCondition.Working;
+            CableTestMessage = _lastCableTest.Condition switch
+            {
+                CableCondition.Working => Loc.T("Connect_TestOk"),
+                CableCondition.NoEcho => Loc.T("Connect_TestNoEcho"),
+                CableCondition.Garbled => Loc.T("Connect_TestGarbled"),
+                _ => Loc.F("Connect_ErrorPortOpen", _lastCableTest.Detail),
+            };
+        }
+
+        [RelayCommand]
+        private void GetDriver()
+        {
+            if (CableWithoutDriver?.DriverPage is { } page) _shell.Files?.OpenUrl(page);
         }
 
         partial void OnSearchTextChanged(string value) => RefreshVehicles();
@@ -181,7 +250,7 @@ namespace IES_2.Avalonia.ViewModels
             SelectedVehicle = selected;
         }
 
-        private bool CanConnect() => !IsConnecting && ChosenEcu != null && (IsSimulation || HasPort);
+        private bool CanConnect() => !IsConnecting && !IsTestingCable && ChosenEcu != null && (IsSimulation || HasPort);
 
         [RelayCommand(CanExecute = nameof(CanConnect))]
         private async Task Connect()
@@ -191,6 +260,8 @@ namespace IES_2.Avalonia.ViewModels
 
             ErrorMessage = null;
             _lastFailure = null;
+            _lastCableTest = null;
+            CableTestMessage = null;
             IsConnecting = true;
             _connectCts = new CancellationTokenSource();
             var simulation = IsSimulation;
@@ -258,6 +329,7 @@ namespace IES_2.Avalonia.ViewModels
             ConnectError.NoPortSelected => Loc.T("Connect_ErrorNoPort"),
             ConnectError.PortOpenFailed => Loc.F("Connect_ErrorPortOpen", result.Detail),
             ConnectError.InvalidEcu => Loc.T("Connect_ErrorInvalidEcu"),
+            ConnectError.CableNotAnswering => Loc.T("Connect_TestNoEcho"),
             _ => Loc.F("Connect_ErrorCommunication", result.Detail),
         };
     }
