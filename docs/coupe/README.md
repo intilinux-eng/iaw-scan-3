@@ -1,6 +1,6 @@
 # IAW Scan 3 Coupé (progetto sperimentale)
 
-**Diagnosi e registro dati per Fiat Coupé, dal telefono.** È un'estensione di IAW Scan 3, il seguito di IAW ECU Scan / IAW Scan 2. Gira su una scheda **Arduino UNO Q** che resta montata in auto, collegata alla presa diagnostica e alimentata dal quadro. Il telefono si collega alla rete Wi-Fi della scheda e l'interfaccia si apre nel browser: non c'è nessuna app da installare e non serve internet.
+**Diagnosi e registro dati per Fiat Coupé, dal telefono.** È un'estensione di IAW Scan 3, un fork di IAW Scan 2 di Tomasz Orczyk. Gira su una scheda **Arduino UNO Q** che resta montata in auto, collegata alla presa diagnostica e alimentata dal quadro. Il telefono si collega alla rete Wi-Fi della scheda e l'interfaccia si apre nel browser: non c'è nessuna app da installare e non serve internet.
 
 | | |
 |---|---|

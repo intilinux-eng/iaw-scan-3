@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Diagnostics and data logging for 1990s Fiat, Lancia and Alfa Romeo engines</strong><br>
-  Marelli IAW engine ECUs and the FIAT CODE immobiliser, over a K-line cable. The successor of IAW ECU Scan and IAW Scan 2.
+  Marelli IAW engine ECUs and the FIAT CODE immobiliser, over a K-line cable. A fork of IAW Scan 2 by Tomasz Orczyk.
 </p>
 
 <p align="center">

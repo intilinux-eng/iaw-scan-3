@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Diagnosi e registrazione dati per i motori Fiat, Lancia e Alfa Romeo anni '90</strong><br>
-  Centraline motore Marelli IAW e immobilizer FIAT CODE, con un cavo K-line. Il seguito di IAW ECU Scan e IAW Scan 2.
+  Centraline motore Marelli IAW e immobilizer FIAT CODE, con un cavo K-line. Un fork di IAW Scan 2 di Tomasz Orczyk.
 </p>
 
 <p align="center">
