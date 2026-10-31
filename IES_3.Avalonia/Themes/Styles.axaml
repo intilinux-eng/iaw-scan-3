@@ -249,6 +249,14 @@
         <Setter Property="Background" Value="{DynamicResource AccentSoftBrush}" />
     </Style>
 
+    <!-- What the cable test found -->
+    <Style Selector="Border.cableResult">
+        <Setter Property="Background" Value="{DynamicResource WarnSoftBrush}" />
+    </Style>
+    <Style Selector="Border.cableResult.ok">
+        <Setter Property="Background" Value="{DynamicResource OkSoftBrush}" />
+    </Style>
+
     <!-- The dashboard: in full screen the tiles grow to fill the screen, with nothing to scroll -->
     <Style Selector="Grid.dashboard">
         <Setter Property="Margin" Value="24,18,12,0" />

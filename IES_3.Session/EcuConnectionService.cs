@@ -74,37 +74,48 @@ namespace IES_2.Session
                 return ConnectResult.Failure(ConnectError.PortOpenFailed, $"{portName}: {ex.Message}");
             }
 
+            FineTimer? timer = null;
+            ConnectResult Fail(ConnectError error, string? detail = null)
+            {
+                // Release the port, or it stays open and every later attempt fails with "port in use".
+                ecu.connected = false;
+                timer?.Dispose();
+                serial.Dispose();
+                return ConnectResult.Failure(error, detail);
+            }
+
             try
             {
                 var isoFromSync = WaitForIsoSync(serial, ct);
-                if (ct.IsCancellationRequested)
-                {
-                    serial.Dispose();
-                    return ConnectResult.Failure(ConnectError.Cancelled);
-                }
+                if (ct.IsCancellationRequested) return Fail(ConnectError.Cancelled);
 
+                timer = new FineTimer();
                 ecu.connected = true;
                 var resolved = CreateInstance(option.Id, serial);
-                if (resolved == null)
-                {
-                    serial.Dispose();
-                    return ConnectResult.Failure(ConnectError.InvalidEcu);
-                }
+                if (resolved == null) return Fail(ConnectError.InvalidEcu);
                 resolved.InitPasvDiag();
                 resolved.ReadCODRIC();
                 if (isoFromSync == null)
                     resolved.ReadISO();
 
                 resolved.hasIMMO = ecu.CheckCODE(ref serial);
-                return BuildSuccess(option.DisplayName, resolved, serial, simulation: false);
+
+                // Nothing answered. An ECU that's off is worth connecting anyway, as the original did:
+                // turn the ignition on and reconnect. Without even the cable's echo no request can ever
+                // work, so stop here and say why. (Only now: a proper connection sends the ECU nothing extra.)
+                if (ecu.ISO == null && ecu.CODRIC == null)
+                {
+                    ecu.SetReadTimeout(ref serial, CableCheck.EchoTimeoutMs);
+                    if (CableCheck.Exchange(serial, CableCheck.DiagnosticSpeedBytes) == CableCondition.NoEcho)
+                        return Fail(ConnectError.CableNotAnswering);
+                }
+
+                return BuildSuccess(option.DisplayName, resolved, serial, simulation: false, timer);
             }
             catch (Exception ex)
             {
-                // e.g. a read timeout halfway through the ISO sync bytes: release the port, or it
-                // stays open and every later connection attempt fails with "port in use".
-                ecu.connected = false;
-                serial.Dispose();
-                return ConnectResult.Failure(ConnectError.Communication, ex.Message);
+                // e.g. a read timeout halfway through the ISO sync bytes.
+                return Fail(ConnectError.Communication, ex.Message);
             }
         }
 
@@ -166,7 +177,7 @@ namespace IES_2.Session
             };
         }
 
-        private static ConnectResult BuildSuccess(string ecuTypeDisplayName, ecu instance, SerialPort port, bool simulation)
+        private static ConnectResult BuildSuccess(string ecuTypeDisplayName, ecu instance, SerialPort port, bool simulation, FineTimer? timer = null)
         {
             var iso = ecu.ISO;
             var codric = ecu.CODRIC;
@@ -175,7 +186,7 @@ namespace IES_2.Session
             var carModel = instance.GetCarModel();
             var typeText = ecuTypeDisplayName + (instance.hasIMMO ? "" : " ECOL");
 
-            var session = new DiagnosticsSession(instance, port, simulation, typeText, isoText, repText, carModel);
+            var session = new DiagnosticsSession(instance, port, simulation, typeText, isoText, repText, carModel, timer);
 
             return new ConnectResult
             {

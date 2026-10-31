@@ -72,6 +72,69 @@ namespace IES_2.Tests
         }
 
         [Fact]
+        public async Task ACableWithoutPowerStopsTheConnectionAndFreesThePort()
+        {
+            SkipUnlessLinux();
+            using var fake = new FakeEcu { CableHasNoPower = true };
+            var service = new EcuConnectionService();
+
+            var result = await service.ConnectAsync(Iaw04k(), fake.PortName, false, CancellationToken.None);
+
+            Assert.False(result.Success);
+            Assert.Equal(ConnectError.CableNotAnswering, result.Error);
+            Assert.Null(result.Session);
+
+            // The clips go on, and the same port connects.
+            fake.CableHasNoPower = false;
+            var retry = await service.ConnectAsync(Iaw04k(), fake.PortName, false, CancellationToken.None);
+            Assert.True(retry.Success, retry.Detail);
+            using var session = retry.Session!;
+            Assert.True(retry.EcuIdentified);
+        }
+
+        [Fact]
+        public void TheCableTestPassesWithItsPowerOnEvenWithNoCar()
+        {
+            SkipUnlessLinux();
+            using var fake = new FakeEcu { IsOff = true };
+            Assert.Equal(CableCondition.Working, CableCheck.Run(fake.PortName).Condition);
+        }
+
+        [Fact]
+        public void TheCableTestNoticesItsPowerIsOff()
+        {
+            SkipUnlessLinux();
+            using var fake = new FakeEcu { CableHasNoPower = true };
+            Assert.Equal(CableCondition.NoEcho, CableCheck.Run(fake.PortName).Condition);
+        }
+
+        [Fact]
+        public void TheCableTestNoticesADirtyLine()
+        {
+            SkipUnlessLinux();
+            using var fake = new FakeEcu { IsOff = true, GarbleEcho = true };
+            Assert.Equal(CableCondition.Garbled, CableCheck.Run(fake.PortName).Condition);
+        }
+
+        [Fact]
+        public void TheCableTestReportsAMissingPort()
+        {
+            SkipUnlessLinux();
+            var result = CableCheck.Run("/dev/no-such-port");
+            Assert.Equal(CableCondition.PortFailed, result.Condition);
+            Assert.Contains("/dev/no-such-port", result.Detail);
+        }
+
+        [Fact]
+        public void TheCableTestLeavesThePortFree()
+        {
+            SkipUnlessLinux();
+            using var fake = new FakeEcu { IsOff = true };
+            CableCheck.Run(fake.PortName);
+            Assert.Equal(CableCondition.Working, CableCheck.Run(fake.PortName).Condition);
+        }
+
+        [Fact]
         public async Task CancellingWhileWaitingForTheEcuFreesThePort()
         {
             SkipUnlessLinux();
@@ -223,8 +286,8 @@ namespace IES_2.Tests
     }
 
     /// <summary>
-    /// A Weber-Marelli IAW-04K.P8 as seen from the K-line: echoes each byte (as the K-line cable does)
-    /// and answers it. Behind a pseudo-terminal, whose slave side the program opens as its serial port.
+    /// A Weber-Marelli IAW-04K.P8 as seen from the K-line, cable included: echoes each byte (as the K-line
+    /// cable does) and answers it. Behind a pseudo-terminal, whose slave side the program opens as its serial port.
     /// </summary>
     internal sealed class FakeEcu : IDisposable
     {
@@ -245,6 +308,13 @@ namespace IES_2.Tests
         public bool AnnounceIsoAfterOpen { get; set; }
         public volatile bool IsOffField;
         public bool IsOff { get => IsOffField; set => IsOffField = value; }
+
+        /// <summary>No 12 V on the cable: its K-line side is dead, so not even its echo comes back.</summary>
+        public bool CableHasNoPower { get => _cableHasNoPower; set => _cableHasNoPower = value; }
+        private volatile bool _cableHasNoPower;
+
+        /// <summary>Something else on the line: what comes back isn't what was sent.</summary>
+        public bool GarbleEcho { get; set; }
         public Dictionary<byte, byte> Values { get; } = new();
         public ConcurrentBag<byte> Requests { get; } = new();
 
@@ -301,7 +371,17 @@ namespace IES_2.Tests
         private void Respond(byte request)
         {
             Requests.Add(request);
-            if (IsOff) return; // nothing powered: not even an answer (the cable's echo is lost with it here)
+            if (CableHasNoPower) return;
+            if (GarbleEcho)
+            {
+                Send(new[] { (byte)(request ^ 0xFF) });
+                return;
+            }
+            if (IsOff)
+            {
+                Send(new[] { request }); // the ECU is silent, but the cable still echoes
+                return;
+            }
 
             var echoAndAnswer = new[] { request, Answer(request) };
             Send(echoAndAnswer);

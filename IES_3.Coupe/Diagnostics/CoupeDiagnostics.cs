@@ -256,6 +256,7 @@ namespace IES_2.Coupe.Diagnostics
             ConnectError.PortOpenFailed => $"Impossibile aprire la porta {result.Detail}",
             ConnectError.Cancelled => "Connessione annullata.",
             ConnectError.InvalidEcu => "Tipo di centralina non valido.",
+            ConnectError.CableNotAnswering => "Il lato K-line del cavo non risponde: di solito mancano i suoi 12 V.",
             _ => $"Errore di comunicazione con la centralina: {result.Detail}",
         };
 

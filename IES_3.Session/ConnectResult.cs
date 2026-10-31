@@ -9,6 +9,9 @@ namespace IES_2.Session
         Cancelled,
         InvalidEcu,
         Communication,
+
+        /// <summary>The port opened but nothing came back, not even the cable's own echo.</summary>
+        CableNotAnswering,
     }
 
     public class ConnectResult

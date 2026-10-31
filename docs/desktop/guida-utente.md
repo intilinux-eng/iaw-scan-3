@@ -11,14 +11,43 @@ I tasti funzione valgono ovunque: **F2** Cruscotto, **F3** Parametri, **F4** Cod
 ![Pagina Connetti](../screenshots/it/01-connect.png)
 
 1. **Accendi il quadro.** Il motore può essere spento o al minimo.
-2. **Collega il cavo:** cavo USB K-line, adattatore Fiat a 3 poli sulla presa diagnostica, pinze sulla batteria. Centralina motore e immobilizer FIAT CODE hanno prese separate.
+2. **Collega il cavo:** cavo USB K-line, adattatore Fiat a 3 poli sulla presa diagnostica, pinze sulla batteria. Le pinze servono: alimentano il lato K-line del cavo. Centralina motore e immobilizer FIAT CODE hanno prese separate.
 3. **Cerca la tua auto** scrivendo parte del nome. Le parole possono essere in qualsiasi ordine (`coupe turbo`). Se conosci già la famiglia di centraline, clicca il suo pulsante. **Immobilizer (FIAT CODE)** elenca le auto per l'immobilizer.
-4. **Controlla il cavo** sotto *Cavo K-line*. L'elenco si aggiorna da solo quando colleghi il cavo. Su Windows compare come `COM3` o simile, su Linux come `/dev/ttyUSB0`.
+4. **Controlla il cavo** sotto *Cavo K-line*. L'elenco si aggiorna da solo quando colleghi il cavo, e dice cos'è ciascuna porta: su Windows `COM5 · USB-SERIAL CH340` o simile, su Linux `/dev/ttyUSB0 · CH340`. **Prova il cavo** lo controlla, anche senza auto.
 5. Clicca **Connetti** (o premi F10).
 
 Il programma aspetta la centralina fino a 10 secondi: si annuncia da sola quando il quadro si accende. Se il quadro era spento, accendilo durante quell'attesa. Le tue scelte vengono ricordate per la volta dopo.
 
-**Se la centralina non si identifica,** il programma si collega comunque, come faceva l'originale, e mostra un avviso sotto la barra di stato. Controlla il quadro e che il cavo sia sulla presa giusta.
+**Se non risponde nessuno,** il programma controlla il cavo. Se il lato K-line del cavo è muto, si ferma e lo dice: controlla le pinze dell'adattatore sulla batteria e la spina. Se il cavo risponde ma la centralina non si identifica, si collega comunque, come faceva l'originale, e mostra un avviso sotto la barra di stato: controlla il quadro e che il cavo sia sulla presa giusta.
+
+### Controllare il cavo su Windows 11
+
+Di solito non c'è niente da fare: la prima volta che colleghi il cavo, Windows 11 scarica da solo il driver da internet, senza chiedere nulla. Pochi secondi dopo il cavo è nell'elenco del programma.
+
+Per vederlo con i tuoi occhi:
+
+1. Fai clic destro su **Start** e scegli **Gestione dispositivi**.
+2. Apri **Porte (COM e LPT)**. Il cavo è lì, con il numero della sua porta:
+
+![Gestione dispositivi su Windows 11, con USB-SERIAL CH340 (COM5) sotto Porte (COM e LPT)](../screenshots/windows/device-manager-ch340.png)
+
+Un cavo CH340 compare come `USB-SERIAL CH340`, uno FTDI come `USB Serial Port`. Il numero può essere diverso, e può cambiare se usi un'altra presa USB: il programma lo trova comunque.
+
+Se non c'è:
+
+- **È sotto Altri dispositivi, con un triangolo di avviso:** manca il driver, per esempio perché la prima volta il computer era senza internet. Collegati a internet e ricollega il cavo, oppure guarda in Impostazioni, Windows Update, Opzioni avanzate, Aggiornamenti facoltativi. Lo segnala anche la pagina Connetti, con un link alla pagina dei driver del produttore del chip.
+- **Collegandolo non cambia nulla:** prova un'altra presa USB. Se non compare mai niente, il cavo può essere guasto.
+
+### La prova del cavo
+
+**Prova il cavo** non ha bisogno dell'auto. Funziona perché trasmissione e ricezione condividono un solo filo: un lato K-line che funziona rimanda indietro ogni byte che invia. Meglio farla a quadro spento, perché una centralina accesa può parlare sulla linea nello stesso momento.
+
+| Cosa dice | Cosa significa |
+|---|---|
+| Il cavo funziona | Rispondono sia il lato USB sia il lato K-line. Se poi la connessione fallisce, guarda l'auto: quadro, presa |
+| Il lato USB funziona, ma il lato K-line non risponde | Di solito mancano i 12 V: le pinze dell'adattatore non sono sulla batteria, o la spina non è inserita fino in fondo |
+| Il cavo risponde, ma non in modo pulito | C'è altro sulla linea, o il cavo è guasto. Riprova a quadro spento |
+| Impossibile aprire la porta | La sta usando un altro programma. Su Linux, controlla anche il gruppo `dialout` |
 
 ## Cruscotto
 
@@ -127,8 +156,9 @@ Lingua (English, Italiano, o come il sistema), tema (scuro, chiaro, o come il si
 
 | Cosa vedi | Cosa controllare |
 |---|---|
-| Nessun cavo nell'elenco | Windows: il driver FTDI (in Gestione dispositivi deve comparire una porta COM). Linux: `ls /dev/ttyUSB*`, e `sudo dmesg \| tail` subito dopo averlo collegato. |
+| Nessun cavo nell'elenco | Windows: vedi [Controllare il cavo su Windows 11](#controllare-il-cavo-su-windows-11). Linux: `ls /dev/ttyUSB*`, e `sudo dmesg \| tail` subito dopo averlo collegato. Su Ubuntu, se la porta di un cavo CH340 sparisce da sola: `sudo apt remove brltty`, a meno che tu non usi un display braille. |
+| "Il lato K-line del cavo non risponde" | Le pinze dell'adattatore non sono sulla batteria, o la spina non è inserita fino in fondo. Vedi [La prova del cavo](#la-prova-del-cavo). |
 | "Impossibile aprire la porta" | Chiudi gli altri programmi che la usano. Linux: `sudo usermod -aG dialout $USER`, poi esci e rientra nella sessione. |
-| "La centralina non si è identificata" o comunicazione persa | Quadro acceso? Cavo sulla presa giusta? Pinze dell'adattatore sulla batteria? Spegni e riaccendi il quadro, poi **Riconnetti**. |
+| "Il cavo risponde, ma la centralina non si è identificata" o comunicazione persa | Quadro acceso? Cavo sulla presa giusta? Spegni e riaccendi il quadro, poi **Riconnetti**. |
 | I valori si aggiornano lentamente | Leggi meno parametri. Con un cavo FTDI, porta il suo latency timer a 1 ms: su Windows in Gestione dispositivi, porta, Impostazioni porta, Avanzate. Il pacchetto Linux lo fa da solo. |
 | Il programma non parte su Linux | Installalo con `apt`, che scarica anche le librerie necessarie. |

@@ -11,14 +11,43 @@ The function keys work from anywhere: **F2** Dashboard, **F3** Parameters, **F4*
 ![Connect page](../screenshots/en/01-connect.png)
 
 1. **Turn the ignition on.** The engine can be off or idling.
-2. **Plug in the cable:** USB K-line cable, 3-pin Fiat adapter on the diagnostic socket, its clips on the battery. Engine ECU and FIAT CODE immobiliser have separate sockets.
+2. **Plug in the cable:** USB K-line cable, 3-pin Fiat adapter on the diagnostic socket, its clips on the battery. The clips are needed: they power the cable's K-line side. Engine ECU and FIAT CODE immobiliser have separate sockets.
 3. **Find your car** by typing part of its name. Words can come in any order (`coupe turbo`). If you already know the ECU family, click its chip instead. **Immobiliser (FIAT CODE)** lists the cars for the immobiliser.
-4. **Check the cable** under *K-line cable*. The list updates by itself when you plug the cable in. On Windows the cable appears as `COM3` or similar, on Linux as `/dev/ttyUSB0`.
+4. **Check the cable** under *K-line cable*. The list updates by itself when you plug the cable in, and says what each port is: on Windows `COM5 · USB-SERIAL CH340` or similar, on Linux `/dev/ttyUSB0 · CH340`. **Test the cable** checks it, even with no car.
 5. Click **Connect** (or press F10).
 
 The program waits up to 10 seconds for the ECU, which announces itself when the ignition comes on. If the ignition was off, turn it on during that wait. Your choices are remembered for next time.
 
-**If the ECU doesn't identify itself,** the program connects anyway, as the original did, and shows a warning under the status bar. Check the ignition and that the cable is on the right socket.
+**If nothing answers,** the program checks the cable. If the cable's K-line side is silent, it stops and says so: check the adapter's clips on the battery and the plug. If the cable answers but the ECU doesn't identify itself, it connects anyway, as the original did, and shows a warning under the status bar: check the ignition and that the cable is on the right socket.
+
+### Checking the cable on Windows 11
+
+There's normally nothing to do: the first time you plug the cable in, Windows 11 downloads its driver from the internet by itself, without asking anything. A few seconds later the cable is in the program's list.
+
+To see it for yourself:
+
+1. Right-click **Start** and choose **Device Manager**.
+2. Open **Ports (COM & LPT)**. The cable is there, with its port number. This is an Italian Windows, where that section is called *Porte (COM e LPT)*:
+
+![Device Manager on Windows 11, with USB-SERIAL CH340 (COM5) under Porte (COM e LPT)](../screenshots/windows/device-manager-ch340.png)
+
+A CH340 cable appears as `USB-SERIAL CH340`, an FTDI one as `USB Serial Port`. The number can differ, and can change if you use another USB socket: the program finds it either way.
+
+If it isn't there:
+
+- **It's under Other devices, with a warning triangle:** the driver is missing, for example because the computer was offline the first time. Connect to the internet and plug the cable in again, or look in Settings, Windows Update, Advanced options, Optional updates. The Connect page points this out too, with a link to the chip maker's driver page.
+- **Nothing changes when you plug it in:** try another USB socket. If nothing ever appears, the cable may be faulty.
+
+### The cable test
+
+**Test the cable** needs no car. It works because transmit and receive share one wire: a K-line side that works hands back every byte it sends. It's best done with the ignition off, because a running ECU can talk on the line at the same time.
+
+| It says | What it means |
+|---|---|
+| The cable works | USB and K-line side both answer. If a connection then fails, look at the car: ignition, socket |
+| USB works, but the K-line side doesn't answer | Usually no 12 V: the adapter's clips aren't on the battery, or the plug isn't all the way in |
+| The cable answers, but not cleanly | Something else is on the line, or the cable is faulty. Try with the ignition off |
+| Can't open the port | Another program is using it. On Linux, also check the `dialout` group |
 
 ## Dashboard
 
@@ -127,8 +156,9 @@ Language (English, Italiano, or the same as the system), theme (dark, light, or 
 
 | What you see | What to check |
 |---|---|
-| No cable in the list | Windows: the FTDI driver (Device Manager must show a COM port). Linux: `ls /dev/ttyUSB*`, and `sudo dmesg \| tail` right after plugging it in. |
+| No cable in the list | Windows: see [Checking the cable on Windows 11](#checking-the-cable-on-windows-11). Linux: `ls /dev/ttyUSB*`, and `sudo dmesg \| tail` right after plugging it in. On Ubuntu, if a CH340 cable's port disappears by itself: `sudo apt remove brltty`, unless you use a braille display. |
+| "The cable's K-line side doesn't answer" | The adapter's clips aren't on the battery, or the plug isn't all the way in. See [The cable test](#the-cable-test). |
 | "Can't open the port" | Close other programs using it. Linux: `sudo usermod -aG dialout $USER`, then log out and back in. |
-| "The ECU didn't identify itself" or communication lost | Ignition on? Cable on the right socket? Adapter clips on the battery? Turn the ignition off and on, then **Reconnect**. |
+| "The cable answers, but the ECU didn't identify itself" or communication lost | Ignition on? Cable on the right socket? Turn the ignition off and on, then **Reconnect**. |
 | Values update slowly | Read fewer parameters. With an FTDI cable, set its latency timer to 1 ms: on Windows in Device Manager, port, Port Settings, Advanced. The Linux package does this by itself. |
 | The program won't start on Linux | Install with `apt`, which also fetches the libraries it needs. |

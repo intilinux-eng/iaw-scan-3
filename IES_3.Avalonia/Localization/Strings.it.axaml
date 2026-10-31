@@ -24,7 +24,7 @@
 
     <x:String x:Key="Banner_CommLost">Comunicazione con la centralina persa. Spegni e riaccendi il quadro, poi riconnetti.</x:String>
     <x:String x:Key="Banner_Reconnect">Riconnetti</x:String>
-    <x:String x:Key="Banner_NotAnswering">La centralina non si è identificata. Controlla che il quadro sia acceso e che il cavo sia sulla presa giusta.</x:String>
+    <x:String x:Key="Banner_NotAnswering">Il cavo risponde, ma la centralina non si è identificata. Controlla che il quadro sia acceso e che il cavo sia sulla presa giusta.</x:String>
     <x:String x:Key="Banner_Simulation">Simulazione: valori inventati, nessuna centralina collegata.</x:String>
 
     <x:String x:Key="Dialog_Cancel">Annulla</x:String>
@@ -43,6 +43,14 @@
     <x:String x:Key="Connect_NoPorts">Nessun cavo trovato</x:String>
     <x:String x:Key="Connect_RefreshPorts">Aggiorna l'elenco delle porte</x:String>
     <x:String x:Key="Connect_PlugCable">Collega il cavo USB K-line: compare qui da solo. Se non ce l'hai, puoi provare la simulazione.</x:String>
+    <x:String x:Key="Connect_TestCable">Prova il cavo</x:String>
+    <x:String x:Key="Connect_TestCableTip">Controlla il cavo senza bisogno dell'auto: il lato USB e, se ha i suoi 12 V, il lato K-line. Meglio a quadro spento.</x:String>
+    <x:String x:Key="Connect_TestRunning">Prova del cavo in corso…</x:String>
+    <x:String x:Key="Connect_TestOk">Il cavo funziona: rispondono sia il lato USB sia il lato K-line.</x:String>
+    <x:String x:Key="Connect_TestNoEcho">Il lato USB funziona, ma il lato K-line del cavo non risponde. Di solito mancano i 12 V: controlla le pinze dell'adattatore sulla batteria, e che la spina sia inserita fino in fondo.</x:String>
+    <x:String x:Key="Connect_TestGarbled">Il cavo risponde, ma non in modo pulito. Se è collegato a un'auto, la centralina può star parlando sulla linea: riprova a quadro spento.</x:String>
+    <x:String x:Key="Connect_DriverMissing">È collegato un cavo con chip {0}, ma Windows non ha un driver funzionante. Di solito Windows Update lo installa da solo, con una connessione a internet.</x:String>
+    <x:String x:Key="Connect_DriverGet">Scarica il driver dal produttore</x:String>
     <x:String x:Key="Connect_Simulation">Simulazione</x:String>
     <x:String x:Key="Connect_SimulationHint">Prova il programma senza auto e senza cavo.</x:String>
     <x:String x:Key="Connect_Connect">Connetti</x:String>
@@ -50,7 +58,7 @@
     <x:String x:Key="Connect_Cancel">Annulla</x:String>
     <x:String x:Key="Connect_BeforeTitle">Prima di collegarti</x:String>
     <x:String x:Key="Connect_Before1">Quadro acceso. Motore spento o al minimo.</x:String>
-    <x:String x:Key="Connect_Before2">Cavo USB K-line (tipo VAG-COM KKL 409.1, consigliato chip FTDI) con l'adattatore Fiat a 3 poli e le pinze sulla batteria.</x:String>
+    <x:String x:Key="Connect_Before2">Cavo USB K-line (tipo VAG-COM KKL 409.1) con l'adattatore Fiat a 3 poli. Le pinze vanno sulla batteria: quei 12 V alimentano il lato K-line del cavo.</x:String>
     <x:String x:Key="Connect_Before3">Centralina motore e immobilizer hanno prese separate: usa quella di ciò che vuoi diagnosticare.</x:String>
     <x:String x:Key="Connect_ErrorNoPort">Scegli prima la porta del cavo.</x:String>
     <x:String x:Key="Connect_ErrorPortOpen">Impossibile aprire la porta. Potrebbe essere in uso da un altro programma; su Linux, il tuo utente deve anche far parte del gruppo dialout. Dettagli: {0}</x:String>

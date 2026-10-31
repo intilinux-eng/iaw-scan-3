@@ -1,22 +1,21 @@
 name: Publish a release
 
 # Manual: runs the tests, builds the desktop application (IES_3.Avalonia) as a self-contained Windows
-# .exe and a Linux .deb, and publishes both as a GitHub Release tagged v<version>. The release is
-# marked as the latest one, which is what the project's homepage offers: the README's download buttons
-# link to releases/latest/download/<file>, so the two file names below must stay the same from one
-# release to the next. How small and fast the published program is comes from the project's own
-# settings, the same ones a local `dotnet publish` gets.
+# .exe and a Linux .deb, with the version in their names, and publishes both as a GitHub Release tagged
+# v<version>, marked as the latest one. How small and fast the published program is comes from the
+# project's own settings, the same ones a local `dotnet publish` gets.
 #
-# For each release: update the version in IES_3.Avalonia.csproj and this workflow's default, and the
-# notes in .github/release-notes.md.
+# For each release, update the version in IES_3.Avalonia.csproj, this workflow's default, the README's
+# download buttons and install commands, the changelog and .github/release-notes.md. The tests fail
+# until they all agree, and this workflow runs the tests first.
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version label for this build (e.g. 0.2.0-beta)"
+        description: "Version label for this build (e.g. 0.2.1-beta)"
         required: true
-        default: "0.2.0-beta"
+        default: "0.2.1-beta"
 
 env:
   DOTNET_VERSION: "10.0.x"
@@ -57,7 +56,7 @@ jobs:
       - name: Rename artifact
         shell: pwsh
         run: |
-          $dest = "IAWScan3-win-x64.exe"
+          $dest = "IAWScan3-${{ inputs.version }}-win-x64.exe"
           Copy-Item "publish/win-x64/IES_3.Avalonia.exe" $dest
           echo "ASSET_PATH=$dest" >> $env:GITHUB_ENV
 
@@ -81,8 +80,10 @@ jobs:
         run: |
           set -euo pipefail
           DEB_FILE=$(bash IES_3.Avalonia/packaging/build-deb.sh "${{ inputs.version }}" linux-x64 | tail -n 1)
-          cp "$DEB_FILE" iaw-scan3_amd64.deb
-          echo "ASSET_PATH=iaw-scan3_amd64.deb" >> "$GITHUB_ENV"
+          # Under its plain version: GitHub would turn the ~ of the Debian version into a dot.
+          DEST="iaw-scan3_${{ inputs.version }}_amd64.deb"
+          cp "$DEB_FILE" "$DEST"
+          echo "ASSET_PATH=$DEST" >> "$GITHUB_ENV"
 
       - uses: actions/upload-artifact@v4
         with:
