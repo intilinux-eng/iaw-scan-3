@@ -1,0 +1,107 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:IES_2.Avalonia.ViewModels"
+             xmlns:models="using:IES_2.Avalonia.Models"
+             xmlns:controls="using:IES_2.Avalonia.Controls"
+             x:Class="IES_2.Avalonia.Views.DashboardView"
+             x:DataType="vm:DashboardViewModel">
+
+    <Grid RowDefinitions="Auto,*" Classes="dashboard" Classes.fill="{Binding Shell.IsImmersive}">
+
+        <Grid ColumnDefinitions="*,Auto" Margin="0,0,12,14" IsVisible="{Binding !Shell.IsImmersive}">
+            <TextBlock Text="{DynamicResource Dashboard_Title}" Classes="h1" VerticalAlignment="Center" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                <ToggleButton Classes="chip" Content="S" IsChecked="{Binding IsSmall, Mode=OneWay}" Command="{Binding SetSizeCommand}" CommandParameter="small" ToolTip.Tip="{DynamicResource Dashboard_SizeSmall}" />
+                <ToggleButton Classes="chip" Content="M" IsChecked="{Binding IsNormal, Mode=OneWay}" Command="{Binding SetSizeCommand}" CommandParameter="normal" ToolTip.Tip="{DynamicResource Dashboard_SizeNormal}" />
+                <ToggleButton Classes="chip" Content="L" IsChecked="{Binding IsLarge, Mode=OneWay}" Command="{Binding SetSizeCommand}" CommandParameter="large" Margin="0,0,8,0" ToolTip.Tip="{DynamicResource Dashboard_SizeLarge}" />
+                <ToggleButton Classes="chip" IsChecked="{Binding IsEditing}" ToolTip.Tip="{DynamicResource Dashboard_EditTip}" AutomationProperties.Name="{DynamicResource Dashboard_Edit}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <PathIcon Data="{StaticResource IconEdit}" Width="12" Height="12" />
+                        <TextBlock Text="{DynamicResource Dashboard_Edit}" />
+                    </StackPanel>
+                </ToggleButton>
+                <Button Classes="ghost" Padding="10,6" Command="{Binding ResetExtremesCommand}" ToolTip.Tip="{DynamicResource Dashboard_ResetTip}">
+                    <TextBlock Text="{DynamicResource Dashboard_Reset}" FontSize="12" />
+                </Button>
+                <Button Classes="ghost" Padding="10,6" Command="{Binding Shell.ToggleImmersiveCommand}" ToolTip.Tip="F11" AutomationProperties.Name="{DynamicResource Dashboard_Fullscreen}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <PathIcon Data="{StaticResource IconExpand}" Width="12" Height="12" />
+                        <TextBlock Text="{DynamicResource Dashboard_Fullscreen}" FontSize="12" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1" Classes.fill="{Binding Shell.IsImmersive}">
+            <Panel>
+                <ItemsControl ItemsSource="{Binding Tiles}" Classes.small="{Binding IsSmall}" Classes.large="{Binding IsLarge}" Classes.fill="{Binding Shell.IsImmersive}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <controls:TilePanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="models:ParameterRow">
+                            <Viewbox Classes="tileScale">
+                            <Border Classes="tile">
+                                <Grid RowDefinitions="Auto,*,Auto,Auto">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <TextBlock Text="{Binding Description}" Classes="small muted" MaxLines="2" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" />
+                                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="0" Margin="4,-4,-6,0"
+                                                    IsVisible="{Binding $parent[ItemsControl].((vm:DashboardViewModel)DataContext).IsEditing}">
+                                            <Button Classes="icon" Width="26" Height="26" Padding="5" ToolTip.Tip="{DynamicResource Dashboard_MoveBack}" AutomationProperties.Name="{DynamicResource Dashboard_MoveBack}"
+                                                    Command="{Binding $parent[ItemsControl].((vm:DashboardViewModel)DataContext).MoveBackCommand}" CommandParameter="{Binding}">
+                                                <PathIcon Data="{StaticResource IconBack}" Width="12" Height="12" />
+                                            </Button>
+                                            <Button Classes="icon" Width="26" Height="26" Padding="5" ToolTip.Tip="{DynamicResource Dashboard_MoveForward}" AutomationProperties.Name="{DynamicResource Dashboard_MoveForward}"
+                                                    Command="{Binding $parent[ItemsControl].((vm:DashboardViewModel)DataContext).MoveForwardCommand}" CommandParameter="{Binding}">
+                                                <PathIcon Data="{StaticResource IconForward}" Width="12" Height="12" />
+                                            </Button>
+                                            <Button Classes="icon" Width="26" Height="26" Padding="5" ToolTip.Tip="{DynamicResource Dashboard_Remove}" AutomationProperties.Name="{DynamicResource Dashboard_Remove}"
+                                                    Command="{Binding $parent[ItemsControl].((vm:DashboardViewModel)DataContext).RemoveCommand}" CommandParameter="{Binding}">
+                                                <PathIcon Data="{StaticResource IconClose}" Width="12" Height="12" />
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <Panel Grid.Row="1" Margin="0,6,0,2">
+                                        <controls:ArcGauge IsVisible="{Binding !IsFlag}"
+                                                           Value="{Binding Numeric}" Minimum="{Binding GaugeMinimum}" Maximum="{Binding GaugeMaximum}"
+                                                           SessionMin="{Binding SessionMin}" SessionMax="{Binding SessionMax}"
+                                                           TrackBrush="{DynamicResource GaugeTrackBrush}" FillBrush="{DynamicResource GaugeFillBrush}"
+                                                           MarkerBrush="{DynamicResource GaugeMarkerBrush}" />
+                                        <StackPanel VerticalAlignment="Center" IsVisible="{Binding !IsFlag}">
+                                            <TextBlock Classes="tileValue" Classes.invalid="{Binding IsInvalid}" Text="{Binding Value}" />
+                                            <TextBlock Text="{Binding Unit}" Classes="small muted" HorizontalAlignment="Center" />
+                                        </StackPanel>
+                                        <Panel IsVisible="{Binding IsFlag}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <Border Classes="pill ok" Padding="18,8" IsVisible="{Binding FlagOn}">
+                                                <TextBlock Text="{Binding Value}" />
+                                            </Border>
+                                            <Border Classes="pill" Padding="18,8" IsVisible="{Binding !FlagOn}">
+                                                <TextBlock Text="{Binding Value}" />
+                                            </Border>
+                                        </Panel>
+                                    </Panel>
+
+                                    <TextBlock Grid.Row="2" Text="{Binding ExtremesText}" Classes="small faint" FontSize="11" FontFeatures="tnum"
+                                               HorizontalAlignment="Center" IsVisible="{Binding !IsFlag}" />
+                                    <controls:Sparkline Grid.Row="3" Height="20" Margin="0,4,0,0" Buffer="{Binding Buffer}" Stamp="{Binding Stamp}"
+                                                        Stroke="{DynamicResource SparkBrush}" />
+                                </Grid>
+                            </Border>
+                            </Viewbox>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Margin="0,80,0,0" IsVisible="{Binding IsEmpty}">
+                    <PathIcon Data="{StaticResource IconGauge}" Width="42" Height="42" Foreground="{DynamicResource TextFaintBrush}" />
+                    <TextBlock Text="{DynamicResource Dashboard_Empty}" Classes="muted" HorizontalAlignment="Center" />
+                    <Button Classes="primary" Content="{DynamicResource Dashboard_Choose}" HorizontalAlignment="Center"
+                            Command="{Binding Shell.NavigateCommand}" CommandParameter="parameters" />
+                </StackPanel>
+            </Panel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

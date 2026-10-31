@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using IES_2.Avalonia.Services;
 using IES_2.Avalonia.ViewModels;
 using IES_2.Avalonia.Views;
 
@@ -17,9 +18,11 @@ namespace IES_2.Avalonia
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
+                var settings = AppSettings.Load(AppPaths.SettingsFile);
+                Appearance.Apply(settings);
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext = new MainWindowViewModel(),
+                    DataContext = new ShellViewModel(settings, AppPaths.SessionsDirectory),
                 };
             }
 

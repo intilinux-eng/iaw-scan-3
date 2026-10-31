@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>IES_2.Tests</RootNamespace>
+    <!-- These tests own their timeouts; none of them needs to cancel along with the test run. -->
+    <NoWarn>$(NoWarn);xUnit1051</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IES_3.Core\IES_3.Core.csproj" />
+    <ProjectReference Include="..\IES_3.Session\IES_3.Session.csproj" />
+    <ProjectReference Include="..\IES_3.Avalonia\IES_3.Avalonia.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Headless.XUnit" Version="12.1.2" />
+    <PackageReference Include="Avalonia.Skia" Version="12.1.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit.v3" Version="3.2.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Golden\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

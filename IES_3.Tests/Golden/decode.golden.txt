@@ -1,0 +1,2745 @@
+iaw16f|zero|data|0|0
+iaw16f|zero|data|1|0
+iaw16f|zero|data|2|0
+iaw16f|zero|data|3|0
+iaw16f|zero|data|4|-40
+iaw16f|zero|data|5|-40
+iaw16f|zero|data|6|-2.9638
+iaw16f|zero|data|7|0
+iaw16f|zero|data|8|0.66
+iaw16f|zero|data|9|0
+iaw16f|zero|data|10|0
+iaw16f|zero|data|11|0
+iaw16f|zero|data|12|-128
+iaw16f|zero|data|13|0
+iaw16f|zero|data|14|0
+iaw16f|zero|data|15|0
+iaw16f|zero|data|16|-1024
+iaw16f|zero|data|17|-128
+iaw16f|zero|data|18|-128
+iaw16f|zero|data|19|0
+iaw16f|zero|data|20|0
+iaw16f|zero|data|21|0
+iaw16f|zero|data|22|0
+iaw16f|zero|data|23|0
+iaw16f|zero|data|24|0
+iaw16f|zero|data|25|0
+iaw16f|zero|data|26|0
+iaw16f|zero|data|27|0
+iaw16f|zero|data|28|0
+iaw16f|zero|data|29|0
+iaw16f|zero|data|30|1
+iaw16f|zero|engine|0|False,False,False,Short to +Vcc
+iaw16f|zero|engine|1|False,False,False,Short to GND
+iaw16f|zero|engine|2|False,False,False,
+iaw16f|zero|engine|3|False,False,False,Short to +Vcc
+iaw16f|zero|engine|4|False,False,False,Short to +Vcc
+iaw16f|zero|engine|5|False,False,False,Below MIN
+iaw16f|zero|engine|6|False,False,False,
+iaw16f|zero|engine|7|False,False,False,
+iaw16f|zero|engine|8|False,False,False,Open Circuit
+iaw16f|zero|engine|9|False,False,False,Short to GND/Open
+iaw16f|zero|engine|10|False,False,False,Short to GND/Open
+iaw16f|zero|engine|11|False,False,False,Open Circuit
+iaw16f|zero|engine|12|False,False,False,Short to GND/Open
+iaw16f|zero|engine|13|False,False,False,Short to GND/Open
+iaw16f|zero|engine|14|False,False,False,Short to GND/Open
+iaw16f|zero|engine|15|False,False,False,Short to GND/Open
+iaw16f|zero|engine|16|False,False,False,Max LEAN
+iaw16f|zero|engine|17|False,False,False,
+iaw16f|zero|engine|18|False,False,False,
+iaw16f|zero|engine|19|False,False,False,
+iaw16f|zero|engine|20|False,False,False,
+iaw16f|zero|engine|21|False,False,False,
+iaw16f|zero|engine|22|False,False,False,
+iaw16f|zero|engine|23|False,False,False,
+iaw16f|zero|immo|0|False,False,False,FIAT CODE
+iaw16f|zero|immo|1|False,False,False,FIAT CODE
+iaw16f|zero|immo|2|False,False,False,FIAT CODE
+iaw16f|zero|immo|3|False,False,False,FIAT CODE
+iaw16f|zero|immo|4|False,False,False,FIAT CODE
+iaw16f|zero|immo|5|False,False,False,FIAT CODE
+iaw16f|zero|immo|6|False,False,False,FIAT CODE
+iaw16f|zero|immo|7|False,False,False,FIAT CODE
+iaw16f|one|data|0|58365.7587548638
+iaw16f|one|data|1|0.514
+iaw16f|one|data|2|0.5
+iaw16f|one|data|3|4
+iaw16f|one|data|4|-39
+iaw16f|one|data|5|-39
+iaw16f|one|data|6|-2.5404
+iaw16f|one|data|7|0.0625
+iaw16f|one|data|8|0.662656
+iaw16f|one|data|9|1
+iaw16f|one|data|10|1
+iaw16f|one|data|11|1
+iaw16f|one|data|12|-127
+iaw16f|one|data|13|257
+iaw16f|one|data|14|257
+iaw16f|one|data|15|8
+iaw16f|one|data|16|-1016
+iaw16f|one|data|17|-127
+iaw16f|one|data|18|-127
+iaw16f|one|data|19|257
+iaw16f|one|data|20|257
+iaw16f|one|data|21|257
+iaw16f|one|data|22|257
+iaw16f|one|data|23|0
+iaw16f|one|data|24|0
+iaw16f|one|data|25|0
+iaw16f|one|data|26|0
+iaw16f|one|data|27|0
+iaw16f|one|data|28|0
+iaw16f|one|data|29|0
+iaw16f|one|data|30|1
+iaw16f|one|engine|0|True,False,True,Short to GND
+iaw16f|one|engine|1|False,False,False,Short to GND
+iaw16f|one|engine|2|False,False,False,
+iaw16f|one|engine|3|False,False,False,Short to +Vcc
+iaw16f|one|engine|4|False,False,False,Short to +Vcc
+iaw16f|one|engine|5|False,False,False,Below MIN
+iaw16f|one|engine|6|False,False,False,
+iaw16f|one|engine|7|False,False,False,
+iaw16f|one|engine|8|True,False,True,Short to GND/+Vcc/Therm
+iaw16f|one|engine|9|False,False,False,Short to GND/Open
+iaw16f|one|engine|10|False,False,False,Short to GND/Open
+iaw16f|one|engine|11|False,False,False,Open Circuit
+iaw16f|one|engine|12|False,False,False,Short to GND/Open
+iaw16f|one|engine|13|False,False,False,Short to GND/Open
+iaw16f|one|engine|14|False,False,False,Short to GND/Open
+iaw16f|one|engine|15|False,False,False,Short to GND/Open
+iaw16f|one|engine|16|True,False,True,Max RICH
+iaw16f|one|engine|17|False,False,False,
+iaw16f|one|engine|18|False,False,False,
+iaw16f|one|engine|19|False,False,False,
+iaw16f|one|engine|20|False,False,False,
+iaw16f|one|engine|21|False,False,False,
+iaw16f|one|engine|22|False,False,False,
+iaw16f|one|engine|23|False,False,False,
+iaw16f|one|immo|0|True,False,True,FIAT CODE
+iaw16f|one|immo|1|False,False,False,FIAT CODE
+iaw16f|one|immo|2|False,False,False,FIAT CODE
+iaw16f|one|immo|3|False,False,False,FIAT CODE
+iaw16f|one|immo|4|False,False,False,FIAT CODE
+iaw16f|one|immo|5|False,False,False,FIAT CODE
+iaw16f|one|immo|6|False,False,False,FIAT CODE
+iaw16f|one|immo|7|False,False,False,FIAT CODE
+iaw16f|mid|data|0|455.982490272374
+iaw16f|mid|data|1|65.792
+iaw16f|mid|data|2|64
+iaw16f|mid|data|3|512
+iaw16f|mid|data|4|88
+iaw16f|mid|data|5|88
+iaw16f|mid|data|6|51.2314
+iaw16f|mid|data|7|8
+iaw16f|mid|data|8|0.999968
+iaw16f|mid|data|9|128
+iaw16f|mid|data|10|-128
+iaw16f|mid|data|11|-128
+iaw16f|mid|data|12|0
+iaw16f|mid|data|13|-32640
+iaw16f|mid|data|14|-32640
+iaw16f|mid|data|15|1024
+iaw16f|mid|data|16|0
+iaw16f|mid|data|17|0
+iaw16f|mid|data|18|0
+iaw16f|mid|data|19|-32640
+iaw16f|mid|data|20|-32640
+iaw16f|mid|data|21|-32640
+iaw16f|mid|data|22|-32640
+iaw16f|mid|data|23|0
+iaw16f|mid|data|24|0
+iaw16f|mid|data|25|0
+iaw16f|mid|data|26|0
+iaw16f|mid|data|27|0
+iaw16f|mid|data|28|0
+iaw16f|mid|data|29|0
+iaw16f|mid|data|30|1
+iaw16f|mid|engine|0|False,False,False,Short to +Vcc
+iaw16f|mid|engine|1|False,False,False,Short to GND
+iaw16f|mid|engine|2|False,False,False,
+iaw16f|mid|engine|3|False,False,False,Short to +Vcc
+iaw16f|mid|engine|4|False,False,False,Short to +Vcc
+iaw16f|mid|engine|5|False,False,False,Below MIN
+iaw16f|mid|engine|6|False,False,False,
+iaw16f|mid|engine|7|True,False,True,
+iaw16f|mid|engine|8|False,False,False,Open Circuit
+iaw16f|mid|engine|9|False,False,False,Short to GND/Open
+iaw16f|mid|engine|10|False,False,False,Short to GND/Open
+iaw16f|mid|engine|11|False,False,False,Open Circuit
+iaw16f|mid|engine|12|False,False,False,Short to GND/Open
+iaw16f|mid|engine|13|False,False,False,Short to GND/Open
+iaw16f|mid|engine|14|False,False,False,Short to GND/Open
+iaw16f|mid|engine|15|True,False,True,Short to +Vcc
+iaw16f|mid|engine|16|False,False,False,Max LEAN
+iaw16f|mid|engine|17|False,False,False,
+iaw16f|mid|engine|18|False,False,False,
+iaw16f|mid|engine|19|False,False,False,
+iaw16f|mid|engine|20|False,False,False,
+iaw16f|mid|engine|21|False,False,False,
+iaw16f|mid|engine|22|False,False,False,
+iaw16f|mid|engine|23|True,False,True,
+iaw16f|mid|immo|0|False,False,False,FIAT CODE
+iaw16f|mid|immo|1|False,False,False,FIAT CODE
+iaw16f|mid|immo|2|False,False,False,FIAT CODE
+iaw16f|mid|immo|3|False,False,False,FIAT CODE
+iaw16f|mid|immo|4|False,False,False,FIAT CODE
+iaw16f|mid|immo|5|False,False,False,FIAT CODE
+iaw16f|mid|immo|6|False,False,False,FIAT CODE
+iaw16f|mid|immo|7|True,False,True,FIAT CODE
+iaw16f|0x55|data|0|686.655985351339
+iaw16f|0x55|data|1|43.69
+iaw16f|0x55|data|2|42.5
+iaw16f|0x55|data|3|340
+iaw16f|0x55|data|4|45
+iaw16f|0x55|data|5|45
+iaw16f|0x55|data|6|33.0252
+iaw16f|0x55|data|7|5.3125
+iaw16f|0x55|data|8|0.88576
+iaw16f|0x55|data|9|85
+iaw16f|0x55|data|10|85
+iaw16f|0x55|data|11|85
+iaw16f|0x55|data|12|-43
+iaw16f|0x55|data|13|21845
+iaw16f|0x55|data|14|21845
+iaw16f|0x55|data|15|680
+iaw16f|0x55|data|16|-344
+iaw16f|0x55|data|17|-43
+iaw16f|0x55|data|18|-43
+iaw16f|0x55|data|19|21845
+iaw16f|0x55|data|20|21845
+iaw16f|0x55|data|21|21845
+iaw16f|0x55|data|22|21845
+iaw16f|0x55|data|23|0
+iaw16f|0x55|data|24|1
+iaw16f|0x55|data|25|0
+iaw16f|0x55|data|26|1
+iaw16f|0x55|data|27|0
+iaw16f|0x55|data|28|1
+iaw16f|0x55|data|29|1
+iaw16f|0x55|data|30|0
+iaw16f|0x55|engine|0|True,False,True,Short to GND
+iaw16f|0x55|engine|1|False,False,False,Short to GND
+iaw16f|0x55|engine|2|True,False,True,
+iaw16f|0x55|engine|3|False,False,False,Short to +Vcc
+iaw16f|0x55|engine|4|True,False,True,Short to GND
+iaw16f|0x55|engine|5|False,False,False,Below MIN
+iaw16f|0x55|engine|6|True,False,True,
+iaw16f|0x55|engine|7|False,False,False,
+iaw16f|0x55|engine|8|True,False,True,Short to GND/+Vcc/Therm
+iaw16f|0x55|engine|9|False,False,False,Short to GND/Open
+iaw16f|0x55|engine|10|True,False,True,Short to +Vcc
+iaw16f|0x55|engine|11|False,False,False,Open Circuit
+iaw16f|0x55|engine|12|True,False,True,Short to +Vcc
+iaw16f|0x55|engine|13|False,False,False,Short to GND/Open
+iaw16f|0x55|engine|14|True,False,True,Short to +Vcc
+iaw16f|0x55|engine|15|False,False,False,Short to GND/Open
+iaw16f|0x55|engine|16|True,False,True,Max RICH
+iaw16f|0x55|engine|17|False,False,False,
+iaw16f|0x55|engine|18|True,False,True,
+iaw16f|0x55|engine|19|False,False,False,
+iaw16f|0x55|engine|20|True,False,True,
+iaw16f|0x55|engine|21|False,False,False,
+iaw16f|0x55|engine|22|True,False,True,
+iaw16f|0x55|engine|23|False,False,False,
+iaw16f|0x55|immo|0|True,False,True,FIAT CODE
+iaw16f|0x55|immo|1|False,False,False,FIAT CODE
+iaw16f|0x55|immo|2|True,False,True,FIAT CODE
+iaw16f|0x55|immo|3|False,False,False,FIAT CODE
+iaw16f|0x55|immo|4|True,False,True,FIAT CODE
+iaw16f|0x55|immo|5|False,False,False,FIAT CODE
+iaw16f|0x55|immo|6|True,False,True,FIAT CODE
+iaw16f|0x55|immo|7|False,False,False,FIAT CODE
+iaw16f|0xAA|data|0|343.327992675669
+iaw16f|0xAA|data|1|87.38
+iaw16f|0xAA|data|2|85
+iaw16f|0xAA|data|3|680
+iaw16f|0xAA|data|4|130
+iaw16f|0xAA|data|5|130
+iaw16f|0xAA|data|6|69.0142
+iaw16f|0xAA|data|7|10.625
+iaw16f|0xAA|data|8|1.11152
+iaw16f|0xAA|data|9|170
+iaw16f|0xAA|data|10|-86
+iaw16f|0xAA|data|11|-86
+iaw16f|0xAA|data|12|42
+iaw16f|0xAA|data|13|-21846
+iaw16f|0xAA|data|14|-21846
+iaw16f|0xAA|data|15|1360
+iaw16f|0xAA|data|16|336
+iaw16f|0xAA|data|17|42
+iaw16f|0xAA|data|18|42
+iaw16f|0xAA|data|19|-21846
+iaw16f|0xAA|data|20|-21846
+iaw16f|0xAA|data|21|-21846
+iaw16f|0xAA|data|22|-21846
+iaw16f|0xAA|data|23|1
+iaw16f|0xAA|data|24|0
+iaw16f|0xAA|data|25|1
+iaw16f|0xAA|data|26|0
+iaw16f|0xAA|data|27|1
+iaw16f|0xAA|data|28|0
+iaw16f|0xAA|data|29|0
+iaw16f|0xAA|data|30|1
+iaw16f|0xAA|engine|0|False,False,False,Short to +Vcc
+iaw16f|0xAA|engine|1|True,False,True,Short to +Vcc
+iaw16f|0xAA|engine|2|False,False,False,
+iaw16f|0xAA|engine|3|True,False,True,Short to GND
+iaw16f|0xAA|engine|4|False,False,False,Short to +Vcc
+iaw16f|0xAA|engine|5|True,False,True,Above MAX
+iaw16f|0xAA|engine|6|False,False,False,
+iaw16f|0xAA|engine|7|True,False,True,
+iaw16f|0xAA|engine|8|False,False,False,Open Circuit
+iaw16f|0xAA|engine|9|True,False,True,Short to +Vcc
+iaw16f|0xAA|engine|10|False,False,False,Short to GND/Open
+iaw16f|0xAA|engine|11|True,False,True,Short to GND/+Vcc/Therm
+iaw16f|0xAA|engine|12|False,False,False,Short to GND/Open
+iaw16f|0xAA|engine|13|True,False,True,Short to +Vcc
+iaw16f|0xAA|engine|14|False,False,False,Short to GND/Open
+iaw16f|0xAA|engine|15|True,False,True,Short to +Vcc
+iaw16f|0xAA|engine|16|False,False,False,Max LEAN
+iaw16f|0xAA|engine|17|True,False,True,
+iaw16f|0xAA|engine|18|False,False,False,
+iaw16f|0xAA|engine|19|True,False,True,
+iaw16f|0xAA|engine|20|False,False,False,
+iaw16f|0xAA|engine|21|True,False,True,
+iaw16f|0xAA|engine|22|False,False,False,
+iaw16f|0xAA|engine|23|True,False,True,
+iaw16f|0xAA|immo|0|False,False,False,FIAT CODE
+iaw16f|0xAA|immo|1|True,False,True,FIAT CODE
+iaw16f|0xAA|immo|2|False,False,False,FIAT CODE
+iaw16f|0xAA|immo|3|True,False,True,FIAT CODE
+iaw16f|0xAA|immo|4|False,False,False,FIAT CODE
+iaw16f|0xAA|immo|5|True,False,True,FIAT CODE
+iaw16f|0xAA|immo|6|False,False,False,FIAT CODE
+iaw16f|0xAA|immo|7|True,False,True,FIAT CODE
+iaw16f|full|data|0|0
+iaw16f|full|data|1|131.07
+iaw16f|full|data|2|127.5
+iaw16f|full|data|3|1020
+iaw16f|full|data|4|215
+iaw16f|full|data|5|215
+iaw16f|full|data|6|105.0032
+iaw16f|full|data|7|15.9375
+iaw16f|full|data|8|1.33728
+iaw16f|full|data|9|255
+iaw16f|full|data|10|-1
+iaw16f|full|data|11|-1
+iaw16f|full|data|12|127
+iaw16f|full|data|13|-1
+iaw16f|full|data|14|-1
+iaw16f|full|data|15|2040
+iaw16f|full|data|16|1016
+iaw16f|full|data|17|127
+iaw16f|full|data|18|127
+iaw16f|full|data|19|-1
+iaw16f|full|data|20|-1
+iaw16f|full|data|21|-1
+iaw16f|full|data|22|-1
+iaw16f|full|data|23|1
+iaw16f|full|data|24|1
+iaw16f|full|data|25|1
+iaw16f|full|data|26|1
+iaw16f|full|data|27|1
+iaw16f|full|data|28|1
+iaw16f|full|data|29|1
+iaw16f|full|data|30|0
+iaw16f|full|engine|0|True,False,True,Short to GND
+iaw16f|full|engine|1|True,False,True,Short to +Vcc
+iaw16f|full|engine|2|True,False,True,
+iaw16f|full|engine|3|True,False,True,Short to GND
+iaw16f|full|engine|4|True,False,True,Short to GND
+iaw16f|full|engine|5|True,False,True,Above MAX
+iaw16f|full|engine|6|True,False,True,
+iaw16f|full|engine|7|True,False,True,
+iaw16f|full|engine|8|True,False,True,Short to GND/+Vcc/Therm
+iaw16f|full|engine|9|True,False,True,Short to +Vcc
+iaw16f|full|engine|10|True,False,True,Short to +Vcc
+iaw16f|full|engine|11|True,False,True,Short to GND/+Vcc/Therm
+iaw16f|full|engine|12|True,False,True,Short to +Vcc
+iaw16f|full|engine|13|True,False,True,Short to +Vcc
+iaw16f|full|engine|14|True,False,True,Short to +Vcc
+iaw16f|full|engine|15|True,False,True,Short to +Vcc
+iaw16f|full|engine|16|True,False,True,Max RICH
+iaw16f|full|engine|17|True,False,True,
+iaw16f|full|engine|18|True,False,True,
+iaw16f|full|engine|19|True,False,True,
+iaw16f|full|engine|20|True,False,True,
+iaw16f|full|engine|21|True,False,True,
+iaw16f|full|engine|22|True,False,True,
+iaw16f|full|engine|23|True,False,True,
+iaw16f|full|immo|0|True,False,True,FIAT CODE
+iaw16f|full|immo|1|True,False,True,FIAT CODE
+iaw16f|full|immo|2|True,False,True,FIAT CODE
+iaw16f|full|immo|3|True,False,True,FIAT CODE
+iaw16f|full|immo|4|True,False,True,FIAT CODE
+iaw16f|full|immo|5|True,False,True,FIAT CODE
+iaw16f|full|immo|6|True,False,True,FIAT CODE
+iaw16f|full|immo|7|True,False,True,FIAT CODE
+iaw16f|ascending|data|0|58139.5348837209
+iaw16f|ascending|data|1|1.544
+iaw16f|ascending|data|2|2.5
+iaw16f|ascending|data|3|24
+iaw16f|ascending|data|4|-33
+iaw16f|ascending|data|5|-32
+iaw16f|ascending|data|6|0.8468
+iaw16f|ascending|data|7|0.625
+iaw16f|ascending|data|8|0.689216
+iaw16f|ascending|data|9|12
+iaw16f|ascending|data|10|13
+iaw16f|ascending|data|11|14
+iaw16f|ascending|data|12|-113
+iaw16f|ascending|data|13|8739
+iaw16f|ascending|data|14|9253
+iaw16f|ascending|data|15|304
+iaw16f|ascending|data|16|-712
+iaw16f|ascending|data|17|-88
+iaw16f|ascending|data|18|-87
+iaw16f|ascending|data|19|12851
+iaw16f|ascending|data|20|13365
+iaw16f|ascending|data|21|13879
+iaw16f|ascending|data|22|14393
+iaw16f|ascending|data|23|1
+iaw16f|ascending|data|24|0
+iaw16f|ascending|data|25|0
+iaw16f|ascending|data|26|1
+iaw16f|ascending|data|27|0
+iaw16f|ascending|data|28|0
+iaw16f|ascending|data|29|0
+iaw16f|ascending|data|30|1
+iaw16f|ascending|engine|0|False,False,False,Short to GND
+iaw16f|ascending|engine|1|False,False,False,Short to +Vcc
+iaw16f|ascending|engine|2|False,False,True,
+iaw16f|ascending|engine|3|False,False,False,Short to GND
+iaw16f|ascending|engine|4|True,False,True,Short to +Vcc
+iaw16f|ascending|engine|5|False,False,False,Above MAX
+iaw16f|ascending|engine|6|False,False,False,
+iaw16f|ascending|engine|7|False,False,False,
+iaw16f|ascending|engine|8|True,False,True,Short to GND/+Vcc/Therm
+iaw16f|ascending|engine|9|False,False,False,Short to GND/Open
+iaw16f|ascending|engine|10|False,False,True,Short to +Vcc
+iaw16f|ascending|engine|11|False,False,False,Short to GND/+Vcc/Therm
+iaw16f|ascending|engine|12|True,False,True,Short to GND/Open
+iaw16f|ascending|engine|13|False,False,False,Short to +Vcc
+iaw16f|ascending|engine|14|False,False,False,Short to GND/Open
+iaw16f|ascending|engine|15|False,False,False,Short to GND/Open
+iaw16f|ascending|engine|16|False,False,False,Max RICH
+iaw16f|ascending|engine|17|True,False,True,
+iaw16f|ascending|engine|18|False,False,True,
+iaw16f|ascending|engine|19|False,False,False,
+iaw16f|ascending|engine|20|True,False,True,
+iaw16f|ascending|engine|21|False,False,False,
+iaw16f|ascending|engine|22|False,False,False,
+iaw16f|ascending|engine|23|False,False,False,
+iaw16f|ascending|immo|0|True,False,False,FIAT CODE
+iaw16f|ascending|immo|1|False,False,True,FIAT CODE
+iaw16f|ascending|immo|2|False,False,False,FIAT CODE
+iaw16f|ascending|immo|3|False,False,False,FIAT CODE
+iaw16f|ascending|immo|4|True,False,True,FIAT CODE
+iaw16f|ascending|immo|5|True,False,True,FIAT CODE
+iaw16f|ascending|immo|6|True,False,True,FIAT CODE
+iaw16f|ascending|immo|7|False,False,False,FIAT CODE
+iaw16f|descending|data|0|229.789971965623
+iaw16f|descending|data|1|129.526
+iaw16f|descending|data|2|125
+iaw16f|descending|data|3|996
+iaw16f|descending|data|4|208
+iaw16f|descending|data|5|207
+iaw16f|descending|data|6|101.1926
+iaw16f|descending|data|7|15.3125
+iaw16f|descending|data|8|1.308064
+iaw16f|descending|data|9|243
+iaw16f|descending|data|10|-14
+iaw16f|descending|data|11|-15
+iaw16f|descending|data|12|112
+iaw16f|descending|data|13|-8740
+iaw16f|descending|data|14|-9254
+iaw16f|descending|data|15|1736
+iaw16f|descending|data|16|704
+iaw16f|descending|data|17|87
+iaw16f|descending|data|18|86
+iaw16f|descending|data|19|-12852
+iaw16f|descending|data|20|-13366
+iaw16f|descending|data|21|-13880
+iaw16f|descending|data|22|-14394
+iaw16f|descending|data|23|0
+iaw16f|descending|data|24|1
+iaw16f|descending|data|25|1
+iaw16f|descending|data|26|0
+iaw16f|descending|data|27|1
+iaw16f|descending|data|28|1
+iaw16f|descending|data|29|1
+iaw16f|descending|data|30|0
+iaw16f|descending|engine|0|True,False,True,Short to GND
+iaw16f|descending|engine|1|True,False,True,Short to GND
+iaw16f|descending|engine|2|True,False,False,
+iaw16f|descending|engine|3|True,False,True,Short to +Vcc
+iaw16f|descending|engine|4|False,False,False,Short to GND
+iaw16f|descending|engine|5|True,False,True,Below MIN
+iaw16f|descending|engine|6|True,False,True,
+iaw16f|descending|engine|7|True,False,True,
+iaw16f|descending|engine|8|False,False,False,Short to GND/+Vcc/Therm
+iaw16f|descending|engine|9|True,False,True,Short to GND/Open
+iaw16f|descending|engine|10|True,False,False,Short to GND/Open
+iaw16f|descending|engine|11|True,False,True,Open Circuit
+iaw16f|descending|engine|12|False,False,False,Short to +Vcc
+iaw16f|descending|engine|13|True,False,True,Short to GND/Open
+iaw16f|descending|engine|14|True,False,True,Short to +Vcc
+iaw16f|descending|engine|15|True,False,True,Short to +Vcc
+iaw16f|descending|engine|16|True,False,True,Max RICH
+iaw16f|descending|engine|17|False,False,False,
+iaw16f|descending|engine|18|True,False,False,
+iaw16f|descending|engine|19|True,False,True,
+iaw16f|descending|engine|20|False,False,False,
+iaw16f|descending|engine|21|True,False,True,
+iaw16f|descending|engine|22|True,False,True,
+iaw16f|descending|engine|23|True,False,True,
+iaw16f|descending|immo|0|False,False,True,FIAT CODE
+iaw16f|descending|immo|1|True,False,False,FIAT CODE
+iaw16f|descending|immo|2|True,False,True,FIAT CODE
+iaw16f|descending|immo|3|True,False,True,FIAT CODE
+iaw16f|descending|immo|4|False,False,False,FIAT CODE
+iaw16f|descending|immo|5|False,False,False,FIAT CODE
+iaw16f|descending|immo|6|False,False,False,FIAT CODE
+iaw16f|descending|immo|7|True,False,True,FIAT CODE
+iaw16f|mixed|data|0|5820.72176949942
+iaw16f|mixed|data|1|12.35
+iaw16f|mixed|data|2|19
+iaw16f|mixed|data|3|180
+iaw16f|mixed|data|4|12
+iaw16f|mixed|data|5|19
+iaw16f|mixed|data|6|24.9806
+iaw16f|mixed|data|7|4.5625
+iaw16f|mixed|data|8|0.87248
+iaw16f|mixed|data|9|87
+iaw16f|mixed|data|10|94
+iaw16f|mixed|data|11|101
+iaw16f|mixed|data|12|-20
+iaw16f|mixed|data|13|-3592
+iaw16f|mixed|data|14|-250
+iaw16f|mixed|data|15|104
+iaw16f|mixed|data|16|-864
+iaw16f|mixed|data|17|-101
+iaw16f|mixed|data|18|-94
+iaw16f|mixed|data|19|24936
+iaw16f|mixed|data|20|28534
+iaw16f|mixed|data|21|32132
+iaw16f|mixed|data|22|-29806
+iaw16f|mixed|data|23|0
+iaw16f|mixed|data|24|0
+iaw16f|mixed|data|25|1
+iaw16f|mixed|data|26|0
+iaw16f|mixed|data|27|0
+iaw16f|mixed|data|28|0
+iaw16f|mixed|data|29|0
+iaw16f|mixed|data|30|1
+iaw16f|mixed|engine|0|True,False,True,Short to GND
+iaw16f|mixed|engine|1|True,False,True,Short to GND
+iaw16f|mixed|engine|2|False,False,True,
+iaw16f|mixed|engine|3|False,False,True,Short to +Vcc
+iaw16f|mixed|engine|4|True,False,False,Short to GND
+iaw16f|mixed|engine|5|True,False,False,Above MAX
+iaw16f|mixed|engine|6|True,False,False,
+iaw16f|mixed|engine|7|False,False,True,
+iaw16f|mixed|engine|8|False,False,False,Short to GND/+Vcc/Therm
+iaw16f|mixed|engine|9|True,False,True,Short to GND/Open
+iaw16f|mixed|engine|10|False,False,True,Short to +Vcc
+iaw16f|mixed|engine|11|True,False,False,Open Circuit
+iaw16f|mixed|engine|12|True,False,True,Short to GND/Open
+iaw16f|mixed|engine|13|True,False,False,Short to +Vcc
+iaw16f|mixed|engine|14|True,False,False,Short to GND/Open
+iaw16f|mixed|engine|15|False,False,True,Short to GND/Open
+iaw16f|mixed|engine|16|True,False,True,Max RICH
+iaw16f|mixed|engine|17|False,False,False,
+iaw16f|mixed|engine|18|False,False,True,
+iaw16f|mixed|engine|19|False,False,True,
+iaw16f|mixed|engine|20|False,False,True,
+iaw16f|mixed|engine|21|False,False,False,
+iaw16f|mixed|engine|22|False,False,False,
+iaw16f|mixed|engine|23|True,False,True,
+iaw16f|mixed|immo|0|False,False,True,FIAT CODE
+iaw16f|mixed|immo|1|True,False,False,FIAT CODE
+iaw16f|mixed|immo|2|False,False,False,FIAT CODE
+iaw16f|mixed|immo|3|True,False,False,FIAT CODE
+iaw16f|mixed|immo|4|True,False,False,FIAT CODE
+iaw16f|mixed|immo|5|False,False,True,FIAT CODE
+iaw16f|mixed|immo|6|False,False,False,FIAT CODE
+iaw16f|mixed|immo|7|False,False,False,FIAT CODE
+iaw18f|zero|data|0|0
+iaw18f|zero|data|1|0
+iaw18f|zero|data|2|0
+iaw18f|zero|data|3|0
+iaw18f|zero|data|4|-40
+iaw18f|zero|data|5|-40
+iaw18f|zero|data|6|-2.9638
+iaw18f|zero|data|7|0
+iaw18f|zero|data|8|0.75
+iaw18f|zero|data|9|0
+iaw18f|zero|data|10|0
+iaw18f|zero|data|11|0
+iaw18f|zero|data|12|-128
+iaw18f|zero|data|13|0
+iaw18f|zero|data|14|-1024
+iaw18f|zero|data|15|0
+iaw18f|zero|data|16|0
+iaw18f|zero|data|17|0
+iaw18f|zero|data|18|0
+iaw18f|zero|data|19|0
+iaw18f|zero|data|20|0
+iaw18f|zero|data|21|0
+iaw18f|zero|data|22|0
+iaw18f|zero|data|23|0
+iaw18f|zero|engine|0|False,False,False,Short to +Vcc
+iaw18f|zero|engine|1|False,False,False,Short to +Vcc
+iaw18f|zero|engine|2|False,False,False,
+iaw18f|zero|engine|3|False,False,False,Short to +Vcc
+iaw18f|zero|engine|4|False,False,False,Short to +Vcc
+iaw18f|zero|engine|5|False,False,False,
+iaw18f|zero|engine|6|False,False,False,Too Much Air
+iaw18f|zero|engine|7|False,False,False,
+iaw18f|zero|engine|8|False,False,False,Short to +Vcc
+iaw18f|zero|engine|9|False,False,False,Short to +Vcc
+iaw18f|zero|engine|10|False,False,False,Short to +Vcc
+iaw18f|zero|engine|11|False,False,False,Short to +Vcc
+iaw18f|zero|engine|12|False,False,False,Short to +Vcc
+iaw18f|zero|engine|13|False,False,False,Short to +Vcc
+iaw18f|zero|engine|14|False,False,False,Short to +Vcc
+iaw18f|zero|engine|15|False,False,False,Short to +Vcc
+iaw18f|zero|engine|16|False,False,False,
+iaw18f|zero|engine|17|False,False,False,
+iaw18f|zero|engine|18|False,False,False,
+iaw18f|zero|engine|19|False,False,False,
+iaw18f|zero|engine|20|False,False,False,Max RICH
+iaw18f|zero|engine|21|False,False,False,
+iaw18f|zero|engine|22|False,False,False,
+iaw18f|zero|engine|23|False,False,False,Short to +Vcc
+iaw18f|zero|engine|24|False,False,False,Max RICH
+iaw18f|zero|engine|25|False,False,False,
+iaw18f|zero|engine|26|False,False,False,
+iaw18f|zero|engine|27|False,False,False,
+iaw18f|zero|engine|28|False,False,False,
+iaw18f|zero|engine|29|False,False,False,
+iaw18f|zero|engine|30|False,False,False,
+iaw18f|zero|engine|31|False,False,False,
+iaw18f|zero|immo|0|False,False,False,FIAT CODE
+iaw18f|zero|immo|1|False,False,False,FIAT CODE
+iaw18f|zero|immo|2|False,False,False,FIAT CODE
+iaw18f|zero|immo|3|False,False,False,FIAT CODE
+iaw18f|zero|immo|4|False,False,False,FIAT CODE
+iaw18f|zero|immo|5|False,False,False,FIAT CODE
+iaw18f|zero|immo|6|False,False,False,FIAT CODE
+iaw18f|zero|immo|7|False,False,False,FIAT CODE
+iaw18f|one|data|0|58365.7587548638
+iaw18f|one|data|1|0.514
+iaw18f|one|data|2|0.5
+iaw18f|one|data|3|4
+iaw18f|one|data|4|-39
+iaw18f|one|data|5|-39
+iaw18f|one|data|6|-2.5404
+iaw18f|one|data|7|0.0625
+iaw18f|one|data|8|0.75196
+iaw18f|one|data|9|1
+iaw18f|one|data|10|1
+iaw18f|one|data|11|1
+iaw18f|one|data|12|-127
+iaw18f|one|data|13|8
+iaw18f|one|data|14|-1016
+iaw18f|one|data|15|0
+iaw18f|one|data|16|0
+iaw18f|one|data|17|0
+iaw18f|one|data|18|0
+iaw18f|one|data|19|0
+iaw18f|one|data|20|0
+iaw18f|one|data|21|0
+iaw18f|one|data|22|0
+iaw18f|one|data|23|0
+iaw18f|one|engine|0|True,True,True,Short to +Vcc
+iaw18f|one|engine|1|False,False,False,Short to +Vcc
+iaw18f|one|engine|2|False,False,False,
+iaw18f|one|engine|3|False,False,False,Short to +Vcc
+iaw18f|one|engine|4|False,False,False,Short to +Vcc
+iaw18f|one|engine|5|False,False,False,
+iaw18f|one|engine|6|False,False,False,Too Much Air
+iaw18f|one|engine|7|False,False,False,
+iaw18f|one|engine|8|True,True,True,Short to GND/Open
+iaw18f|one|engine|9|False,False,False,Short to +Vcc
+iaw18f|one|engine|10|False,False,False,Short to +Vcc
+iaw18f|one|engine|11|False,False,False,Short to +Vcc
+iaw18f|one|engine|12|False,False,False,Short to +Vcc
+iaw18f|one|engine|13|False,False,False,Short to +Vcc
+iaw18f|one|engine|14|False,False,False,Short to +Vcc
+iaw18f|one|engine|15|False,False,False,Short to +Vcc
+iaw18f|one|engine|16|True,True,True,
+iaw18f|one|engine|17|False,False,False,
+iaw18f|one|engine|18|False,False,False,
+iaw18f|one|engine|19|False,False,False,
+iaw18f|one|engine|20|False,False,False,Max RICH
+iaw18f|one|engine|21|False,False,False,
+iaw18f|one|engine|22|False,False,False,
+iaw18f|one|engine|23|False,False,False,Short to GND/Open
+iaw18f|one|engine|24|True,True,True,Max RICH
+iaw18f|one|engine|25|False,False,False,
+iaw18f|one|engine|26|False,False,False,
+iaw18f|one|engine|27|False,False,False,
+iaw18f|one|engine|28|False,False,False,
+iaw18f|one|engine|29|False,False,False,
+iaw18f|one|engine|30|False,False,False,
+iaw18f|one|engine|31|False,False,False,
+iaw18f|one|immo|0|True,False,True,FIAT CODE
+iaw18f|one|immo|1|False,False,False,FIAT CODE
+iaw18f|one|immo|2|False,False,False,FIAT CODE
+iaw18f|one|immo|3|False,False,False,FIAT CODE
+iaw18f|one|immo|4|False,False,False,FIAT CODE
+iaw18f|one|immo|5|False,False,False,FIAT CODE
+iaw18f|one|immo|6|False,False,False,FIAT CODE
+iaw18f|one|immo|7|False,False,False,FIAT CODE
+iaw18f|mid|data|0|455.982490272374
+iaw18f|mid|data|1|65.792
+iaw18f|mid|data|2|64
+iaw18f|mid|data|3|512
+iaw18f|mid|data|4|88
+iaw18f|mid|data|5|88
+iaw18f|mid|data|6|51.2314
+iaw18f|mid|data|7|8
+iaw18f|mid|data|8|1.00088
+iaw18f|mid|data|9|128
+iaw18f|mid|data|10|-128
+iaw18f|mid|data|11|-128
+iaw18f|mid|data|12|0
+iaw18f|mid|data|13|1024
+iaw18f|mid|data|14|0
+iaw18f|mid|data|15|0
+iaw18f|mid|data|16|0
+iaw18f|mid|data|17|0
+iaw18f|mid|data|18|0
+iaw18f|mid|data|19|0
+iaw18f|mid|data|20|0
+iaw18f|mid|data|21|0
+iaw18f|mid|data|22|0
+iaw18f|mid|data|23|0
+iaw18f|mid|engine|0|False,False,False,Short to +Vcc
+iaw18f|mid|engine|1|False,False,False,Short to GND/Open
+iaw18f|mid|engine|2|False,False,False,
+iaw18f|mid|engine|3|False,False,False,Short to +Vcc
+iaw18f|mid|engine|4|False,False,False,Short to +Vcc
+iaw18f|mid|engine|5|False,False,False,
+iaw18f|mid|engine|6|False,False,False,Too Much Air
+iaw18f|mid|engine|7|True,True,True,
+iaw18f|mid|engine|8|False,False,False,Short to +Vcc
+iaw18f|mid|engine|9|False,False,False,Short to +Vcc
+iaw18f|mid|engine|10|False,False,False,Short to +Vcc
+iaw18f|mid|engine|11|False,False,False,Short to +Vcc
+iaw18f|mid|engine|12|False,False,False,Short to +Vcc
+iaw18f|mid|engine|13|False,False,False,Short to +Vcc
+iaw18f|mid|engine|14|False,False,False,Short to +Vcc
+iaw18f|mid|engine|15|True,True,True,Short to GND/Open
+iaw18f|mid|engine|16|False,False,False,
+iaw18f|mid|engine|17|False,False,False,
+iaw18f|mid|engine|18|False,False,False,
+iaw18f|mid|engine|19|False,False,False,
+iaw18f|mid|engine|20|False,False,False,Max RICH
+iaw18f|mid|engine|21|False,False,False,
+iaw18f|mid|engine|22|False,False,False,
+iaw18f|mid|engine|23|True,True,True,Short to +Vcc
+iaw18f|mid|engine|24|False,False,False,Max RICH
+iaw18f|mid|engine|25|False,False,False,
+iaw18f|mid|engine|26|False,False,False,
+iaw18f|mid|engine|27|False,False,False,
+iaw18f|mid|engine|28|False,False,False,
+iaw18f|mid|engine|29|False,False,False,
+iaw18f|mid|engine|30|False,False,False,
+iaw18f|mid|engine|31|True,True,True,
+iaw18f|mid|immo|0|False,False,False,FIAT CODE
+iaw18f|mid|immo|1|False,False,False,FIAT CODE
+iaw18f|mid|immo|2|False,False,False,FIAT CODE
+iaw18f|mid|immo|3|False,False,False,FIAT CODE
+iaw18f|mid|immo|4|False,False,False,FIAT CODE
+iaw18f|mid|immo|5|False,False,False,FIAT CODE
+iaw18f|mid|immo|6|False,False,False,FIAT CODE
+iaw18f|mid|immo|7|True,False,True,FIAT CODE
+iaw18f|0x55|data|0|686.655985351339
+iaw18f|0x55|data|1|43.69
+iaw18f|0x55|data|2|42.5
+iaw18f|0x55|data|3|340
+iaw18f|0x55|data|4|45
+iaw18f|0x55|data|5|45
+iaw18f|0x55|data|6|33.0252
+iaw18f|0x55|data|7|5.3125
+iaw18f|0x55|data|8|0.9166
+iaw18f|0x55|data|9|85
+iaw18f|0x55|data|10|85
+iaw18f|0x55|data|11|85
+iaw18f|0x55|data|12|-43
+iaw18f|0x55|data|13|680
+iaw18f|0x55|data|14|-344
+iaw18f|0x55|data|15|0
+iaw18f|0x55|data|16|1
+iaw18f|0x55|data|17|0
+iaw18f|0x55|data|18|1
+iaw18f|0x55|data|19|0
+iaw18f|0x55|data|20|1
+iaw18f|0x55|data|21|1
+iaw18f|0x55|data|22|0
+iaw18f|0x55|data|23|1
+iaw18f|0x55|engine|0|True,True,True,Short to +Vcc
+iaw18f|0x55|engine|1|False,False,False,Short to +Vcc
+iaw18f|0x55|engine|2|True,True,True,
+iaw18f|0x55|engine|3|False,False,False,Short to +Vcc
+iaw18f|0x55|engine|4|True,True,True,Short to GND
+iaw18f|0x55|engine|5|False,False,False,
+iaw18f|0x55|engine|6|True,True,True,Too Much Air
+iaw18f|0x55|engine|7|False,False,False,
+iaw18f|0x55|engine|8|True,True,True,Short to GND/Open
+iaw18f|0x55|engine|9|False,False,False,Short to +Vcc
+iaw18f|0x55|engine|10|True,True,True,Short to GND/Open
+iaw18f|0x55|engine|11|False,False,False,Short to +Vcc
+iaw18f|0x55|engine|12|True,True,True,Short to GND/Open
+iaw18f|0x55|engine|13|False,False,False,Short to +Vcc
+iaw18f|0x55|engine|14|True,True,True,Short to GND/Open
+iaw18f|0x55|engine|15|False,False,False,Short to +Vcc
+iaw18f|0x55|engine|16|True,True,True,
+iaw18f|0x55|engine|17|False,False,False,
+iaw18f|0x55|engine|18|True,True,True,
+iaw18f|0x55|engine|19|False,False,False,
+iaw18f|0x55|engine|20|True,True,True,Max LEAN
+iaw18f|0x55|engine|21|False,False,False,
+iaw18f|0x55|engine|22|True,True,True,
+iaw18f|0x55|engine|23|False,False,False,Short to GND/Open
+iaw18f|0x55|engine|24|True,True,True,Max LEAN
+iaw18f|0x55|engine|25|False,False,False,
+iaw18f|0x55|engine|26|True,True,True,
+iaw18f|0x55|engine|27|False,False,False,
+iaw18f|0x55|engine|28|True,True,True,
+iaw18f|0x55|engine|29|False,False,False,
+iaw18f|0x55|engine|30|True,True,True,
+iaw18f|0x55|engine|31|False,False,False,
+iaw18f|0x55|immo|0|True,False,True,FIAT CODE
+iaw18f|0x55|immo|1|False,False,False,FIAT CODE
+iaw18f|0x55|immo|2|True,False,True,FIAT CODE
+iaw18f|0x55|immo|3|False,False,False,FIAT CODE
+iaw18f|0x55|immo|4|True,False,True,FIAT CODE
+iaw18f|0x55|immo|5|False,False,False,FIAT CODE
+iaw18f|0x55|immo|6|True,False,True,FIAT CODE
+iaw18f|0x55|immo|7|False,False,False,FIAT CODE
+iaw18f|0xAA|data|0|343.327992675669
+iaw18f|0xAA|data|1|87.38
+iaw18f|0xAA|data|2|85
+iaw18f|0xAA|data|3|680
+iaw18f|0xAA|data|4|130
+iaw18f|0xAA|data|5|130
+iaw18f|0xAA|data|6|69.0142
+iaw18f|0xAA|data|7|10.625
+iaw18f|0xAA|data|8|1.0832
+iaw18f|0xAA|data|9|170
+iaw18f|0xAA|data|10|-86
+iaw18f|0xAA|data|11|-86
+iaw18f|0xAA|data|12|42
+iaw18f|0xAA|data|13|1360
+iaw18f|0xAA|data|14|336
+iaw18f|0xAA|data|15|1
+iaw18f|0xAA|data|16|0
+iaw18f|0xAA|data|17|1
+iaw18f|0xAA|data|18|0
+iaw18f|0xAA|data|19|1
+iaw18f|0xAA|data|20|0
+iaw18f|0xAA|data|21|0
+iaw18f|0xAA|data|22|1
+iaw18f|0xAA|data|23|0
+iaw18f|0xAA|engine|0|False,False,False,Short to GND
+iaw18f|0xAA|engine|1|True,True,True,Short to GND/Open
+iaw18f|0xAA|engine|2|False,False,False,
+iaw18f|0xAA|engine|3|True,True,True,Short to GND
+iaw18f|0xAA|engine|4|False,False,False,Short to +Vcc
+iaw18f|0xAA|engine|5|True,True,True,
+iaw18f|0xAA|engine|6|False,False,False,No Air
+iaw18f|0xAA|engine|7|True,True,True,
+iaw18f|0xAA|engine|8|False,False,False,Short to +Vcc
+iaw18f|0xAA|engine|9|True,True,True,Short to GND/Open
+iaw18f|0xAA|engine|10|False,False,False,Short to +Vcc
+iaw18f|0xAA|engine|11|True,True,True,Short to GND/Open
+iaw18f|0xAA|engine|12|False,False,False,Short to +Vcc
+iaw18f|0xAA|engine|13|True,True,True,Short to GND/Open
+iaw18f|0xAA|engine|14|False,False,False,Short to +Vcc
+iaw18f|0xAA|engine|15|True,True,True,Short to GND/Open
+iaw18f|0xAA|engine|16|False,False,False,
+iaw18f|0xAA|engine|17|True,True,True,
+iaw18f|0xAA|engine|18|False,False,False,
+iaw18f|0xAA|engine|19|True,True,True,
+iaw18f|0xAA|engine|20|False,False,False,Max RICH
+iaw18f|0xAA|engine|21|True,True,True,
+iaw18f|0xAA|engine|22|False,False,False,
+iaw18f|0xAA|engine|23|True,True,True,Short to +Vcc
+iaw18f|0xAA|engine|24|False,False,False,Max RICH
+iaw18f|0xAA|engine|25|True,True,True,
+iaw18f|0xAA|engine|26|False,False,False,
+iaw18f|0xAA|engine|27|True,True,True,
+iaw18f|0xAA|engine|28|False,False,False,
+iaw18f|0xAA|engine|29|True,True,True,
+iaw18f|0xAA|engine|30|False,False,False,
+iaw18f|0xAA|engine|31|True,True,True,
+iaw18f|0xAA|immo|0|False,False,False,FIAT CODE
+iaw18f|0xAA|immo|1|True,False,True,FIAT CODE
+iaw18f|0xAA|immo|2|False,False,False,FIAT CODE
+iaw18f|0xAA|immo|3|True,False,True,FIAT CODE
+iaw18f|0xAA|immo|4|False,False,False,FIAT CODE
+iaw18f|0xAA|immo|5|True,False,True,FIAT CODE
+iaw18f|0xAA|immo|6|False,False,False,FIAT CODE
+iaw18f|0xAA|immo|7|True,False,True,FIAT CODE
+iaw18f|full|data|0|0
+iaw18f|full|data|1|131.07
+iaw18f|full|data|2|127.5
+iaw18f|full|data|3|1020
+iaw18f|full|data|4|215
+iaw18f|full|data|5|215
+iaw18f|full|data|6|105.0032
+iaw18f|full|data|7|15.9375
+iaw18f|full|data|8|1.2498
+iaw18f|full|data|9|255
+iaw18f|full|data|10|-1
+iaw18f|full|data|11|-1
+iaw18f|full|data|12|127
+iaw18f|full|data|13|2040
+iaw18f|full|data|14|1016
+iaw18f|full|data|15|1
+iaw18f|full|data|16|1
+iaw18f|full|data|17|1
+iaw18f|full|data|18|1
+iaw18f|full|data|19|1
+iaw18f|full|data|20|1
+iaw18f|full|data|21|1
+iaw18f|full|data|22|1
+iaw18f|full|data|23|1
+iaw18f|full|engine|0|True,True,True,Short to GND
+iaw18f|full|engine|1|True,True,True,Short to GND/Open
+iaw18f|full|engine|2|True,True,True,
+iaw18f|full|engine|3|True,True,True,Short to GND
+iaw18f|full|engine|4|True,True,True,Short to GND
+iaw18f|full|engine|5|True,True,True,
+iaw18f|full|engine|6|True,True,True,No Air
+iaw18f|full|engine|7|True,True,True,
+iaw18f|full|engine|8|True,True,True,Short to GND/Open
+iaw18f|full|engine|9|True,True,True,Short to GND/Open
+iaw18f|full|engine|10|True,True,True,Short to GND/Open
+iaw18f|full|engine|11|True,True,True,Short to GND/Open
+iaw18f|full|engine|12|True,True,True,Short to GND/Open
+iaw18f|full|engine|13|True,True,True,Short to GND/Open
+iaw18f|full|engine|14|True,True,True,Short to GND/Open
+iaw18f|full|engine|15|True,True,True,Short to GND/Open
+iaw18f|full|engine|16|True,True,True,
+iaw18f|full|engine|17|True,True,True,
+iaw18f|full|engine|18|True,True,True,
+iaw18f|full|engine|19|True,True,True,
+iaw18f|full|engine|20|True,True,True,Max LEAN
+iaw18f|full|engine|21|True,True,True,
+iaw18f|full|engine|22|True,True,True,
+iaw18f|full|engine|23|True,True,True,Short to GND/Open
+iaw18f|full|engine|24|True,True,True,Max LEAN
+iaw18f|full|engine|25|True,True,True,
+iaw18f|full|engine|26|True,True,True,
+iaw18f|full|engine|27|True,True,True,
+iaw18f|full|engine|28|True,True,True,
+iaw18f|full|engine|29|True,True,True,
+iaw18f|full|engine|30|True,True,True,
+iaw18f|full|engine|31|True,True,True,
+iaw18f|full|immo|0|True,False,True,FIAT CODE
+iaw18f|full|immo|1|True,False,True,FIAT CODE
+iaw18f|full|immo|2|True,False,True,FIAT CODE
+iaw18f|full|immo|3|True,False,True,FIAT CODE
+iaw18f|full|immo|4|True,False,True,FIAT CODE
+iaw18f|full|immo|5|True,False,True,FIAT CODE
+iaw18f|full|immo|6|True,False,True,FIAT CODE
+iaw18f|full|immo|7|True,False,True,FIAT CODE
+iaw18f|ascending|data|0|58139.5348837209
+iaw18f|ascending|data|1|1.544
+iaw18f|ascending|data|2|2.5
+iaw18f|ascending|data|3|24
+iaw18f|ascending|data|4|-33
+iaw18f|ascending|data|5|-32
+iaw18f|ascending|data|6|0.8468
+iaw18f|ascending|data|7|0.625
+iaw18f|ascending|data|8|0.77156
+iaw18f|ascending|data|9|12
+iaw18f|ascending|data|10|13
+iaw18f|ascending|data|11|14
+iaw18f|ascending|data|12|-113
+iaw18f|ascending|data|13|176
+iaw18f|ascending|data|14|-856
+iaw18f|ascending|data|15|1
+iaw18f|ascending|data|16|1
+iaw18f|ascending|data|17|0
+iaw18f|ascending|data|18|1
+iaw18f|ascending|data|19|1
+iaw18f|ascending|data|20|0
+iaw18f|ascending|data|21|1
+iaw18f|ascending|data|22|1
+iaw18f|ascending|data|23|0
+iaw18f|ascending|engine|0|False,True,False,Short to GND
+iaw18f|ascending|engine|1|False,False,False,Short to +Vcc
+iaw18f|ascending|engine|2|False,False,False,
+iaw18f|ascending|engine|3|False,True,False,Short to GND
+iaw18f|ascending|engine|4|True,True,False,Short to GND
+iaw18f|ascending|engine|5|True,True,False,
+iaw18f|ascending|engine|6|False,False,True,Too Much Air
+iaw18f|ascending|engine|7|False,False,False,
+iaw18f|ascending|engine|8|True,False,True,Short to +Vcc
+iaw18f|ascending|engine|9|False,True,False,Short to +Vcc
+iaw18f|ascending|engine|10|False,False,False,Short to GND/Open
+iaw18f|ascending|engine|11|False,True,False,Short to GND/Open
+iaw18f|ascending|engine|12|True,True,False,Short to GND/Open
+iaw18f|ascending|engine|13|True,True,False,Short to GND/Open
+iaw18f|ascending|engine|14|False,False,True,Short to GND/Open
+iaw18f|ascending|engine|15|False,False,False,Short to +Vcc
+iaw18f|ascending|engine|16|False,True,False,
+iaw18f|ascending|engine|17|True,True,True,
+iaw18f|ascending|engine|18|False,False,False,
+iaw18f|ascending|engine|19|False,True,False,
+iaw18f|ascending|engine|20|True,True,False,Max RICH
+iaw18f|ascending|engine|21|True,True,False,
+iaw18f|ascending|engine|22|False,False,True,
+iaw18f|ascending|engine|23|False,False,False,Short to GND/Open
+iaw18f|ascending|engine|24|True,False,True,Max LEAN
+iaw18f|ascending|engine|25|True,False,True,
+iaw18f|ascending|engine|26|False,True,False,
+iaw18f|ascending|engine|27|False,True,False,
+iaw18f|ascending|engine|28|True,True,False,
+iaw18f|ascending|engine|29|True,True,False,
+iaw18f|ascending|engine|30|False,False,True,
+iaw18f|ascending|engine|31|False,False,False,
+iaw18f|ascending|immo|0|True,False,False,FIAT CODE
+iaw18f|ascending|immo|1|False,False,True,FIAT CODE
+iaw18f|ascending|immo|2|False,False,False,FIAT CODE
+iaw18f|ascending|immo|3|False,False,False,FIAT CODE
+iaw18f|ascending|immo|4|True,False,True,FIAT CODE
+iaw18f|ascending|immo|5|True,False,True,FIAT CODE
+iaw18f|ascending|immo|6|True,False,True,FIAT CODE
+iaw18f|ascending|immo|7|False,False,False,FIAT CODE
+iaw18f|descending|data|0|229.789971965623
+iaw18f|descending|data|1|129.526
+iaw18f|descending|data|2|125
+iaw18f|descending|data|3|996
+iaw18f|descending|data|4|208
+iaw18f|descending|data|5|207
+iaw18f|descending|data|6|101.1926
+iaw18f|descending|data|7|15.3125
+iaw18f|descending|data|8|1.22824
+iaw18f|descending|data|9|243
+iaw18f|descending|data|10|-14
+iaw18f|descending|data|11|-15
+iaw18f|descending|data|12|112
+iaw18f|descending|data|13|1864
+iaw18f|descending|data|14|848
+iaw18f|descending|data|15|0
+iaw18f|descending|data|16|0
+iaw18f|descending|data|17|1
+iaw18f|descending|data|18|0
+iaw18f|descending|data|19|0
+iaw18f|descending|data|20|1
+iaw18f|descending|data|21|0
+iaw18f|descending|data|22|0
+iaw18f|descending|data|23|1
+iaw18f|descending|engine|0|True,False,True,Short to +Vcc
+iaw18f|descending|engine|1|True,True,True,Short to GND/Open
+iaw18f|descending|engine|2|True,True,True,
+iaw18f|descending|engine|3|True,False,True,Short to GND
+iaw18f|descending|engine|4|False,False,True,Short to GND
+iaw18f|descending|engine|5|False,False,True,
+iaw18f|descending|engine|6|True,True,False,No Air
+iaw18f|descending|engine|7|True,True,True,
+iaw18f|descending|engine|8|False,True,False,Short to +Vcc
+iaw18f|descending|engine|9|True,False,True,Short to GND/Open
+iaw18f|descending|engine|10|True,True,True,Short to +Vcc
+iaw18f|descending|engine|11|True,False,True,Short to GND/Open
+iaw18f|descending|engine|12|False,False,True,Short to GND/Open
+iaw18f|descending|engine|13|False,False,True,Short to GND/Open
+iaw18f|descending|engine|14|True,True,False,Short to GND/Open
+iaw18f|descending|engine|15|True,True,True,Short to GND/Open
+iaw18f|descending|engine|16|True,False,True,
+iaw18f|descending|engine|17|False,False,False,
+iaw18f|descending|engine|18|True,True,True,
+iaw18f|descending|engine|19|True,False,True,
+iaw18f|descending|engine|20|False,False,True,Max RICH
+iaw18f|descending|engine|21|False,False,True,
+iaw18f|descending|engine|22|True,True,False,
+iaw18f|descending|engine|23|True,True,True,Short to +Vcc
+iaw18f|descending|engine|24|False,True,False,Max RICH
+iaw18f|descending|engine|25|False,True,False,
+iaw18f|descending|engine|26|True,False,True,
+iaw18f|descending|engine|27|True,False,True,
+iaw18f|descending|engine|28|False,False,True,
+iaw18f|descending|engine|29|False,False,True,
+iaw18f|descending|engine|30|True,True,False,
+iaw18f|descending|engine|31|True,True,True,
+iaw18f|descending|immo|0|False,False,True,FIAT CODE
+iaw18f|descending|immo|1|True,False,False,FIAT CODE
+iaw18f|descending|immo|2|True,False,True,FIAT CODE
+iaw18f|descending|immo|3|True,False,True,FIAT CODE
+iaw18f|descending|immo|4|False,False,False,FIAT CODE
+iaw18f|descending|immo|5|False,False,False,FIAT CODE
+iaw18f|descending|immo|6|False,False,False,FIAT CODE
+iaw18f|descending|immo|7|True,False,True,FIAT CODE
+iaw18f|mixed|data|0|5820.72176949942
+iaw18f|mixed|data|1|12.35
+iaw18f|mixed|data|2|19
+iaw18f|mixed|data|3|180
+iaw18f|mixed|data|4|12
+iaw18f|mixed|data|5|19
+iaw18f|mixed|data|6|24.9806
+iaw18f|mixed|data|7|4.5625
+iaw18f|mixed|data|8|0.9068
+iaw18f|mixed|data|9|87
+iaw18f|mixed|data|10|94
+iaw18f|mixed|data|11|101
+iaw18f|mixed|data|12|-20
+iaw18f|mixed|data|13|1256
+iaw18f|mixed|data|14|176
+iaw18f|mixed|data|15|0
+iaw18f|mixed|data|16|1
+iaw18f|mixed|data|17|1
+iaw18f|mixed|data|18|1
+iaw18f|mixed|data|19|1
+iaw18f|mixed|data|20|1
+iaw18f|mixed|data|21|0
+iaw18f|mixed|data|22|0
+iaw18f|mixed|data|23|0
+iaw18f|mixed|engine|0|True,False,True,Short to GND
+iaw18f|mixed|engine|1|True,True,True,Short to +Vcc
+iaw18f|mixed|engine|2|False,False,False,
+iaw18f|mixed|engine|3|False,False,False,Short to +Vcc
+iaw18f|mixed|engine|4|True,True,False,Short to GND
+iaw18f|mixed|engine|5|False,False,False,
+iaw18f|mixed|engine|6|True,False,True,No Air
+iaw18f|mixed|engine|7|False,True,True,
+iaw18f|mixed|engine|8|False,True,False,Short to +Vcc
+iaw18f|mixed|engine|9|True,False,True,Short to GND/Open
+iaw18f|mixed|engine|10|False,False,False,Short to GND/Open
+iaw18f|mixed|engine|11|True,True,True,Short to GND/Open
+iaw18f|mixed|engine|12|True,True,False,Short to +Vcc
+iaw18f|mixed|engine|13|False,False,False,Short to +Vcc
+iaw18f|mixed|engine|14|True,False,True,Short to GND/Open
+iaw18f|mixed|engine|15|False,True,True,Short to GND/Open
+iaw18f|mixed|engine|16|True,False,True,
+iaw18f|mixed|engine|17|False,False,False,
+iaw18f|mixed|engine|18|False,False,False,
+iaw18f|mixed|engine|19|False,False,False,
+iaw18f|mixed|engine|20|False,False,True,Max LEAN
+iaw18f|mixed|engine|21|True,True,False,
+iaw18f|mixed|engine|22|True,False,True,
+iaw18f|mixed|engine|23|False,True,True,Short to GND/Open
+iaw18f|mixed|engine|24|False,True,False,Max LEAN
+iaw18f|mixed|engine|25|False,True,False,
+iaw18f|mixed|engine|26|False,True,False,
+iaw18f|mixed|engine|27|True,False,True,
+iaw18f|mixed|engine|28|False,False,True,
+iaw18f|mixed|engine|29|True,True,False,
+iaw18f|mixed|engine|30|True,False,True,
+iaw18f|mixed|engine|31|False,True,True,
+iaw18f|mixed|immo|0|False,False,True,FIAT CODE
+iaw18f|mixed|immo|1|True,False,False,FIAT CODE
+iaw18f|mixed|immo|2|False,False,False,FIAT CODE
+iaw18f|mixed|immo|3|True,False,False,FIAT CODE
+iaw18f|mixed|immo|4|True,False,False,FIAT CODE
+iaw18f|mixed|immo|5|False,False,True,FIAT CODE
+iaw18f|mixed|immo|6|False,False,False,FIAT CODE
+iaw18f|mixed|immo|7|False,False,False,FIAT CODE
+iaw18fd|zero|data|0|0
+iaw18fd|zero|data|1|0
+iaw18fd|zero|data|2|0
+iaw18fd|zero|data|3|122.6
+iaw18fd|zero|data|4|-40
+iaw18fd|zero|data|5|-40
+iaw18fd|zero|data|6|0
+iaw18fd|zero|data|7|0
+iaw18fd|zero|data|8|0.75
+iaw18fd|zero|data|9|0
+iaw18fd|zero|data|10|0
+iaw18fd|zero|data|11|0
+iaw18fd|zero|data|12|0
+iaw18fd|zero|data|13|-128
+iaw18fd|zero|data|14|0
+iaw18fd|zero|data|15|0
+iaw18fd|zero|data|16|0
+iaw18fd|zero|data|17|-1024
+iaw18fd|zero|data|18|0
+iaw18fd|zero|data|19|0
+iaw18fd|zero|data|20|0
+iaw18fd|zero|data|21|0
+iaw18fd|zero|data|22|0
+iaw18fd|zero|data|23|0
+iaw18fd|zero|data|24|0
+iaw18fd|zero|data|25|0
+iaw18fd|zero|data|26|0
+iaw18fd|zero|data|27|0
+iaw18fd|zero|data|28|0
+iaw18fd|zero|data|29|0
+iaw18fd|zero|data|30|0
+iaw18fd|zero|data|31|0
+iaw18fd|zero|data|32|0
+iaw18fd|zero|data|33|0
+iaw18fd|zero|engine|0|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|1|False,False,False,
+iaw18fd|zero|engine|2|False,False,False,
+iaw18fd|zero|engine|3|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|4|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|5|False,False,False,
+iaw18fd|zero|engine|6|False,False,False,Too Much Air
+iaw18fd|zero|engine|7|False,False,False,
+iaw18fd|zero|engine|8|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|9|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|10|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|11|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|12|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|13|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|14|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|15|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|16|False,False,False,
+iaw18fd|zero|engine|17|False,False,False,
+iaw18fd|zero|engine|18|False,False,False,
+iaw18fd|zero|engine|19|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|20|False,False,False,Max RICH
+iaw18fd|zero|engine|21|False,False,False,
+iaw18fd|zero|engine|22|False,False,False,
+iaw18fd|zero|engine|23|False,False,False,Short to +Vcc
+iaw18fd|zero|engine|24|False,False,False,Max RICH
+iaw18fd|zero|engine|25|False,False,False,
+iaw18fd|zero|engine|26|False,False,False,
+iaw18fd|zero|engine|27|False,False,False,
+iaw18fd|zero|engine|28|False,False,False,
+iaw18fd|zero|engine|29|False,False,False,
+iaw18fd|zero|engine|30|False,False,False,
+iaw18fd|zero|engine|31|False,False,False,
+iaw18fd|zero|immo|0|False,False,False,FIAT CODE
+iaw18fd|zero|immo|1|False,False,False,FIAT CODE
+iaw18fd|zero|immo|2|False,False,False,FIAT CODE
+iaw18fd|zero|immo|3|False,False,False,FIAT CODE
+iaw18fd|zero|immo|4|False,False,False,FIAT CODE
+iaw18fd|zero|immo|5|False,False,False,FIAT CODE
+iaw18fd|zero|immo|6|False,False,False,FIAT CODE
+iaw18fd|zero|immo|7|False,False,False,FIAT CODE
+iaw18fd|one|data|0|58365.7587548638
+iaw18fd|one|data|1|0.514
+iaw18fd|one|data|2|0.5
+iaw18fd|one|data|3|126.476
+iaw18fd|one|data|4|-39.334
+iaw18fd|one|data|5|-39.334
+iaw18fd|one|data|6|0.4228
+iaw18fd|one|data|7|0.06424
+iaw18fd|one|data|8|0.75196
+iaw18fd|one|data|9|5.4348
+iaw18fd|one|data|10|1
+iaw18fd|one|data|11|1
+iaw18fd|one|data|12|1
+iaw18fd|one|data|13|-127
+iaw18fd|one|data|14|257
+iaw18fd|one|data|15|257
+iaw18fd|one|data|16|8
+iaw18fd|one|data|17|-1016
+iaw18fd|one|data|18|0.016
+iaw18fd|one|data|19|0.016
+iaw18fd|one|data|20|0.016
+iaw18fd|one|data|21|0.016
+iaw18fd|one|data|22|0.016
+iaw18fd|one|data|23|0.016
+iaw18fd|one|data|24|0.004
+iaw18fd|one|data|25|0
+iaw18fd|one|data|26|0
+iaw18fd|one|data|27|0
+iaw18fd|one|data|28|0
+iaw18fd|one|data|29|0
+iaw18fd|one|data|30|0
+iaw18fd|one|data|31|0
+iaw18fd|one|data|32|0
+iaw18fd|one|data|33|0
+iaw18fd|one|engine|0|True,True,True,Short to +Vcc
+iaw18fd|one|engine|1|False,False,False,
+iaw18fd|one|engine|2|False,False,False,
+iaw18fd|one|engine|3|False,False,False,Short to +Vcc
+iaw18fd|one|engine|4|False,False,False,Short to +Vcc
+iaw18fd|one|engine|5|False,False,False,
+iaw18fd|one|engine|6|False,False,False,Too Much Air
+iaw18fd|one|engine|7|False,False,False,
+iaw18fd|one|engine|8|True,True,True,Short to GND/Open
+iaw18fd|one|engine|9|False,False,False,Short to +Vcc
+iaw18fd|one|engine|10|False,False,False,Short to +Vcc
+iaw18fd|one|engine|11|False,False,False,Short to +Vcc
+iaw18fd|one|engine|12|False,False,False,Short to +Vcc
+iaw18fd|one|engine|13|False,False,False,Short to +Vcc
+iaw18fd|one|engine|14|False,False,False,Short to +Vcc
+iaw18fd|one|engine|15|False,False,False,Short to +Vcc
+iaw18fd|one|engine|16|True,True,True,
+iaw18fd|one|engine|17|False,False,False,
+iaw18fd|one|engine|18|False,False,False,
+iaw18fd|one|engine|19|False,False,False,Short to +Vcc
+iaw18fd|one|engine|20|False,False,False,Max RICH
+iaw18fd|one|engine|21|False,False,False,
+iaw18fd|one|engine|22|False,False,False,
+iaw18fd|one|engine|23|False,False,False,Short to GND/Open
+iaw18fd|one|engine|24|True,True,True,Max RICH
+iaw18fd|one|engine|25|False,False,False,
+iaw18fd|one|engine|26|False,False,False,
+iaw18fd|one|engine|27|False,False,False,
+iaw18fd|one|engine|28|False,False,False,
+iaw18fd|one|engine|29|False,False,False,
+iaw18fd|one|engine|30|False,False,False,
+iaw18fd|one|engine|31|False,False,False,
+iaw18fd|one|immo|0|True,False,True,FIAT CODE
+iaw18fd|one|immo|1|False,False,False,FIAT CODE
+iaw18fd|one|immo|2|False,False,False,FIAT CODE
+iaw18fd|one|immo|3|False,False,False,FIAT CODE
+iaw18fd|one|immo|4|False,False,False,FIAT CODE
+iaw18fd|one|immo|5|False,False,False,FIAT CODE
+iaw18fd|one|immo|6|False,False,False,FIAT CODE
+iaw18fd|one|immo|7|False,False,False,FIAT CODE
+iaw18fd|mid|data|0|455.982490272374
+iaw18fd|mid|data|1|65.792
+iaw18fd|mid|data|2|64
+iaw18fd|mid|data|3|618.728
+iaw18fd|mid|data|4|45.248
+iaw18fd|mid|data|5|45.248
+iaw18fd|mid|data|6|54.1184
+iaw18fd|mid|data|7|8.22272
+iaw18fd|mid|data|8|1.00088
+iaw18fd|mid|data|9|695.6544
+iaw18fd|mid|data|10|128
+iaw18fd|mid|data|11|-128
+iaw18fd|mid|data|12|-128
+iaw18fd|mid|data|13|0
+iaw18fd|mid|data|14|-32640
+iaw18fd|mid|data|15|-32640
+iaw18fd|mid|data|16|1024
+iaw18fd|mid|data|17|0
+iaw18fd|mid|data|18|-2.048
+iaw18fd|mid|data|19|-2.048
+iaw18fd|mid|data|20|-2.048
+iaw18fd|mid|data|21|-2.048
+iaw18fd|mid|data|22|-2.048
+iaw18fd|mid|data|23|-2.048
+iaw18fd|mid|data|24|-0.512
+iaw18fd|mid|data|25|0
+iaw18fd|mid|data|26|0
+iaw18fd|mid|data|27|0
+iaw18fd|mid|data|28|0
+iaw18fd|mid|data|29|0
+iaw18fd|mid|data|30|0
+iaw18fd|mid|data|31|0
+iaw18fd|mid|data|32|0
+iaw18fd|mid|data|33|0
+iaw18fd|mid|engine|0|False,False,False,Short to +Vcc
+iaw18fd|mid|engine|1|False,False,False,
+iaw18fd|mid|engine|2|False,False,False,
+iaw18fd|mid|engine|3|False,False,False,Short to +Vcc
+iaw18fd|mid|engine|4|False,False,False,Short to +Vcc
+iaw18fd|mid|engine|5|False,False,False,
+iaw18fd|mid|engine|6|False,False,False,Too Much Air
+iaw18fd|mid|engine|7|True,True,True,
+iaw18fd|mid|engine|8|False,False,False,Short to +Vcc
+iaw18fd|mid|engine|9|False,False,False,Short to +Vcc
+iaw18fd|mid|engine|10|False,False,False,Short to +Vcc
+iaw18fd|mid|engine|11|False,False,False,Short to +Vcc
+iaw18fd|mid|engine|12|False,False,False,Short to +Vcc
+iaw18fd|mid|engine|13|False,False,False,Short to +Vcc
+iaw18fd|mid|engine|14|False,False,False,Short to +Vcc
+iaw18fd|mid|engine|15|True,True,True,Short to GND/Open
+iaw18fd|mid|engine|16|False,False,False,
+iaw18fd|mid|engine|17|False,False,False,
+iaw18fd|mid|engine|18|False,False,False,
+iaw18fd|mid|engine|19|False,False,False,Short to GND/Open
+iaw18fd|mid|engine|20|False,False,False,Max RICH
+iaw18fd|mid|engine|21|False,False,False,
+iaw18fd|mid|engine|22|False,False,False,
+iaw18fd|mid|engine|23|True,True,True,Short to +Vcc
+iaw18fd|mid|engine|24|False,False,False,Max RICH
+iaw18fd|mid|engine|25|False,False,False,
+iaw18fd|mid|engine|26|False,False,False,
+iaw18fd|mid|engine|27|False,False,False,
+iaw18fd|mid|engine|28|False,False,False,
+iaw18fd|mid|engine|29|False,False,False,
+iaw18fd|mid|engine|30|False,False,False,
+iaw18fd|mid|engine|31|True,True,True,
+iaw18fd|mid|immo|0|False,False,False,FIAT CODE
+iaw18fd|mid|immo|1|False,False,False,FIAT CODE
+iaw18fd|mid|immo|2|False,False,False,FIAT CODE
+iaw18fd|mid|immo|3|False,False,False,FIAT CODE
+iaw18fd|mid|immo|4|False,False,False,FIAT CODE
+iaw18fd|mid|immo|5|False,False,False,FIAT CODE
+iaw18fd|mid|immo|6|False,False,False,FIAT CODE
+iaw18fd|mid|immo|7|True,False,True,FIAT CODE
+iaw18fd|0x55|data|0|686.655985351339
+iaw18fd|0x55|data|1|43.69
+iaw18fd|0x55|data|2|42.5
+iaw18fd|0x55|data|3|452.06
+iaw18fd|0x55|data|4|16.61
+iaw18fd|0x55|data|5|16.61
+iaw18fd|0x55|data|6|35.938
+iaw18fd|0x55|data|7|5.4604
+iaw18fd|0x55|data|8|0.9166
+iaw18fd|0x55|data|9|461.958
+iaw18fd|0x55|data|10|85
+iaw18fd|0x55|data|11|85
+iaw18fd|0x55|data|12|85
+iaw18fd|0x55|data|13|-43
+iaw18fd|0x55|data|14|21845
+iaw18fd|0x55|data|15|21845
+iaw18fd|0x55|data|16|680
+iaw18fd|0x55|data|17|-344
+iaw18fd|0x55|data|18|1.36
+iaw18fd|0x55|data|19|1.36
+iaw18fd|0x55|data|20|1.36
+iaw18fd|0x55|data|21|1.36
+iaw18fd|0x55|data|22|1.36
+iaw18fd|0x55|data|23|1.36
+iaw18fd|0x55|data|24|0.34
+iaw18fd|0x55|data|25|0
+iaw18fd|0x55|data|26|1
+iaw18fd|0x55|data|27|0
+iaw18fd|0x55|data|28|1
+iaw18fd|0x55|data|29|0
+iaw18fd|0x55|data|30|1
+iaw18fd|0x55|data|31|1
+iaw18fd|0x55|data|32|0
+iaw18fd|0x55|data|33|1
+iaw18fd|0x55|engine|0|True,True,True,Short to +Vcc
+iaw18fd|0x55|engine|1|False,False,False,
+iaw18fd|0x55|engine|2|True,True,True,
+iaw18fd|0x55|engine|3|False,False,False,Short to +Vcc
+iaw18fd|0x55|engine|4|True,True,True,Short to GND
+iaw18fd|0x55|engine|5|False,False,False,
+iaw18fd|0x55|engine|6|True,True,True,Too Much Air
+iaw18fd|0x55|engine|7|False,False,False,
+iaw18fd|0x55|engine|8|True,True,True,Short to GND/Open
+iaw18fd|0x55|engine|9|False,False,False,Short to +Vcc
+iaw18fd|0x55|engine|10|True,True,True,Short to GND/Open
+iaw18fd|0x55|engine|11|False,False,False,Short to +Vcc
+iaw18fd|0x55|engine|12|True,True,True,Short to GND/Open
+iaw18fd|0x55|engine|13|False,False,False,Short to +Vcc
+iaw18fd|0x55|engine|14|True,True,True,Short to GND/Open
+iaw18fd|0x55|engine|15|False,False,False,Short to +Vcc
+iaw18fd|0x55|engine|16|True,True,True,
+iaw18fd|0x55|engine|17|False,False,False,
+iaw18fd|0x55|engine|18|True,True,True,
+iaw18fd|0x55|engine|19|False,False,False,Short to +Vcc
+iaw18fd|0x55|engine|20|True,True,True,Max LEAN
+iaw18fd|0x55|engine|21|False,False,False,
+iaw18fd|0x55|engine|22|True,True,True,
+iaw18fd|0x55|engine|23|False,False,False,Short to GND/Open
+iaw18fd|0x55|engine|24|True,True,True,Max LEAN
+iaw18fd|0x55|engine|25|False,False,False,
+iaw18fd|0x55|engine|26|True,True,True,
+iaw18fd|0x55|engine|27|False,False,False,
+iaw18fd|0x55|engine|28|True,True,True,
+iaw18fd|0x55|engine|29|False,False,False,
+iaw18fd|0x55|engine|30|True,True,True,
+iaw18fd|0x55|engine|31|False,False,False,
+iaw18fd|0x55|immo|0|True,False,True,FIAT CODE
+iaw18fd|0x55|immo|1|False,False,False,FIAT CODE
+iaw18fd|0x55|immo|2|True,False,True,FIAT CODE
+iaw18fd|0x55|immo|3|False,False,False,FIAT CODE
+iaw18fd|0x55|immo|4|True,False,True,FIAT CODE
+iaw18fd|0x55|immo|5|False,False,False,FIAT CODE
+iaw18fd|0x55|immo|6|True,False,True,FIAT CODE
+iaw18fd|0x55|immo|7|False,False,False,FIAT CODE
+iaw18fd|0xAA|data|0|343.327992675669
+iaw18fd|0xAA|data|1|87.38
+iaw18fd|0xAA|data|2|85
+iaw18fd|0xAA|data|3|781.52
+iaw18fd|0xAA|data|4|73.22
+iaw18fd|0xAA|data|5|73.22
+iaw18fd|0xAA|data|6|71.876
+iaw18fd|0xAA|data|7|10.9208
+iaw18fd|0xAA|data|8|1.0832
+iaw18fd|0xAA|data|9|923.916
+iaw18fd|0xAA|data|10|170
+iaw18fd|0xAA|data|11|-86
+iaw18fd|0xAA|data|12|-86
+iaw18fd|0xAA|data|13|42
+iaw18fd|0xAA|data|14|-21846
+iaw18fd|0xAA|data|15|-21846
+iaw18fd|0xAA|data|16|1360
+iaw18fd|0xAA|data|17|336
+iaw18fd|0xAA|data|18|-1.376
+iaw18fd|0xAA|data|19|-1.376
+iaw18fd|0xAA|data|20|-1.376
+iaw18fd|0xAA|data|21|-1.376
+iaw18fd|0xAA|data|22|-1.376
+iaw18fd|0xAA|data|23|-1.376
+iaw18fd|0xAA|data|24|-0.344
+iaw18fd|0xAA|data|25|1
+iaw18fd|0xAA|data|26|0
+iaw18fd|0xAA|data|27|1
+iaw18fd|0xAA|data|28|0
+iaw18fd|0xAA|data|29|1
+iaw18fd|0xAA|data|30|0
+iaw18fd|0xAA|data|31|0
+iaw18fd|0xAA|data|32|1
+iaw18fd|0xAA|data|33|0
+iaw18fd|0xAA|engine|0|False,False,False,Short to GND
+iaw18fd|0xAA|engine|1|True,True,True,
+iaw18fd|0xAA|engine|2|False,False,False,
+iaw18fd|0xAA|engine|3|True,True,True,Short to GND
+iaw18fd|0xAA|engine|4|False,False,False,Short to +Vcc
+iaw18fd|0xAA|engine|5|True,True,True,
+iaw18fd|0xAA|engine|6|False,False,False,No Air
+iaw18fd|0xAA|engine|7|True,True,True,
+iaw18fd|0xAA|engine|8|False,False,False,Short to +Vcc
+iaw18fd|0xAA|engine|9|True,True,True,Short to GND/Open
+iaw18fd|0xAA|engine|10|False,False,False,Short to +Vcc
+iaw18fd|0xAA|engine|11|True,True,True,Short to GND/Open
+iaw18fd|0xAA|engine|12|False,False,False,Short to +Vcc
+iaw18fd|0xAA|engine|13|True,True,True,Short to GND/Open
+iaw18fd|0xAA|engine|14|False,False,False,Short to +Vcc
+iaw18fd|0xAA|engine|15|True,True,True,Short to GND/Open
+iaw18fd|0xAA|engine|16|False,False,False,
+iaw18fd|0xAA|engine|17|True,True,True,
+iaw18fd|0xAA|engine|18|False,False,False,
+iaw18fd|0xAA|engine|19|True,True,True,Short to GND/Open
+iaw18fd|0xAA|engine|20|False,False,False,Max RICH
+iaw18fd|0xAA|engine|21|True,True,True,
+iaw18fd|0xAA|engine|22|False,False,False,
+iaw18fd|0xAA|engine|23|True,True,True,Short to +Vcc
+iaw18fd|0xAA|engine|24|False,False,False,Max RICH
+iaw18fd|0xAA|engine|25|True,True,True,
+iaw18fd|0xAA|engine|26|False,False,False,
+iaw18fd|0xAA|engine|27|True,True,True,
+iaw18fd|0xAA|engine|28|False,False,False,
+iaw18fd|0xAA|engine|29|True,True,True,
+iaw18fd|0xAA|engine|30|False,False,False,
+iaw18fd|0xAA|engine|31|True,True,True,
+iaw18fd|0xAA|immo|0|False,False,False,FIAT CODE
+iaw18fd|0xAA|immo|1|True,False,True,FIAT CODE
+iaw18fd|0xAA|immo|2|False,False,False,FIAT CODE
+iaw18fd|0xAA|immo|3|True,False,True,FIAT CODE
+iaw18fd|0xAA|immo|4|False,False,False,FIAT CODE
+iaw18fd|0xAA|immo|5|True,False,True,FIAT CODE
+iaw18fd|0xAA|immo|6|False,False,False,FIAT CODE
+iaw18fd|0xAA|immo|7|True,False,True,FIAT CODE
+iaw18fd|full|data|0|0
+iaw18fd|full|data|1|131.07
+iaw18fd|full|data|2|127.5
+iaw18fd|full|data|3|1110.98
+iaw18fd|full|data|4|129.83
+iaw18fd|full|data|5|129.83
+iaw18fd|full|data|6|107.814
+iaw18fd|full|data|7|16.3812
+iaw18fd|full|data|8|1.2498
+iaw18fd|full|data|9|1385.874
+iaw18fd|full|data|10|255
+iaw18fd|full|data|11|-1
+iaw18fd|full|data|12|-1
+iaw18fd|full|data|13|127
+iaw18fd|full|data|14|-1
+iaw18fd|full|data|15|-1
+iaw18fd|full|data|16|2040
+iaw18fd|full|data|17|1016
+iaw18fd|full|data|18|-0.016
+iaw18fd|full|data|19|-0.016
+iaw18fd|full|data|20|-0.016
+iaw18fd|full|data|21|-0.016
+iaw18fd|full|data|22|-0.016
+iaw18fd|full|data|23|-0.016
+iaw18fd|full|data|24|-0.004
+iaw18fd|full|data|25|1
+iaw18fd|full|data|26|1
+iaw18fd|full|data|27|1
+iaw18fd|full|data|28|1
+iaw18fd|full|data|29|1
+iaw18fd|full|data|30|1
+iaw18fd|full|data|31|1
+iaw18fd|full|data|32|1
+iaw18fd|full|data|33|1
+iaw18fd|full|engine|0|True,True,True,Short to GND
+iaw18fd|full|engine|1|True,True,True,
+iaw18fd|full|engine|2|True,True,True,
+iaw18fd|full|engine|3|True,True,True,Short to GND
+iaw18fd|full|engine|4|True,True,True,Short to GND
+iaw18fd|full|engine|5|True,True,True,
+iaw18fd|full|engine|6|True,True,True,No Air
+iaw18fd|full|engine|7|True,True,True,
+iaw18fd|full|engine|8|True,True,True,Short to GND/Open
+iaw18fd|full|engine|9|True,True,True,Short to GND/Open
+iaw18fd|full|engine|10|True,True,True,Short to GND/Open
+iaw18fd|full|engine|11|True,True,True,Short to GND/Open
+iaw18fd|full|engine|12|True,True,True,Short to GND/Open
+iaw18fd|full|engine|13|True,True,True,Short to GND/Open
+iaw18fd|full|engine|14|True,True,True,Short to GND/Open
+iaw18fd|full|engine|15|True,True,True,Short to GND/Open
+iaw18fd|full|engine|16|True,True,True,
+iaw18fd|full|engine|17|True,True,True,
+iaw18fd|full|engine|18|True,True,True,
+iaw18fd|full|engine|19|True,True,True,Short to GND/Open
+iaw18fd|full|engine|20|True,True,True,Max LEAN
+iaw18fd|full|engine|21|True,True,True,
+iaw18fd|full|engine|22|True,True,True,
+iaw18fd|full|engine|23|True,True,True,Short to GND/Open
+iaw18fd|full|engine|24|True,True,True,Max LEAN
+iaw18fd|full|engine|25|True,True,True,
+iaw18fd|full|engine|26|True,True,True,
+iaw18fd|full|engine|27|True,True,True,
+iaw18fd|full|engine|28|True,True,True,
+iaw18fd|full|engine|29|True,True,True,
+iaw18fd|full|engine|30|True,True,True,
+iaw18fd|full|engine|31|True,True,True,
+iaw18fd|full|immo|0|True,False,True,FIAT CODE
+iaw18fd|full|immo|1|True,False,True,FIAT CODE
+iaw18fd|full|immo|2|True,False,True,FIAT CODE
+iaw18fd|full|immo|3|True,False,True,FIAT CODE
+iaw18fd|full|immo|4|True,False,True,FIAT CODE
+iaw18fd|full|immo|5|True,False,True,FIAT CODE
+iaw18fd|full|immo|6|True,False,True,FIAT CODE
+iaw18fd|full|immo|7|True,False,True,FIAT CODE
+iaw18fd|ascending|data|0|58139.5348837209
+iaw18fd|ascending|data|1|1.544
+iaw18fd|ascending|data|2|2.5
+iaw18fd|ascending|data|3|145.856
+iaw18fd|ascending|data|4|-35.338
+iaw18fd|ascending|data|5|-34.672
+iaw18fd|ascending|data|6|3.8052
+iaw18fd|ascending|data|7|0.6424
+iaw18fd|ascending|data|8|0.77156
+iaw18fd|ascending|data|9|603.2628
+iaw18fd|ascending|data|10|12
+iaw18fd|ascending|data|11|13
+iaw18fd|ascending|data|12|14
+iaw18fd|ascending|data|13|-113
+iaw18fd|ascending|data|14|4113
+iaw18fd|ascending|data|15|4627
+iaw18fd|ascending|data|16|176
+iaw18fd|ascending|data|17|-856
+iaw18fd|ascending|data|18|0.544
+iaw18fd|ascending|data|19|0.56
+iaw18fd|ascending|data|20|0.576
+iaw18fd|ascending|data|21|0.592
+iaw18fd|ascending|data|22|0.608
+iaw18fd|ascending|data|23|0.624
+iaw18fd|ascending|data|24|0.16
+iaw18fd|ascending|data|25|1
+iaw18fd|ascending|data|26|1
+iaw18fd|ascending|data|27|0
+iaw18fd|ascending|data|28|1
+iaw18fd|ascending|data|29|1
+iaw18fd|ascending|data|30|0
+iaw18fd|ascending|data|31|1
+iaw18fd|ascending|data|32|1
+iaw18fd|ascending|data|33|0
+iaw18fd|ascending|engine|0|False,True,False,Short to GND
+iaw18fd|ascending|engine|1|False,False,False,
+iaw18fd|ascending|engine|2|False,False,False,
+iaw18fd|ascending|engine|3|False,True,False,Short to GND
+iaw18fd|ascending|engine|4|True,True,False,Short to GND
+iaw18fd|ascending|engine|5|True,True,False,
+iaw18fd|ascending|engine|6|False,False,True,Too Much Air
+iaw18fd|ascending|engine|7|False,False,False,
+iaw18fd|ascending|engine|8|True,False,True,Short to +Vcc
+iaw18fd|ascending|engine|9|False,True,False,Short to +Vcc
+iaw18fd|ascending|engine|10|False,False,False,Short to GND/Open
+iaw18fd|ascending|engine|11|False,True,False,Short to GND/Open
+iaw18fd|ascending|engine|12|True,True,False,Short to GND/Open
+iaw18fd|ascending|engine|13|True,True,False,Short to GND/Open
+iaw18fd|ascending|engine|14|False,False,True,Short to GND/Open
+iaw18fd|ascending|engine|15|False,False,False,Short to +Vcc
+iaw18fd|ascending|engine|16|False,True,False,
+iaw18fd|ascending|engine|17|True,True,True,
+iaw18fd|ascending|engine|18|False,False,False,
+iaw18fd|ascending|engine|19|False,True,False,Short to +Vcc
+iaw18fd|ascending|engine|20|True,True,False,Max RICH
+iaw18fd|ascending|engine|21|True,True,False,
+iaw18fd|ascending|engine|22|False,False,True,
+iaw18fd|ascending|engine|23|False,False,False,Short to GND/Open
+iaw18fd|ascending|engine|24|True,False,True,Max LEAN
+iaw18fd|ascending|engine|25|True,False,True,
+iaw18fd|ascending|engine|26|False,True,False,
+iaw18fd|ascending|engine|27|False,True,False,
+iaw18fd|ascending|engine|28|True,True,False,
+iaw18fd|ascending|engine|29|True,True,False,
+iaw18fd|ascending|engine|30|False,False,True,
+iaw18fd|ascending|engine|31|False,False,False,
+iaw18fd|ascending|immo|0|True,False,False,FIAT CODE
+iaw18fd|ascending|immo|1|False,False,True,FIAT CODE
+iaw18fd|ascending|immo|2|False,False,False,FIAT CODE
+iaw18fd|ascending|immo|3|False,False,False,FIAT CODE
+iaw18fd|ascending|immo|4|True,False,True,FIAT CODE
+iaw18fd|ascending|immo|5|True,False,True,FIAT CODE
+iaw18fd|ascending|immo|6|True,False,True,FIAT CODE
+iaw18fd|ascending|immo|7|False,False,False,FIAT CODE
+iaw18fd|descending|data|0|229.789971965623
+iaw18fd|descending|data|1|129.526
+iaw18fd|descending|data|2|125
+iaw18fd|descending|data|3|1087.724
+iaw18fd|descending|data|4|125.168
+iaw18fd|descending|data|5|124.502
+iaw18fd|descending|data|6|104.0088
+iaw18fd|descending|data|7|15.7388
+iaw18fd|descending|data|8|1.22824
+iaw18fd|descending|data|9|782.6112
+iaw18fd|descending|data|10|243
+iaw18fd|descending|data|11|-14
+iaw18fd|descending|data|12|-15
+iaw18fd|descending|data|13|112
+iaw18fd|descending|data|14|-4114
+iaw18fd|descending|data|15|-4628
+iaw18fd|descending|data|16|1864
+iaw18fd|descending|data|17|848
+iaw18fd|descending|data|18|-0.56
+iaw18fd|descending|data|19|-0.576
+iaw18fd|descending|data|20|-0.592
+iaw18fd|descending|data|21|-0.608
+iaw18fd|descending|data|22|-0.624
+iaw18fd|descending|data|23|-0.64
+iaw18fd|descending|data|24|-0.164
+iaw18fd|descending|data|25|0
+iaw18fd|descending|data|26|0
+iaw18fd|descending|data|27|1
+iaw18fd|descending|data|28|0
+iaw18fd|descending|data|29|0
+iaw18fd|descending|data|30|1
+iaw18fd|descending|data|31|0
+iaw18fd|descending|data|32|0
+iaw18fd|descending|data|33|1
+iaw18fd|descending|engine|0|True,False,True,Short to +Vcc
+iaw18fd|descending|engine|1|True,True,True,
+iaw18fd|descending|engine|2|True,True,True,
+iaw18fd|descending|engine|3|True,False,True,Short to GND
+iaw18fd|descending|engine|4|False,False,True,Short to GND
+iaw18fd|descending|engine|5|False,False,True,
+iaw18fd|descending|engine|6|True,True,False,No Air
+iaw18fd|descending|engine|7|True,True,True,
+iaw18fd|descending|engine|8|False,True,False,Short to +Vcc
+iaw18fd|descending|engine|9|True,False,True,Short to GND/Open
+iaw18fd|descending|engine|10|True,True,True,Short to +Vcc
+iaw18fd|descending|engine|11|True,False,True,Short to GND/Open
+iaw18fd|descending|engine|12|False,False,True,Short to GND/Open
+iaw18fd|descending|engine|13|False,False,True,Short to GND/Open
+iaw18fd|descending|engine|14|True,True,False,Short to GND/Open
+iaw18fd|descending|engine|15|True,True,True,Short to GND/Open
+iaw18fd|descending|engine|16|True,False,True,
+iaw18fd|descending|engine|17|False,False,False,
+iaw18fd|descending|engine|18|True,True,True,
+iaw18fd|descending|engine|19|True,False,True,Short to GND/Open
+iaw18fd|descending|engine|20|False,False,True,Max RICH
+iaw18fd|descending|engine|21|False,False,True,
+iaw18fd|descending|engine|22|True,True,False,
+iaw18fd|descending|engine|23|True,True,True,Short to +Vcc
+iaw18fd|descending|engine|24|False,True,False,Max RICH
+iaw18fd|descending|engine|25|False,True,False,
+iaw18fd|descending|engine|26|True,False,True,
+iaw18fd|descending|engine|27|True,False,True,
+iaw18fd|descending|engine|28|False,False,True,
+iaw18fd|descending|engine|29|False,False,True,
+iaw18fd|descending|engine|30|True,True,False,
+iaw18fd|descending|engine|31|True,True,True,
+iaw18fd|descending|immo|0|False,False,True,FIAT CODE
+iaw18fd|descending|immo|1|True,False,False,FIAT CODE
+iaw18fd|descending|immo|2|True,False,True,FIAT CODE
+iaw18fd|descending|immo|3|True,False,True,FIAT CODE
+iaw18fd|descending|immo|4|False,False,False,FIAT CODE
+iaw18fd|descending|immo|5|False,False,False,FIAT CODE
+iaw18fd|descending|immo|6|False,False,False,FIAT CODE
+iaw18fd|descending|immo|7|True,False,True,FIAT CODE
+iaw18fd|mixed|data|0|5820.72176949942
+iaw18fd|mixed|data|1|12.35
+iaw18fd|mixed|data|2|19
+iaw18fd|mixed|data|3|297.02
+iaw18fd|mixed|data|4|-5.368
+iaw18fd|mixed|data|5|-0.705999999999996
+iaw18fd|mixed|data|6|27.9048
+iaw18fd|mixed|data|7|4.68952
+iaw18fd|mixed|data|8|0.9068
+iaw18fd|mixed|data|9|65.2176
+iaw18fd|mixed|data|10|87
+iaw18fd|mixed|data|11|94
+iaw18fd|mixed|data|12|101
+iaw18fd|mixed|data|13|-20
+iaw18fd|mixed|data|14|29562
+iaw18fd|mixed|data|15|-32376
+iaw18fd|mixed|data|16|1256
+iaw18fd|mixed|data|17|176
+iaw18fd|mixed|data|18|-0.24
+iaw18fd|mixed|data|19|-0.128
+iaw18fd|mixed|data|20|-0.016
+iaw18fd|mixed|data|21|0.096
+iaw18fd|mixed|data|22|0.208
+iaw18fd|mixed|data|23|0.32
+iaw18fd|mixed|data|24|0.108
+iaw18fd|mixed|data|25|0
+iaw18fd|mixed|data|26|1
+iaw18fd|mixed|data|27|1
+iaw18fd|mixed|data|28|1
+iaw18fd|mixed|data|29|1
+iaw18fd|mixed|data|30|1
+iaw18fd|mixed|data|31|0
+iaw18fd|mixed|data|32|0
+iaw18fd|mixed|data|33|0
+iaw18fd|mixed|engine|0|True,False,True,Short to GND
+iaw18fd|mixed|engine|1|True,True,True,
+iaw18fd|mixed|engine|2|False,False,False,
+iaw18fd|mixed|engine|3|False,False,False,Short to +Vcc
+iaw18fd|mixed|engine|4|True,True,False,Short to GND
+iaw18fd|mixed|engine|5|False,False,False,
+iaw18fd|mixed|engine|6|True,False,True,No Air
+iaw18fd|mixed|engine|7|False,True,True,
+iaw18fd|mixed|engine|8|False,True,False,Short to +Vcc
+iaw18fd|mixed|engine|9|True,False,True,Short to GND/Open
+iaw18fd|mixed|engine|10|False,False,False,Short to GND/Open
+iaw18fd|mixed|engine|11|True,True,True,Short to GND/Open
+iaw18fd|mixed|engine|12|True,True,False,Short to +Vcc
+iaw18fd|mixed|engine|13|False,False,False,Short to +Vcc
+iaw18fd|mixed|engine|14|True,False,True,Short to GND/Open
+iaw18fd|mixed|engine|15|False,True,True,Short to GND/Open
+iaw18fd|mixed|engine|16|True,False,True,
+iaw18fd|mixed|engine|17|False,False,False,
+iaw18fd|mixed|engine|18|False,False,False,
+iaw18fd|mixed|engine|19|False,False,False,Short to GND/Open
+iaw18fd|mixed|engine|20|False,False,True,Max LEAN
+iaw18fd|mixed|engine|21|True,True,False,
+iaw18fd|mixed|engine|22|True,False,True,
+iaw18fd|mixed|engine|23|False,True,True,Short to GND/Open
+iaw18fd|mixed|engine|24|False,True,False,Max LEAN
+iaw18fd|mixed|engine|25|False,True,False,
+iaw18fd|mixed|engine|26|False,True,False,
+iaw18fd|mixed|engine|27|True,False,True,
+iaw18fd|mixed|engine|28|False,False,True,
+iaw18fd|mixed|engine|29|True,True,False,
+iaw18fd|mixed|engine|30|True,False,True,
+iaw18fd|mixed|engine|31|False,True,True,
+iaw18fd|mixed|immo|0|False,False,True,FIAT CODE
+iaw18fd|mixed|immo|1|True,False,False,FIAT CODE
+iaw18fd|mixed|immo|2|False,False,False,FIAT CODE
+iaw18fd|mixed|immo|3|True,False,False,FIAT CODE
+iaw18fd|mixed|immo|4|True,False,False,FIAT CODE
+iaw18fd|mixed|immo|5|False,False,True,FIAT CODE
+iaw18fd|mixed|immo|6|False,False,False,FIAT CODE
+iaw18fd|mixed|immo|7|False,False,False,FIAT CODE
+iaw8f_68|zero|data|0|0
+iaw8f_68|zero|data|1|0
+iaw8f_68|zero|data|2|0
+iaw8f_68|zero|data|3|0
+iaw8f_68|zero|data|4|-40
+iaw8f_68|zero|data|5|-40
+iaw8f_68|zero|data|6|-2.9638
+iaw8f_68|zero|data|7|0
+iaw8f_68|zero|data|8|0.66
+iaw8f_68|zero|data|9|0
+iaw8f_68|zero|data|10|0
+iaw8f_68|zero|data|11|0
+iaw8f_68|zero|data|12|-128
+iaw8f_68|zero|data|13|0
+iaw8f_68|zero|data|14|0
+iaw8f_68|zero|data|15|0
+iaw8f_68|zero|data|16|-1024
+iaw8f_68|zero|data|17|-128
+iaw8f_68|zero|data|18|-128
+iaw8f_68|zero|data|19|0
+iaw8f_68|zero|data|20|0
+iaw8f_68|zero|data|21|0
+iaw8f_68|zero|data|22|0
+iaw8f_68|zero|data|23|0
+iaw8f_68|zero|data|24|0
+iaw8f_68|zero|data|25|0
+iaw8f_68|zero|data|26|0
+iaw8f_68|zero|data|27|0
+iaw8f_68|zero|data|28|0
+iaw8f_68|zero|engine|0|False,False,False,
+iaw8f_68|zero|engine|1|False,False,False,
+iaw8f_68|zero|engine|2|False,False,False,
+iaw8f_68|zero|engine|3|False,False,False,
+iaw8f_68|zero|engine|4|False,False,False,
+iaw8f_68|zero|engine|5|False,False,False,
+iaw8f_68|zero|engine|6|False,False,False,
+iaw8f_68|zero|engine|7|False,False,False,
+iaw8f_68|zero|engine|8|False,False,False,
+iaw8f_68|zero|engine|9|False,False,False,
+iaw8f_68|zero|engine|10|False,False,False,
+iaw8f_68|zero|engine|11|False,False,False,
+iaw8f_68|zero|engine|12|False,False,False,
+iaw8f_68|zero|engine|13|False,False,False,
+iaw8f_68|zero|engine|14|False,False,False,
+iaw8f_68|zero|engine|15|False,False,False,
+iaw8f_68|zero|engine|16|False,False,False,
+iaw8f_68|zero|engine|17|False,False,False,
+iaw8f_68|zero|engine|18|False,False,False,
+iaw8f_68|zero|engine|19|False,False,False,
+iaw8f_68|zero|engine|20|False,False,False,
+iaw8f_68|zero|engine|21|False,False,False,
+iaw8f_68|zero|engine|22|False,False,False,
+iaw8f_68|zero|engine|23|False,False,False,
+iaw8f_68|one|data|0|58365.7587548638
+iaw8f_68|one|data|1|0.514
+iaw8f_68|one|data|2|0.5
+iaw8f_68|one|data|3|4
+iaw8f_68|one|data|4|-39
+iaw8f_68|one|data|5|-39
+iaw8f_68|one|data|6|-2.5404
+iaw8f_68|one|data|7|0.0625
+iaw8f_68|one|data|8|0.662656
+iaw8f_68|one|data|9|1
+iaw8f_68|one|data|10|1
+iaw8f_68|one|data|11|1
+iaw8f_68|one|data|12|-127
+iaw8f_68|one|data|13|257
+iaw8f_68|one|data|14|257
+iaw8f_68|one|data|15|8
+iaw8f_68|one|data|16|-1016
+iaw8f_68|one|data|17|-127
+iaw8f_68|one|data|18|-127
+iaw8f_68|one|data|19|257
+iaw8f_68|one|data|20|257
+iaw8f_68|one|data|21|257
+iaw8f_68|one|data|22|257
+iaw8f_68|one|data|23|0
+iaw8f_68|one|data|24|0
+iaw8f_68|one|data|25|0
+iaw8f_68|one|data|26|0
+iaw8f_68|one|data|27|0
+iaw8f_68|one|data|28|0
+iaw8f_68|one|engine|0|True,False,True,
+iaw8f_68|one|engine|1|False,False,False,
+iaw8f_68|one|engine|2|False,False,False,
+iaw8f_68|one|engine|3|False,False,False,
+iaw8f_68|one|engine|4|False,False,False,
+iaw8f_68|one|engine|5|False,False,False,
+iaw8f_68|one|engine|6|False,False,False,
+iaw8f_68|one|engine|7|False,False,False,
+iaw8f_68|one|engine|8|True,False,True,
+iaw8f_68|one|engine|9|False,False,False,
+iaw8f_68|one|engine|10|False,False,False,
+iaw8f_68|one|engine|11|False,False,False,
+iaw8f_68|one|engine|12|False,False,False,
+iaw8f_68|one|engine|13|False,False,False,
+iaw8f_68|one|engine|14|False,False,False,
+iaw8f_68|one|engine|15|False,False,False,
+iaw8f_68|one|engine|16|True,False,True,
+iaw8f_68|one|engine|17|False,False,False,
+iaw8f_68|one|engine|18|False,False,False,
+iaw8f_68|one|engine|19|False,False,False,
+iaw8f_68|one|engine|20|False,False,False,
+iaw8f_68|one|engine|21|False,False,False,
+iaw8f_68|one|engine|22|False,False,False,
+iaw8f_68|one|engine|23|False,False,False,
+iaw8f_68|mid|data|0|455.982490272374
+iaw8f_68|mid|data|1|65.792
+iaw8f_68|mid|data|2|64
+iaw8f_68|mid|data|3|512
+iaw8f_68|mid|data|4|88
+iaw8f_68|mid|data|5|88
+iaw8f_68|mid|data|6|51.2314
+iaw8f_68|mid|data|7|8
+iaw8f_68|mid|data|8|0.999968
+iaw8f_68|mid|data|9|128
+iaw8f_68|mid|data|10|-128
+iaw8f_68|mid|data|11|-128
+iaw8f_68|mid|data|12|0
+iaw8f_68|mid|data|13|-32640
+iaw8f_68|mid|data|14|-32640
+iaw8f_68|mid|data|15|1024
+iaw8f_68|mid|data|16|0
+iaw8f_68|mid|data|17|0
+iaw8f_68|mid|data|18|0
+iaw8f_68|mid|data|19|-32640
+iaw8f_68|mid|data|20|-32640
+iaw8f_68|mid|data|21|-32640
+iaw8f_68|mid|data|22|-32640
+iaw8f_68|mid|data|23|0
+iaw8f_68|mid|data|24|0
+iaw8f_68|mid|data|25|0
+iaw8f_68|mid|data|26|0
+iaw8f_68|mid|data|27|0
+iaw8f_68|mid|data|28|0
+iaw8f_68|mid|engine|0|False,False,False,
+iaw8f_68|mid|engine|1|False,False,False,
+iaw8f_68|mid|engine|2|False,False,False,
+iaw8f_68|mid|engine|3|False,False,False,
+iaw8f_68|mid|engine|4|False,False,False,
+iaw8f_68|mid|engine|5|False,False,False,
+iaw8f_68|mid|engine|6|False,False,False,
+iaw8f_68|mid|engine|7|True,False,True,
+iaw8f_68|mid|engine|8|False,False,False,
+iaw8f_68|mid|engine|9|False,False,False,
+iaw8f_68|mid|engine|10|False,False,False,
+iaw8f_68|mid|engine|11|False,False,False,
+iaw8f_68|mid|engine|12|False,False,False,
+iaw8f_68|mid|engine|13|False,False,False,
+iaw8f_68|mid|engine|14|False,False,False,
+iaw8f_68|mid|engine|15|True,False,True,
+iaw8f_68|mid|engine|16|False,False,False,
+iaw8f_68|mid|engine|17|False,False,False,
+iaw8f_68|mid|engine|18|False,False,False,
+iaw8f_68|mid|engine|19|False,False,False,
+iaw8f_68|mid|engine|20|False,False,False,
+iaw8f_68|mid|engine|21|False,False,False,
+iaw8f_68|mid|engine|22|False,False,False,
+iaw8f_68|mid|engine|23|True,False,True,
+iaw8f_68|0x55|data|0|686.655985351339
+iaw8f_68|0x55|data|1|43.69
+iaw8f_68|0x55|data|2|42.5
+iaw8f_68|0x55|data|3|340
+iaw8f_68|0x55|data|4|45
+iaw8f_68|0x55|data|5|45
+iaw8f_68|0x55|data|6|33.0252
+iaw8f_68|0x55|data|7|5.3125
+iaw8f_68|0x55|data|8|0.88576
+iaw8f_68|0x55|data|9|85
+iaw8f_68|0x55|data|10|85
+iaw8f_68|0x55|data|11|85
+iaw8f_68|0x55|data|12|-43
+iaw8f_68|0x55|data|13|21845
+iaw8f_68|0x55|data|14|21845
+iaw8f_68|0x55|data|15|680
+iaw8f_68|0x55|data|16|-344
+iaw8f_68|0x55|data|17|-43
+iaw8f_68|0x55|data|18|-43
+iaw8f_68|0x55|data|19|21845
+iaw8f_68|0x55|data|20|21845
+iaw8f_68|0x55|data|21|21845
+iaw8f_68|0x55|data|22|21845
+iaw8f_68|0x55|data|23|0
+iaw8f_68|0x55|data|24|1
+iaw8f_68|0x55|data|25|0
+iaw8f_68|0x55|data|26|1
+iaw8f_68|0x55|data|27|0
+iaw8f_68|0x55|data|28|1
+iaw8f_68|0x55|engine|0|True,False,True,
+iaw8f_68|0x55|engine|1|False,False,False,
+iaw8f_68|0x55|engine|2|True,False,True,
+iaw8f_68|0x55|engine|3|False,False,False,
+iaw8f_68|0x55|engine|4|True,False,True,
+iaw8f_68|0x55|engine|5|False,False,False,
+iaw8f_68|0x55|engine|6|True,False,True,
+iaw8f_68|0x55|engine|7|False,False,False,
+iaw8f_68|0x55|engine|8|True,False,True,
+iaw8f_68|0x55|engine|9|False,False,False,
+iaw8f_68|0x55|engine|10|True,False,True,
+iaw8f_68|0x55|engine|11|False,False,False,
+iaw8f_68|0x55|engine|12|True,False,True,
+iaw8f_68|0x55|engine|13|False,False,False,
+iaw8f_68|0x55|engine|14|True,False,True,
+iaw8f_68|0x55|engine|15|False,False,False,
+iaw8f_68|0x55|engine|16|True,False,True,
+iaw8f_68|0x55|engine|17|False,False,False,
+iaw8f_68|0x55|engine|18|True,False,True,
+iaw8f_68|0x55|engine|19|False,False,False,
+iaw8f_68|0x55|engine|20|True,False,True,
+iaw8f_68|0x55|engine|21|False,False,False,
+iaw8f_68|0x55|engine|22|True,False,True,
+iaw8f_68|0x55|engine|23|False,False,False,
+iaw8f_68|0xAA|data|0|343.327992675669
+iaw8f_68|0xAA|data|1|87.38
+iaw8f_68|0xAA|data|2|85
+iaw8f_68|0xAA|data|3|680
+iaw8f_68|0xAA|data|4|130
+iaw8f_68|0xAA|data|5|130
+iaw8f_68|0xAA|data|6|69.0142
+iaw8f_68|0xAA|data|7|10.625
+iaw8f_68|0xAA|data|8|1.11152
+iaw8f_68|0xAA|data|9|170
+iaw8f_68|0xAA|data|10|-86
+iaw8f_68|0xAA|data|11|-86
+iaw8f_68|0xAA|data|12|42
+iaw8f_68|0xAA|data|13|-21846
+iaw8f_68|0xAA|data|14|-21846
+iaw8f_68|0xAA|data|15|1360
+iaw8f_68|0xAA|data|16|336
+iaw8f_68|0xAA|data|17|42
+iaw8f_68|0xAA|data|18|42
+iaw8f_68|0xAA|data|19|-21846
+iaw8f_68|0xAA|data|20|-21846
+iaw8f_68|0xAA|data|21|-21846
+iaw8f_68|0xAA|data|22|-21846
+iaw8f_68|0xAA|data|23|1
+iaw8f_68|0xAA|data|24|0
+iaw8f_68|0xAA|data|25|1
+iaw8f_68|0xAA|data|26|0
+iaw8f_68|0xAA|data|27|1
+iaw8f_68|0xAA|data|28|0
+iaw8f_68|0xAA|engine|0|False,False,False,
+iaw8f_68|0xAA|engine|1|True,False,True,
+iaw8f_68|0xAA|engine|2|False,False,False,
+iaw8f_68|0xAA|engine|3|True,False,True,
+iaw8f_68|0xAA|engine|4|False,False,False,
+iaw8f_68|0xAA|engine|5|True,False,True,
+iaw8f_68|0xAA|engine|6|False,False,False,
+iaw8f_68|0xAA|engine|7|True,False,True,
+iaw8f_68|0xAA|engine|8|False,False,False,
+iaw8f_68|0xAA|engine|9|True,False,True,
+iaw8f_68|0xAA|engine|10|False,False,False,
+iaw8f_68|0xAA|engine|11|True,False,True,
+iaw8f_68|0xAA|engine|12|False,False,False,
+iaw8f_68|0xAA|engine|13|True,False,True,
+iaw8f_68|0xAA|engine|14|False,False,False,
+iaw8f_68|0xAA|engine|15|True,False,True,
+iaw8f_68|0xAA|engine|16|False,False,False,
+iaw8f_68|0xAA|engine|17|True,False,True,
+iaw8f_68|0xAA|engine|18|False,False,False,
+iaw8f_68|0xAA|engine|19|True,False,True,
+iaw8f_68|0xAA|engine|20|False,False,False,
+iaw8f_68|0xAA|engine|21|True,False,True,
+iaw8f_68|0xAA|engine|22|False,False,False,
+iaw8f_68|0xAA|engine|23|True,False,True,
+iaw8f_68|full|data|0|0
+iaw8f_68|full|data|1|131.07
+iaw8f_68|full|data|2|127.5
+iaw8f_68|full|data|3|1020
+iaw8f_68|full|data|4|215
+iaw8f_68|full|data|5|215
+iaw8f_68|full|data|6|105.0032
+iaw8f_68|full|data|7|15.9375
+iaw8f_68|full|data|8|1.33728
+iaw8f_68|full|data|9|255
+iaw8f_68|full|data|10|-1
+iaw8f_68|full|data|11|-1
+iaw8f_68|full|data|12|127
+iaw8f_68|full|data|13|-1
+iaw8f_68|full|data|14|-1
+iaw8f_68|full|data|15|2040
+iaw8f_68|full|data|16|1016
+iaw8f_68|full|data|17|127
+iaw8f_68|full|data|18|127
+iaw8f_68|full|data|19|-1
+iaw8f_68|full|data|20|-1
+iaw8f_68|full|data|21|-1
+iaw8f_68|full|data|22|-1
+iaw8f_68|full|data|23|1
+iaw8f_68|full|data|24|1
+iaw8f_68|full|data|25|1
+iaw8f_68|full|data|26|1
+iaw8f_68|full|data|27|1
+iaw8f_68|full|data|28|1
+iaw8f_68|full|engine|0|True,False,True,
+iaw8f_68|full|engine|1|True,False,True,
+iaw8f_68|full|engine|2|True,False,True,
+iaw8f_68|full|engine|3|True,False,True,
+iaw8f_68|full|engine|4|True,False,True,
+iaw8f_68|full|engine|5|True,False,True,
+iaw8f_68|full|engine|6|True,False,True,
+iaw8f_68|full|engine|7|True,False,True,
+iaw8f_68|full|engine|8|True,False,True,
+iaw8f_68|full|engine|9|True,False,True,
+iaw8f_68|full|engine|10|True,False,True,
+iaw8f_68|full|engine|11|True,False,True,
+iaw8f_68|full|engine|12|True,False,True,
+iaw8f_68|full|engine|13|True,False,True,
+iaw8f_68|full|engine|14|True,False,True,
+iaw8f_68|full|engine|15|True,False,True,
+iaw8f_68|full|engine|16|True,False,True,
+iaw8f_68|full|engine|17|True,False,True,
+iaw8f_68|full|engine|18|True,False,True,
+iaw8f_68|full|engine|19|True,False,True,
+iaw8f_68|full|engine|20|True,False,True,
+iaw8f_68|full|engine|21|True,False,True,
+iaw8f_68|full|engine|22|True,False,True,
+iaw8f_68|full|engine|23|True,False,True,
+iaw8f_68|ascending|data|0|58139.5348837209
+iaw8f_68|ascending|data|1|1.544
+iaw8f_68|ascending|data|2|2.5
+iaw8f_68|ascending|data|3|24
+iaw8f_68|ascending|data|4|-33
+iaw8f_68|ascending|data|5|-32
+iaw8f_68|ascending|data|6|0.8468
+iaw8f_68|ascending|data|7|0.625
+iaw8f_68|ascending|data|8|0.689216
+iaw8f_68|ascending|data|9|12
+iaw8f_68|ascending|data|10|13
+iaw8f_68|ascending|data|11|14
+iaw8f_68|ascending|data|12|-113
+iaw8f_68|ascending|data|13|8739
+iaw8f_68|ascending|data|14|9253
+iaw8f_68|ascending|data|15|304
+iaw8f_68|ascending|data|16|-712
+iaw8f_68|ascending|data|17|-88
+iaw8f_68|ascending|data|18|-87
+iaw8f_68|ascending|data|19|12851
+iaw8f_68|ascending|data|20|13365
+iaw8f_68|ascending|data|21|13879
+iaw8f_68|ascending|data|22|14393
+iaw8f_68|ascending|data|23|1
+iaw8f_68|ascending|data|24|0
+iaw8f_68|ascending|data|25|0
+iaw8f_68|ascending|data|26|1
+iaw8f_68|ascending|data|27|0
+iaw8f_68|ascending|data|28|0
+iaw8f_68|ascending|engine|0|False,False,False,
+iaw8f_68|ascending|engine|1|False,False,False,
+iaw8f_68|ascending|engine|2|False,False,True,
+iaw8f_68|ascending|engine|3|False,False,False,
+iaw8f_68|ascending|engine|4|True,False,True,
+iaw8f_68|ascending|engine|5|False,False,False,
+iaw8f_68|ascending|engine|6|False,False,False,
+iaw8f_68|ascending|engine|7|False,False,False,
+iaw8f_68|ascending|engine|8|True,False,True,
+iaw8f_68|ascending|engine|9|False,False,False,
+iaw8f_68|ascending|engine|10|False,False,True,
+iaw8f_68|ascending|engine|11|False,False,False,
+iaw8f_68|ascending|engine|12|True,False,True,
+iaw8f_68|ascending|engine|13|False,False,False,
+iaw8f_68|ascending|engine|14|False,False,False,
+iaw8f_68|ascending|engine|15|False,False,False,
+iaw8f_68|ascending|engine|16|False,False,False,
+iaw8f_68|ascending|engine|17|True,False,True,
+iaw8f_68|ascending|engine|18|False,False,True,
+iaw8f_68|ascending|engine|19|False,False,False,
+iaw8f_68|ascending|engine|20|True,False,True,
+iaw8f_68|ascending|engine|21|False,False,False,
+iaw8f_68|ascending|engine|22|False,False,False,
+iaw8f_68|ascending|engine|23|False,False,False,
+iaw8f_68|descending|data|0|229.789971965623
+iaw8f_68|descending|data|1|129.526
+iaw8f_68|descending|data|2|125
+iaw8f_68|descending|data|3|996
+iaw8f_68|descending|data|4|208
+iaw8f_68|descending|data|5|207
+iaw8f_68|descending|data|6|101.1926
+iaw8f_68|descending|data|7|15.3125
+iaw8f_68|descending|data|8|1.308064
+iaw8f_68|descending|data|9|243
+iaw8f_68|descending|data|10|-14
+iaw8f_68|descending|data|11|-15
+iaw8f_68|descending|data|12|112
+iaw8f_68|descending|data|13|-8740
+iaw8f_68|descending|data|14|-9254
+iaw8f_68|descending|data|15|1736
+iaw8f_68|descending|data|16|704
+iaw8f_68|descending|data|17|87
+iaw8f_68|descending|data|18|86
+iaw8f_68|descending|data|19|-12852
+iaw8f_68|descending|data|20|-13366
+iaw8f_68|descending|data|21|-13880
+iaw8f_68|descending|data|22|-14394
+iaw8f_68|descending|data|23|0
+iaw8f_68|descending|data|24|1
+iaw8f_68|descending|data|25|1
+iaw8f_68|descending|data|26|0
+iaw8f_68|descending|data|27|1
+iaw8f_68|descending|data|28|1
+iaw8f_68|descending|engine|0|True,False,True,
+iaw8f_68|descending|engine|1|True,False,True,
+iaw8f_68|descending|engine|2|True,False,False,
+iaw8f_68|descending|engine|3|True,False,True,
+iaw8f_68|descending|engine|4|False,False,False,
+iaw8f_68|descending|engine|5|True,False,True,
+iaw8f_68|descending|engine|6|True,False,True,
+iaw8f_68|descending|engine|7|True,False,True,
+iaw8f_68|descending|engine|8|False,False,False,
+iaw8f_68|descending|engine|9|True,False,True,
+iaw8f_68|descending|engine|10|True,False,False,
+iaw8f_68|descending|engine|11|True,False,True,
+iaw8f_68|descending|engine|12|False,False,False,
+iaw8f_68|descending|engine|13|True,False,True,
+iaw8f_68|descending|engine|14|True,False,True,
+iaw8f_68|descending|engine|15|True,False,True,
+iaw8f_68|descending|engine|16|True,False,True,
+iaw8f_68|descending|engine|17|False,False,False,
+iaw8f_68|descending|engine|18|True,False,False,
+iaw8f_68|descending|engine|19|True,False,True,
+iaw8f_68|descending|engine|20|False,False,False,
+iaw8f_68|descending|engine|21|True,False,True,
+iaw8f_68|descending|engine|22|True,False,True,
+iaw8f_68|descending|engine|23|True,False,True,
+iaw8f_68|mixed|data|0|5820.72176949942
+iaw8f_68|mixed|data|1|12.35
+iaw8f_68|mixed|data|2|19
+iaw8f_68|mixed|data|3|180
+iaw8f_68|mixed|data|4|12
+iaw8f_68|mixed|data|5|19
+iaw8f_68|mixed|data|6|24.9806
+iaw8f_68|mixed|data|7|4.5625
+iaw8f_68|mixed|data|8|0.87248
+iaw8f_68|mixed|data|9|87
+iaw8f_68|mixed|data|10|94
+iaw8f_68|mixed|data|11|101
+iaw8f_68|mixed|data|12|-20
+iaw8f_68|mixed|data|13|-3592
+iaw8f_68|mixed|data|14|-250
+iaw8f_68|mixed|data|15|104
+iaw8f_68|mixed|data|16|-864
+iaw8f_68|mixed|data|17|-101
+iaw8f_68|mixed|data|18|-94
+iaw8f_68|mixed|data|19|24936
+iaw8f_68|mixed|data|20|28534
+iaw8f_68|mixed|data|21|32132
+iaw8f_68|mixed|data|22|-29806
+iaw8f_68|mixed|data|23|0
+iaw8f_68|mixed|data|24|0
+iaw8f_68|mixed|data|25|1
+iaw8f_68|mixed|data|26|0
+iaw8f_68|mixed|data|27|0
+iaw8f_68|mixed|data|28|0
+iaw8f_68|mixed|engine|0|True,False,True,
+iaw8f_68|mixed|engine|1|True,False,True,
+iaw8f_68|mixed|engine|2|False,False,True,
+iaw8f_68|mixed|engine|3|False,False,True,
+iaw8f_68|mixed|engine|4|True,False,False,
+iaw8f_68|mixed|engine|5|True,False,False,
+iaw8f_68|mixed|engine|6|True,False,False,
+iaw8f_68|mixed|engine|7|False,False,True,
+iaw8f_68|mixed|engine|8|False,False,False,
+iaw8f_68|mixed|engine|9|True,False,True,
+iaw8f_68|mixed|engine|10|False,False,True,
+iaw8f_68|mixed|engine|11|True,False,False,
+iaw8f_68|mixed|engine|12|True,False,True,
+iaw8f_68|mixed|engine|13|True,False,False,
+iaw8f_68|mixed|engine|14|True,False,False,
+iaw8f_68|mixed|engine|15|False,False,True,
+iaw8f_68|mixed|engine|16|True,False,True,
+iaw8f_68|mixed|engine|17|False,False,False,
+iaw8f_68|mixed|engine|18|False,False,True,
+iaw8f_68|mixed|engine|19|False,False,True,
+iaw8f_68|mixed|engine|20|False,False,True,
+iaw8f_68|mixed|engine|21|False,False,False,
+iaw8f_68|mixed|engine|22|False,False,False,
+iaw8f_68|mixed|engine|23|True,False,True,
+iaw04k|zero|data|0|0
+iaw04k|zero|data|1|0
+iaw04k|zero|data|2|0
+iaw04k|zero|data|3|121.32
+iaw04k|zero|data|4|60.83
+iaw04k|zero|data|5|125
+iaw04k|zero|data|6|125
+iaw04k|zero|data|7|-1.41
+iaw04k|zero|data|8|0
+iaw04k|zero|data|9|-128
+iaw04k|zero|data|10|-128
+iaw04k|zero|data|11|720
+iaw04k|zero|data|12|0
+iaw04k|zero|data|13|0
+iaw04k|zero|data|14|0
+iaw04k|zero|data|15|0
+iaw04k|zero|data|16|0
+iaw04k|zero|data|17|0
+iaw04k|zero|data|18|0
+iaw04k|zero|data|19|0
+iaw04k|zero|data|20|0
+iaw04k|zero|data|21|0
+iaw04k|zero|data|22|0
+iaw04k|zero|data|23|0
+iaw04k|zero|data|24|0
+iaw04k|zero|data|25|0
+iaw04k|zero|engine|0|False,False,False,
+iaw04k|zero|engine|1|False,False,False,Max LEAN
+iaw04k|zero|engine|2|False,False,False,Short to +Vcc
+iaw04k|zero|engine|3|False,False,False,
+iaw04k|zero|engine|4|False,False,False,Short to +Vcc
+iaw04k|zero|engine|5|False,False,False,
+iaw04k|zero|engine|6|False,False,False,Short to +Vcc
+iaw04k|zero|engine|7|False,False,False,Short to +Vcc
+iaw04k|zero|engine|8|False,False,False,Short to +Vcc
+iaw04k|zero|engine|9|False,False,False,
+iaw04k|zero|engine|10|False,False,False,
+iaw04k|zero|engine|11|False,False,False,
+iaw04k|zero|engine|12|False,False,False,
+iaw04k|zero|engine|13|False,False,False,
+iaw04k|zero|engine|14|False,False,False,
+iaw04k|zero|engine|15|False,False,False,Short to +Vcc
+iaw04k|one|data|0|116731.517509728
+iaw04k|one|data|1|1.028
+iaw04k|one|data|2|0.25
+iaw04k|one|data|3|125.154
+iaw04k|one|data|4|69.3839
+iaw04k|one|data|5|125
+iaw04k|one|data|6|125
+iaw04k|one|data|7|-1.2252
+iaw04k|one|data|8|0.0628
+iaw04k|one|data|9|-127
+iaw04k|one|data|10|-127
+iaw04k|one|data|11|697.5
+iaw04k|one|data|12|0
+iaw04k|one|data|13|0.032125
+iaw04k|one|data|14|0
+iaw04k|one|data|15|0
+iaw04k|one|data|16|0
+iaw04k|one|data|17|0
+iaw04k|one|data|18|0
+iaw04k|one|data|19|0
+iaw04k|one|data|20|0
+iaw04k|one|data|21|0
+iaw04k|one|data|22|0
+iaw04k|one|data|23|0
+iaw04k|one|data|24|0
+iaw04k|one|data|25|0
+iaw04k|one|engine|0|True,False,True,
+iaw04k|one|engine|1|False,False,False,Max RICH
+iaw04k|one|engine|2|False,False,False,Short to +Vcc
+iaw04k|one|engine|3|False,False,False,
+iaw04k|one|engine|4|False,False,False,Short to +Vcc
+iaw04k|one|engine|5|False,False,False,
+iaw04k|one|engine|6|False,False,False,Short to +Vcc
+iaw04k|one|engine|7|False,False,False,Short to +Vcc
+iaw04k|one|engine|8|True,False,True,Short to +Vcc
+iaw04k|one|engine|9|False,False,False,
+iaw04k|one|engine|10|False,False,False,
+iaw04k|one|engine|11|False,False,False,
+iaw04k|one|engine|12|False,False,False,
+iaw04k|one|engine|13|False,False,False,
+iaw04k|one|engine|14|False,False,False,
+iaw04k|one|engine|15|False,False,False,Short to +Vcc
+iaw04k|mid|data|0|911.964980544747
+iaw04k|mid|data|1|131.584
+iaw04k|mid|data|2|32
+iaw04k|mid|data|3|612.072
+iaw04k|mid|data|4|1155.7292
+iaw04k|mid|data|5|22
+iaw04k|mid|data|6|22
+iaw04k|mid|data|7|22.2444
+iaw04k|mid|data|8|8.0384
+iaw04k|mid|data|9|0
+iaw04k|mid|data|10|0
+iaw04k|mid|data|11|-2160
+iaw04k|mid|data|12|50
+iaw04k|mid|data|13|4.112
+iaw04k|mid|data|14|0
+iaw04k|mid|data|15|0
+iaw04k|mid|data|16|0
+iaw04k|mid|data|17|0
+iaw04k|mid|data|18|0
+iaw04k|mid|data|19|0
+iaw04k|mid|data|20|0
+iaw04k|mid|data|21|0
+iaw04k|mid|data|22|0
+iaw04k|mid|data|23|0
+iaw04k|mid|data|24|0
+iaw04k|mid|data|25|1
+iaw04k|mid|engine|0|False,False,False,
+iaw04k|mid|engine|1|False,False,False,Max LEAN
+iaw04k|mid|engine|2|False,False,False,Short to +Vcc
+iaw04k|mid|engine|3|False,False,False,
+iaw04k|mid|engine|4|False,False,False,Short to +Vcc
+iaw04k|mid|engine|5|False,False,False,
+iaw04k|mid|engine|6|False,False,False,Open Circuit
+iaw04k|mid|engine|7|True,False,True,Short to +Vcc
+iaw04k|mid|engine|8|False,False,False,Short to +Vcc
+iaw04k|mid|engine|9|False,False,False,
+iaw04k|mid|engine|10|False,False,False,
+iaw04k|mid|engine|11|False,False,False,
+iaw04k|mid|engine|12|False,False,False,
+iaw04k|mid|engine|13|False,False,False,
+iaw04k|mid|engine|14|False,False,False,
+iaw04k|mid|engine|15|True,False,True,Short to +Vcc
+iaw04k|0x55|data|0|1373.31197070268
+iaw04k|0x55|data|1|87.38
+iaw04k|0x55|data|2|21.25
+iaw04k|0x55|data|3|447.21
+iaw04k|0x55|data|4|787.9115
+iaw04k|0x55|data|5|44.5
+iaw04k|0x55|data|6|44.5
+iaw04k|0x55|data|7|14.298
+iaw04k|0x55|data|8|5.338
+iaw04k|0x55|data|9|-43
+iaw04k|0x55|data|10|-43
+iaw04k|0x55|data|11|-1192.5
+iaw04k|0x55|data|12|33
+iaw04k|0x55|data|13|2.730625
+iaw04k|0x55|data|14|1
+iaw04k|0x55|data|15|1
+iaw04k|0x55|data|16|1
+iaw04k|0x55|data|17|0
+iaw04k|0x55|data|18|0
+iaw04k|0x55|data|19|0
+iaw04k|0x55|data|20|1
+iaw04k|0x55|data|21|0
+iaw04k|0x55|data|22|1
+iaw04k|0x55|data|23|0
+iaw04k|0x55|data|24|1
+iaw04k|0x55|data|25|0
+iaw04k|0x55|engine|0|True,False,True,
+iaw04k|0x55|engine|1|False,False,False,Max RICH
+iaw04k|0x55|engine|2|True,False,True,Short to +Vcc
+iaw04k|0x55|engine|3|False,False,False,
+iaw04k|0x55|engine|4|True,False,True,Open Circuit
+iaw04k|0x55|engine|5|False,False,False,
+iaw04k|0x55|engine|6|True,False,True,Short to +Vcc
+iaw04k|0x55|engine|7|False,False,False,Short to +Vcc
+iaw04k|0x55|engine|8|True,False,True,Open Circuit
+iaw04k|0x55|engine|9|False,False,False,
+iaw04k|0x55|engine|10|True,False,True,
+iaw04k|0x55|engine|11|False,False,False,
+iaw04k|0x55|engine|12|True,False,True,
+iaw04k|0x55|engine|13|False,False,False,
+iaw04k|0x55|engine|14|True,False,True,
+iaw04k|0x55|engine|15|False,False,False,Short to +Vcc
+iaw04k|0xAA|data|0|686.655985351339
+iaw04k|0xAA|data|1|174.76
+iaw04k|0xAA|data|2|42.5
+iaw04k|0xAA|data|3|773.1
+iaw04k|0xAA|data|4|1514.993
+iaw04k|0xAA|data|5|1.2
+iaw04k|0xAA|data|6|1.2
+iaw04k|0xAA|data|7|30.006
+iaw04k|0xAA|data|8|10.676
+iaw04k|0xAA|data|9|42
+iaw04k|0xAA|data|10|42
+iaw04k|0xAA|data|11|-3105
+iaw04k|0xAA|data|12|66
+iaw04k|0xAA|data|13|5.46125
+iaw04k|0xAA|data|14|0
+iaw04k|0xAA|data|15|0
+iaw04k|0xAA|data|16|0
+iaw04k|0xAA|data|17|1
+iaw04k|0xAA|data|18|1
+iaw04k|0xAA|data|19|1
+iaw04k|0xAA|data|20|0
+iaw04k|0xAA|data|21|1
+iaw04k|0xAA|data|22|0
+iaw04k|0xAA|data|23|1
+iaw04k|0xAA|data|24|0
+iaw04k|0xAA|data|25|1
+iaw04k|0xAA|engine|0|False,False,False,
+iaw04k|0xAA|engine|1|True,False,True,Max LEAN
+iaw04k|0xAA|engine|2|False,False,False,Open Circuit
+iaw04k|0xAA|engine|3|True,False,True,
+iaw04k|0xAA|engine|4|False,False,False,Short to +Vcc
+iaw04k|0xAA|engine|5|True,False,True,
+iaw04k|0xAA|engine|6|False,False,False,Open Circuit
+iaw04k|0xAA|engine|7|True,False,True,Open Circuit
+iaw04k|0xAA|engine|8|False,False,False,Short to +Vcc
+iaw04k|0xAA|engine|9|True,False,True,
+iaw04k|0xAA|engine|10|False,False,False,
+iaw04k|0xAA|engine|11|True,False,True,
+iaw04k|0xAA|engine|12|False,False,False,
+iaw04k|0xAA|engine|13|True,False,True,
+iaw04k|0xAA|engine|14|False,False,False,
+iaw04k|0xAA|engine|15|True,False,True,Open Circuit
+iaw04k|full|data|0|0
+iaw04k|full|data|1|262.14
+iaw04k|full|data|2|63.75
+iaw04k|full|data|3|1098.99
+iaw04k|full|data|4|2242.0745
+iaw04k|full|data|5|-55
+iaw04k|full|data|6|-55
+iaw04k|full|data|7|89.979
+iaw04k|full|data|8|16.014
+iaw04k|full|data|9|127
+iaw04k|full|data|10|127
+iaw04k|full|data|11|-5017.5
+iaw04k|full|data|12|100
+iaw04k|full|data|13|8.191875
+iaw04k|full|data|14|1
+iaw04k|full|data|15|1
+iaw04k|full|data|16|1
+iaw04k|full|data|17|1
+iaw04k|full|data|18|1
+iaw04k|full|data|19|1
+iaw04k|full|data|20|1
+iaw04k|full|data|21|1
+iaw04k|full|data|22|1
+iaw04k|full|data|23|1
+iaw04k|full|data|24|1
+iaw04k|full|data|25|1
+iaw04k|full|engine|0|True,False,True,
+iaw04k|full|engine|1|True,False,True,Max RICH
+iaw04k|full|engine|2|True,False,True,Open Circuit
+iaw04k|full|engine|3|True,False,True,
+iaw04k|full|engine|4|True,False,True,Open Circuit
+iaw04k|full|engine|5|True,False,True,
+iaw04k|full|engine|6|True,False,True,Open Circuit
+iaw04k|full|engine|7|True,False,True,Open Circuit
+iaw04k|full|engine|8|True,False,True,Open Circuit
+iaw04k|full|engine|9|True,False,True,
+iaw04k|full|engine|10|True,False,True,
+iaw04k|full|engine|11|True,False,True,
+iaw04k|full|engine|12|True,False,True,
+iaw04k|full|engine|13|True,False,True,
+iaw04k|full|engine|14|True,False,True,
+iaw04k|full|engine|15|True,False,True,Open Circuit
+iaw04k|ascending|data|0|116279.069767442
+iaw04k|ascending|data|1|3.088
+iaw04k|ascending|data|2|1.25
+iaw04k|ascending|data|3|144.324
+iaw04k|ascending|data|4|112.1534
+iaw04k|ascending|data|5|125
+iaw04k|ascending|data|6|125
+iaw04k|ascending|data|7|0.2532
+iaw04k|ascending|data|8|0.628
+iaw04k|ascending|data|9|-117
+iaw04k|ascending|data|10|-103
+iaw04k|ascending|data|11|450
+iaw04k|ascending|data|12|5
+iaw04k|ascending|data|13|0.578375
+iaw04k|ascending|data|14|0
+iaw04k|ascending|data|15|0
+iaw04k|ascending|data|16|0
+iaw04k|ascending|data|17|0
+iaw04k|ascending|data|18|0
+iaw04k|ascending|data|19|0
+iaw04k|ascending|data|20|1
+iaw04k|ascending|data|21|0
+iaw04k|ascending|data|22|1
+iaw04k|ascending|data|23|0
+iaw04k|ascending|data|24|0
+iaw04k|ascending|data|25|0
+iaw04k|ascending|engine|0|True,False,True,
+iaw04k|ascending|engine|1|True,False,False,Max RICH
+iaw04k|ascending|engine|2|True,False,True,Short to +Vcc
+iaw04k|ascending|engine|3|True,False,True,
+iaw04k|ascending|engine|4|False,False,True,Short to +Vcc
+iaw04k|ascending|engine|5|False,False,False,
+iaw04k|ascending|engine|6|False,False,False,Short to +Vcc
+iaw04k|ascending|engine|7|False,False,False,Open Circuit
+iaw04k|ascending|engine|8|False,False,False,Short to +Vcc
+iaw04k|ascending|engine|9|False,False,True,
+iaw04k|ascending|engine|10|False,False,True,
+iaw04k|ascending|engine|11|False,False,True,
+iaw04k|ascending|engine|12|True,False,True,
+iaw04k|ascending|engine|13|False,False,False,
+iaw04k|ascending|engine|14|False,False,False,
+iaw04k|ascending|engine|15|False,False,False,Short to +Vcc
+iaw04k|descending|data|0|459.579943931247
+iaw04k|descending|data|1|259.052
+iaw04k|descending|data|2|62.5
+iaw04k|descending|data|3|1075.986
+iaw04k|descending|data|4|2190.7511
+iaw04k|descending|data|5|-55
+iaw04k|descending|data|6|-55
+iaw04k|descending|data|7|83.6268
+iaw04k|descending|data|8|15.386
+iaw04k|descending|data|9|116
+iaw04k|descending|data|10|102
+iaw04k|descending|data|11|-4747.5
+iaw04k|descending|data|12|94
+iaw04k|descending|data|13|7.6135
+iaw04k|descending|data|14|1
+iaw04k|descending|data|15|1
+iaw04k|descending|data|16|1
+iaw04k|descending|data|17|1
+iaw04k|descending|data|18|1
+iaw04k|descending|data|19|1
+iaw04k|descending|data|20|0
+iaw04k|descending|data|21|1
+iaw04k|descending|data|22|0
+iaw04k|descending|data|23|1
+iaw04k|descending|data|24|1
+iaw04k|descending|data|25|1
+iaw04k|descending|engine|0|False,False,False,
+iaw04k|descending|engine|1|False,False,True,Max LEAN
+iaw04k|descending|engine|2|False,False,False,Short to +Vcc
+iaw04k|descending|engine|3|False,False,False,
+iaw04k|descending|engine|4|True,False,False,Open Circuit
+iaw04k|descending|engine|5|True,False,True,
+iaw04k|descending|engine|6|True,False,True,Open Circuit
+iaw04k|descending|engine|7|True,False,True,Open Circuit
+iaw04k|descending|engine|8|True,False,True,Open Circuit
+iaw04k|descending|engine|9|True,False,False,
+iaw04k|descending|engine|10|True,False,False,
+iaw04k|descending|engine|11|True,False,False,
+iaw04k|descending|engine|12|False,False,False,
+iaw04k|descending|engine|13|True,False,True,
+iaw04k|descending|engine|14|True,False,True,
+iaw04k|descending|engine|15|True,False,True,Open Circuit
+iaw04k|mixed|data|0|11641.4435389988
+iaw04k|mixed|data|1|24.7
+iaw04k|mixed|data|2|9.5
+iaw04k|mixed|data|3|293.85
+iaw04k|mixed|data|4|445.7555
+iaw04k|mixed|data|5|73.8
+iaw04k|mixed|data|6|65.3
+iaw04k|mixed|data|7|10.7868
+iaw04k|mixed|data|8|4.5844
+iaw04k|mixed|data|9|-48
+iaw04k|mixed|data|10|50
+iaw04k|mixed|data|11|-1237.5
+iaw04k|mixed|data|12|36
+iaw04k|mixed|data|13|4.145
+iaw04k|mixed|data|14|0
+iaw04k|mixed|data|15|1
+iaw04k|mixed|data|16|1
+iaw04k|mixed|data|17|0
+iaw04k|mixed|data|18|0
+iaw04k|mixed|data|19|1
+iaw04k|mixed|data|20|1
+iaw04k|mixed|data|21|0
+iaw04k|mixed|data|22|1
+iaw04k|mixed|data|23|0
+iaw04k|mixed|data|24|0
+iaw04k|mixed|data|25|1
+iaw04k|mixed|engine|0|False,False,False,
+iaw04k|mixed|engine|1|False,False,True,Max LEAN
+iaw04k|mixed|engine|2|True,False,True,Open Circuit
+iaw04k|mixed|engine|3|True,False,True,
+iaw04k|mixed|engine|4|False,False,False,Short to +Vcc
+iaw04k|mixed|engine|5|True,False,False,
+iaw04k|mixed|engine|6|True,False,True,Short to +Vcc
+iaw04k|mixed|engine|7|False,False,True,Open Circuit
+iaw04k|mixed|engine|8|True,False,True,Open Circuit
+iaw04k|mixed|engine|9|True,False,False,
+iaw04k|mixed|engine|10|False,False,True,
+iaw04k|mixed|engine|11|False,False,False,
+iaw04k|mixed|engine|12|True,False,True,
+iaw04k|mixed|engine|13|True,False,False,
+iaw04k|mixed|engine|14|True,False,True,
+iaw04k|mixed|engine|15|False,False,True,Open Circuit
+code|zero|data|0|0
+code|zero|immo|0|False,False,False,FIAT CODE
+code|zero|immo|1|False,False,False,FIAT CODE
+code|zero|immo|2|False,False,False,FIAT CODE
+code|zero|immo|3|False,False,False,FIAT CODE
+code|zero|immo|4|False,False,False,FIAT CODE
+code|zero|immo|5|False,False,False,FIAT CODE
+code|zero|immo|6|False,False,False,FIAT CODE
+code|zero|immo|7|False,False,False,FIAT CODE
+code|one|data|0|1
+code|one|immo|0|True,False,True,FIAT CODE
+code|one|immo|1|False,False,False,FIAT CODE
+code|one|immo|2|False,False,False,FIAT CODE
+code|one|immo|3|False,False,False,FIAT CODE
+code|one|immo|4|False,False,False,FIAT CODE
+code|one|immo|5|False,False,False,FIAT CODE
+code|one|immo|6|False,False,False,FIAT CODE
+code|one|immo|7|False,False,False,FIAT CODE
+code|mid|data|0|128
+code|mid|immo|0|False,False,False,FIAT CODE
+code|mid|immo|1|False,False,False,FIAT CODE
+code|mid|immo|2|False,False,False,FIAT CODE
+code|mid|immo|3|False,False,False,FIAT CODE
+code|mid|immo|4|False,False,False,FIAT CODE
+code|mid|immo|5|False,False,False,FIAT CODE
+code|mid|immo|6|False,False,False,FIAT CODE
+code|mid|immo|7|True,False,True,FIAT CODE
+code|0x55|data|0|85
+code|0x55|immo|0|True,False,True,FIAT CODE
+code|0x55|immo|1|False,False,False,FIAT CODE
+code|0x55|immo|2|True,False,True,FIAT CODE
+code|0x55|immo|3|False,False,False,FIAT CODE
+code|0x55|immo|4|True,False,True,FIAT CODE
+code|0x55|immo|5|False,False,False,FIAT CODE
+code|0x55|immo|6|True,False,True,FIAT CODE
+code|0x55|immo|7|False,False,False,FIAT CODE
+code|0xAA|data|0|170
+code|0xAA|immo|0|False,False,False,FIAT CODE
+code|0xAA|immo|1|True,False,True,FIAT CODE
+code|0xAA|immo|2|False,False,False,FIAT CODE
+code|0xAA|immo|3|True,False,True,FIAT CODE
+code|0xAA|immo|4|False,False,False,FIAT CODE
+code|0xAA|immo|5|True,False,True,FIAT CODE
+code|0xAA|immo|6|False,False,False,FIAT CODE
+code|0xAA|immo|7|True,False,True,FIAT CODE
+code|full|data|0|255
+code|full|immo|0|True,False,True,FIAT CODE
+code|full|immo|1|True,False,True,FIAT CODE
+code|full|immo|2|True,False,True,FIAT CODE
+code|full|immo|3|True,False,True,FIAT CODE
+code|full|immo|4|True,False,True,FIAT CODE
+code|full|immo|5|True,False,True,FIAT CODE
+code|full|immo|6|True,False,True,FIAT CODE
+code|full|immo|7|True,False,True,FIAT CODE
+code|ascending|data|0|115
+code|ascending|immo|0|True,False,False,FIAT CODE
+code|ascending|immo|1|False,False,True,FIAT CODE
+code|ascending|immo|2|False,False,False,FIAT CODE
+code|ascending|immo|3|False,False,False,FIAT CODE
+code|ascending|immo|4|True,False,True,FIAT CODE
+code|ascending|immo|5|True,False,True,FIAT CODE
+code|ascending|immo|6|True,False,True,FIAT CODE
+code|ascending|immo|7|False,False,False,FIAT CODE
+code|descending|data|0|140
+code|descending|immo|0|False,False,True,FIAT CODE
+code|descending|immo|1|True,False,False,FIAT CODE
+code|descending|immo|2|True,False,True,FIAT CODE
+code|descending|immo|3|True,False,True,FIAT CODE
+code|descending|immo|4|False,False,False,FIAT CODE
+code|descending|immo|5|False,False,False,FIAT CODE
+code|descending|immo|6|False,False,False,FIAT CODE
+code|descending|immo|7|True,False,True,FIAT CODE
+code|mixed|data|0|40
+code|mixed|immo|0|False,False,True,FIAT CODE
+code|mixed|immo|1|True,False,False,FIAT CODE
+code|mixed|immo|2|False,False,False,FIAT CODE
+code|mixed|immo|3|True,False,False,FIAT CODE
+code|mixed|immo|4|True,False,False,FIAT CODE
+code|mixed|immo|5|False,False,True,FIAT CODE
+code|mixed|immo|6|False,False,False,FIAT CODE
+code|mixed|immo|7|False,False,False,FIAT CODE

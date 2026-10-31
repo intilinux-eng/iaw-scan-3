@@ -1,0 +1,101 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:IES_2.Avalonia.ViewModels"
+             xmlns:views="using:IES_2.Avalonia.Views"
+             xmlns:conv="using:Avalonia.Data.Converters"
+             x:Class="IES_2.Avalonia.Views.SessionsView"
+             x:DataType="vm:SessionsViewModel">
+
+    <Panel>
+        <!-- The log -->
+        <Grid RowDefinitions="Auto,Auto,*" Margin="24,18"
+              IsVisible="{Binding Detail, Converter={x:Static conv:ObjectConverters.IsNull}}">
+
+            <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,4">
+                <TextBlock Text="{DynamicResource Sessions_Title}" Classes="h1" VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                    <Button Classes="ghost" Padding="10,6" Command="{Binding ImportCsvCommand}" ToolTip.Tip="{DynamicResource Sessions_ImportTip}" AutomationProperties.Name="{DynamicResource Sessions_Import}">
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <PathIcon Data="{StaticResource IconUpload}" Width="12" Height="12" />
+                            <TextBlock Text="{DynamicResource Sessions_Import}" FontSize="12" />
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="ghost" Padding="10,6" Command="{Binding OpenFolderCommand}" AutomationProperties.Name="{DynamicResource Sessions_Folder}">
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <PathIcon Data="{StaticResource IconFolder}" Width="12" Height="12" />
+                            <TextBlock Text="{DynamicResource Sessions_Folder}" FontSize="12" />
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="primary" Padding="12,7" Command="{Binding ExportAllCommand}" ToolTip.Tip="{DynamicResource Sessions_ExportTip}" AutomationProperties.Name="{DynamicResource Sessions_ExportAll}">
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <PathIcon Data="{StaticResource IconDownload}" Width="12" Height="12" />
+                            <TextBlock Text="{DynamicResource Sessions_ExportAll}" FontSize="12" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Spacing="6" Margin="0,0,0,12">
+                <TextBlock Classes="small muted" Text="{Binding UsedSpace}" />
+                <Border Background="{DynamicResource AccentSoftBrush}" CornerRadius="9" Padding="12,8"
+                        IsVisible="{Binding Message, Converter={x:Static conv:ObjectConverters.IsNotNull}}">
+                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap" />
+                </Border>
+            </StackPanel>
+
+            <Panel Grid.Row="2">
+                <ListBox Classes="plain" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="vm:SessionItem">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                                <PathIcon Data="{StaticResource IconLog}" Width="20" Height="20" Foreground="{DynamicResource TextFaintBrush}" />
+                                <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <TextBlock Text="{Binding Vehicle}" FontWeight="SemiBold" />
+                                        <Border Classes="pill accent" Padding="8,0" IsVisible="{Binding IsSimulation}">
+                                            <TextBlock Text="{DynamicResource Sessions_Simulated}" />
+                                        </Border>
+                                        <Border Classes="pill danger" Padding="8,0" IsVisible="{Binding HasFaults}">
+                                            <TextBlock Text="{Binding FaultsText}" />
+                                        </Border>
+                                    </StackPanel>
+                                    <TextBlock Classes="small muted" TextTrimming="CharacterEllipsis">
+                                        <Run Text="{Binding When}" />
+                                        <Run Text=" · " />
+                                        <Run Text="{Binding Duration}" />
+                                        <Run Text=" · " />
+                                        <Run Text="{Binding EcuType}" />
+                                        <Run Text=" · " />
+                                        <Run Text="{Binding Size}" />
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="2" VerticalAlignment="Center">
+                                    <Button Classes="ghost" Padding="10,5" Command="{Binding $parent[ListBox].((vm:SessionsViewModel)DataContext).OpenCommand}" CommandParameter="{Binding}" Margin="0,0,4,0">
+                                        <TextBlock Text="{DynamicResource Sessions_Open}" FontSize="12" />
+                                    </Button>
+                                    <Button Classes="icon" ToolTip.Tip="{DynamicResource Sessions_ExportTip}" AutomationProperties.Name="{DynamicResource Sessions_Export}"
+                                            Command="{Binding $parent[ListBox].((vm:SessionsViewModel)DataContext).ExportCommand}" CommandParameter="{Binding}">
+                                        <PathIcon Data="{StaticResource IconDownload}" />
+                                    </Button>
+                                    <Button Classes="icon" ToolTip.Tip="{DynamicResource Sessions_DeleteConfirm}" AutomationProperties.Name="{DynamicResource Sessions_DeleteConfirm}"
+                                            Command="{Binding $parent[ListBox].((vm:SessionsViewModel)DataContext).DeleteCommand}" CommandParameter="{Binding}">
+                                        <PathIcon Data="{StaticResource IconTrash}" />
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10" IsVisible="{Binding IsEmpty}">
+                    <PathIcon Data="{StaticResource IconLog}" Width="42" Height="42" Foreground="{DynamicResource TextFaintBrush}" />
+                    <TextBlock Text="{DynamicResource Sessions_Empty}" Classes="muted" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="440" />
+                </StackPanel>
+            </Panel>
+        </Grid>
+
+        <!-- One session open -->
+        <views:SessionDetailView DataContext="{Binding Detail}"
+                                 IsVisible="{Binding $parent[UserControl].((vm:SessionsViewModel)DataContext).Detail, Converter={x:Static conv:ObjectConverters.IsNotNull}}" />
+    </Panel>
+</UserControl>

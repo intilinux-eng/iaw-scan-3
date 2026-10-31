@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IES_3.Core\IES_3.Core.csproj" />
+    <ProjectReference Include="..\IES_3.Session\IES_3.Session.csproj" />
   </ItemGroup>
 
   <!-- Program.cs serves wwwroot from next to the executable, for `dotnet run` as well as when published. -->
@@ -28,17 +28,5 @@
     <Content Update="wwwroot\**" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
-  <!--
-    Connect flow, passive polling loop and active diagnostics (tests, clear codes) are the exact
-    same source files the desktop UI runs, compiled into this project rather than copied, so the
-    two can never drift apart. Only UI-free files are linked: none of these reference Avalonia.
-  -->
-  <ItemGroup>
-    <Compile Include="..\IES_3.Avalonia\Services\*.cs" Link="Shared\Services\%(Filename)%(Extension)" />
-    <Compile Include="..\IES_3.Avalonia\Models\EcuOption.cs" Link="Shared\Models\EcuOption.cs" />
-    <Compile Include="..\IES_3.Avalonia\Models\VehicleGroup.cs" Link="Shared\Models\VehicleGroup.cs" />
-    <Compile Include="..\IES_3.Avalonia\Models\VehicleGrouping.cs" Link="Shared\Models\VehicleGrouping.cs" />
-    <Compile Include="..\IES_3.Avalonia\ViewModels\AboutViewModel.cs" Link="Shared\ViewModels\AboutViewModel.cs" />
-  </ItemGroup>
 
 </Project>

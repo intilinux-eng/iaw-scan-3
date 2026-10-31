@@ -1,0 +1,79 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- The whole colour system, per theme. Views and controls only ever refer to these names. -->
+    <ResourceDictionary.ThemeDictionaries>
+
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="BgBrush" Color="#0B0E13" />
+            <SolidColorBrush x:Key="SidebarBrush" Color="#0F1319" />
+            <SolidColorBrush x:Key="SurfaceBrush" Color="#151A21" />
+            <SolidColorBrush x:Key="SurfaceAltBrush" Color="#1C222B" />
+            <SolidColorBrush x:Key="SurfaceHoverBrush" Color="#242B36" />
+            <SolidColorBrush x:Key="StrokeBrush" Color="#262D38" />
+            <SolidColorBrush x:Key="TextBrush" Color="#E9EDF3" />
+            <SolidColorBrush x:Key="TextMutedBrush" Color="#9AA6B6" />
+            <SolidColorBrush x:Key="TextFaintBrush" Color="#6F7A8A" />
+            <SolidColorBrush x:Key="AccentBrush" Color="#4F8CFF" />
+            <SolidColorBrush x:Key="AccentHoverBrush" Color="#6B9EFF" />
+            <SolidColorBrush x:Key="AccentSoftBrush" Color="#264F8CFF" />
+            <SolidColorBrush x:Key="OnAccentBrush" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="OkBrush" Color="#3DD68C" />
+            <SolidColorBrush x:Key="OkSoftBrush" Color="#263DD68C" />
+            <SolidColorBrush x:Key="WarnBrush" Color="#F5A524" />
+            <SolidColorBrush x:Key="WarnSoftBrush" Color="#26F5A524" />
+            <SolidColorBrush x:Key="DangerBrush" Color="#F2555A" />
+            <SolidColorBrush x:Key="DangerHoverBrush" Color="#F4757A" />
+            <SolidColorBrush x:Key="DangerSoftBrush" Color="#26F2555A" />
+            <SolidColorBrush x:Key="GaugeTrackBrush" Color="#262D38" />
+            <LinearGradientBrush x:Key="GaugeFillBrush" StartPoint="0%,100%" EndPoint="100%,0%">
+                <GradientStop Offset="0" Color="#22D3EE" />
+                <GradientStop Offset="1" Color="#4F8CFF" />
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="GaugeMarkerBrush" Color="#9AA6B6" />
+            <SolidColorBrush x:Key="SparkBrush" Color="#804F8CFF" />
+            <SolidColorBrush x:Key="ChartGridBrush" Color="#222933" />
+            <SolidColorBrush x:Key="ChartLaneBrush" Color="#10FFFFFF" />
+            <SolidColorBrush x:Key="ChartCursorBrush" Color="#B0E9EDF3" />
+            <SolidColorBrush x:Key="ChartLabelBrush" Color="#C0151A21" />
+            <SolidColorBrush x:Key="ScrimBrush" Color="#B3000000" />
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="BgBrush" Color="#F3F5F8" />
+            <SolidColorBrush x:Key="SidebarBrush" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="SurfaceAltBrush" Color="#EEF1F5" />
+            <SolidColorBrush x:Key="SurfaceHoverBrush" Color="#E5E9EF" />
+            <SolidColorBrush x:Key="StrokeBrush" Color="#DDE2E9" />
+            <SolidColorBrush x:Key="TextBrush" Color="#12161C" />
+            <SolidColorBrush x:Key="TextMutedBrush" Color="#566173" />
+            <SolidColorBrush x:Key="TextFaintBrush" Color="#7E899A" />
+            <SolidColorBrush x:Key="AccentBrush" Color="#2563EB" />
+            <SolidColorBrush x:Key="AccentHoverBrush" Color="#1D4FD0" />
+            <SolidColorBrush x:Key="AccentSoftBrush" Color="#1F2563EB" />
+            <SolidColorBrush x:Key="OnAccentBrush" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="OkBrush" Color="#15803D" />
+            <SolidColorBrush x:Key="OkSoftBrush" Color="#1F15803D" />
+            <SolidColorBrush x:Key="WarnBrush" Color="#B45309" />
+            <SolidColorBrush x:Key="WarnSoftBrush" Color="#1FB45309" />
+            <SolidColorBrush x:Key="DangerBrush" Color="#DC2626" />
+            <SolidColorBrush x:Key="DangerHoverBrush" Color="#B91C1C" />
+            <SolidColorBrush x:Key="DangerSoftBrush" Color="#1FDC2626" />
+            <SolidColorBrush x:Key="GaugeTrackBrush" Color="#E2E6EC" />
+            <LinearGradientBrush x:Key="GaugeFillBrush" StartPoint="0%,100%" EndPoint="100%,0%">
+                <GradientStop Offset="0" Color="#0891B2" />
+                <GradientStop Offset="1" Color="#2563EB" />
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="GaugeMarkerBrush" Color="#566173" />
+            <SolidColorBrush x:Key="SparkBrush" Color="#802563EB" />
+            <SolidColorBrush x:Key="ChartGridBrush" Color="#E5E9EF" />
+            <SolidColorBrush x:Key="ChartLaneBrush" Color="#08000000" />
+            <SolidColorBrush x:Key="ChartCursorBrush" Color="#B012161C" />
+            <SolidColorBrush x:Key="ChartLabelBrush" Color="#C0FFFFFF" />
+            <SolidColorBrush x:Key="ScrimBrush" Color="#80000000" />
+        </ResourceDictionary>
+
+    </ResourceDictionary.ThemeDictionaries>
+
+</ResourceDictionary>

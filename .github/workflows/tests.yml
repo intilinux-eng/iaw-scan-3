@@ -1,0 +1,25 @@
+name: Tests
+
+# Every change runs the whole suite on both platforms: the decoding formulas against their reference
+# file, the application in simulation, and, on Linux, the serial path against an emulated ECU.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - run: dotnet test IES_3.Tests/IES_3.Tests.csproj -c Release

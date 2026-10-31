@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- UI-free session layer shared by the desktop app and the Coupé edition: connecting, polling,
+       active diagnostics, recording sessions and reading them back. No Avalonia or ASP.NET here. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>IES_2.Session</RootNamespace>
+    <AssemblyName>IES_3.Session</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IES_3.Core\IES_3.Core.csproj" />
+  </ItemGroup>
+
+</Project>

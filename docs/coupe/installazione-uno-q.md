@@ -17,7 +17,7 @@ Questa guida porta una UNO Q nuova a diventare il dispositivo diagnostico della 
 | **Arduino UNO Q** | Basta la versione da 2 GB. Il software occupa circa 110 MB, il registro dati al massimo 2 GB (configurabile). |
 | **Hub USB-C con Power Delivery** | La UNO Q ha una sola porta USB-C: l'hub la alimenta e offre una porta USB-A per il cavo K-line. Serve un hub con ingresso di alimentazione (PD). |
 | **Cavo diagnostico USB K-line** | Tipo "VAG-COM KKL 409.1", meglio se con chip **FTDI** originale. Lo stesso cavo della versione per PC. |
-| **Adattatore Fiat 3 poli** | Dalla presa diagnostica triangolare della Coupé al cavo K-line, con l'alimentazione a 12 V per l'interfaccia. Vedi il [README principale](../../README.md#diagnostic-interface--adapter-cable). |
+| **Adattatore Fiat 3 poli** | Dalla presa diagnostica triangolare della Coupé al cavo K-line, con l'alimentazione a 12 V per l'interfaccia. Vedi il [README principale](../../README.it.md#collegarsi-allauto). |
 | **Alimentatore 12 V → USB-C PD** | Per l'auto, da almeno 15 W (5 V 3 A), collegato **sotto chiave**. |
 | **Un PC** | Solo per la prima configurazione: con Arduino App Lab oppure con ADB (Android platform-tools). |
 

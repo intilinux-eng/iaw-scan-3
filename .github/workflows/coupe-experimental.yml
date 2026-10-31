@@ -27,6 +27,9 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: Run the tests
+        run: dotnet test IES_3.Tests/IES_3.Tests.csproj -c Release
+
       - name: Build arm64 .deb
         run: bash IES_3.Coupe/packaging/build-deb.sh "${{ inputs.version }}" linux-arm64
 

@@ -1,0 +1,5 @@
+# IAW Scan 3: K-line cables built on FTDI chips (VAG-COM KKL 409.1 and similar).
+# Every ECU request waits for the cable's echo and then the reply byte; with the driver's default
+# 16 ms latency timer each of those reads can stall, so polling runs several times slower. 1 ms is
+# the usual setting for K-line diagnostics (the same thing Windows users set in the FTDI driver).
+ACTION=="add", SUBSYSTEM=="usb-serial", DRIVER=="ftdi_sio", ATTR{latency_timer}="1"

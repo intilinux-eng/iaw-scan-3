@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=IAW Scan 3
+Comment=Diagnostics for Fiat, Lancia and Alfa Romeo OBD-I engines
+Comment[it]=Diagnosi per motori Fiat, Lancia e Alfa Romeo OBD-I
+Exec=/opt/iaw-scan3/IES_3.Avalonia
+Icon=iaw-scan3
+Terminal=false
+Categories=Utility;
