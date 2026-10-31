@@ -4,6 +4,10 @@ Plain-language summary of what has changed, for people using this tool to diagno
 
 **The diagnostic engine is unchanged.** Every reading and error code is calculated exactly as it was in IAW Scan 2 - nothing here has been recalculated or reinterpreted. An automated test now checks this on every build.
 
+## Unreleased
+
+- **`license.txt` no longer carries the LGPL text.** It was there for ZedGraph, the graph library of the original Windows Forms interface, which left the project with that interface. What remains is the original project's Modified BSD license, unchanged.
+
 ## Beta 2 (0.2.0-beta)
 
 A new desktop application. **Not yet run on a real car:** see "How far it has been tested" in the README.
