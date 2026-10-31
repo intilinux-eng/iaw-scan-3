@@ -1,183 +1,249 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:IES_2.Avalonia.ViewModels"
-        xmlns:models="using:IES_2.Avalonia.Models"
         xmlns:views="using:IES_2.Avalonia.Views"
-        xmlns:sys="using:System"
+        xmlns:controls="using:IES_2.Avalonia.Controls"
         xmlns:conv="using:Avalonia.Data.Converters"
         x:Class="IES_2.Avalonia.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
+        x:DataType="vm:ShellViewModel"
         Title="IAW Scan 3"
-        Width="1120" Height="720" MinWidth="820" MinHeight="560">
+        Icon="/Assets/app.ico"
+        Width="1240" Height="800" MinWidth="900" MinHeight="580"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BgBrush}">
 
     <Window.KeyBindings>
-        <KeyBinding Gesture="F2" Command="{Binding GoToParametersCommand}" />
-        <KeyBinding Gesture="F3" Command="{Binding GoToErrorsCommand}" />
-        <KeyBinding Gesture="F4" Command="{Binding GoToTestsCommand}" />
-        <KeyBinding Gesture="F5" Command="{Binding GoToGraphsCommand}" />
-        <KeyBinding Gesture="F6" Command="{Binding GoToAdjustmentsCommand}" />
-        <KeyBinding Gesture="F10" Command="{Binding ConnectToggleShortcutCommand}" />
-        <KeyBinding Gesture="Ctrl+F10" Command="{Binding ConnectSimulatedCommand}" />
-        <KeyBinding Gesture="A" Command="{Binding CheckAllParametersCommand}" />
-        <KeyBinding Gesture="N" Command="{Binding UncheckAllParametersCommand}" />
-        <KeyBinding Gesture="C" Command="{Binding ClearCodesShortcutCommand}" />
-        <KeyBinding Gesture="S" Command="{Binding ToggleRecordingShortcutCommand}" />
-        <KeyBinding Gesture="E" Command="{Binding ExecuteTestShortcutCommand}" />
+        <KeyBinding Gesture="F2" Command="{Binding NavigateCommand}" CommandParameter="dashboard" />
+        <KeyBinding Gesture="F3" Command="{Binding NavigateCommand}" CommandParameter="parameters" />
+        <KeyBinding Gesture="F4" Command="{Binding NavigateCommand}" CommandParameter="faults" />
+        <KeyBinding Gesture="F5" Command="{Binding NavigateCommand}" CommandParameter="tests" />
+        <KeyBinding Gesture="F6" Command="{Binding NavigateCommand}" CommandParameter="graph" />
+        <KeyBinding Gesture="F7" Command="{Binding NavigateCommand}" CommandParameter="adjustments" />
+        <KeyBinding Gesture="F8" Command="{Binding NavigateCommand}" CommandParameter="sessions" />
+        <KeyBinding Gesture="F9" Command="{Binding NavigateCommand}" CommandParameter="settings" />
+        <KeyBinding Gesture="F10" Command="{Binding ConnectToggleCommand}" />
+        <KeyBinding Gesture="F11" Command="{Binding ToggleImmersiveCommand}" />
+        <KeyBinding Gesture="Escape" Command="{Binding EscapeCommand}" />
     </Window.KeyBindings>
 
-    <Window.Styles>
-        <Style Selector="TabControl.workspace WrapPanel">
-            <Setter Property="Background" Value="Transparent" />
-        </Style>
-    </Window.Styles>
+    <Window.DataTemplates>
+        <DataTemplate x:DataType="vm:ConnectViewModel"><views:ConnectView /></DataTemplate>
+        <DataTemplate x:DataType="vm:DashboardViewModel"><views:DashboardView /></DataTemplate>
+        <DataTemplate x:DataType="vm:ParametersViewModel"><views:ParametersView /></DataTemplate>
+        <DataTemplate x:DataType="vm:FaultsViewModel"><views:FaultsView /></DataTemplate>
+        <DataTemplate x:DataType="vm:TestsViewModel"><views:TestsView /></DataTemplate>
+        <DataTemplate x:DataType="vm:GraphViewModel"><views:GraphView /></DataTemplate>
+        <DataTemplate x:DataType="vm:AdjustmentsViewModel"><views:AdjustmentsView /></DataTemplate>
+        <DataTemplate x:DataType="vm:SessionsViewModel"><views:SessionsView /></DataTemplate>
+        <DataTemplate x:DataType="vm:SettingsViewModel"><views:SettingsView /></DataTemplate>
+    </Window.DataTemplates>
 
-    <Grid RowDefinitions="Auto,Auto,*">
+    <Grid>
+        <Grid ColumnDefinitions="Auto,*">
 
-        <!-- Top bar: always visible product identity + (when connected) live ECU summary. -->
-        <Border Grid.Row="0" BorderBrush="#30808080" BorderThickness="0,0,0,1" Padding="16,10">
-            <Grid ColumnDefinitions="Auto,*,Auto">
-                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
-                    <Border Classes="badge" Width="30" Height="30" CornerRadius="6">
-                        <TextBlock Text="IS3" Foreground="White" FontSize="10" FontWeight="Bold"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
-                    <StackPanel VerticalAlignment="Center" Spacing="0">
-                        <TextBlock Text="IAW Scan 3" FontSize="15" FontWeight="Bold" />
-                        <TextBlock Text="Diagnosi centraline motore" FontSize="11" Opacity="0.6" />
+            <!-- Sidebar -->
+            <Border Grid.Column="0" Width="212" IsVisible="{Binding !IsImmersive}"
+                    Background="{DynamicResource SidebarBrush}"
+                    BorderBrush="{DynamicResource StrokeBrush}" BorderThickness="0,0,1,0" Padding="12,14">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="10" Margin="6,0,0,20">
+                        <Border Classes="logo" Width="34" Height="34">
+                            <PathIcon Data="{StaticResource IconGauge}" Width="20" Height="20" Foreground="White" />
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="IAW Scan 3" FontWeight="Bold" FontSize="15" />
+                            <TextBlock Text="{DynamicResource App_Tagline}" Classes="faint" FontSize="11" />
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
 
-                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="18" HorizontalAlignment="Center"
-                            VerticalAlignment="Center" IsVisible="{Binding IsConnected}">
-                    <StackPanel Orientation="Horizontal" Spacing="6">
-                        <TextBlock Text="Centralina:" Opacity="0.6" />
-                        <TextBlock Text="{Binding EcuTypeText}" FontWeight="Medium" />
+                    <StackPanel DockPanel.Dock="Bottom" Spacing="2">
+                        <Button Classes="nav" AutomationProperties.Name="{DynamicResource Nav_Sessions}" Command="{Binding NavigateCommand}" CommandParameter="sessions"
+                                Classes.active="{Binding CurrentKey, Converter={x:Static controls:EqualsConverter.Instance}, ConverterParameter=sessions}">
+                            <StackPanel Orientation="Horizontal" Spacing="11">
+                                <PathIcon Data="{StaticResource IconLog}" />
+                                <TextBlock Text="{DynamicResource Nav_Sessions}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="nav" AutomationProperties.Name="{DynamicResource Nav_Settings}" Command="{Binding NavigateCommand}" CommandParameter="settings"
+                                Classes.active="{Binding CurrentKey, Converter={x:Static controls:EqualsConverter.Instance}, ConverterParameter=settings}">
+                            <StackPanel Orientation="Horizontal" Spacing="11">
+                                <PathIcon Data="{StaticResource IconGear}" />
+                                <TextBlock Text="{DynamicResource Nav_Settings}" />
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Spacing="6">
-                        <TextBlock Text="Veicolo:" Opacity="0.6" />
-                        <TextBlock Text="{Binding CarModelText}" FontWeight="Medium" />
+
+                    <StackPanel Spacing="2">
+                        <Button Classes="nav" AutomationProperties.Name="{DynamicResource Nav_Connect}" Command="{Binding NavigateCommand}" CommandParameter="connect" IsVisible="{Binding !IsConnected}"
+                                Classes.active="{Binding CurrentKey, Converter={x:Static controls:EqualsConverter.Instance}, ConverterParameter=connect}">
+                            <StackPanel Orientation="Horizontal" Spacing="11">
+                                <PathIcon Data="{StaticResource IconPlug}" />
+                                <TextBlock Text="{DynamicResource Nav_Connect}" />
+                            </StackPanel>
+                        </Button>
+
+                        <Button Classes="nav" AutomationProperties.Name="{DynamicResource Nav_Dashboard}" Command="{Binding NavigateCommand}" CommandParameter="dashboard" IsVisible="{Binding IsConnected}"
+                                Classes.active="{Binding CurrentKey, Converter={x:Static controls:EqualsConverter.Instance}, ConverterParameter=dashboard}">
+                            <StackPanel Orientation="Horizontal" Spacing="11">
+                                <PathIcon Data="{StaticResource IconGauge}" />
+                                <TextBlock Text="{DynamicResource Nav_Dashboard}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="nav" AutomationProperties.Name="{DynamicResource Nav_Parameters}" Command="{Binding NavigateCommand}" CommandParameter="parameters" IsVisible="{Binding IsConnected}"
+                                Classes.active="{Binding CurrentKey, Converter={x:Static controls:EqualsConverter.Instance}, ConverterParameter=parameters}">
+                            <StackPanel Orientation="Horizontal" Spacing="11">
+                                <PathIcon Data="{StaticResource IconGrid}" />
+                                <TextBlock Text="{DynamicResource Nav_Parameters}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="nav" AutomationProperties.Name="{DynamicResource Nav_Faults}" Command="{Binding NavigateCommand}" CommandParameter="faults" IsVisible="{Binding IsConnected}"
+                                Classes.active="{Binding CurrentKey, Converter={x:Static controls:EqualsConverter.Instance}, ConverterParameter=faults}">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <StackPanel Orientation="Horizontal" Spacing="11">
+                                    <PathIcon Data="{StaticResource IconAlert}" />
+                                    <TextBlock Text="{DynamicResource Nav_Faults}" />
+                                </StackPanel>
+                                <Border Grid.Column="1" CornerRadius="999" MinWidth="20" Height="20" Padding="5,0"
+                                        Background="{DynamicResource DangerBrush}"
+                                        IsVisible="{Binding Live.Faults.Count, FallbackValue=0, Converter={x:Static controls:IsPositiveConverter.Instance}}">
+                                    <TextBlock Text="{Binding Live.Faults.Count}" Foreground="White" FontSize="11" FontWeight="Bold"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </Grid>
+                        </Button>
+                        <Button Classes="nav" AutomationProperties.Name="{DynamicResource Nav_Tests}" Command="{Binding NavigateCommand}" CommandParameter="tests" IsVisible="{Binding HasTests}"
+                                Classes.active="{Binding CurrentKey, Converter={x:Static controls:EqualsConverter.Instance}, ConverterParameter=tests}">
+                            <StackPanel Orientation="Horizontal" Spacing="11">
+                                <PathIcon Data="{StaticResource IconBolt}" />
+                                <TextBlock Text="{DynamicResource Nav_Tests}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="nav" AutomationProperties.Name="{DynamicResource Nav_Graph}" Command="{Binding NavigateCommand}" CommandParameter="graph" IsVisible="{Binding IsConnected}"
+                                Classes.active="{Binding CurrentKey, Converter={x:Static controls:EqualsConverter.Instance}, ConverterParameter=graph}">
+                            <StackPanel Orientation="Horizontal" Spacing="11">
+                                <PathIcon Data="{StaticResource IconChart}" />
+                                <TextBlock Text="{DynamicResource Nav_Graph}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="nav" AutomationProperties.Name="{DynamicResource Nav_Adjustments}" Command="{Binding NavigateCommand}" CommandParameter="adjustments" IsVisible="{Binding HasAdjustments}"
+                                Classes.active="{Binding CurrentKey, Converter={x:Static controls:EqualsConverter.Instance}, ConverterParameter=adjustments}">
+                            <StackPanel Orientation="Horizontal" Spacing="11">
+                                <PathIcon Data="{StaticResource IconSliders}" />
+                                <TextBlock Text="{DynamicResource Nav_Adjustments}" />
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Spacing="6">
-                        <TextBlock Text="ISO:" Opacity="0.6" />
-                        <TextBlock Text="{Binding IsoCodeText}" Classes="monoValue" FontSize="12" />
-                    </StackPanel>
-                </StackPanel>
+                </DockPanel>
+            </Border>
 
-                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="8">
-                    <Button Content="Disconnetti [F10]" Command="{Binding DisconnectCommand}" IsVisible="{Binding IsConnected}" />
-                    <Button Content="ℹ Informazioni" Command="{Binding ShowAboutCommand}" />
-                </StackPanel>
-            </Grid>
-        </Border>
+            <Grid Grid.Column="1" RowDefinitions="Auto,Auto,*">
 
-        <!-- Communication-lost banner. -->
-        <Border Grid.Row="1" Background="#E03531" Padding="14,8"
-                IsVisible="{Binding CommunicationLostMessage, Converter={x:Static conv:ObjectConverters.IsNotNull}}">
-            <Grid ColumnDefinitions="*,Auto,Auto">
-                <TextBlock Grid.Column="0" Text="{Binding CommunicationLostMessage}" Foreground="White" VerticalAlignment="Center" TextWrapping="Wrap" />
-                <Button Grid.Column="1" Content="Riconnetti [F12]" Command="{Binding ReconnectAfterCommLossCommand}" Margin="8,0" />
-                <Button Grid.Column="2" Content="Disconnetti" Command="{Binding DisconnectCommand}" />
-            </Grid>
-        </Border>
+                <!-- Status bar -->
+                <Border Grid.Row="0" IsVisible="{Binding !IsImmersive}" BorderBrush="{DynamicResource StrokeBrush}" BorderThickness="0,0,0,1"
+                        Background="{DynamicResource SidebarBrush}" Padding="20,10">
+                    <Grid ColumnDefinitions="*,Auto" MinHeight="36">
+                        <StackPanel VerticalAlignment="Center" IsVisible="{Binding !IsConnected}">
+                            <TextBlock Text="{DynamicResource Status_NotConnected}" Classes="h3" />
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Center" IsVisible="{Binding IsConnected}">
+                            <TextBlock Text="{Binding Live.CarModel, FallbackValue=''}" Classes="h3" TextTrimming="CharacterEllipsis" />
+                            <TextBlock Classes="small faint" TextTrimming="CharacterEllipsis">
+                                <Run Text="{Binding Live.EcuType, FallbackValue=''}" />
+                                <Run Text="  ·  ISO " />
+                                <Run Text="{Binding Live.IsoCode, FallbackValue=''}" />
+                            </TextBlock>
+                        </StackPanel>
 
-        <!-- Pre-connect: ECU + vehicle selection and connection setup. -->
-        <Grid Grid.Row="2" IsVisible="{Binding !IsConnected}" Margin="16" RowDefinitions="Auto,*,Auto">
-
-            <TextBlock Grid.Row="0" Text="Seleziona centralina" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,8" />
-
-            <Grid Grid.Row="1" ColumnDefinitions="300,*">
-
-                <ListBox Grid.Column="0"
-                         ItemsSource="{Binding EcuOptions}"
-                         SelectedItem="{Binding SelectedEcuOption}"
-                         Margin="0,0,10,0">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate x:DataType="models:EcuOption">
-                            <Border CornerRadius="8" Padding="10,8">
-                                <Grid ColumnDefinitions="46,10,*">
-                                    <Border Grid.Column="0" Classes="badge"
-                                            Height="30" CornerRadius="6" VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding Badge}" Foreground="White" FontSize="10" FontWeight="Bold"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" />
-                                    </Border>
-                                    <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding DisplayName}" TextWrapping="Wrap" FontWeight="Medium" />
-                                        <TextBlock Text="{Binding VehicleCount, StringFormat='{}{0} veicoli supportati'}"
-                                                   FontSize="11" Opacity="0.65" />
-                                    </StackPanel>
-                                </Grid>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center" IsVisible="{Binding IsConnected}">
+                            <Border Classes="pill accent" IsVisible="{Binding IsSimulation}">
+                                <TextBlock Text="{DynamicResource Status_Simulation}" />
                             </Border>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-
-                <Border Grid.Column="1" Classes="card">
-                    <DockPanel>
-                        <TextBox DockPanel.Dock="Top" PlaceholderText="Cerca veicolo..." Text="{Binding SearchText}" Margin="0,0,0,10" />
-                        <ScrollViewer>
-                            <ItemsControl ItemsSource="{Binding FilteredVehicleGroups}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate x:DataType="models:VehicleGroup">
-                                        <StackPanel Margin="0,0,0,12">
-                                            <TextBlock Text="{Binding Brand}" FontWeight="SemiBold" Margin="0,0,0,6" />
-                                            <ItemsControl ItemsSource="{Binding Vehicles}">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <WrapPanel />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate x:DataType="sys:String">
-                                                        <Border Classes="chip">
-                                                            <TextBlock Text="{Binding}" FontSize="12" />
-                                                        </Border>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </ScrollViewer>
-                    </DockPanel>
+                            <Border Classes="pill ok" IsVisible="{Binding !IsSimulation}">
+                                <TextBlock Text="{DynamicResource Status_Connected}" />
+                            </Border>
+                            <Button Classes="ghost" Padding="10,6" AutomationProperties.Name="{DynamicResource Status_Record}" Command="{Binding ToggleRecordingCommand}"
+                                    ToolTip.Tip="{DynamicResource Status_RecordTip}">
+                                <Panel>
+                                    <StackPanel Orientation="Horizontal" Spacing="6" IsVisible="{Binding Live.IsRecording, FallbackValue=False}">
+                                        <Ellipse Classes="dot" Fill="{DynamicResource DangerBrush}" />
+                                        <TextBlock Text="{DynamicResource Status_Recording}" FontSize="12" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Spacing="6" IsVisible="{Binding !Live.IsRecording, FallbackValue=False}">
+                                        <Ellipse Classes="dot" Fill="{DynamicResource TextFaintBrush}" />
+                                        <TextBlock Text="{DynamicResource Status_Record}" FontSize="12" />
+                                    </StackPanel>
+                                </Panel>
+                            </Button>
+                            <Button Classes="ghost" Padding="10,6" AutomationProperties.Name="{DynamicResource Status_Disconnect}" Command="{Binding DisconnectCommand}" ToolTip.Tip="F10">
+                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                    <PathIcon Data="{StaticResource IconClose}" Width="12" Height="12" />
+                                    <TextBlock Text="{DynamicResource Status_Disconnect}" FontSize="12" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
                 </Border>
-            </Grid>
 
-            <Grid Grid.Row="2" RowDefinitions="Auto,Auto" Margin="0,12,0,0">
-                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto,Auto,Auto" Margin="0,0,0,8">
-                    <TextBlock Grid.Column="0" Text="Porta COM:" VerticalAlignment="Center" Margin="0,0,8,0" />
-                    <ComboBox Grid.Column="1" ItemsSource="{Binding ComPorts}" SelectedItem="{Binding SelectedComPort}"
-                              HorizontalAlignment="Left" MinWidth="140" />
-                    <CheckBox Grid.Column="2" Content="Modalità simulazione (nessun hardware)"
-                              IsChecked="{Binding IsSimulationMode}" Margin="16,0" VerticalAlignment="Center" />
-                    <Button Grid.Column="3" Content="Connetti [F10]" Command="{Binding ConnectCommand}" Margin="0,0,8,0" />
-                    <Button Grid.Column="4" Content="Annulla" Command="{Binding CancelConnectCommand}"
-                            IsVisible="{Binding IsConnecting}" />
-                </Grid>
+                <!-- Banners -->
+                <StackPanel Grid.Row="1">
+                    <Border Background="{DynamicResource DangerBrush}" Padding="20,8" IsVisible="{Binding Live.IsCommunicationLost, FallbackValue=False}">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock Text="{DynamicResource Banner_CommLost}" Foreground="White" VerticalAlignment="Center" TextWrapping="Wrap" />
+                            <Button Grid.Column="1" Content="{DynamicResource Banner_Reconnect}" Command="{Binding ReconnectCommand}" Margin="12,0,0,0"
+                                    Background="White" Foreground="#A51111" Padding="12,5" />
+                        </Grid>
+                    </Border>
+                    <Border Background="{DynamicResource WarnSoftBrush}" Padding="20,8" IsVisible="{Binding EcuNotAnswering}">
+                        <TextBlock Text="{DynamicResource Banner_NotAnswering}" TextWrapping="Wrap" />
+                    </Border>
+                    <Border Background="{DynamicResource AccentSoftBrush}" Padding="20,6" IsVisible="{Binding IsSimulation}">
+                        <TextBlock Text="{DynamicResource Banner_Simulation}" FontSize="12" />
+                    </Border>
+                </StackPanel>
 
-                <TextBlock Grid.Row="1" Text="{Binding ErrorMessage}" Foreground="Red"
-                           IsVisible="{Binding ErrorMessage, Converter={x:Static conv:ObjectConverters.IsNotNull}}"
-                           TextWrapping="Wrap" />
+                <ContentControl Grid.Row="2" Content="{Binding CurrentPage}" />
             </Grid>
         </Grid>
 
-        <!-- Connected: tabbed workspace over the five diagnostic screens. -->
-        <TabControl Grid.Row="2" IsVisible="{Binding IsConnected}" SelectedIndex="{Binding SelectedTabIndex}" Classes="workspace">
-            <TabItem Header="[F2] Parametri">
-                <views:ParametersView DataContext="{Binding Parameters}" />
-            </TabItem>
-            <TabItem Header="[F3] Errori">
-                <views:ErrorsView DataContext="{Binding Errors}" />
-            </TabItem>
-            <TabItem Header="[F4] Test">
-                <views:TestsView DataContext="{Binding Tests}" />
-            </TabItem>
-            <TabItem Header="[F5] Grafici">
-                <views:GraphsView DataContext="{Binding Graphs}" />
-            </TabItem>
-            <TabItem Header="[F6] Regolazioni">
-                <views:AdjustmentsView DataContext="{Binding Adjustments}" />
-            </TabItem>
-        </TabControl>
+        <!-- Modal layer -->
+        <Border Background="{DynamicResource ScrimBrush}" IsVisible="{Binding Dialog.IsConfirmOpen}">
+            <Border Classes="card" Width="440" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="22">
+                <StackPanel Spacing="14">
+                    <TextBlock Text="{Binding Dialog.Title}" Classes="h2" TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding Dialog.Body}" Classes="muted" TextWrapping="Wrap" />
+                    <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right" Margin="0,6,0,0">
+                        <Button Classes="ghost" Content="{DynamicResource Dialog_Cancel}" Command="{Binding Dialog.CancelCommand}" />
+                        <Button Classes="primary" Content="{Binding Dialog.ConfirmText}" Command="{Binding Dialog.AcceptCommand}" IsVisible="{Binding !Dialog.IsDangerous}" />
+                        <Button Classes="dangerButton" Content="{Binding Dialog.ConfirmText}" Command="{Binding Dialog.AcceptCommand}" IsVisible="{Binding Dialog.IsDangerous}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Border>
+
+        <Border Background="{DynamicResource ScrimBrush}"
+                IsVisible="{Binding Dialog.OneByte, Converter={x:Static conv:ObjectConverters.IsNotNull}}">
+            <Border Classes="card" Width="440" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="22"
+                    DataContext="{Binding Dialog.OneByte}">
+                <StackPanel Spacing="14" x:DataType="vm:OneByteAdjustViewModel">
+                    <TextBlock Text="{Binding Title}" Classes="h2" TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding ValueText}" Classes="number" FontSize="44" HorizontalAlignment="Center" />
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Button Classes="ghost" Content="−" Command="{Binding StepCommand}" CommandParameter="-1" Width="44" HorizontalContentAlignment="Center" />
+                        <Slider Grid.Column="1" Minimum="0" Maximum="255" Value="{Binding Value}" VerticalAlignment="Center" />
+                        <Button Grid.Column="2" Classes="ghost" Content="+" Command="{Binding StepCommand}" CommandParameter="1" Width="44" HorizontalContentAlignment="Center" />
+                    </Grid>
+                    <TextBlock Text="{Binding StatusMessage}" Classes="muted" TextWrapping="Wrap"
+                               IsVisible="{Binding StatusMessage, Converter={x:Static conv:ObjectConverters.IsNotNull}}" />
+                    <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
+                        <Button Classes="ghost" Content="{DynamicResource Adjust_Close}" Command="{Binding FinishCommand}" />
+                        <Button Classes="primary" Content="{DynamicResource Adjust_Send}" Command="{Binding ApplyCommand}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Border>
+
+        <!-- The way out of the fullscreen dashboard -->
+        <Button Classes="ghost" IsVisible="{Binding IsImmersive}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="12"
+                Command="{Binding ToggleImmersiveCommand}" Content="{DynamicResource Dashboard_ExitFullscreen}" />
     </Grid>
 </Window>

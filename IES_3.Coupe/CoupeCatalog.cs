@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using IES_2.Avalonia.Models;
 using IES_2.ECU;
+using IES_2.Session;
 
 namespace IES_2.Coupe
 {

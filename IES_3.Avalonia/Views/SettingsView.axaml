@@ -1,0 +1,95 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:IES_2.Avalonia.ViewModels"
+             xmlns:session="using:IES_2.Session"
+             x:Class="IES_2.Avalonia.Views.SettingsView"
+             x:DataType="vm:SettingsViewModel">
+
+    <ScrollViewer>
+        <StackPanel Spacing="14" Margin="24,18" MaxWidth="760" HorizontalAlignment="Left">
+            <TextBlock Text="{DynamicResource Settings_Title}" Classes="h1" />
+
+            <Border Classes="card">
+                <StackPanel Spacing="14">
+                    <TextBlock Text="{DynamicResource Settings_Appearance}" Classes="h3" />
+                    <Grid ColumnDefinitions="*,240" RowDefinitions="Auto,Auto" RowSpacing="10">
+                        <TextBlock Text="{DynamicResource Settings_Language}" VerticalAlignment="Center" />
+                        <ComboBox Grid.Column="1" ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}" HorizontalAlignment="Stretch">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate x:DataType="vm:ChoiceItem">
+                                    <TextBlock Text="{Binding Text}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBlock Grid.Row="1" Text="{DynamicResource Settings_Theme}" VerticalAlignment="Center" />
+                        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Themes}" SelectedItem="{Binding SelectedTheme}" HorizontalAlignment="Stretch">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate x:DataType="vm:ChoiceItem">
+                                    <TextBlock Text="{Binding Text}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Grid>
+                    <TextBlock Text="{DynamicResource Settings_LanguageNote}" Classes="small muted" TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+
+            <Border Classes="card">
+                <StackPanel Spacing="14">
+                    <TextBlock Text="{DynamicResource Settings_Log}" Classes="h3" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Settings_AutoRecord}" />
+                            <TextBlock Text="{DynamicResource Settings_AutoRecordHint}" Classes="small muted" TextWrapping="Wrap" />
+                        </StackPanel>
+                        <ToggleSwitch Grid.Column="1" IsChecked="{Binding AutoRecord}" OnContent="" OffContent="" Margin="10,0,-8,0" />
+                    </Grid>
+                    <Grid ColumnDefinitions="*,160">
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Settings_MaxLog}" />
+                            <TextBlock Text="{DynamicResource Settings_MaxLogHint}" Classes="small muted" TextWrapping="Wrap" />
+                        </StackPanel>
+                        <NumericUpDown Grid.Column="1" Value="{Binding MaxLogMegabytes}" Minimum="50" Maximum="100000" Increment="256" FormatString="0" VerticalAlignment="Center" />
+                    </Grid>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Settings_DataFolder}" />
+                            <TextBlock Text="{Binding DataFolder}" Classes="small muted" TextWrapping="Wrap" />
+                        </StackPanel>
+                        <Button Grid.Column="1" Classes="ghost" Padding="10,6" Command="{Binding OpenDataFolderCommand}" VerticalAlignment="Center">
+                            <TextBlock Text="{DynamicResource Settings_Open}" FontSize="12" />
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="card">
+                <StackPanel Spacing="10">
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <Border Classes="logo" Width="44" Height="44">
+                            <PathIcon Data="{StaticResource IconGauge}" Width="26" Height="26" Foreground="White" />
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="{Binding ProductName}" Classes="h2" />
+                            <TextBlock Classes="small muted">
+                                <Run Text="{DynamicResource Settings_Version}" />
+                                <Run Text="{Binding VersionText}" />
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock Text="{Binding About.ForkCopyright}" Classes="small" />
+                    <Button Classes="link" Content="{Binding ForkRepoUrl}" Command="{Binding OpenUrlCommand}" CommandParameter="{Binding ForkRepoUrl}" />
+                    <TextBlock Text="{Binding About.OriginalProjectLine}" Classes="small" TextWrapping="Wrap" />
+                    <Button Classes="link" Content="{Binding OriginalProjectUrl}" Command="{Binding OpenUrlCommand}" CommandParameter="{Binding OriginalProjectUrl}" />
+                    <TextBlock Text="{Binding About.Description}" Classes="small muted" TextWrapping="Wrap" />
+                    <Expander Header="{DynamicResource Settings_License}" HorizontalAlignment="Stretch">
+                        <TextBlock Text="{Binding About.LicenseText}" Classes="small" FontSize="11" TextWrapping="Wrap" />
+                    </Expander>
+                    <Expander Header="{DynamicResource Settings_ThirdParty}" HorizontalAlignment="Stretch">
+                        <TextBlock Text="{DynamicResource Settings_ThirdPartyText}" Classes="small" FontSize="11" TextWrapping="Wrap" />
+                    </Expander>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -5,30 +5,55 @@
              x:Class="IES_2.Avalonia.Views.TestsView"
              x:DataType="vm:TestsViewModel">
 
-    <Grid RowDefinitions="Auto,Auto,*" Margin="16">
+    <Grid RowDefinitions="Auto,Auto,*" Margin="24,18">
+        <TextBlock Text="{DynamicResource Tests_Title}" Classes="h1" Margin="0,0,0,12" />
 
-        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto" Margin="0,0,0,12">
-            <TextBlock Grid.Column="0" Text="Test attuatori" Classes="sectionTitle" VerticalAlignment="Center" />
-            <Button Grid.Column="1" Content="Annulla" Command="{Binding CancelCommand}" Margin="0,0,8,0" />
-            <Button Grid.Column="2" Content="Esegui [E]" Command="{Binding ExecuteCommand}" />
-        </Grid>
-
-        <Border Grid.Row="1" Classes="tableHeader">
-            <Grid ColumnDefinitions="*,150">
-                <TextBlock Grid.Column="0" Text="PROVA" Classes="colHeader" />
-                <TextBlock Grid.Column="1" Text="ESITO" Classes="colHeader" />
-            </Grid>
+        <Border Grid.Row="1" Classes="warnCard" Margin="0,0,0,14">
+            <TextBlock Text="{DynamicResource Tests_Warning}" TextWrapping="Wrap" />
         </Border>
 
-        <ListBox Grid.Row="2" ItemsSource="{Binding Rows}" SelectedItem="{Binding SelectedRow}">
-            <ListBox.ItemTemplate>
-                <DataTemplate x:DataType="models:TestRow">
-                    <Grid ColumnDefinitions="*,150" Margin="0,4">
-                        <TextBlock Grid.Column="0" Text="{Binding Description}" TextWrapping="Wrap" VerticalAlignment="Center" />
-                        <TextBlock Grid.Column="1" Text="{Binding Result}" VerticalAlignment="Center" Opacity="0.85" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ScrollViewer Grid.Row="2">
+            <ItemsControl ItemsSource="{Binding Rows}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="models:TestRow">
+                        <Border Classes="card" Width="310" Padding="14,12" Margin="0,0,10,10">
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                <StackPanel Spacing="4" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Description}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <TextBlock Classes="small faint" VerticalAlignment="Center">
+                                            <Run Text="{DynamicResource Tests_Max}" />
+                                            <Run Text="{Binding MaxSeconds}" />
+                                            <Run Text="s" />
+                                        </TextBlock>
+                                        <Border Classes="pill ok" Padding="8,1" IsVisible="{Binding Passed}">
+                                            <TextBlock Text="{Binding ResultText}" />
+                                        </Border>
+                                        <Border Classes="pill danger" Padding="8,1" IsVisible="{Binding Failed}">
+                                            <TextBlock Text="{Binding ResultText}" />
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                                <Panel Grid.Column="1" VerticalAlignment="Center">
+                                    <Button Classes="primary" Padding="12,6" IsVisible="{Binding !IsRunning}"
+                                            Command="{Binding $parent[ItemsControl].((vm:TestsViewModel)DataContext).RunCommand}" CommandParameter="{Binding}">
+                                        <TextBlock Text="{DynamicResource Tests_Run}" FontSize="12" />
+                                    </Button>
+                                    <Button Classes="ghost" Padding="12,6" IsVisible="{Binding IsRunning}"
+                                            Command="{Binding $parent[ItemsControl].((vm:TestsViewModel)DataContext).CancelCommand}">
+                                        <TextBlock Text="{DynamicResource Tests_Cancel}" FontSize="12" />
+                                    </Button>
+                                </Panel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </UserControl>

@@ -40,7 +40,7 @@
 
 Nel repository:
 
-- `IES_3.Coupe/` è il server: ASP.NET Core più l'interfaccia web in `wwwroot/`, senza dipendenze esterne. Usa gli stessi file di connessione e lettura della centralina della versione desktop (`IES_3.Avalonia/Services`) e la libreria `IES_3.Core`, senza modificarle.
+- `IES_3.Coupe/` è il server: ASP.NET Core più l'interfaccia web in `wwwroot/`, senza dipendenze esterne. Usa la stessa libreria di connessione e lettura della centralina della versione desktop (`IES_3.Session`) e il motore `IES_3.Core`, invariato.
 - `IES_3.Coupe/packaging/` contiene il pacchetto Debian arm64: servizio systemd, regola udev per i cavi FTDI e lo script `iaw-coupe-setup` (Access Point e ottimizzazioni).
 
 ## Documentazione

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using IES_2.Avalonia.ViewModels;
 using IES_2.Coupe.Diagnostics;
 using IES_2.Coupe.Logging;
+using IES_2.Session;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
@@ -225,9 +225,11 @@ namespace IES_2.Coupe.Web
 
         private static AboutDto About()
         {
-            var about = new AboutViewModel();
-            return new AboutDto(about.ProductName, about.VersionText, about.ForkCopyright, about.ForkRepoUrl,
-                about.OriginalProjectLine, about.OriginalProjectUrl, about.Description, about.LicenseText);
+            var assembly = Assembly.GetExecutingAssembly();
+            var product = assembly.GetCustomAttribute<AssemblyProductAttribute>()?.Product ?? "IAW Scan 3 Coupé";
+            var about = AboutContent.Italian;
+            return new AboutDto(product, "Versione " + assembly.GetName().Version, about.ForkCopyright, AboutContent.ForkRepoUrl,
+                about.OriginalProjectLine, AboutContent.OriginalProjectUrl, about.Description, about.LicenseText);
         }
     }
 }

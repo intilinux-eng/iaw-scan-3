@@ -26,3 +26,6 @@ Log/
 
 # IAW Scan 3 Coupé packaging output
 IES_3.Coupe/packaging/out/
+
+# Packaging output
+IES_3.Avalonia/packaging/out/

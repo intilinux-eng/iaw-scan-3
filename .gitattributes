@@ -1,2 +1,4 @@
 # Packaging scripts and unit files run on Linux: keep LF line endings even in a Windows checkout.
+IES_3.Avalonia/packaging/** text eol=lf
 IES_3.Coupe/packaging/** text eol=lf
+IES_3.Tests/Golden/** text eol=lf

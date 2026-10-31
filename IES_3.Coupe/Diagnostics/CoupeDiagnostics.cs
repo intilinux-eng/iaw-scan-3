@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.IO.Ports;
 using System.Linq;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using IES_2.Avalonia.Services;
 using IES_2.Coupe.Logging;
 using IES_2.Coupe.Web;
 using IES_2.ECU;
+using IES_2.Session;
 using Microsoft.Extensions.Configuration;
 
 namespace IES_2.Coupe.Diagnostics
@@ -96,15 +95,7 @@ namespace IES_2.Coupe.Diagnostics
             public const string Info = "info";
         }
 
-        public static IReadOnlyList<string> ListPorts()
-        {
-            // The K-line cable is a USB serial adapter: list those first so the default pick is
-            // right on boards that also expose on-board UARTs (console, MCU bridge).
-            return SerialPort.GetPortNames()
-                .OrderBy(p => p.Contains("ttyUSB", StringComparison.Ordinal) ? 0 : p.Contains("ttyACM", StringComparison.Ordinal) ? 1 : 2)
-                .ThenBy(p => p, StringComparer.Ordinal)
-                .ToList();
-        }
+        public static IReadOnlyList<string> ListPorts() => SerialPorts.List();
 
         public StateDto Snapshot()
         {
@@ -201,20 +192,20 @@ namespace IES_2.Coupe.Diagnostics
             }
             catch (OperationCanceledException)
             {
-                result = ConnectResult.Failure("Connessione annullata.");
+                result = ConnectResult.Failure(ConnectError.Cancelled);
             }
             catch (Exception ex)
             {
-                result = ConnectResult.Failure($"Errore di connessione: {ex.Message}");
+                result = ConnectResult.Failure(ConnectError.Communication, ex.Message);
             }
 
             // The connect flow reports success even when nothing answered (as in the desktop UI, where
             // the user sees it at once). Unattended, an ECU that gave neither its ISO nor its spare-part
             // code isn't there yet (ignition still off): drop it and try again later.
-            if (auto && result.Success && result.Session != null && ecu.ISO == null && ecu.CODRIC == null)
+            if (auto && result.Success && result.Session != null && !result.EcuIdentified)
             {
                 result.Session.Dispose();
-                result = ConnectResult.Failure("La centralina non risponde.");
+                result = ConnectResult.Failure(ConnectError.Communication, "La centralina non risponde.");
             }
 
             bool connected;
@@ -243,21 +234,30 @@ namespace IES_2.Coupe.Diagnostics
                         _autoStatus = "In attesa della centralina: quadro spento o centralina che non risponde.";
                         if (!_ecuWaitingLogged)
                         {
-                            _logger.Event(EventTypes.EcuWaiting, "La centralina non risponde: nuovo tentativo tra pochi secondi.", new { ecu_id = ecuChoice.Option.Id, port, message = result.ErrorMessage });
+                            _logger.Event(EventTypes.EcuWaiting, "La centralina non risponde: nuovo tentativo tra pochi secondi.", new { ecu_id = ecuChoice.Option.Id, port, message = Describe(result) });
                             _ecuWaitingLogged = true;
                         }
                     }
                     else
                     {
-                        _errorMessage = result.ErrorMessage;
+                        _errorMessage = Describe(result);
                         if (!simulation)
-                            _logger.Event(EventTypes.EcuConnectFailed, "Collegamento alla centralina non riuscito: " + result.ErrorMessage, new { ecu_id = ecuChoice.Option.Id, port });
+                            _logger.Event(EventTypes.EcuConnectFailed, "Collegamento alla centralina non riuscito: " + Describe(result), new { ecu_id = ecuChoice.Option.Id, port });
                     }
                 }
             }
             PublishState();
             return connected;
         }
+
+        private static string Describe(ConnectResult result) => result.Error switch
+        {
+            ConnectError.NoPortSelected => "Seleziona una porta.",
+            ConnectError.PortOpenFailed => $"Impossibile aprire la porta {result.Detail}",
+            ConnectError.Cancelled => "Connessione annullata.",
+            ConnectError.InvalidEcu => "Tipo di centralina non valido.",
+            _ => $"Errore di comunicazione con la centralina: {result.Detail}",
+        };
 
         private void Attach(string ecuId, ConnectResult result, string? port, bool auto)
         {

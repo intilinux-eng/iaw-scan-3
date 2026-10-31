@@ -1,5 +1,5 @@
-using Avalonia;
 using System;
+using Avalonia;
 
 namespace IES_2.Avalonia
 {
@@ -11,6 +11,7 @@ namespace IES_2.Avalonia
 
         public static AppBuilder BuildAvaloniaApp() => AppBuilder.Configure<App>()
             .UsePlatformDetect()
+            .WithInterFont()
             .LogToTrace();
     }
 }

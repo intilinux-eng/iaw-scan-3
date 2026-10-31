@@ -1,49 +1,160 @@
-# IAW Scan 3
+<p align="center">
+  <img src="IES_3.Avalonia/Assets/app.png" width="88" alt="">
+</p>
 
-Diagnostic software for FIAT/Lancia/Alfa Romeo OBD-I engine control units (Marelli IAW 6F/8F/16F/18F/18FD/04K.P8 and the FIAT CODE immobiliser), communicating over an ISO-KKL (K-line) interface.
+<h1 align="center">IAW Scan 3</h1>
 
-**This project starts from the official, last upstream release of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 by Tomasz Orczyk ("TzOk")** — itself the successor of the original IAW ECU Scan. Nothing about the ECU communication protocol has been reverse-engineered from scratch here: that work, already field-proven for over a decade, comes from the upstream project. See the [Supported vehicles and ECUs](#supported-vehicles-and-ecus) section below for the complete vehicle compatibility list, [readme.txt](readme.txt) for the original upstream changelog, and [CHANGELOG.md](CHANGELOG.md) for a plain-language summary of what this fork changes on top of it.
+<p align="center">
+  <strong>Diagnostics and data logging for 1990s Fiat, Lancia and Alfa Romeo engines</strong><br>
+  Marelli IAW engine ECUs and the FIAT CODE immobiliser, over a K-line cable. The successor of IAW ECU Scan and IAW Scan 2.
+</p>
 
-> **This is a first beta.** The new interface below is functionally complete but not yet verified against real hardware for every supported ECU - see "Testing status" for exactly what has and hasn't been confirmed. Feedback and issue reports are very welcome. **Provided with no warranty of any kind - use at your own risk** (see License below).
+<p align="center">
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/IAWScan3-win-x64.exe"><img alt="Download for Windows (.exe)" src="https://img.shields.io/badge/Download%20for%20Windows-.exe-2563eb?style=for-the-badge"></a>
+  &nbsp;
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/iaw-scan3_amd64.deb"><img alt="Download for Linux (.deb)" src="https://img.shields.io/badge/Download%20for%20Linux-.deb-2563eb?style=for-the-badge"></a>
+</p>
 
-## Screenshots
+<p align="center">
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest">All downloads and release notes</a> ·
+  <a href="#install-the-desktop-app">Install</a> ·
+  <a href="docs/desktop/user-guide.md">User guide</a> ·
+  <a href="#whats-different-from-the-original-iaw-scan-2">What's new</a> ·
+  <a href="README.it.md">Italiano</a>
+</p>
 
-The new cross-platform interface (`IES_3.Avalonia`), shown here in simulation mode (no ECU hardware needed):
+![The dashboard of the desktop app](docs/screenshots/en/02-dashboard.png)
+
+> **Beta, provided with no warranty of any kind and at your own risk**, including no warranty that it will correctly diagnose your vehicle. See [how far it has been tested](#how-far-it-has-been-tested).
+
+## What it does
+
+- **Reads your engine live:** gauges, every parameter the ECU reports, a graph with a lane and a scale for each one.
+- **Reads and clears fault codes,** tells you when they appeared and went away, and runs **actuator tests** and **adjustments**.
+- **Keeps a log of every session,** which you can reopen, compare and export as a ZIP ready to study or hand to an AI assistant.
+- **Decodes values exactly like the original program.** The formulas are unchanged, and an automated test fails if they ever differ.
+
+## Two ways to use it
+
+| | **Desktop app** | **In-car unit, used from your phone** |
+|---|---|---|
+| **What it is** | A normal program on your computer | A small board left in the car, with its own Wi-Fi: you open a page on your phone, no app needed |
+| **Best for** | Diagnosing a car with a laptop, at home or in the workshop | A permanent logger: it records every drive by itself, and you check it when you want |
+| **Cars** | [All supported cars](#supported-vehicles-and-ecus) | Fiat Coupé only (IAW-04K.P8 and FIAT CODE) |
+| **Runs on** | Windows 10/11 (64-bit), Linux (64-bit) | Arduino UNO Q |
+| **Interface** | Native, English and Italian | Web, in the phone's browser, Italian |
+| **You need** | The K-line cable | The K-line cable, the board, a USB-C hub, wiring to the car |
+| **Status** | Beta | Experimental: never run on real hardware yet |
+| **Get started** | [Install the desktop app](#install-the-desktop-app) | [In-car unit](#the-in-car-unit-experimental) |
+
+**Not sure? Start with the desktop app:** it covers every car, and you can try it right now with no car and no cable.
+
+## Install the desktop app
+
+### Windows
+
+1. Download **[`IAWScan3-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/IAWScan3-win-x64.exe)**.
+2. Run it. There's nothing to install, and .NET is included. Windows may warn that the file comes from an unknown publisher, because it isn't signed: click **More info**, then **Run anyway**.
+3. Plug in the K-line cable. Windows normally installs its driver by itself. If no COM port appears in Device Manager, install the [FTDI VCP driver](https://ftdichip.com/drivers/vcp-drivers/).
+
+### Linux (Debian, Ubuntu and derivatives, 64-bit)
+
+1. Download **[`iaw-scan3_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/latest/download/iaw-scan3_amd64.deb)**.
+2. From the folder you downloaded it to, install it with `apt`, which also fetches the libraries it needs:
+   ```
+   sudo apt install ./iaw-scan3_amd64.deb
+   ```
+3. Allow your user to use the cable, then **log out and back in**:
+   ```
+   sudo usermod -aG dialout $USER
+   ```
+4. Start **IAW Scan 3** from the applications menu, or with `iaw-scan3`.
+
+To remove it: `sudo apt remove iaw-scan3`. Your sessions stay in `~/.local/share/IAWScan3` until you delete them.
+
+### Try it right away, with no car
+
+On the **Connect** page, pick a car, turn on **Simulation** and click **Connect**. The values are invented, but every screen works.
+
+### Connect to your car
+
+You need:
+
+1. **A USB K-line cable:** a standard **VAG-COM KKL 409.1** type. A genuine **FTDI** chip is strongly recommended for stable timing. ELM327 scanners will **not** work with these cars.
+2. **A Fiat 3-pin to OBD-II 16-pin adapter:** these cars have a triangular 3-pin diagnostic socket, usually under the bonnet near the firewall or strut turret, or under the passenger glovebox for the FIAT CODE immobiliser. The adapter's clips go on the battery, because the socket doesn't power the interface.
+
+Then, with the ignition on: find your car in the list, check the cable's port, and click **Connect**. The [user guide](docs/desktop/user-guide.md) explains every screen.
+
+## The desktop app at a glance
 
 <table>
 <tr>
-<td width="50%"><img src="docs/screenshots/01-selezione-centralina.png" alt="ECU and vehicle selection"><br><sub>ECU and vehicle selection, connection setup</sub></td>
-<td width="50%"><img src="docs/screenshots/02-parametri.png" alt="Live parameters"><br><sub>Live engine parameters, as a compact tile grid</sub></td>
+<td width="50%"><img src="docs/screenshots/en/01-connect.png" alt="Finding your car"><br><sub><b>Connect:</b> search for your car, the cable is detected by itself</sub></td>
+<td width="50%"><img src="docs/screenshots/en/03-parameters.png" alt="Parameters"><br><sub><b>Parameters:</b> choose what to read, with live values</sub></td>
 </tr>
 <tr>
-<td width="50%"><img src="docs/screenshots/03-errori.png" alt="Stored error codes"><br><sub>Stored error codes, with MIL status</sub></td>
-<td width="50%"><img src="docs/screenshots/04-grafici.png" alt="Real-time graph"><br><sub>Real-time graph with CSV export</sub></td>
+<td><img src="docs/screenshots/en/04-faults.png" alt="Fault codes"><br><sub><b>Fault codes:</b> always read, with what changed during the session</sub></td>
+<td><img src="docs/screenshots/en/05-tests.png" alt="Actuator tests"><br><sub><b>Actuator tests:</b> each one asks first</sub></td>
 </tr>
 <tr>
-<td width="50%"><img src="docs/screenshots/05-regolazioni.png" alt="Adjustments"><br><sub>Actuator adjustments</sub></td>
-<td width="50%"></td>
+<td><img src="docs/screenshots/en/06-graph.png" alt="Graph"><br><sub><b>Graph:</b> a lane and a scale for each parameter, zoom and pointer readings</sub></td>
+<td><img src="docs/screenshots/en/08-session.png" alt="A recorded session"><br><sub><b>Recorded session:</b> compared with another (dashed), figures and events</sub></td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/en/07-sessions.png" alt="Session log"><br><sub><b>Session log:</b> every connection, ready to reopen or export</sub></td>
+<td><img src="docs/screenshots/en-light/02-dashboard.png" alt="Light theme"><br><sub><b>Light theme,</b> if you prefer it to the dark one</sub></td>
 </tr>
 </table>
 
-## IAW Scan 3 Coupé (experimental): in-car data logger, used from your phone
+## The in-car unit (experimental)
 
-An extension of IAW Scan 3 for one car only, the **Fiat Coupé** (Weber-Marelli IAW-04K.P8 engine ECU and FIAT CODE immobiliser). It runs on an **Arduino UNO Q** left permanently in the car, plugged into the diagnostic socket and powered from the ignition. Your phone joins the board's own Wi-Fi and opens the interface in the browser: there is no app to install and no internet needed. Every time the ignition is switched on it connects to the ECU by itself and logs every parameter, fault code and event, with or without a phone around. Each drive can be downloaded as a ZIP (JSONL events, CSV data and a format description) ready to hand to an AI assistant for analysis.
+<img src="docs/coupe/screenshots/01-cruscotto.png" width="210" align="right" alt="The dashboard on a phone">
 
-<table>
-<tr>
-<td width="33%"><img src="docs/coupe/screenshots/01-cruscotto.png" alt="Dashboard"><br><sub>Dashboard</sub></td>
-<td width="33%"><img src="docs/coupe/screenshots/04-errori.png" alt="Fault codes"><br><sub>Fault codes</sub></td>
-<td width="33%"><img src="docs/coupe/screenshots/03-diario.png" alt="Logbook"><br><sub>Logbook, one entry per drive</sub></td>
-</tr>
-</table>
+For the **Fiat Coupé**: an Arduino UNO Q stays in the car, plugged into the diagnostic socket and powered from the ignition. Your phone joins its Wi-Fi and opens `http://192.168.4.1`, with no app and no internet.
 
-Documentation (in Italian): [overview](docs/coupe/README.md) · [installing on the UNO Q](docs/coupe/installazione-uno-q.md) · [user guide](docs/coupe/guida-uso.md) · [logbook format](docs/coupe/registro-dati.md).
+- At every ignition-on it connects to the ECU by itself and logs every parameter, fault code and event, with or without a phone around.
+- It's built to have its power simply cut at key-off.
+- It takes the date and time from your phone, and works out the times of whatever it recorded before you connected.
+- Each drive downloads as a ZIP for analysis.
 
-**Status:** experimental project, published as its own [pre-release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/coupe-experimental). It has been tested in simulation only (Windows, and Linux under WSL). It has never run on an actual UNO Q or been connected to a car. The UNO Q's Wi-Fi access-point mode in particular is unverified. The diagnostic engine is the same unchanged one as everywhere else in this project.
+**It has only been tested in simulation: it has never run on a real UNO Q or been connected to a car.** Installing it means flashing and wiring a board, so it's for people comfortable with that.
+
+Packages: [experimental pre-release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/coupe-experimental). Documentation, in Italian: [overview](docs/coupe/README.md) · [installing on the UNO Q](docs/coupe/installazione-uno-q.md) · [user guide](docs/coupe/guida-uso.md) · [logbook format](docs/coupe/registro-dati.md).
+
+<br clear="right">
+
+## What's different from the original IAW Scan 2
+
+This project is a fork of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 by Tomasz Orczyk ("TzOk"), itself the successor of IAW ECU Scan. **Of the original, it keeps the diagnostic engine:** how signals are read from the ECU and decoded, in `IES_3.Core`, and the same way of handling the serial port and connection. Everything around it is new.
+
+| | **IAW Scan 2 v0.85** | **IAW Scan 3** |
+|---|---|---|
+| **Decoding formulas** | The reference | **Identical**, checked by an automated test |
+| **Runs on** | Windows 2000 to 7, on .NET Framework 2.0. Last release: May 2015 | Windows 10/11 and Linux, on .NET 10 |
+| **Installing** | Needs .NET Framework 2.0 | One 32 MB file on Windows, a 26 MB package on Linux, .NET included |
+| **Interface** | Windows Forms, tabs and tables | New: sidebar, gauges, dark and light themes |
+| **Interface languages** | 7 (English, German, Croatian, Italian, Polish, Portuguese, Serbian) | English and Italian for now |
+| **Finding your ECU** | Choose the ECU family; automatic detection from the ISO code | Search for your car by name, or choose the family. Automatic detection was removed after proving unreliable on real hardware |
+| **Cable plugged in late** | Ports are only listed at start-up: restart the program | Appears by itself |
+| **Trying it without a car** | A hidden Ctrl+click | A switch on the Connect page |
+| **Live values** | One table | Gauges with lowest and highest values, recent history, your own layout, full screen |
+| **Parameters sharing a byte** | Turning one off silently froze the other | Each keeps updating |
+| **Graph** | One scale for everything, so 6000 rpm flattens 14 V; only while recording | A lane and a scale for each, zoom, pan, pointer readings, always on, up to an hour |
+| **Recording** | By hand, one CSV in the folder the program was started from, with the other tabs locked meanwhile. A text log if ticked | Every session logged, automatically if you want, with its events and a size limit. Every page stays usable |
+| **Reviewing later** | Open the CSV elsewhere | Reopen inside the program, compare two sessions, jump to an event |
+| **Exporting** | CSV | ZIP with data, events and a description of the format, ready for a script or an AI assistant |
+| **Fault codes** | Read on their tab, or with the parameters if a box is ticked | Always read, with a live count and a history of what appeared and went away |
+| **Clearing codes, actuator tests** | The `C` key clears codes at once, tests start at a click | Always ask first; no single-key shortcut |
+| **While talking to the ECU** | The window stops responding during connection and adjustments | It keeps responding: everything on the serial line runs in the background |
+| **In the car** | No | [Fiat Coupé unit](#the-in-car-unit-experimental), used from your phone (experimental) |
+| **Automated tests** | No | Yes, on Windows and Linux, including an emulated ECU |
+
+The original Windows Forms interface is no longer included. Change by change, in plain language: [CHANGELOG.md](CHANGELOG.md). The original project's own history: [readme.txt](readme.txt).
 
 ## Supported vehicles and ECUs
 
-IAW Scan 3 is designed for 1990s Italian OBD-I vehicles (Fiat, Lancia, Alfa Romeo) equipped with **Magneti-Marelli / Weber-Marelli IAW** engine management systems and the **FIAT CODE** immobiliser, communicating over an ISO-KKL (K-line) interface via the 3-pin Fiat diagnostic port.
+<details>
+<summary><b>Show the complete list of cars and ECUs</b></summary>
 
 ### By vehicle
 
@@ -105,77 +216,50 @@ IAW Scan 3 is designed for 1990s Italian OBD-I vehicles (Fiat, Lancia, Alfa Rome
 | **Weber-Marelli IAW-04K.P8** | Multi-Point (MPI) | ISO 9141 (K-Line), 7680 baud | Fiat Coupé 2.0 16V & Turbo, Tipo 2.0 16V, Lancia Delta HF Integrale Evo, Nuova Delta 2.0 16V/Turbo, Dedra 2.0 16V/Integrale, Alfa Romeo 155 Q4 |
 | **FIAT CODE** | Factory Immobiliser | ISO 9141 (K-Line), 7680 baud | First-generation immobiliser diagnostic readouts and error status across all equipped vehicles |
 
-### Diagnostic interface & adapter cable
+</details>
 
-To connect your computer to these pre-OBD-II (OBD-I) vehicles, standard ELM327 Bluetooth/USB scanners will **not** work. You need:
+## How far it has been tested
 
-1. **USB-to-K-line (ISO-KKL) interface cable:** A standard **VAG-COM KKL 409.1** USB cable (adapters using the genuine **FTDI FT232** chipset are strongly recommended for timing stability).
-2. **Fiat 3-pin to OBD-II 16-pin adapter:** Pre-OBD-II Fiat group vehicles use a triangular **3-pin diagnostic connector** (usually found under the hood near the firewall or strut turret, or under the passenger glovebox for the FIAT CODE immobiliser unit). This adapter includes red/black alligator clips that connect directly to the vehicle's **12V battery**, because the 3-pin port does not supply 12V power to the diagnostic interface.
+| | How it was verified |
+|---|---|
+| **Decoding formulas** | Every parameter and fault of every ECU, over a set of raw values: 2745 results recorded from the untouched original code, and compared on every build |
+| **The whole application** | Automated tests in simulation, on Windows and Linux. The final Windows `.exe` driven through its real controls. The Linux package checked with a trial `apt` install (nothing changed on the system), unpacked and started, under WSL |
+| **Serial port on Linux** | The full connect, polling, fault codes, tests, clearing and lost-communication flow, automated, against an emulated ECU on a Linux pseudo-terminal, including the unusual 7680 baud |
+| **A real ECU on Windows** | The engine and the connection logic are those the earlier betas of this fork ran with on a Fiat Coupé 2.0 16V. **This new interface hasn't been run on a real car yet** |
+| **A real USB cable on Linux** | **Not yet** |
+| **The UNO Q in-car unit** | **Only in simulation.** Never run on a real board or in a car |
+| **Other cars** | The vehicle tables come from the original project. They haven't all been checked again in this fork |
 
-## Goal
+A report from a real car is the most useful thing you can send, whether it works or not: [open an issue](https://github.com/intilinux-eng/iaw-scan-3/issues).
 
-Give IAW Scan **longevity**: a supported, modern runtime instead of .NET Framework 2.0 (unmaintained since 2015), and a UI that isn't tied to Windows. Concretely, that means:
-
-- running on a **long-term-supported .NET version** rather than a dead one;
-- a **cross-platform UI** (Windows/Linux/macOS) so the tool isn't limited to a Windows laptop — including **Linux on a Raspberry Pi**, for a small, cheap, permanently-installed diagnostic unit that can live **in the car** rather than being carried in and out each time.
-
-## Diagnostic accuracy
-
-**The diagnostic engine itself is not being changed.** Every value this tool reads and decodes (RPM, temperatures, pressures, error codes, and so on) uses exactly the same formulas as the original IAW Scan 2 — nothing here has been recalculated or reinterpreted. If a genuine bug in a formula is ever found and fixed, it will be called out explicitly in the changelog as such, never silently. What changes in this fork is how you interact with the software and what it runs on — not what it tells you about your engine.
-
-## Supported operating systems
-
-|                          | Original IAW Scan 2 (v0.85) | This fork |
-|--------------------------|------------------------------|-----------|
-| Windows                  | Windows 2000 through 7       | Any current Windows, via the .NET 10 Desktop Runtime |
-| Linux (incl. Raspberry Pi) | Not supported              | Goal of this fork - see status note below |
-| macOS                    | Not supported                | Goal of this fork - see status note below |
-
-**Status note:** the new cross-platform UI (`IES_3.Avalonia`) is built entirely on packages that run on Linux and macOS, but it has only actually been run and tested on Windows so far. Linux/Raspberry Pi support is the direction this project is heading in, not yet a verified, ready-to-use feature.
-
-**Specifically about Linux + Raspberry Pi:** the whole point of that port is a small, cheap touchscreen unit that lives permanently in the car - but the piece that actually matters for that use case, talking to the USB K-line interface over serial on Linux, **has not been tested at all**. Only the UI itself (running with no hardware attached, in simulation mode) has been confirmed to start on Linux. Whether the interface is even detected, and whether reading/writing over it behaves the same as on Windows, is genuinely unknown right now. If you try this on a Raspberry Pi (or any Linux box) with real hardware, please [open an issue](https://github.com/intilinux-eng/iaw-scan-3/issues) either way - a "it doesn't see the interface" report is just as useful as a "it works" one.
-
-**What you need either way:** a USB-to-K-line (ISO-KKL) diagnostic interface cable and its driver (the same requirement as the original tool). On Linux, this typically also means adding your user to the `dialout` group so it can access the serial port without extra privileges.
-
-## Testing status
-
-Developed and tested primarily on a **Fiat Coupé 2.0 16V naturally aspirated** (Marelli IAW-04K.P8), **on Windows**, using the new interface's simulation mode plus real-hardware runs on that one vehicle. Other supported ECUs/vehicles come from the upstream project's own reverse-engineering and haven't all been re-verified against real hardware in this fork yet — see [CHANGELOG.md](CHANGELOG.md) for what has been specifically confirmed working or removed (e.g. automatic ECU detection, dropped after it proved unreliable on real hardware). **Linux has only been tested for the UI itself starting up, never against real ECU hardware** — see the Linux/Raspberry Pi note above.
-
-## Project structure
-
-- **`IES_3/`** — the original WinForms UI, ported to .NET 10 (mechanical port, behavior unchanged from upstream v0.85).
-- **`IES_3.Core/`** — shared library with the ECU protocol/communication logic and localized strings, used by both UIs below. Its source files (the actual ECU decoding logic) come unchanged from the original IES_2 codebase, just relocated here.
-- **`IES_3.Avalonia/`** — new cross-platform UI (Windows/Linux/macOS) built with [Avalonia](https://avaloniaui.net/) and MVVM. All the original screens are ported: ECU/vehicle selection and connecting, live parameters, error codes, actuator tests, a real-time graph with CSV export, and adjustments.
-- **`IES_3.Coupe/`** — the experimental Fiat Coupé edition: an ASP.NET Core server with a phone-sized web UI (`wwwroot/`, no external dependencies) and the always-on data logger. It compiles in the desktop UI's connection/polling services (`IES_3.Avalonia/Services`) instead of copying them, and packages as an arm64 `.deb` for the Arduino UNO Q (`packaging/`).
-
-## Beta downloads
-
-Pre-built, self-contained packages of the new cross-platform interface (`IES_3.Avalonia`) - no need to install .NET yourself - are published on demand to a rolling **[Beta release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/beta)**: a Windows `.exe` and a Linux `.deb`. The experimental Coupé edition for the Arduino UNO Q is published separately, as the [coupe-experimental pre-release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/coupe-experimental). These are beta builds straight from `main`, not tested releases - see "Testing status" below for what has and hasn't been confirmed on real hardware. A proper versioned-release process (release branches, version tags) will come later. Provided with no warranty, as with the rest of the project - see License.
-
-## Building
-
-Requires the [.NET 10 SDK](https://dotnet.microsoft.com/download) or later.
+## For developers
 
 ```
-dotnet build IES_3.sln
+IES_3.Core/      Diagnostic engine from IAW Scan 2: reading and decoding ECUs. Unchanged.
+IES_3.Session/   Connection, polling, active diagnostics, recording and reading back sessions.
+IES_3.Avalonia/  The desktop app (Avalonia, MVVM). Packaging in packaging/.
+IES_3.Coupe/     The Fiat Coupé edition: web server and interface. Packaging in packaging/.
+IES_3.Tests/     Reference values for the formulas, the app driven in simulation, the emulated ECU.
 ```
 
-Run the original WinForms UI (Windows only):
+With the [.NET 10 SDK](https://dotnet.microsoft.com/download):
 
 ```
-dotnet run --project IES_3/IES_3.csproj
+dotnet run --project IES_3.Avalonia        # run the desktop app
+dotnet test IES_3.Tests                    # run the tests (the emulated ECU needs Linux)
+
+dotnet publish IES_3.Avalonia -c Release -r win-x64 -o publish/win-x64           # the .exe
+bash IES_3.Avalonia/packaging/build-deb.sh 0.2.0-beta                            # the .deb, on Linux or WSL
+bash IES_3.Coupe/packaging/build-deb.sh 0.1.0-experimental                       # the Coupé .deb
+IAW_SCREENSHOTS="$PWD/docs/screenshots" dotnet test IES_3.Tests --filter ScreenshotTests  # these screenshots
 ```
 
-Run the new cross-platform UI:
-
-```
-dotnet run --project IES_3.Avalonia/IES_3.Avalonia.csproj
-```
-
-Both UIs support a simulation mode that requires no ECU hardware (a checkbox in the new UI; Ctrl+click the Connect button, or Ctrl+F10, in the WinForms UI).
+macOS isn't packaged: nothing in the code rules it out, but it hasn't been tried.
 
 ## License
 
-Modified BSD license (see [license.txt](license.txt)), Copyright (c) 2011, Tomasz Orczyk. The WinForms UI's chart control, [ZedGraph](https://github.com/discomurray/ZedGraph), is LGPLv3-licensed and consumed as an unmodified NuGet package.
+Modified BSD license, see [license.txt](license.txt). Copyright (c) 2011, Tomasz Orczyk. This fork builds on [IAW Scan 2](http://iaw-scan2.sourceforge.net): the credits are also in the program, under Settings.
 
-**In plain words: no warranty.** This software is provided "as is", with no warranty of any kind, express or implied - including no warranty that it will correctly diagnose your vehicle. The author(s) and contributors are not liable for any damage, to your car or otherwise, arising from its use. See [license.txt](license.txt) for the exact legal text.
+Open source components: .NET, Avalonia, CommunityToolkit.Mvvm, SkiaSharp and HarfBuzzSharp (MIT), and the Inter font (SIL Open Font License 1.1).
+
+**In plain words: no warranty.** This software is provided "as is", with no warranty of any kind, express or implied, including no warranty that it will correctly diagnose your vehicle. The author(s) and contributors are not liable for any damage, to your car or otherwise, arising from its use.

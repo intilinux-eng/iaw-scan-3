@@ -1,0 +1,66 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:IES_2.Avalonia.ViewModels"
+             xmlns:models="using:IES_2.Avalonia.Models"
+             xmlns:controls="using:IES_2.Avalonia.Controls"
+             x:Class="IES_2.Avalonia.Views.GraphView"
+             x:DataType="vm:GraphViewModel">
+
+    <Grid RowDefinitions="Auto,*" ColumnDefinitions="230,*" ColumnSpacing="14" Margin="24,18">
+
+        <Grid Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+            <TextBlock Text="{DynamicResource Graph_Title}" Classes="h1" VerticalAlignment="Center" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                <Button Classes="ghost" Padding="10,6" Command="{Binding SetWindowCommand}" CommandParameter="15"><TextBlock Text="15 s" FontSize="12" /></Button>
+                <Button Classes="ghost" Padding="10,6" Command="{Binding SetWindowCommand}" CommandParameter="60"><TextBlock Text="1 min" FontSize="12" /></Button>
+                <Button Classes="ghost" Padding="10,6" Command="{Binding SetWindowCommand}" CommandParameter="300"><TextBlock Text="5 min" FontSize="12" /></Button>
+                <Button Classes="ghost" Padding="10,6" Command="{Binding SetWindowCommand}" CommandParameter="900" Margin="0,0,8,0"><TextBlock Text="15 min" FontSize="12" /></Button>
+                <ToggleButton Classes="chip" IsChecked="{Binding Follow}" ToolTip.Tip="{DynamicResource Graph_FollowTip}">
+                    <TextBlock Text="{DynamicResource Graph_Follow}" />
+                </ToggleButton>
+                <ToggleButton Classes="chip" IsChecked="{Binding IsOverlay}" ToolTip.Tip="{DynamicResource Graph_OverlayTip}" Margin="0,0,8,0">
+                    <TextBlock Text="{DynamicResource Graph_Overlay}" />
+                </ToggleButton>
+                <Button Classes="primary" Padding="12,7" Command="{Binding $parent[Window].((vm:ShellViewModel)DataContext).ToggleRecordingCommand}" IsVisible="{Binding !Live.IsRecording}" AutomationProperties.Name="{DynamicResource Graph_Record}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <PathIcon Data="{StaticResource IconRecord}" Width="12" Height="12" />
+                        <TextBlock Text="{DynamicResource Graph_Record}" FontSize="12" />
+                    </StackPanel>
+                </Button>
+                <Button Classes="dangerButton" Padding="12,7" Command="{Binding $parent[Window].((vm:ShellViewModel)DataContext).ToggleRecordingCommand}" IsVisible="{Binding Live.IsRecording}" AutomationProperties.Name="{DynamicResource Graph_Stop}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <PathIcon Data="{StaticResource IconStop}" Width="12" Height="12" />
+                        <TextBlock Text="{DynamicResource Graph_Stop}" FontSize="12" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="1" Classes="card" Padding="12">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Top" Text="{DynamicResource Graph_Traces}" Classes="label" Margin="0,0,0,8" />
+                <TextBlock DockPanel.Dock="Bottom" Text="{DynamicResource Graph_Help}" Classes="small faint" TextWrapping="Wrap" Margin="0,8,0,0" />
+                <ScrollViewer>
+                    <ItemsControl ItemsSource="{Binding Live.Selected}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="models:ParameterRow">
+                                <CheckBox IsChecked="{Binding IsPlotted}" MinHeight="28" Padding="4,0,0,0">
+                                    <StackPanel Orientation="Horizontal" Spacing="7">
+                                        <Border Width="10" Height="10" CornerRadius="3" Background="{Binding TraceBrush}" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Description}" FontSize="12" TextWrapping="Wrap" MaxWidth="150" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </CheckBox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </DockPanel>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="1" Classes="card" Padding="8">
+            <controls:LaneChart x:Name="Chart" Traces="{Binding Traces}" Overlay="{Binding IsOverlay}" Follow="{Binding Follow}"
+                                WindowSeconds="{Binding WindowSeconds}" ViewEnd="{Binding ViewEnd}"
+                                Placeholder="{DynamicResource Graph_Placeholder}" />
+        </Border>
+    </Grid>
+</UserControl>

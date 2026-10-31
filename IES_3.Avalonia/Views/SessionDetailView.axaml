@@ -1,0 +1,113 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:IES_2.Avalonia.ViewModels"
+             xmlns:controls="using:IES_2.Avalonia.Controls"
+             xmlns:conv="using:Avalonia.Data.Converters"
+             x:Class="IES_2.Avalonia.Views.SessionDetailView"
+             x:DataType="vm:SessionDetailViewModel">
+
+    <Grid RowDefinitions="Auto,Auto,*" ColumnDefinitions="*,330" ColumnSpacing="14" Margin="24,18">
+
+        <Grid Grid.ColumnSpan="2" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10" Margin="0,0,0,10">
+            <Button Classes="icon" Command="{Binding CloseCommand}" ToolTip.Tip="{DynamicResource Sessions_Back}" AutomationProperties.Name="{DynamicResource Sessions_Back}">
+                <PathIcon Data="{StaticResource IconBack}" />
+            </Button>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Title}" Classes="h2" TextTrimming="CharacterEllipsis" />
+                <TextBlock Text="{Binding Subtitle}" Classes="small muted" TextTrimming="CharacterEllipsis" />
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                <ToggleButton Classes="chip" IsChecked="{Binding IsOverlay}" ToolTip.Tip="{DynamicResource Graph_OverlayTip}">
+                    <TextBlock Text="{DynamicResource Graph_Overlay}" />
+                </ToggleButton>
+                <Button Classes="ghost" Padding="10,6" Command="{Binding FitAllCommand}">
+                    <TextBlock Text="{DynamicResource Sessions_FitAll}" FontSize="12" />
+                </Button>
+                <Button Classes="primary" Padding="12,7" Command="{Binding ExportCommand}" IsVisible="{Binding CanExport}" ToolTip.Tip="{DynamicResource Sessions_ExportTip}" AutomationProperties.Name="{DynamicResource Sessions_Export}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <PathIcon Data="{StaticResource IconDownload}" Width="12" Height="12" />
+                        <TextBlock Text="{DynamicResource Sessions_Export}" FontSize="12" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" ColumnDefinitions="Auto,300,Auto,*" ColumnSpacing="8" Margin="0,0,0,10">
+            <TextBlock Text="{DynamicResource Sessions_CompareWith}" Classes="small muted" VerticalAlignment="Center" />
+            <ComboBox Grid.Column="1" ItemsSource="{Binding CompareChoices}" SelectedItem="{Binding CompareWith}" HorizontalAlignment="Stretch"
+                      PlaceholderText="{DynamicResource Sessions_CompareNone}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate x:DataType="vm:SessionItem">
+                        <TextBlock FontSize="12" TextTrimming="CharacterEllipsis">
+                            <Run Text="{Binding When}" />
+                            <Run Text=" · " />
+                            <Run Text="{Binding Vehicle}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Grid.Column="2" Classes="icon" Width="30" Height="30" Padding="6" Command="{Binding ClearCompareCommand}"
+                    IsVisible="{Binding CompareWith, Converter={x:Static conv:ObjectConverters.IsNotNull}}">
+                <PathIcon Data="{StaticResource IconClose}" Width="12" Height="12" />
+            </Button>
+            <TextBlock Grid.Column="3" Text="{Binding CompareMessage}" Classes="small danger" VerticalAlignment="Center" TextWrapping="Wrap" />
+        </Grid>
+
+        <Border Grid.Row="2" Classes="card" Padding="8">
+            <Panel>
+                <controls:LaneChart x:Name="Chart" Traces="{Binding Traces}" Overlay="{Binding IsOverlay}" Follow="{Binding Follow}"
+                                    WindowSeconds="{Binding WindowSeconds}" ViewEnd="{Binding ViewEnd}" IsVisible="{Binding HasData}" />
+                <TextBlock Text="{DynamicResource Sessions_NoData}" Classes="muted" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           TextAlignment="Center" TextWrapping="Wrap" MaxWidth="420" IsVisible="{Binding !HasData}" />
+            </Panel>
+        </Border>
+
+        <Grid Grid.Row="2" Grid.Column="1" RowDefinitions="3*,2*" RowSpacing="12">
+            <Border Classes="card" Padding="12">
+                <DockPanel>
+                    <Grid DockPanel.Dock="Top" ColumnDefinitions="*,48,48,48" Margin="0,0,0,6">
+                        <TextBlock Text="{DynamicResource Sessions_Parameters}" Classes="label" />
+                        <TextBlock Grid.Column="1" Text="{DynamicResource Sessions_Min}" Classes="label" HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="2" Text="{DynamicResource Sessions_Avg}" Classes="label" HorizontalAlignment="Right" />
+                        <TextBlock Grid.Column="3" Text="{DynamicResource Sessions_Max}" Classes="label" HorizontalAlignment="Right" />
+                    </Grid>
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding Series}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="vm:SeriesChoice">
+                                    <Grid ColumnDefinitions="*,48,48,48" MinHeight="26">
+                                        <CheckBox IsChecked="{Binding IsPlotted}" MinHeight="24" Padding="4,0,0,0" ToolTip.Tip="{Binding Name}">
+                                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                                <Border Width="9" Height="9" CornerRadius="3" Background="{Binding Brush}" VerticalAlignment="Center" />
+                                                <TextBlock Text="{Binding Name}" FontSize="11" MaxWidth="110" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </CheckBox>
+                                        <TextBlock Grid.Column="1" Text="{Binding MinText}" FontSize="11" FontFeatures="tnum" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                                        <TextBlock Grid.Column="2" Text="{Binding AverageText}" FontSize="11" FontFeatures="tnum" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                                        <TextBlock Grid.Column="3" Text="{Binding MaxText}" FontSize="11" FontFeatures="tnum" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+
+            <Border Grid.Row="1" Classes="card" Padding="12">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" Text="{DynamicResource Sessions_Events}" Classes="label" Margin="0,0,0,6" />
+                    <ListBox Classes="plain" ItemsSource="{Binding Events}" SelectionChanged="OnEventSelected" IsVisible="{Binding HasEvents}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="vm:SessionEventRow">
+                                <Grid ColumnDefinitions="44,*">
+                                    <TextBlock Text="{Binding Time}" Classes="small faint" FontFeatures="tnum" />
+                                    <TextBlock Grid.Column="1" Text="{Binding Text}" Classes="small" Classes.danger="{Binding IsProblem}" TextWrapping="Wrap" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
