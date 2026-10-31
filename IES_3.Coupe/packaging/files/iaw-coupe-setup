@@ -1,0 +1,256 @@
+#!/bin/bash
+# IAW Scan 3 Coupé - device setup on the Arduino UNO Q's Debian.
+#
+#   iaw-coupe-setup ap [--ssid NOME] [--password PAROLA] [--canale N] [--attiva]
+#   iaw-coupe-setup casa
+#   iaw-coupe-setup stato
+#   iaw-coupe-setup ottimizza [--disattiva-applab]
+#   iaw-coupe-setup ripristina
+#
+# User-facing messages are in Italian, like the rest of this edition.
+set -euo pipefail
+
+CONF_DIR=/etc/iaw-scan3-coupe
+AP_CONF=$CONF_DIR/ap.conf
+DISABLED_UNITS=$CONF_DIR/unita-disattivate
+AP_CON=iaw-coupe-ap
+AP_ADDRESS=192.168.4.1
+SERVICE=iaw-scan3-coupe
+JOURNALD_DROPIN=/etc/systemd/journald.conf.d/60-iaw-scan3-coupe.conf
+APT_TIMERS="apt-daily.timer apt-daily-upgrade.timer man-db.timer"
+
+die() { echo "Errore: $*" >&2; exit 1; }
+need_root() { [ "$(id -u)" -eq 0 ] || die "esegui il comando con sudo."; }
+have() { command -v "$1" >/dev/null 2>&1; }
+
+wifi_device() {
+    nmcli -t -f DEVICE,TYPE device status 2>/dev/null | awk -F: '$2 == "wifi" { print $1; exit }'
+}
+
+# Escapes the characters that are special in a Wi-Fi QR code (WIFI:...;;).
+qr_escape() { printf '%s' "$1" | sed -e 's/[\\;,:"]/\\&/g'; }
+
+random_password() {
+    # 12 characters, leaving out look-alikes (0/O, 1/l/I) so it can be typed from a sticker.
+    tr -dc 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789' </dev/urandom | head -c 12 || true
+}
+
+print_access() {
+    local ssid=$1 password=$2
+    echo
+    echo "  Rete Wi-Fi:  $ssid"
+    echo "  Password:    $password"
+    echo "  Indirizzo:   http://$AP_ADDRESS"
+    echo
+    if have qrencode; then
+        echo "Inquadra questo codice con la fotocamera del telefono per collegarti alla rete:"
+        qrencode -t ANSIUTF8 "WIFI:T:WPA;S:$(qr_escape "$ssid");P:$(qr_escape "$password");;"
+    else
+        echo "(Installa il pacchetto qrencode per vedere qui il codice QR della rete.)"
+    fi
+}
+
+cmd_ap() {
+    need_root
+    local ssid="" password="" channel=6 activate=no
+    while [ $# -gt 0 ]; do
+        case $1 in
+            --ssid) ssid=${2:?}; shift 2 ;;
+            --password) password=${2:?}; shift 2 ;;
+            --canale) channel=${2:?}; shift 2 ;;
+            --attiva) activate=yes; shift ;;
+            *) die "opzione sconosciuta: $1" ;;
+        esac
+    done
+
+    have nmcli || die "NetworkManager (nmcli) non trovato: questa procedura richiede NetworkManager."
+    local device
+    device=$(wifi_device)
+    [ -n "$device" ] || die "nessuna interfaccia Wi-Fi trovata (nmcli device status)."
+
+    # The UNO Q's documentation doesn't say whether its Wi-Fi can act as an access point: ask the driver.
+    local ap_capable
+    ap_capable=$(nmcli -g WIFI-PROPERTIES.AP device show "$device" 2>/dev/null || true)
+    if [ "$ap_capable" != "yes" ]; then
+        die "il driver Wi-Fi di $device non dichiara il supporto alla modalità Access Point (WIFI-PROPERTIES.AP = '${ap_capable:-sconosciuto}'). Vedi la sezione 'Se la modalità Access Point non è disponibile' nella guida di installazione."
+    fi
+
+    mkdir -p "$CONF_DIR"
+    if [ -f "$AP_CONF" ]; then
+        # shellcheck disable=SC1090
+        . "$AP_CONF"
+        ssid=${ssid:-${SSID:-}}
+        password=${password:-${PASSWORD:-}}
+    fi
+    ssid=${ssid:-IAW-Coupe-$(tr -dc 'A-Z0-9' </dev/urandom | head -c 4 || true)}
+    password=${password:-$(random_password)}
+    [ ${#password} -ge 8 ] || die "la password deve avere almeno 8 caratteri."
+
+    umask 077
+    printf 'SSID=%q\nPASSWORD=%q\n' "$ssid" "$password" >"$AP_CONF"
+
+    nmcli connection delete "$AP_CON" >/dev/null 2>&1 || true
+    # Shared IPv4: NetworkManager hands out addresses (DHCP) to the phone on 192.168.4.0/24.
+    # 2.4 GHz only, for the widest phone compatibility. Highest autoconnect priority, so the board
+    # comes up as an access point at every power-on, even with a known home network in range.
+    nmcli connection add type wifi ifname "$device" con-name "$AP_CON" ssid "$ssid" \
+        802-11-wireless.mode ap 802-11-wireless.band bg 802-11-wireless.channel "$channel" \
+        ipv4.method shared ipv4.addresses "$AP_ADDRESS/24" ipv6.method disabled \
+        wifi-sec.key-mgmt wpa-psk wifi-sec.psk "$password" \
+        wifi-sec.proto rsn wifi-sec.pairwise ccmp wifi-sec.group ccmp \
+        connection.autoconnect yes connection.autoconnect-priority 100 >/dev/null
+
+    echo "Rete del dispositivo configurata."
+    print_access "$ssid" "$password"
+
+    if [ "$activate" = yes ]; then
+        echo "Attivo ora l'Access Point: se sei collegato via Wi-Fi (SSH) la connessione cadrà."
+        nmcli connection up "$AP_CON" >/dev/null
+        echo "Access Point attivo."
+    else
+        echo "L'Access Point si attiverà alla prossima accensione (oppure subito con: sudo iaw-coupe-setup ap --attiva)."
+    fi
+}
+
+cmd_casa() {
+    need_root
+    have nmcli || die "NetworkManager (nmcli) non trovato."
+    if nmcli -t -f NAME connection show | grep -qx "$AP_CON"; then
+        nmcli connection modify "$AP_CON" connection.autoconnect no
+        nmcli connection down "$AP_CON" >/dev/null 2>&1 || true
+    fi
+    local device
+    device=$(wifi_device)
+    [ -n "$device" ] && nmcli device connect "$device" >/dev/null 2>&1 || true
+    echo "Access Point disattivato: il dispositivo torna sulla rete Wi-Fi di casa (se configurata)."
+    echo "Per riattivarlo: sudo iaw-coupe-setup ap --attiva"
+}
+
+cmd_stato() {
+    echo "== Servizio"
+    if systemctl cat "$SERVICE" >/dev/null 2>&1; then
+        systemctl --no-pager --lines=0 status "$SERVICE" 2>/dev/null | head -n 5 || true
+    else
+        echo "  servizio $SERVICE non installato"
+    fi
+    echo
+    echo "== Rete"
+    if have nmcli; then
+        nmcli -t -f NAME,DEVICE,STATE connection show --active 2>/dev/null | sed 's/^/  /' || true
+        if [ -f "$AP_CONF" ]; then
+            # shellcheck disable=SC1090
+            . "$AP_CONF"
+            echo "  Rete del dispositivo: $SSID  (password in $AP_CONF)"
+        fi
+    else
+        echo "  NetworkManager non presente"
+    fi
+    echo
+    echo "== Cavo K-line"
+    local found=no
+    for tty in /dev/ttyUSB* /dev/ttyACM*; do
+        [ -e "$tty" ] || continue
+        found=yes
+        local latency=""
+        local sysfs=/sys/class/tty/$(basename "$tty")/device/latency_timer
+        [ -r "$sysfs" ] && latency=" (latency_timer $(cat "$sysfs") ms)"
+        echo "  $tty$latency"
+    done
+    [ "$found" = yes ] || echo "  nessun cavo USB-seriale collegato"
+    echo
+    echo "== Registro dati"
+    local data=/var/lib/iaw-scan3-coupe/datalog
+    if [ -d "$data" ]; then
+        echo "  $(find "$data" -maxdepth 1 -type d -name 'boot-*' | wc -l) accensioni, $(du -sh "$data" | cut -f1) usati"
+    else
+        echo "  ancora vuoto"
+    fi
+    echo
+    echo "== Ottimizzazioni"
+    [ -f "$JOURNALD_DROPIN" ] && echo "  journal di sistema in RAM: sì" || echo "  journal di sistema in RAM: no (sudo iaw-coupe-setup ottimizza)"
+    if [ -f "$DISABLED_UNITS" ]; then
+        echo "  servizi disattivati: $(tr '\n' ' ' <"$DISABLED_UNITS")"
+    fi
+}
+
+cmd_ottimizza() {
+    need_root
+    local disable_applab=no
+    while [ $# -gt 0 ]; do
+        case $1 in
+            --disattiva-applab) disable_applab=yes; shift ;;
+            *) die "opzione sconosciuta: $1" ;;
+        esac
+    done
+    mkdir -p "$CONF_DIR"
+    touch "$DISABLED_UNITS"
+
+    # The board is switched off by cutting its power: keep the system journal in RAM, so the
+    # eMMC is only written to by the logbook itself (which syncs its own files every few seconds).
+    mkdir -p "$(dirname "$JOURNALD_DROPIN")"
+    cat >"$JOURNALD_DROPIN" <<'EOF'
+# IAW Scan 3 Coupé: system journal in RAM only (the board loses power at every key-off).
+[Journal]
+Storage=volatile
+RuntimeMaxUse=32M
+EOF
+    systemctl restart systemd-journald || true
+    echo "Journal di sistema spostato in RAM."
+
+    # Background package maintenance would only run offline in the car, and may be cut off
+    # halfway by the power going: updates are done by hand at home (see the guide).
+    for unit in $APT_TIMERS; do
+        if systemctl is-enabled "$unit" >/dev/null 2>&1; then
+            systemctl disable --now "$unit" >/dev/null 2>&1 || true
+            grep -qx "$unit" "$DISABLED_UNITS" || echo "$unit" >>"$DISABLED_UNITS"
+            echo "Disattivato $unit."
+        fi
+    done
+
+    if [ "$disable_applab" = yes ]; then
+        # App Lab (Arduino's app framework, running apps in containers) is not used by this
+        # device and slows down every boot. Only units that exist are touched, and listed.
+        local units
+        units=$(systemctl list-unit-files --no-legend 'arduino*' 'docker.service' 'docker.socket' 'containerd.service' 2>/dev/null | awk '$2 == "enabled" { print $1 }')
+        if [ -z "$units" ]; then
+            echo "Nessun servizio di App Lab attivo trovato."
+        fi
+        for unit in $units; do
+            systemctl disable --now "$unit" >/dev/null 2>&1 || true
+            grep -qx "$unit" "$DISABLED_UNITS" || echo "$unit" >>"$DISABLED_UNITS"
+            echo "Disattivato $unit."
+        done
+    fi
+    echo "Fatto. Per annullare: sudo iaw-coupe-setup ripristina"
+}
+
+cmd_ripristina() {
+    need_root
+    if [ -f "$JOURNALD_DROPIN" ]; then
+        rm -f "$JOURNALD_DROPIN"
+        systemctl restart systemd-journald || true
+        echo "Journal di sistema di nuovo su disco."
+    fi
+    if [ -f "$DISABLED_UNITS" ]; then
+        while read -r unit; do
+            [ -n "$unit" ] || continue
+            systemctl enable --now "$unit" >/dev/null 2>&1 || true
+            echo "Riattivato $unit."
+        done <"$DISABLED_UNITS"
+        rm -f "$DISABLED_UNITS"
+    fi
+    echo "Fatto."
+}
+
+usage() {
+    sed -n '2,9p' "$0" | sed 's/^# \{0,1\}//'
+}
+
+case ${1:-} in
+    ap) shift; cmd_ap "$@" ;;
+    casa) shift; cmd_casa "$@" ;;
+    stato) shift; cmd_stato "$@" ;;
+    ottimizza) shift; cmd_ottimizza "$@" ;;
+    ripristina) shift; cmd_ripristina "$@" ;;
+    *) usage; exit 1 ;;
+esac

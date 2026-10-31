@@ -1,0 +1,15 @@
+{
+  "name": "IAW Scan 3 Coupé",
+  "short_name": "Coupé Scan",
+  "description": "Diagnosi Fiat Coupé: centralina motore IAW-04K.P8 e immobilizer FIAT CODE.",
+  "lang": "it",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0E1116",
+  "theme_color": "#0E1116",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

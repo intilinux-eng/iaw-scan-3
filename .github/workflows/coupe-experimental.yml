@@ -1,0 +1,49 @@
+name: Build Coupé experimental package
+
+# Manual packaging of IAW Scan 3 Coupé (IES_3.Coupe) for the Arduino UNO Q. Kept apart from the
+# beta workflow on purpose: this edition has never run on real hardware, so it gets its own rolling
+# "coupe-experimental" pre-release and re-running it leaves the desktop beta packages untouched.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version label for this build (e.g. 0.1.0-experimental)"
+        required: true
+        default: "0.1.0-experimental"
+
+env:
+  DOTNET_VERSION: "10.0.x"
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Build arm64 .deb
+        run: bash IES_3.Coupe/packaging/build-deb.sh "${{ inputs.version }}" linux-arm64
+
+      - name: Publish rolling experimental pre-release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: coupe-experimental
+          name: "IAW Scan 3 Coupé ${{ inputs.version }} (sperimentale)"
+          prerelease: true
+          make_latest: false
+          target_commitish: ${{ github.sha }}
+          body: |
+            **Progetto sperimentale: mai eseguito su una Arduino UNO Q reale né collegato a un'auto.** Provato solo in simulazione, su Windows e su Linux (WSL). Non verificati in particolare la modalità Access Point della UNO Q, il cavo K-line collegato tramite hub USB-C e la comunicazione con una centralina vera.
+
+            Edizione di IAW Scan 3 per la sola Fiat Coupé: diagnosi dal telefono e registro dati sempre attivo. [Documentazione e istruzioni di installazione](https://github.com/intilinux-eng/iaw-scan-3/tree/master/docs/coupe).
+
+            Questa pre-release viene sostituita a ogni nuova build (il tag `coupe-experimental` viene spostato sull'ultimo commit incluso). Se la provi, [apri una Issue](https://github.com/intilinux-eng/iaw-scan-3/issues) con l'esito, positivo o negativo.
+
+            **Fornita senza alcuna garanzia** (nessuna garanzia implicita o esplicita, incluso il corretto funzionamento della diagnosi) e a tuo rischio: vedi la sezione License nel README.
+          files: IES_3.Coupe/packaging/out/*.deb

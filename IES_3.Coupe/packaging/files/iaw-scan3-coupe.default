@@ -1,0 +1,13 @@
+# IAW Scan 3 Coupé - impostazioni del servizio.
+# Dopo una modifica: sudo systemctl restart iaw-scan3-coupe
+
+# Indirizzo e porta dell'interfaccia web (il telefono apre http://192.168.4.1).
+ASPNETCORE_URLS=http://0.0.0.0:80
+
+# Spazio massimo del registro dati, in MB. Oltre questo limite vengono cancellate
+# le accensioni più vecchie (mai quella in corso).
+IAW_DATALOG_MAX_MB=2048
+
+# Intervallo minimo tra due righe di dati della centralina, in millisecondi
+# (200 = al massimo 5 righe al secondo).
+IAW_DATALOG_INTERVAL_MS=200
