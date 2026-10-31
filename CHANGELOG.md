@@ -4,6 +4,16 @@ Plain-language summary of what has changed, for people using this tool to diagno
 
 **The diagnostic engine is unchanged.** Every reading and error code is calculated exactly as it was in IAW Scan 2 - nothing here has been recalculated or reinterpreted. This changelog only covers what runs the software and how you interact with it.
 
+## Unreleased
+
+- **New, experimental: IAW Scan 3 Coupé**, an edition for the Fiat Coupé only (Weber-Marelli IAW-04K.P8 engine ECU and FIAT CODE immobiliser), built to live permanently in the car on an Arduino UNO Q.
+  - You use it from your phone, through the board's own Wi-Fi, with no app to install. The screens are a dashboard, parameters, fault codes, actuator tests and a live graph.
+  - It is also a **data logger**: at every ignition-on it connects to the ECU by itself and records every parameter, fault code and event, with or without a phone connected. The board has no clock battery, so it takes the date and time from the first phone that connects and reconstructs the times recorded before that.
+  - Each drive can be downloaded as a ZIP to analyse, including with an AI assistant.
+  - It is designed to have its power simply cut at key-off: files are synced every few seconds.
+  - **Experimental, tested in simulation only**: it has never run on a real UNO Q or in a car yet. It is published as a separate pre-release, not with the desktop beta. See [docs/coupe](docs/coupe/README.md) (in Italian).
+- **Fixed: a failed connection could leave the cable "busy".** If the ECU stopped answering halfway through connecting, the cable's port stayed open and every following attempt failed until the program was restarted. The port is now released and the error shown.
+
 ## Beta 1
 
 First public beta. Published as a private-source fork turned public repository, with downloadable packages - see "Beta downloads" in the README.

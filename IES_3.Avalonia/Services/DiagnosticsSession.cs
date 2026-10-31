@@ -89,6 +89,12 @@ namespace IES_2.Avalonia.Services
             };
         }
 
+        /// <summary>
+        /// Polls live parameters and fault codes together instead of following one screen: the loop
+        /// already interleaves both (fault codes every fifth cycle). Used for unattended data logging.
+        /// </summary>
+        public void PollEverything() => _queryFlag = 3;
+
         public void StartLoop()
         {
             if (_disposed) return;

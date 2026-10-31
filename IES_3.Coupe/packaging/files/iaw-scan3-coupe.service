@@ -1,0 +1,31 @@
+[Unit]
+Description=IAW Scan 3 Coupé - diagnosi e registro dati Fiat Coupé
+Documentation=https://github.com/intilinux-eng/iaw-scan-3/tree/main/docs/coupe
+After=network.target
+
+[Service]
+Type=simple
+User=iawscan
+Group=iawscan
+# Access to the USB K-line cable (/dev/ttyUSB*).
+SupplementaryGroups=dialout
+EnvironmentFile=-/etc/default/iaw-scan3-coupe
+ExecStart=/opt/iaw-scan3-coupe/IES_3.Coupe
+# settings.json, the datalog/ logbook and Log/ recordings live here.
+WorkingDirectory=/var/lib/iaw-scan3-coupe
+StateDirectory=iaw-scan3-coupe
+# Marks that a phone already set the clock during this power-on, should the service restart.
+RuntimeDirectory=iaw-scan3-coupe
+RuntimeDirectoryPreserve=yes
+# Port 80 for the web UI; setting the system clock from the phone's time.
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_SYS_TIME
+# The board loses power at every key-off: just come back as fast as possible after any failure.
+Restart=always
+RestartSec=2
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

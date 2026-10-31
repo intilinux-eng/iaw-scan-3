@@ -23,3 +23,6 @@ Desktop.ini
 Log/
 *.log
 
+
+# IAW Scan 3 Coupé packaging output
+IES_3.Coupe/packaging/out/

@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <RootNamespace>IES_2.Coupe</RootNamespace>
+    <AssemblyName>IES_3.Coupe</AssemblyName>
+    <AssemblyTitle>IAW Scan 3 Coupé</AssemblyTitle>
+    <Product>IAW Scan 3 Coupé</Product>
+    <Company>https://github.com/intilinux-eng/iaw-scan-3</Company>
+    <Copyright>Copyright © TzOk 2011-2015</Copyright>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <FileVersion>3.0.0.0</FileVersion>
+    <!-- Served with plain UseStaticFiles over a local Wi-Fi link: no precompressed .gz copies needed. -->
+    <CompressionEnabled>false</CompressionEnabled>
+    <!-- Debian packaging scripts and their output are not part of the app (the Web SDK would
+         otherwise publish any *.json found under them). -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);packaging/**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IES_3.Core\IES_3.Core.csproj" />
+  </ItemGroup>
+
+  <!-- Program.cs serves wwwroot from next to the executable, for `dotnet run` as well as when published. -->
+  <ItemGroup>
+    <Content Update="wwwroot\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <!--
+    Connect flow, passive polling loop and active diagnostics (tests, clear codes) are the exact
+    same source files the desktop UI runs, compiled into this project rather than copied, so the
+    two can never drift apart. Only UI-free files are linked: none of these reference Avalonia.
+  -->
+  <ItemGroup>
+    <Compile Include="..\IES_3.Avalonia\Services\*.cs" Link="Shared\Services\%(Filename)%(Extension)" />
+    <Compile Include="..\IES_3.Avalonia\Models\EcuOption.cs" Link="Shared\Models\EcuOption.cs" />
+    <Compile Include="..\IES_3.Avalonia\Models\VehicleGroup.cs" Link="Shared\Models\VehicleGroup.cs" />
+    <Compile Include="..\IES_3.Avalonia\Models\VehicleGrouping.cs" Link="Shared\Models\VehicleGrouping.cs" />
+    <Compile Include="..\IES_3.Avalonia\ViewModels\AboutViewModel.cs" Link="Shared\ViewModels\AboutViewModel.cs" />
+  </ItemGroup>
+
+</Project>

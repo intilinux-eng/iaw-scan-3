@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0E1116">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Coupé Scan">
+  <title>IAW Scan 3 Coupé</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body data-view="connect">
+
+  <!-- Icons: plain geometric shapes drawn for this UI (no icon font, no network). -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M2,15 A10,10 0 0 1 22,15 L20,15 A8,8 0 0 0 4,15 Z M11.36,14.36 L16.95,10.05 L12.64,15.64 Z M10.2,15 A1.8,1.8 0 1 0 13.8,15 A1.8,1.8 0 1 0 10.2,15 Z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M3,3h7.5v7.5H3z M13.5,3H21v7.5h-7.5z M3,13.5h7.5V21H3z M13.5,13.5H21V21h-7.5z"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12,2.5 L22.5,20.5 H1.5 Z M11,9 h2 v6 h-2 z M11,16.5 h2 v2 h-2 z"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.5,2 L4.5,13.5 H11 L10,22 L19.5,9.5 H13 Z"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3,3 h2 v16 h16 v2 H3 z M6.5,15.5 L10.5,10.5 L13.5,13 L18.8,6.2 L20.4,7.4 L13.8,15.9 L10.8,13.4 L8.1,16.8 z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2,12 A10,10 0 1 0 22,12 A10,10 0 1 0 2,12 Z M11,10.5 h2 V17 h-2 z M11,7 h2 v2 h-2 z"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M12,4 A8,8 0 1 0 20,12 H18 A6,6 0 1 1 12,6 V9 L16,5 L12,1 Z"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M3,3 h7 v2 H5 v5 H3 z M14,3 h7 v7 h-2 V5 h-5 z M3,14 h2 v5 h5 v2 H3 z M19,14 h2 v7 h-7 v-2 h5 z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M11,3 h2 v9.2 l3.3,-3.3 1.4,1.4 L12,16 6.3,10.3 7.7,8.9 11,12.2 z M4,18 h16 v2 H4 z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M9,3 h6 v2 h5 v2 H4 V5 h5 z M6,8 h12 l-1,13 H7 z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M9.5,16.2 L5.3,12 3.9,13.4 9.5,19 20.1,8.4 18.7,7 z"/></symbol>
+    <symbol id="i-record" viewBox="0 0 24 24"><path d="M6,12 A6,6 0 1 0 18,12 A6,6 0 1 0 6,12 Z"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><path d="M6,6 h12 v12 H6 z"/></symbol>
+    <symbol id="i-log" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M5,2 h10 l4,4 v16 H5 z M8,9 h8 v1.8 H8 z M8,13 h8 v1.8 H8 z M8,17 h5 v1.8 H8 z"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="badge" aria-hidden="true">IS3</div>
+      <div class="brand-text">
+        <div class="brand-title" id="top-title">Fiat Coupé</div>
+        <div class="brand-sub" id="top-sub">IAW Scan 3 · Edizione Coupé</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="status" id="top-status"><span class="dot"></span><span class="status-text">Non connesso</span></span>
+      <button class="icon-btn" id="btn-fullscreen" aria-label="Schermo intero" hidden><svg class="ic"><use href="#i-expand"/></svg></button>
+      <button class="icon-btn" id="btn-logbook" aria-label="Diario di bordo"><svg class="ic"><use href="#i-log"/></svg></button>
+      <button class="icon-btn" id="btn-info" aria-label="Informazioni"><svg class="ic"><use href="#i-info"/></svg></button>
+    </div>
+  </header>
+
+  <div class="banners">
+    <div class="banner banner-muted" id="banner-link" hidden>Collegamento con il dispositivo perso: riconnessione in corso…</div>
+    <div class="banner banner-danger" id="banner-comm" hidden>
+      <span id="banner-comm-text"></span>
+      <span class="banner-actions">
+        <button class="btn small light" id="btn-reconnect">Riconnetti</button>
+        <button class="btn small ghost-light" id="btn-comm-disconnect">Disconnetti</button>
+      </span>
+    </div>
+    <div class="banner banner-warn" id="banner-iso" hidden></div>
+    <div class="banner banner-info" id="banner-sim" hidden>Simulazione: valori casuali, nessuna centralina collegata.</div>
+  </div>
+
+  <main id="main">
+
+    <!-- Connection -->
+    <section class="view" id="view-connect">
+      <div class="hero">
+        <h1>Fiat Coupé</h1>
+        <p>Diagnosi della centralina motore e dell'immobilizer, dal telefono.</p>
+        <p class="experimental">Progetto sperimentale, non ancora provato su un'auto vera. Senza alcuna garanzia.</p>
+      </div>
+
+      <div class="card auto-card" id="auto-card" hidden>
+        <div class="auto-head">
+          <div class="spinner" id="auto-spinner" aria-hidden="true" hidden></div>
+          <div>
+            <strong>Registrazione automatica</strong>
+            <small id="auto-status"></small>
+          </div>
+        </div>
+        <div class="auto-actions">
+          <button class="btn small ghost" id="btn-auto-pause" hidden>Metti in pausa</button>
+          <button class="btn small primary" id="btn-auto-resume" hidden>Riprendi</button>
+          <button class="btn small ghost" data-goto="logbook">Diario</button>
+        </div>
+      </div>
+
+      <h2 class="label">Cosa vuoi diagnosticare</h2>
+      <div class="choices" id="ecu-choices" role="radiogroup" aria-label="Centralina"></div>
+
+      <h2 class="label">Cavo K-line</h2>
+      <div class="field-row">
+        <select id="port" aria-label="Porta seriale del cavo K-line"></select>
+        <button class="icon-btn outlined" id="btn-ports" aria-label="Aggiorna elenco porte"><svg class="ic"><use href="#i-refresh"/></svg></button>
+      </div>
+      <p class="hint" id="port-hint"></p>
+
+      <label class="switch-row">
+        <span>Modalità simulazione<small>Prova l'interfaccia senza auto e senza cavo.</small></span>
+        <input type="checkbox" id="simulation" role="switch">
+      </label>
+
+      <p class="form-error" id="connect-error" hidden></p>
+
+      <button class="btn primary block big" id="btn-connect">Connetti</button>
+
+      <div class="connecting" id="connecting" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <div>
+          <strong>Connessione in corso…</strong>
+          <small>In attesa della centralina (fino a 10 secondi).</small>
+        </div>
+        <button class="btn ghost" id="btn-cancel-connect">Annulla</button>
+      </div>
+
+      <div class="card note">
+        <strong>Prima di connettere</strong>
+        <ul>
+          <li>Quadro acceso (chiave su MAR), motore spento o al minimo.</li>
+          <li>Cavo KKL collegato alla presa diagnostica a 3 poli e alle pinze della batteria.</li>
+          <li>Centralina motore: presa nel vano motore. Immobilizer: presa della centralina FIAT CODE.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="view" id="view-dashboard" hidden>
+      <div class="dash" id="dash-tiles"></div>
+      <div class="empty" id="dash-empty" hidden>
+        <svg class="ic big"><use href="#i-gauge"/></svg>
+        <p>Il cruscotto mostra i parametri che scegli.</p>
+        <button class="btn primary" data-goto="parameters">Scegli i parametri</button>
+      </div>
+    </section>
+
+    <!-- Parameters -->
+    <section class="view" id="view-parameters" hidden>
+      <div class="view-head">
+        <h2>Parametri motore</h2>
+        <div class="head-actions">
+          <button class="btn small ghost" id="btn-check-all">Tutti</button>
+          <button class="btn small ghost" id="btn-uncheck-all">Nessuno</button>
+        </div>
+      </div>
+      <p class="hint" id="params-hint"></p>
+      <div class="params" id="param-list"></div>
+    </section>
+
+    <!-- Errors -->
+    <section class="view" id="view-errors" hidden>
+      <div class="view-head">
+        <h2>Errori memorizzati</h2>
+        <div class="head-actions">
+          <button class="btn small danger" id="btn-clear-codes">Azzera codici</button>
+        </div>
+      </div>
+      <p class="hint" id="errors-hint"></p>
+      <p class="status-msg" id="errors-status" hidden></p>
+      <div class="errors" id="error-list"></div>
+      <div class="empty" id="errors-empty" hidden>
+        <svg class="ic big ok"><use href="#i-check"/></svg>
+        <p>Nessun errore attivo, verificato o memorizzato.</p>
+      </div>
+      <p class="legend">Att. = attivo ora · Ver. = verificato · Mem. = memorizzato · MIL = spia avaria motore</p>
+    </section>
+
+    <!-- Tests -->
+    <section class="view" id="view-tests" hidden>
+      <div class="view-head">
+        <h2>Test attuatori</h2>
+      </div>
+      <div class="card warn-card">
+        I test azionano davvero i componenti (pompa, iniettori, bobine…). Quadro acceso, <strong>motore spento</strong>, lontano da fonti di calore.
+      </div>
+      <div class="tests" id="test-list"></div>
+      <div class="empty" id="tests-empty" hidden>
+        <p>Questa centralina non prevede test attuatori.</p>
+      </div>
+    </section>
+
+    <!-- Graph -->
+    <section class="view" id="view-graph" hidden>
+      <div class="view-head">
+        <h2>Grafico</h2>
+        <div class="head-actions">
+          <button class="btn small primary" id="btn-record"><svg class="ic"><use href="#i-record"/></svg><span>Registra</span></button>
+        </div>
+      </div>
+      <div class="card chart-card">
+        <canvas id="chart" aria-label="Grafico in tempo reale"></canvas>
+      </div>
+      <h3 class="label">Tracciati</h3>
+      <div class="chips" id="trace-chips"></div>
+      <p class="hint" id="trace-hint"></p>
+      <h3 class="label">Registrazioni salvate</h3>
+      <div class="files" id="file-list"></div>
+    </section>
+
+    <!-- Logbook -->
+    <section class="view" id="view-logbook" hidden>
+      <div class="view-head">
+        <h2>Diario di bordo</h2>
+      </div>
+
+      <div class="card">
+        <label class="switch-row flat">
+          <span>Registrazione automatica<small>A ogni accensione si collega da solo alla centralina e registra tutti i parametri e i codici di errore, anche senza telefono.</small></span>
+          <input type="checkbox" id="autolog" role="switch">
+        </label>
+        <p class="log-status" id="log-status"></p>
+        <div class="auto-actions">
+          <button class="btn small ghost" id="btn-log-pause" hidden>Metti in pausa</button>
+          <button class="btn small primary" id="btn-log-resume" hidden>Riprendi</button>
+        </div>
+        <dl class="kv" id="log-kv"></dl>
+      </div>
+
+      <div class="card">
+        <h3>Analisi con l'AI</h3>
+        <p class="hint">Ogni accensione si scarica come file ZIP: eventi (JSONL), dati della centralina (CSV) con gli orari già ricostruiti, e un LEGGIMI che spiega il formato. Puoi caricarlo così com'è in un assistente AI e chiedergli di analizzarlo.</p>
+        <a class="btn primary block" id="btn-export-all" href="/api/datalog/export?boot=all" download><svg class="ic"><use href="#i-download"/></svg><span>Scarica tutto il registro</span></a>
+      </div>
+
+      <h3 class="label">Accensioni</h3>
+      <div class="boots" id="boot-list"></div>
+    </section>
+
+    <!-- Info -->
+    <section class="view" id="view-info" hidden>
+      <div class="card" id="info-connection" hidden>
+        <h3>Centralina collegata</h3>
+        <dl class="kv" id="info-kv"></dl>
+        <button class="btn ghost block" id="btn-disconnect">Disconnetti centralina</button>
+      </div>
+
+      <div class="card">
+        <h3 id="about-product">IAW Scan 3 Coupé</h3>
+        <p class="hint" id="about-version"></p>
+        <p id="about-description" class="pre"></p>
+        <p><span id="about-fork-copyright"></span><br><a id="about-fork-url" target="_blank" rel="noopener"></a></p>
+        <p><span id="about-original"></span><br><a id="about-original-url" target="_blank" rel="noopener"></a></p>
+        <details>
+          <summary>Licenza</summary>
+          <p id="about-license" class="pre small"></p>
+        </details>
+      </div>
+      <button class="btn ghost block" data-goto="back">Indietro</button>
+    </section>
+  </main>
+
+  <nav class="tabbar" id="tabbar" aria-label="Sezioni" hidden>
+    <button class="tab" data-view="dashboard"><svg class="ic"><use href="#i-gauge"/></svg><span>Cruscotto</span></button>
+    <button class="tab" data-view="parameters"><svg class="ic"><use href="#i-grid"/></svg><span>Parametri</span></button>
+    <button class="tab" data-view="errors"><svg class="ic"><use href="#i-alert"/></svg><span>Errori</span><b class="tab-badge" id="errors-badge" hidden></b></button>
+    <button class="tab" data-view="tests"><svg class="ic"><use href="#i-bolt"/></svg><span>Test</span></button>
+    <button class="tab" data-view="graph"><svg class="ic"><use href="#i-chart"/></svg><span>Grafico</span><b class="tab-dot" id="recording-dot" hidden></b></button>
+  </nav>
+
+  <dialog id="confirm">
+    <form method="dialog">
+      <h3 id="confirm-title"></h3>
+      <p id="confirm-body"></p>
+      <div class="dialog-actions">
+        <button class="btn ghost" value="cancel">Annulla</button>
+        <button class="btn primary" value="ok" id="confirm-ok">Conferma</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -19,8 +19,17 @@ namespace IES_2.Avalonia.Services
     /// </summary>
     public class EcuConnectionService
     {
-        private const string DemoIso = "55D085029440";
+        private const string DefaultDemoIso = "55D085029440";
         private const string DemoCodric = "6160206301";
+
+        private readonly string _demoIso;
+
+        /// <param name="demoIso">ISO code reported in simulation mode, so an edition limited to
+        /// specific cars (e.g. the Coupé one) simulates a car it actually supports.</param>
+        public EcuConnectionService(string demoIso = DefaultDemoIso)
+        {
+            _demoIso = demoIso;
+        }
 
         public async Task<ConnectResult> ConnectAsync(EcuOption option, string? portName, bool simulation, CancellationToken ct)
         {
@@ -35,7 +44,7 @@ namespace IES_2.Avalonia.Services
 
         private ConnectResult ConnectSimulated(EcuOption option)
         {
-            ecu.ISO = DemoIso;
+            ecu.ISO = _demoIso;
             ecu.CODRIC = DemoCodric;
             ecu.connected = true;
 
@@ -64,27 +73,38 @@ namespace IES_2.Avalonia.Services
                 return ConnectResult.Failure($"Impossibile aprire la porta {portName}: {ex.Message}");
             }
 
-            var isoFromSync = WaitForIsoSync(serial, ct);
-            if (ct.IsCancellationRequested)
+            try
             {
-                serial.Dispose();
-                return ConnectResult.Failure("Connessione annullata.");
-            }
+                var isoFromSync = WaitForIsoSync(serial, ct);
+                if (ct.IsCancellationRequested)
+                {
+                    serial.Dispose();
+                    return ConnectResult.Failure("Connessione annullata.");
+                }
 
-            ecu.connected = true;
-            var resolved = CreateInstance(option.Id, serial);
-            if (resolved == null)
+                ecu.connected = true;
+                var resolved = CreateInstance(option.Id, serial);
+                if (resolved == null)
+                {
+                    serial.Dispose();
+                    return ConnectResult.Failure("Tipo di ECU non valido.");
+                }
+                resolved.InitPasvDiag();
+                resolved.ReadCODRIC();
+                if (isoFromSync == null)
+                    resolved.ReadISO();
+
+                resolved.hasIMMO = ecu.CheckCODE(ref serial);
+                return BuildSuccess(option.DisplayName, resolved, serial, simulation: false);
+            }
+            catch (Exception ex)
             {
+                // e.g. a read timeout halfway through the ISO sync bytes: release the port, or it
+                // stays open and every later connection attempt fails with "port in use".
+                ecu.connected = false;
                 serial.Dispose();
-                return ConnectResult.Failure("Tipo di ECU non valido.");
+                return ConnectResult.Failure($"Errore di comunicazione con la centralina: {ex.Message}");
             }
-            resolved.InitPasvDiag();
-            resolved.ReadCODRIC();
-            if (isoFromSync == null)
-                resolved.ReadISO();
-
-            resolved.hasIMMO = ecu.CheckCODE(ref serial);
-            return BuildSuccess(option.DisplayName, resolved, serial, simulation: false);
         }
 
         /// <summary>

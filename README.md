@@ -25,6 +25,22 @@ The new cross-platform interface (`IES_3.Avalonia`), shown here in simulation mo
 </tr>
 </table>
 
+## IAW Scan 3 Coupé (experimental): in-car data logger, used from your phone
+
+An extension of IAW Scan 3 for one car only, the **Fiat Coupé** (Weber-Marelli IAW-04K.P8 engine ECU and FIAT CODE immobiliser). It runs on an **Arduino UNO Q** left permanently in the car, plugged into the diagnostic socket and powered from the ignition. Your phone joins the board's own Wi-Fi and opens the interface in the browser: there is no app to install and no internet needed. Every time the ignition is switched on it connects to the ECU by itself and logs every parameter, fault code and event, with or without a phone around. Each drive can be downloaded as a ZIP (JSONL events, CSV data and a format description) ready to hand to an AI assistant for analysis.
+
+<table>
+<tr>
+<td width="33%"><img src="docs/coupe/screenshots/01-cruscotto.png" alt="Dashboard"><br><sub>Dashboard</sub></td>
+<td width="33%"><img src="docs/coupe/screenshots/04-errori.png" alt="Fault codes"><br><sub>Fault codes</sub></td>
+<td width="33%"><img src="docs/coupe/screenshots/03-diario.png" alt="Logbook"><br><sub>Logbook, one entry per drive</sub></td>
+</tr>
+</table>
+
+Documentation (in Italian): [overview](docs/coupe/README.md) · [installing on the UNO Q](docs/coupe/installazione-uno-q.md) · [user guide](docs/coupe/guida-uso.md) · [logbook format](docs/coupe/registro-dati.md).
+
+**Status:** experimental project, published as its own [pre-release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/coupe-experimental). It has been tested in simulation only (Windows, and Linux under WSL). It has never run on an actual UNO Q or been connected to a car. The UNO Q's Wi-Fi access-point mode in particular is unverified. The diagnostic engine is the same unchanged one as everywhere else in this project.
+
 ## Supported vehicles and ECUs
 
 IAW Scan 3 is designed for 1990s Italian OBD-I vehicles (Fiat, Lancia, Alfa Romeo) equipped with **Magneti-Marelli / Weber-Marelli IAW** engine management systems and the **FIAT CODE** immobiliser, communicating over an ISO-KKL (K-line) interface via the 3-pin Fiat diagnostic port.
@@ -130,10 +146,11 @@ Developed and tested primarily on a **Fiat Coupé 2.0 16V naturally aspirated** 
 - **`IES_3/`** — the original WinForms UI, ported to .NET 10 (mechanical port, behavior unchanged from upstream v0.85).
 - **`IES_3.Core/`** — shared library with the ECU protocol/communication logic and localized strings, used by both UIs below. Its source files (the actual ECU decoding logic) come unchanged from the original IES_2 codebase, just relocated here.
 - **`IES_3.Avalonia/`** — new cross-platform UI (Windows/Linux/macOS) built with [Avalonia](https://avaloniaui.net/) and MVVM. All the original screens are ported: ECU/vehicle selection and connecting, live parameters, error codes, actuator tests, a real-time graph with CSV export, and adjustments.
+- **`IES_3.Coupe/`** — the experimental Fiat Coupé edition: an ASP.NET Core server with a phone-sized web UI (`wwwroot/`, no external dependencies) and the always-on data logger. It compiles in the desktop UI's connection/polling services (`IES_3.Avalonia/Services`) instead of copying them, and packages as an arm64 `.deb` for the Arduino UNO Q (`packaging/`).
 
 ## Beta downloads
 
-Pre-built, self-contained packages of the new cross-platform interface (`IES_3.Avalonia`) - no need to install .NET yourself - are published on demand to a rolling **[Beta release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/beta)**: a Windows `.exe` and a Linux `.deb`. These are beta builds straight from `main`, not tested releases - see "Testing status" below for what has and hasn't been confirmed on real hardware. A proper versioned-release process (release branches, version tags) will come later. Provided with no warranty, as with the rest of the project - see License.
+Pre-built, self-contained packages of the new cross-platform interface (`IES_3.Avalonia`) - no need to install .NET yourself - are published on demand to a rolling **[Beta release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/beta)**: a Windows `.exe` and a Linux `.deb`. The experimental Coupé edition for the Arduino UNO Q is published separately, as the [coupe-experimental pre-release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/coupe-experimental). These are beta builds straight from `main`, not tested releases - see "Testing status" below for what has and hasn't been confirmed on real hardware. A proper versioned-release process (release branches, version tags) will come later. Provided with no warranty, as with the rest of the project - see License.
 
 ## Building
 
