@@ -1,6 +1,6 @@
 # App desktop IAW Scan 3: guida utente
 
-Come usare l'app desktop una volta installata ([istruzioni per Windows e Linux](../../README.it.md#installare-lapp-desktop)). Tutto si può provare senza auto e senza cavo: attiva **Simulazione** nella pagina Connetti.
+Come usare l'app desktop una volta installata ([istruzioni per Windows 11](../../README.it.md#installare-su-windows-11), [PC Linux](../../README.it.md#lapp-desktop-su-un-pc-linux)). Tutto si può provare senza auto e senza cavo: attiva **Simulazione** nella pagina Connetti.
 
 > English: [user guide](user-guide.md).
 

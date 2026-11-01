@@ -1,4 +1,4 @@
-**Windows:** download `IAWScan3-0.2.1-beta-win-x64.exe` below and run it, there's nothing to install. **Linux (Debian, Ubuntu and derivatives):** download `iaw-scan3_0.2.1-beta_amd64.deb`, then `sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb`. [Step-by-step instructions](https://github.com/intilinux-eng/iaw-scan-3#install-the-desktop-app).
+**Windows:** download `IAWScan3-0.2.1-beta-win-x64.exe` below and run it, there's nothing to install. **Linux (Debian, Ubuntu and derivatives):** download `iaw-scan3_0.2.1-beta_amd64.deb`, then `sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb`. [Step-by-step instructions](https://github.com/intilinux-eng/iaw-scan-3#install-on-windows-11).
 
 ## What's new
 
@@ -20,7 +20,7 @@ All the details are in the [changelog](https://github.com/intilinux-eng/iaw-scan
 
 ---
 
-**Windows:** scarica qui sotto `IAWScan3-0.2.1-beta-win-x64.exe` e avvialo, non c'è niente da installare. **Linux (Debian, Ubuntu e derivate):** scarica `iaw-scan3_0.2.1-beta_amd64.deb`, poi `sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb`. [Istruzioni passo per passo](https://github.com/intilinux-eng/iaw-scan-3/blob/master/README.it.md#installare-lapp-desktop).
+**Windows:** scarica qui sotto `IAWScan3-0.2.1-beta-win-x64.exe` e avvialo, non c'è niente da installare. **Linux (Debian, Ubuntu e derivate):** scarica `iaw-scan3_0.2.1-beta_amd64.deb`, poi `sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb`. [Istruzioni passo per passo](https://github.com/intilinux-eng/iaw-scan-3/blob/master/README.it.md#installare-su-windows-11).
 
 ## Novità
 

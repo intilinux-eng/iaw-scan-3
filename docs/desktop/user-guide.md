@@ -1,6 +1,6 @@
 # IAW Scan 3 desktop app: user guide
 
-How to use the desktop app once it's installed ([Windows and Linux instructions](../../README.md#install-the-desktop-app)). Everything here can be tried with no car and no cable: turn on **Simulation** on the Connect page.
+How to use the desktop app once it's installed ([Windows 11 instructions](../../README.md#install-on-windows-11), [Linux PC](../../README.md#the-desktop-app-on-a-linux-pc)). Everything here can be tried with no car and no cable: turn on **Simulation** on the Connect page.
 
 > Italiano: [guida utente](guida-utente.md).
 
