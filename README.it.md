@@ -10,17 +10,16 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe"><img alt="Scarica per Windows (.exe)" src="https://img.shields.io/badge/Scarica%20per%20Windows-.exe-2563eb?style=for-the-badge"></a>
-  &nbsp;
-  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb"><img alt="Scarica per Linux (.deb)" src="https://img.shields.io/badge/Scarica%20per%20Linux-.deb-2563eb?style=for-the-badge"></a>
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe"><img alt="Scarica per Windows 11 (.exe)" src="https://img.shields.io/badge/Scarica%20per%20Windows%2011-.exe-2563eb?style=for-the-badge"></a>
 </p>
 
 <p align="center">
   Versione 0.2.1-beta ·
   <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest">Tutti i download e le note di rilascio</a> ·
-  <a href="#installare-lapp-desktop">Installa</a> ·
+  <a href="#installare-su-windows-11">Installa</a> ·
   <a href="docs/desktop/guida-utente.md">Guida utente</a> ·
   <a href="#cosa-cambia-rispetto-alloriginale-iaw-scan-2">Novità</a> ·
+  <a href="#su-linux-lavori-in-corso">Su Linux: lavori in corso</a> ·
   <a href="README.md">English</a>
 </p>
 
@@ -35,43 +34,15 @@
 - **Tiene un registro di ogni sessione,** che puoi riaprire, confrontare ed esportare in uno ZIP pronto da studiare o da dare a un assistente AI.
 - **Decodifica i valori esattamente come il programma originale.** Le formule sono invariate, e un test automatico fallisce se dovessero mai cambiare.
 
-## Due modi di usarlo
+**In corso anche su Linux:** un'interfaccia web remota e una matrice LED, entrambe su Arduino UNO Q. [Ecco a che punto sono](#su-linux-lavori-in-corso).
 
-| | **App desktop** | **Unità in auto, usata dal telefono** |
-|---|---|---|
-| **Cos'è** | Un normale programma sul computer | Una piccola scheda lasciata in auto, con il suo Wi-Fi: apri una pagina sul telefono, senza app |
-| **Ideale per** | Diagnosticare un'auto con il portatile, a casa o in officina | Un registratore fisso: registra ogni viaggio da solo, e lo controlli quando vuoi |
-| **Auto** | [Tutte quelle supportate](#veicoli-e-centraline-supportati) | Solo Fiat Coupé (IAW-04K.P8 e FIAT CODE) |
-| **Gira su** | Windows 10/11 (64 bit), Linux (64 bit) | Arduino UNO Q |
-| **Interfaccia** | Nativa, in inglese e italiano | Web, nel browser del telefono, in italiano |
-| **Ti serve** | Il cavo K-line | Il cavo K-line, la scheda, un hub USB-C, il collegamento all'auto |
-| **Stato** | Beta | Sperimentale: mai eseguita su hardware reale |
-| **Per iniziare** | [Installa l'app desktop](#installare-lapp-desktop) | [Unità in auto](#lunità-in-auto-sperimentale) |
+<a name="installare-lapp-desktop"></a>
 
-**Non sai quale scegliere? Inizia dall'app desktop:** copre tutte le auto, e puoi provarla subito senza auto e senza cavo.
-
-## Installare l'app desktop
-
-### Windows
+## Installare su Windows 11
 
 1. Scarica **[`IAWScan3-0.2.1-beta-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe)**.
 2. Avvialo. Non c'è niente da installare e .NET è incluso. Windows può avvisare che il file viene da un editore sconosciuto, perché non è firmato: clicca **Ulteriori informazioni**, poi **Esegui comunque**.
 3. Collega il cavo K-line. **Non c'è niente da installare:** la prima volta, Windows 11 scarica da solo il driver da internet. Poi il cavo compare nell'elenco del programma. [Come controllarlo](docs/desktop/guida-utente.md#controllare-il-cavo-su-windows-11).
-
-### Linux (Debian, Ubuntu e derivate, 64 bit)
-
-1. Scarica **[`iaw-scan3_0.2.1-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb)**.
-2. Dalla cartella in cui l'hai scaricato, installalo con `apt`, che scarica anche le librerie necessarie:
-   ```
-   sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb
-   ```
-3. Autorizza il tuo utente a usare il cavo, poi **esci e rientra nella sessione**:
-   ```
-   sudo usermod -aG dialout $USER
-   ```
-4. Avvia **IAW Scan 3** dal menu delle applicazioni, oppure con `iaw-scan3`.
-
-Per rimuoverlo: `sudo apt remove iaw-scan3`. Le tue sessioni restano in `~/.local/share/IAWScan3` finché non le cancelli.
 
 ### Provalo subito, senza auto
 
@@ -123,9 +94,8 @@ Puoi verificarlo senza auto. Trasmissione e ricezione condividono un solo filo, 
 - **Se non risponde nessuno.** Controlla l'eco. Se manca, si ferma e dice che il lato K-line del cavo non risponde. Se c'è, si collega come faceva l'originale e dice che il cavo risponde ma la centralina non si è identificata, così puoi accendere il quadro e riconnetterti.
 - **Leggere.** Un byte alla volta: invia la richiesta, scarta l'eco, legge la risposta aspettando fino a 300 ms, con una pausa di 4 ms prima della successiva. Due richieste di fila senza risposta significano comunicazione persa.
 - **Tempi su Windows.** Durante il collegamento il programma chiede a Windows un timer da 2 ms, come faceva l'originale, così quelle pause sono davvero così brevi.
-- **Su Linux.** Il driver fa parte del kernel, e il tuo utente deve essere nel gruppo `dialout`. Su Ubuntu, il pacchetto `brltty` può prendersi i cavi CH340 e far sparire la porta: in quel caso `sudo apt remove brltty`, a meno che tu non usi un display braille. Un cavo vero su Linux non è ancora stato provato.
 
-## L'app desktop in breve
+## L'app in breve
 
 <table>
 <tr>
@@ -146,31 +116,6 @@ Puoi verificarlo senza auto. Trasmissione e ricezione condividono un solo filo, 
 </tr>
 </table>
 
-## L'unità in auto (sperimentale)
-
-<img src="docs/coupe/screenshots/01-cruscotto.png" width="210" align="right" alt="Il cruscotto sul telefono">
-
-Per la **Fiat Coupé**: una Arduino UNO Q resta in auto, collegata alla presa diagnostica e alimentata dal quadro. Il telefono si collega al suo Wi-Fi e apre `http://192.168.4.1`, senza app e senza internet.
-
-- A ogni giro di chiave si collega da sola alla centralina e registra tutti i parametri, i codici di errore e gli eventi, con o senza telefono.
-- È fatta per essere spenta semplicemente togliendo la corrente con il quadro.
-- Prende data e ora dal telefono, e ricostruisce gli orari di ciò che ha registrato prima che ti collegassi.
-- Ogni viaggio si scarica come ZIP per l'analisi.
-
-**È stata provata solo in simulazione: non è mai stata eseguita su una UNO Q reale né collegata a un'auto.** Installarla significa preparare e cablare una scheda, quindi è per chi ha dimestichezza.
-
-Pacchetti: [pre-release sperimentale](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/coupe-experimental). Documentazione: [panoramica](docs/coupe/README.md) · [installazione sulla UNO Q](docs/coupe/installazione-uno-q.md) · [guida all'uso](docs/coupe/guida-uso.md) · [formato del registro](docs/coupe/registro-dati.md).
-
-<br clear="right">
-
-### Lavoro in corso: gli errori attivi sulla matrice LED
-
-La UNO Q ha una matrice di LED integrata, quindi l'unità potrebbe mostrare gli errori attivi senza bisogno del telefono: tre lettere per ogni errore, e un punto per errore in basso. **Non è ancora realizzata, e queste sono simulazioni, non foto.** [Il progetto](docs/coupe/matrice-led.md) ha tutte le schermate e tutte le sigle.
-
-<table>
-<tr><td width="25%"><img src="docs/coupe/matrice-led/03-tutto-ok.png" alt="OK a bassa luminosità"><br><sub>Nessun errore attivo</sub></td><td width="25%"><img src="docs/coupe/matrice-led/04-un-errore.png" alt="TPS"><br><sub>Un errore attivo</sub></td><td width="25%"><img src="docs/coupe/matrice-led/05-spia-motore.png" alt="MAP con un punto esclamativo che lampeggia"><br><sub>Accende la spia motore</sub></td><td width="25%"><img src="docs/coupe/matrice-led/06-piu-errori.png" alt="TPS, MAP e O2 a rotazione"><br><sub>Più errori, 2 secondi ciascuno</sub></td></tr>
-</table>
-
 ## Cosa cambia rispetto all'originale IAW Scan 2
 
 Questo progetto è un fork di [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 di Tomasz Orczyk ("TzOk"), a sua volta seguito di IAW ECU Scan. **Dell'originale conserva il motore diagnostico:** come i segnali vengono letti dalla centralina e decodificati, in `IES_3.Core`, e lo stesso modo di gestire porta seriale e connessione. Tutto il resto è nuovo.
@@ -178,8 +123,8 @@ Questo progetto è un fork di [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.
 | | **IAW Scan 2 v0.85** | **IAW Scan 3** |
 |---|---|---|
 | **Formule di decodifica** | Il riferimento | **Identiche**, verificate da un test automatico |
-| **Gira su** | Da Windows 2000 a 7, con .NET Framework 2.0. Ultima versione: maggio 2015 | Windows 10/11 e Linux, con .NET 10 |
-| **Installazione** | Richiede .NET Framework 2.0 | Un file da 32 MB su Windows, un pacchetto da 26 MB su Linux, .NET incluso |
+| **Gira su** | Da Windows 2000 a 7, con .NET Framework 2.0. Ultima versione: maggio 2015 | Windows 11, con .NET 10. Linux: [lavori in corso](#su-linux-lavori-in-corso) |
+| **Installazione** | Richiede .NET Framework 2.0 | Un file da 32 MB, .NET incluso |
 | **Interfaccia** | Windows Forms, schede e tabelle | Nuova: barra laterale, lancette, tema scuro e chiaro |
 | **Lingue dell'interfaccia** | 7 (inglese, tedesco, croato, italiano, polacco, portoghese, serbo) | Inglese e italiano per ora |
 | **Trovare la centralina** | Scelta della famiglia; rilevamento automatico dal codice ISO | Cerca l'auto per nome, o scegli la famiglia. Il rilevamento automatico è stato tolto perché su hardware reale si è rivelato inaffidabile |
@@ -194,7 +139,7 @@ Questo progetto è un fork di [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.
 | **Codici di errore** | Letti nella loro scheda, o insieme ai parametri se si spunta una casella | Letti di continuo, con conteggio dal vivo e storia di ciò che è comparso e scomparso |
 | **Azzeramento codici, test attuatori** | Il tasto `C` azzera subito, i test partono con un clic | Chiedono sempre conferma; nessuna scorciatoia a un tasto |
 | **Mentre parla con la centralina** | La finestra smette di rispondere durante connessione e regolazioni | Continua a rispondere: tutto ciò che passa sulla seriale gira in background |
-| **In auto** | No | [Unità per Fiat Coupé](#lunità-in-auto-sperimentale), usata dal telefono (sperimentale) |
+| **In auto** | No | [Unità per Fiat Coupé su Arduino UNO Q](#interfaccia-web-remota-su-arduino-uno-q), usata dal telefono (lavori in corso) |
 | **Test automatici** | No | Sì, su Windows e Linux, compresa una centralina emulata |
 
 La vecchia interfaccia Windows Forms non è più inclusa. Modifica per modifica, in parole semplici: [CHANGELOG.md](CHANGELOG.md) (in inglese). La storia del progetto originale: [readme.txt](readme.txt).
@@ -265,6 +210,62 @@ La vecchia interfaccia Windows Forms non è più inclusa. Modifica per modifica,
 | **FIAT CODE** | Immobilizer di serie | ISO 9141 (K-Line), 7680 baud | Lettura diagnostica e stato errori dell'immobilizer di prima generazione su tutti i veicoli che ce l'hanno |
 
 </details>
+
+## Su Linux: lavori in corso
+
+Il progetto principale è l'app per Windows 11 qui sopra. Su Linux sono in corso i lavori su un'unità da auto basata su **Arduino UNO Q**, una scheda che fa girare Linux, e sull'app desktop stessa. **Niente di tutto questo è ancora stato provato su un'auto.**
+
+| | Cos'è | A che punto è |
+|---|---|---|
+| [Interfaccia web remota](#interfaccia-web-remota-su-arduino-uno-q) | Sulla UNO Q, usata dal telefono tramite il suo Wi-Fi, con un registratore sempre attivo | Realizzata, provata solo in simulazione |
+| [Matrice LED](#matrice-led-su-arduino-uno-q) | Gli errori attivi sui LED della UNO Q, senza bisogno del telefono | Solo progetto, ancora da realizzare |
+| [App desktop su un PC Linux](#lapp-desktop-su-un-pc-linux) | La stessa app di Windows | Pacchetto disponibile, provato con una centralina emulata ma non con un cavo vero |
+
+### Interfaccia web remota su Arduino UNO Q
+
+<img src="docs/coupe/screenshots/01-cruscotto.png" width="210" align="right" alt="Il cruscotto sul telefono">
+
+Per la **Fiat Coupé**: una Arduino UNO Q resta in auto, collegata alla presa diagnostica e alimentata dal quadro. Il telefono si collega al suo Wi-Fi e apre `http://192.168.4.1`, senza app e senza internet.
+
+- A ogni giro di chiave si collega da sola alla centralina e registra tutti i parametri, i codici di errore e gli eventi, con o senza telefono.
+- È fatta per essere spenta semplicemente togliendo la corrente con il quadro.
+- Prende data e ora dal telefono, e ricostruisce gli orari di ciò che ha registrato prima che ti collegassi.
+- Ogni viaggio si scarica come ZIP per l'analisi.
+
+**Cosa serve, oltre al cavo K-line:** la UNO Q ha una sola porta USB-C, quindi servono un hub USB-C con Power Delivery, che alimenta la scheda e dà al cavo una porta USB, e un alimentatore da 12 V a USB-C PD di almeno 15 W, collegato sotto chiave.
+
+**È stata provata solo in simulazione: non è mai stata eseguita su una UNO Q reale né collegata a un'auto.** Installarla significa preparare e cablare una scheda, quindi è per chi ha dimestichezza.
+
+Pacchetti: [pre-release sperimentale](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/coupe-experimental). Documentazione: [panoramica](docs/coupe/README.md) · [installazione sulla UNO Q](docs/coupe/installazione-uno-q.md) · [guida all'uso](docs/coupe/guida-uso.md) · [formato del registro](docs/coupe/registro-dati.md).
+
+<br clear="right">
+
+### Matrice LED su Arduino UNO Q
+
+La UNO Q ha una matrice di LED integrata, quindi l'unità potrebbe mostrare gli errori attivi senza bisogno del telefono: tre lettere per ogni errore, e un punto per errore in basso. **Non è ancora realizzata, e queste sono simulazioni, non foto.** [Il progetto](docs/coupe/matrice-led.md) ha tutte le schermate e tutte le sigle.
+
+<table>
+<tr><td width="25%"><img src="docs/coupe/matrice-led/03-tutto-ok.png" alt="OK a bassa luminosità"><br><sub>Nessun errore attivo</sub></td><td width="25%"><img src="docs/coupe/matrice-led/04-un-errore.png" alt="TPS"><br><sub>Un errore attivo</sub></td><td width="25%"><img src="docs/coupe/matrice-led/05-spia-motore.png" alt="MAP con un punto esclamativo che lampeggia"><br><sub>Accende la spia motore</sub></td><td width="25%"><img src="docs/coupe/matrice-led/06-piu-errori.png" alt="TPS, MAP e O2 a rotazione"><br><sub>Più errori, 2 secondi ciascuno</sub></td></tr>
+</table>
+
+### L'app desktop su un PC Linux
+
+Per Debian, Ubuntu e derivate, 64 bit. Un cavo vero su Linux non è ancora stato provato.
+
+1. Scarica **[`iaw-scan3_0.2.1-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb)**.
+2. Dalla cartella in cui l'hai scaricato, installalo con `apt`, che scarica anche le librerie necessarie:
+   ```
+   sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb
+   ```
+3. Autorizza il tuo utente a usare il cavo, poi **esci e rientra nella sessione**:
+   ```
+   sudo usermod -aG dialout $USER
+   ```
+4. Avvia **IAW Scan 3** dal menu delle applicazioni, oppure con `iaw-scan3`.
+
+Per rimuoverlo: `sudo apt remove iaw-scan3`. Le tue sessioni restano in `~/.local/share/IAWScan3` finché non le cancelli.
+
+Il driver del cavo fa parte del kernel. Su Ubuntu, il pacchetto `brltty` può prendersi i cavi CH340 e far sparire la porta: in quel caso `sudo apt remove brltty`, a meno che tu non usi un display braille.
 
 ## Fin dove è stata provata
 

@@ -10,17 +10,16 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe"><img alt="Download for Windows (.exe)" src="https://img.shields.io/badge/Download%20for%20Windows-.exe-2563eb?style=for-the-badge"></a>
-  &nbsp;
-  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb"><img alt="Download for Linux (.deb)" src="https://img.shields.io/badge/Download%20for%20Linux-.deb-2563eb?style=for-the-badge"></a>
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe"><img alt="Download for Windows 11 (.exe)" src="https://img.shields.io/badge/Download%20for%20Windows%2011-.exe-2563eb?style=for-the-badge"></a>
 </p>
 
 <p align="center">
   Version 0.2.1-beta ·
   <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest">All downloads and release notes</a> ·
-  <a href="#install-the-desktop-app">Install</a> ·
+  <a href="#install-on-windows-11">Install</a> ·
   <a href="docs/desktop/user-guide.md">User guide</a> ·
   <a href="#whats-different-from-the-original-iaw-scan-2">What's new</a> ·
+  <a href="#on-linux-work-in-progress">On Linux: work in progress</a> ·
   <a href="README.it.md">Italiano</a>
 </p>
 
@@ -35,43 +34,15 @@
 - **Keeps a log of every session,** which you can reopen, compare and export as a ZIP ready to study or hand to an AI assistant.
 - **Decodes values exactly like the original program.** The formulas are unchanged, and an automated test fails if they ever differ.
 
-## Two ways to use it
+**Also under way, on Linux:** a remote web interface and an LED matrix display, both on the Arduino UNO Q. [See where they stand](#on-linux-work-in-progress).
 
-| | **Desktop app** | **In-car unit, used from your phone** |
-|---|---|---|
-| **What it is** | A normal program on your computer | A small board left in the car, with its own Wi-Fi: you open a page on your phone, no app needed |
-| **Best for** | Diagnosing a car with a laptop, at home or in the workshop | A permanent logger: it records every drive by itself, and you check it when you want |
-| **Cars** | [All supported cars](#supported-vehicles-and-ecus) | Fiat Coupé only (IAW-04K.P8 and FIAT CODE) |
-| **Runs on** | Windows 10/11 (64-bit), Linux (64-bit) | Arduino UNO Q |
-| **Interface** | Native, English and Italian | Web, in the phone's browser, Italian |
-| **You need** | The K-line cable | The K-line cable, the board, a USB-C hub, wiring to the car |
-| **Status** | Beta | Experimental: never run on real hardware yet |
-| **Get started** | [Install the desktop app](#install-the-desktop-app) | [In-car unit](#the-in-car-unit-experimental) |
+<a name="install-the-desktop-app"></a>
 
-**Not sure? Start with the desktop app:** it covers every car, and you can try it right now with no car and no cable.
-
-## Install the desktop app
-
-### Windows
+## Install on Windows 11
 
 1. Download **[`IAWScan3-0.2.1-beta-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe)**.
 2. Run it. There's nothing to install, and .NET is included. Windows may warn that the file comes from an unknown publisher, because it isn't signed: click **More info**, then **Run anyway**.
 3. Plug in the K-line cable. **There's nothing to install:** the first time, Windows 11 downloads the driver from the internet by itself. The cable then shows up in the program's list. [How to check it](docs/desktop/user-guide.md#checking-the-cable-on-windows-11).
-
-### Linux (Debian, Ubuntu and derivatives, 64-bit)
-
-1. Download **[`iaw-scan3_0.2.1-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb)**.
-2. From the folder you downloaded it to, install it with `apt`, which also fetches the libraries it needs:
-   ```
-   sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb
-   ```
-3. Allow your user to use the cable, then **log out and back in**:
-   ```
-   sudo usermod -aG dialout $USER
-   ```
-4. Start **IAW Scan 3** from the applications menu, or with `iaw-scan3`.
-
-To remove it: `sudo apt remove iaw-scan3`. Your sessions stay in `~/.local/share/IAWScan3` until you delete them.
 
 ### Try it right away, with no car
 
@@ -123,9 +94,8 @@ You can check this with no car. Transmit and receive share one wire, so a K-line
 - **If nothing answers.** It checks the echo. With none, it stops and says the cable's K-line side isn't answering. With an echo, it connects as the original did and says the cable answers but the ECU didn't identify itself, so you can turn the ignition on and reconnect.
 - **Reading.** One byte at a time: send the request, discard the echo, read the reply, waiting up to 300 ms, with a 4 ms pause before the next. Two requests in a row without an answer mean communication is lost.
 - **Timing on Windows.** While connected, the program asks Windows for a 2 ms timer, as the original did, so those pauses really are that short.
-- **On Linux.** The driver is part of the kernel, and your user needs to be in the `dialout` group. On Ubuntu, the `brltty` package can grab CH340 cables and make the port disappear: if so, `sudo apt remove brltty`, unless you use a braille display. A real cable hasn't been tried on Linux yet.
 
-## The desktop app at a glance
+## The app at a glance
 
 <table>
 <tr>
@@ -146,31 +116,6 @@ You can check this with no car. Transmit and receive share one wire, so a K-line
 </tr>
 </table>
 
-## The in-car unit (experimental)
-
-<img src="docs/coupe/screenshots/01-cruscotto.png" width="210" align="right" alt="The dashboard on a phone">
-
-For the **Fiat Coupé**: an Arduino UNO Q stays in the car, plugged into the diagnostic socket and powered from the ignition. Your phone joins its Wi-Fi and opens `http://192.168.4.1`, with no app and no internet.
-
-- At every ignition-on it connects to the ECU by itself and logs every parameter, fault code and event, with or without a phone around.
-- It's built to have its power simply cut at key-off.
-- It takes the date and time from your phone, and works out the times of whatever it recorded before you connected.
-- Each drive downloads as a ZIP for analysis.
-
-**It has only been tested in simulation: it has never run on a real UNO Q or been connected to a car.** Installing it means flashing and wiring a board, so it's for people comfortable with that.
-
-Packages: [experimental pre-release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/coupe-experimental). Documentation, in Italian: [overview](docs/coupe/README.md) · [installing on the UNO Q](docs/coupe/installazione-uno-q.md) · [user guide](docs/coupe/guida-uso.md) · [logbook format](docs/coupe/registro-dati.md).
-
-<br clear="right">
-
-### Work in progress: active faults on the LED matrix
-
-The UNO Q has a built-in LED matrix, so the unit could show active faults with no phone around: three letters for each fault, and a dot per fault along the bottom. **It isn't built yet, and these are simulations, not photos.** [The design](docs/coupe/matrice-led.md) (in Italian) has every screen and every code.
-
-<table>
-<tr><td width="25%"><img src="docs/coupe/matrice-led/03-tutto-ok.png" alt="OK, dimly lit"><br><sub>No active faults</sub></td><td width="25%"><img src="docs/coupe/matrice-led/04-un-errore.png" alt="TPS"><br><sub>One active fault</sub></td><td width="25%"><img src="docs/coupe/matrice-led/05-spia-motore.png" alt="MAP with a blinking exclamation mark"><br><sub>It turns on the engine warning light</sub></td><td width="25%"><img src="docs/coupe/matrice-led/06-piu-errori.png" alt="TPS, MAP and O2 in turn"><br><sub>Several, 2 seconds each</sub></td></tr>
-</table>
-
 ## What's different from the original IAW Scan 2
 
 This project is a fork of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 by Tomasz Orczyk ("TzOk"), itself the successor of IAW ECU Scan. **Of the original, it keeps the diagnostic engine:** how signals are read from the ECU and decoded, in `IES_3.Core`, and the same way of handling the serial port and connection. Everything around it is new.
@@ -178,8 +123,8 @@ This project is a fork of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 b
 | | **IAW Scan 2 v0.85** | **IAW Scan 3** |
 |---|---|---|
 | **Decoding formulas** | The reference | **Identical**, checked by an automated test |
-| **Runs on** | Windows 2000 to 7, on .NET Framework 2.0. Last release: May 2015 | Windows 10/11 and Linux, on .NET 10 |
-| **Installing** | Needs .NET Framework 2.0 | One 32 MB file on Windows, a 26 MB package on Linux, .NET included |
+| **Runs on** | Windows 2000 to 7, on .NET Framework 2.0. Last release: May 2015 | Windows 11, on .NET 10. Linux: [work in progress](#on-linux-work-in-progress) |
+| **Installing** | Needs .NET Framework 2.0 | One 32 MB file, .NET included |
 | **Interface** | Windows Forms, tabs and tables | New: sidebar, gauges, dark and light themes |
 | **Interface languages** | 7 (English, German, Croatian, Italian, Polish, Portuguese, Serbian) | English and Italian for now |
 | **Finding your ECU** | Choose the ECU family; automatic detection from the ISO code | Search for your car by name, or choose the family. Automatic detection was removed after proving unreliable on real hardware |
@@ -194,7 +139,7 @@ This project is a fork of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 b
 | **Fault codes** | Read on their tab, or with the parameters if a box is ticked | Always read, with a live count and a history of what appeared and went away |
 | **Clearing codes, actuator tests** | The `C` key clears codes at once, tests start at a click | Always ask first; no single-key shortcut |
 | **While talking to the ECU** | The window stops responding during connection and adjustments | It keeps responding: everything on the serial line runs in the background |
-| **In the car** | No | [Fiat Coupé unit](#the-in-car-unit-experimental), used from your phone (experimental) |
+| **In the car** | No | [Fiat Coupé unit on the Arduino UNO Q](#remote-web-interface-on-the-arduino-uno-q), used from your phone (work in progress) |
 | **Automated tests** | No | Yes, on Windows and Linux, including an emulated ECU |
 
 The original Windows Forms interface is no longer included. Change by change, in plain language: [CHANGELOG.md](CHANGELOG.md). The original project's own history: [readme.txt](readme.txt).
@@ -265,6 +210,62 @@ The original Windows Forms interface is no longer included. Change by change, in
 | **FIAT CODE** | Factory Immobiliser | ISO 9141 (K-Line), 7680 baud | First-generation immobiliser diagnostic readouts and error status across all equipped vehicles |
 
 </details>
+
+## On Linux: work in progress
+
+The main project is the Windows 11 app above. On Linux, work is under way on an in-car unit built around the **Arduino UNO Q**, a board that runs Linux, and on the desktop app itself. **None of this has been run on a car yet.**
+
+| | What it is | Where it stands |
+|---|---|---|
+| [Remote web interface](#remote-web-interface-on-the-arduino-uno-q) | On the UNO Q, used from your phone over its Wi-Fi, with an always-on logger | Built, tested in simulation only |
+| [LED matrix](#led-matrix-on-the-arduino-uno-q) | Active faults on the UNO Q's own LEDs, with no phone needed | Design only, nothing built yet |
+| [Desktop app on a Linux PC](#the-desktop-app-on-a-linux-pc) | The same app as on Windows | Package available, tested against an emulated ECU but not with a real cable |
+
+### Remote web interface on the Arduino UNO Q
+
+<img src="docs/coupe/screenshots/01-cruscotto.png" width="210" align="right" alt="The dashboard on a phone">
+
+For the **Fiat Coupé**: an Arduino UNO Q stays in the car, plugged into the diagnostic socket and powered from the ignition. Your phone joins its Wi-Fi and opens `http://192.168.4.1`, with no app and no internet.
+
+- At every ignition-on it connects to the ECU by itself and logs every parameter, fault code and event, with or without a phone around.
+- It's built to have its power simply cut at key-off.
+- It takes the date and time from your phone, and works out the times of whatever it recorded before you connected.
+- Each drive downloads as a ZIP for analysis.
+
+**What it takes, besides the K-line cable:** the UNO Q has a single USB-C port, so it needs a USB-C hub with Power Delivery, which powers the board and gives the cable a USB port, and a 12 V to USB-C PD supply of at least 15 W, switched by the ignition.
+
+**It has only been tested in simulation: it has never run on a real UNO Q or been connected to a car.** Installing it means flashing and wiring a board, so it's for people comfortable with that.
+
+Packages: [experimental pre-release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/coupe-experimental). Documentation, in Italian: [overview](docs/coupe/README.md) · [installing on the UNO Q](docs/coupe/installazione-uno-q.md) · [user guide](docs/coupe/guida-uso.md) · [logbook format](docs/coupe/registro-dati.md).
+
+<br clear="right">
+
+### LED matrix on the Arduino UNO Q
+
+The UNO Q has a built-in LED matrix, so the unit could show active faults with no phone around: three letters for each fault, and a dot per fault along the bottom. **It isn't built yet, and these are simulations, not photos.** [The design](docs/coupe/matrice-led.md) (in Italian) has every screen and every code.
+
+<table>
+<tr><td width="25%"><img src="docs/coupe/matrice-led/03-tutto-ok.png" alt="OK, dimly lit"><br><sub>No active faults</sub></td><td width="25%"><img src="docs/coupe/matrice-led/04-un-errore.png" alt="TPS"><br><sub>One active fault</sub></td><td width="25%"><img src="docs/coupe/matrice-led/05-spia-motore.png" alt="MAP with a blinking exclamation mark"><br><sub>It turns on the engine warning light</sub></td><td width="25%"><img src="docs/coupe/matrice-led/06-piu-errori.png" alt="TPS, MAP and O2 in turn"><br><sub>Several, 2 seconds each</sub></td></tr>
+</table>
+
+### The desktop app on a Linux PC
+
+For Debian, Ubuntu and derivatives, 64-bit. A real cable hasn't been tried on Linux yet.
+
+1. Download **[`iaw-scan3_0.2.1-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb)**.
+2. From the folder you downloaded it to, install it with `apt`, which also fetches the libraries it needs:
+   ```
+   sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb
+   ```
+3. Allow your user to use the cable, then **log out and back in**:
+   ```
+   sudo usermod -aG dialout $USER
+   ```
+4. Start **IAW Scan 3** from the applications menu, or with `iaw-scan3`.
+
+To remove it: `sudo apt remove iaw-scan3`. Your sessions stay in `~/.local/share/IAWScan3` until you delete them.
+
+The cable's driver is part of the kernel. On Ubuntu, the `brltty` package can grab CH340 cables and make the port disappear: if so, `sudo apt remove brltty`, unless you use a braille display.
 
 ## How far it has been tested
 
