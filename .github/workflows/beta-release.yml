@@ -13,9 +13,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version label for this build (e.g. 0.2.1-beta)"
+        description: "Version label for this build (e.g. 0.2.2-beta)"
         required: true
-        default: "0.2.1-beta"
+        default: "0.2.2-beta"
 
 env:
   DOTNET_VERSION: "10.0.x"

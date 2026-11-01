@@ -10,11 +10,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe"><img alt="Scarica per Windows 11 (.exe)" src="https://img.shields.io/badge/Scarica%20per%20Windows%2011-.exe-2563eb?style=for-the-badge"></a>
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.2-beta/IAWScan3-0.2.2-beta-win-x64.exe"><img alt="Scarica per Windows 11 (.exe)" src="https://img.shields.io/badge/Scarica%20per%20Windows%2011-.exe-2563eb?style=for-the-badge"></a>
 </p>
 
 <p align="center">
-  Versione 0.2.1-beta ·
+  Versione 0.2.2-beta ·
   <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest">Tutti i download e le note di rilascio</a> ·
   <a href="#installare-su-windows-11">Installa</a> ·
   <a href="docs/desktop/guida-utente.md">Guida utente</a> ·
@@ -40,7 +40,7 @@
 
 ## Installare su Windows 11
 
-1. Scarica **[`IAWScan3-0.2.1-beta-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe)**.
+1. Scarica **[`IAWScan3-0.2.2-beta-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.2-beta/IAWScan3-0.2.2-beta-win-x64.exe)**.
 2. Avvialo. Non c'è niente da installare e .NET è incluso. Windows può avvisare che il file viene da un editore sconosciuto, perché non è firmato: clicca **Ulteriori informazioni**, poi **Esegui comunque**.
 3. Collega il cavo K-line. **Non c'è niente da installare:** la prima volta, Windows 11 scarica da solo il driver da internet. Poi il cavo compare nell'elenco del programma. [Come controllarlo](docs/desktop/guida-utente.md#controllare-il-cavo-su-windows-11).
 
@@ -55,7 +55,7 @@ Ti servono:
 1. **Un cavo USB K-line:** il classico tipo **VAG-COM KKL 409.1**. [Tutto sul cavo](#il-cavo). Gli scanner ELM327 con queste auto **non** funzionano.
 2. **Un adattatore Fiat da 3 poli a OBD-II 16 poli:** queste auto hanno una presa diagnostica triangolare a 3 poli, di solito nel vano motore vicino alla paratia o al duomo, oppure sotto il cassetto portaoggetti per l'immobilizer FIAT CODE. Le pinze dell'adattatore vanno sulla batteria: quella presa non ha i 12 V, e al cavo servono.
 
-Poi, con il quadro acceso: cerca la tua auto nell'elenco, controlla il cavo e clicca **Connetti**. **Prova il cavo** lo controlla prima, anche senza auto. La [guida utente](docs/desktop/guida-utente.md) spiega ogni schermata.
+Poi, con il quadro acceso: cerca la tua auto nell'elenco, controlla il cavo e clicca **Connetti**. Fa eccezione la IAW-6F/16F, che per identificare l'auto vuole [prima il quadro spento](docs/desktop/guida-utente.md#iaw-6f16f-identificare-lauto). **Prova il cavo** lo controlla prima, anche senza auto. La [guida utente](docs/desktop/guida-utente.md) spiega ogni schermata.
 
 ## Il cavo
 
@@ -90,7 +90,7 @@ Puoi verificarlo senza auto. Trasmissione e ricezione condividono un solo filo, 
 - **Trovarlo.** L'elenco delle porte si aggiorna da solo ogni 2 secondi e dice cos'è ciascuna: `COM5 · USB-SERIAL CH340`. I cavi vengono per primi, e quello usato l'ultima volta viene ricordato.
 - **Provarlo.** **Prova il cavo** funziona senza auto: invia 3 byte a 1200 baud e 6 a 7680, le due velocità usate dalle centraline, e si aspetta che tornino tutti. Poi dice se il cavo funziona, se sembrano mancare i 12 V, o se la linea non è pulita.
 - **Se Windows non ha il driver.** Un cavo con un chip noto, collegato ma senza un driver funzionante, viene segnalato nella pagina Connetti, con un link alla pagina del produttore del chip. I driver non sono inclusi nel programma: li fornisce già Windows Update, e la licenza di FTDI avverte che il suo driver può danneggiare i chip non originali, che i cavi economici possono usare.
-- **Collegarsi.** 8 bit di dati, nessuna parità, 1 bit di stop, DTR e RTS spenti. Ascolta a 1200 baud per un massimo di 10 secondi la centralina che si annuncia, invia i byte di risveglio `0F AA CC` e prosegue a 7680 baud.
+- **Collegarsi.** 8 bit di dati, nessuna parità, 1 bit di stop, DTR e RTS spenti. Ascolta a 1200 baud per un massimo di 10 secondi la centralina che si annuncia, invia i byte di risveglio `0F AA CC` e prosegue a 7680 baud. Le centraline IAW-6F/16F danno il codice ISO solo in quel momento, e solo se erano del tutto spente: senza, l'auto esatta resta sconosciuta, mentre la diagnosi funziona lo stesso.
 - **Se non risponde nessuno.** Controlla l'eco. Se manca, si ferma e dice che il lato K-line del cavo non risponde. Se c'è, si collega come faceva l'originale e dice che il cavo risponde ma la centralina non si è identificata, così puoi accendere il quadro e riconnetterti.
 - **Leggere.** Un byte alla volta: invia la richiesta, scarta l'eco, legge la risposta aspettando fino a 300 ms, con una pausa di 4 ms prima della successiva. Due richieste di fila senza risposta significano comunicazione persa.
 - **Tempi su Windows.** Durante il collegamento il programma chiede a Windows un timer da 2 ms, come faceva l'originale, così quelle pause sono davvero così brevi.
@@ -252,10 +252,10 @@ La UNO Q ha una matrice di LED integrata, quindi l'unità potrebbe mostrare gli 
 
 Per Debian, Ubuntu e derivate, 64 bit. Un cavo vero su Linux non è ancora stato provato.
 
-1. Scarica **[`iaw-scan3_0.2.1-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb)**.
+1. Scarica **[`iaw-scan3_0.2.2-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.2-beta/iaw-scan3_0.2.2-beta_amd64.deb)**.
 2. Dalla cartella in cui l'hai scaricato, installalo con `apt`, che scarica anche le librerie necessarie:
    ```
-   sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb
+   sudo apt install ./iaw-scan3_0.2.2-beta_amd64.deb
    ```
 3. Autorizza il tuo utente a usare il cavo, poi **esci e rientra nella sessione**:
    ```

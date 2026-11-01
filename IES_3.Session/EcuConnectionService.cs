@@ -110,7 +110,8 @@ namespace IES_2.Session
                         return Fail(ConnectError.CableNotAnswering);
                 }
 
-                return BuildSuccess(option.DisplayName, resolved, serial, simulation: false, timer);
+                return BuildSuccess(option.DisplayName, resolved, serial, simulation: false, timer,
+                    isoOnlyAtIgnitionOnMissed: isoFromSync == null && option.Id == iaw16f.name);
             }
             catch (Exception ex)
             {
@@ -177,7 +178,7 @@ namespace IES_2.Session
             };
         }
 
-        private static ConnectResult BuildSuccess(string ecuTypeDisplayName, ecu instance, SerialPort port, bool simulation, FineTimer? timer = null)
+        private static ConnectResult BuildSuccess(string ecuTypeDisplayName, ecu instance, SerialPort port, bool simulation, FineTimer? timer = null, bool isoOnlyAtIgnitionOnMissed = false)
         {
             var iso = ecu.ISO;
             var codric = ecu.CODRIC;
@@ -196,6 +197,7 @@ namespace IES_2.Session
                 RepCode = repText,
                 CarModel = carModel,
                 EcuIdentified = iso != null || codric != null,
+                CarNotIdentified = isoOnlyAtIgnitionOnMissed && (iso != null || codric != null),
                 Session = session,
             };
         }
