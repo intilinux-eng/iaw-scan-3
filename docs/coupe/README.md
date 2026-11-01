@@ -22,6 +22,12 @@
 - **Esportazione per l'analisi con l'AI.** Ogni accensione si scarica come file ZIP con gli eventi (JSONL), i dati (CSV) e un `LEGGIMI.md` che ne descrive il formato. Si può caricare così com'è in un assistente AI.
 - **Data e ora dal telefono.** La UNO Q non ha un orologio a batteria: prende l'ora dal primo telefono che apre l'interfaccia e ricostruisce gli orari degli eventi precedenti.
 
+## Lavoro in corso: la matrice LED
+
+La matrice di LED della scheda potrebbe mostrare gli errori attivi senza bisogno del telefono. **Non è ancora realizzata:** in [questa pagina](matrice-led.md) c'è il progetto, con le simulazioni di tutte le schermate.
+
+<img src="matrice-led/06-piu-errori.png" width="260" alt="Simulazione della matrice: TPS, MAP e O2 a rotazione">
+
 ## Come è fatto
 
 ```
