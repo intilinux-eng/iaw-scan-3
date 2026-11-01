@@ -44,7 +44,10 @@
     <x:String x:Key="Connect_NoPorts">Nessun cavo trovato</x:String>
     <x:String x:Key="Connect_RefreshPorts">Aggiorna l'elenco delle porte</x:String>
     <x:String x:Key="Connect_PlugCable">Collega il cavo USB K-line: compare qui da solo. Se non ce l'hai, puoi provare la simulazione.</x:String>
-    <x:String x:Key="Connect_IsoOnlyAtIgnitionOn">Questa centralina dà il suo codice solo quando il quadro si accende, e solo se era del tutto spenta. Per identificare l'auto esatta: quadro spento per 90 secondi, Connetti, poi quadro acceso.</x:String>
+    <x:String x:Key="Connect_IsoOnlyAtIgnitionOn">Per identificare l'auto esatta, questa centralina vuole quest'ordine: quadro spento per 90 secondi, premi Connetti, poi accendi il quadro quando te lo chiediamo. Dà il suo codice solo in quel momento.</x:String>
+    <x:String x:Key="Connect_BeforeIgnitionOff">Quadro spento da almeno 90 secondi. Lo accenderai dopo aver premuto Connetti.</x:String>
+    <x:String x:Key="Connect_WaitingTurnOn">Accendi il quadro ora</x:String>
+    <x:String x:Key="Connect_WaitingCode">In attesa del codice della centralina, fino a 10 secondi.</x:String>
     <x:String x:Key="Connect_TestCable">Prova il cavo</x:String>
     <x:String x:Key="Connect_TestCableTip">Controlla il cavo senza bisogno dell'auto: il lato USB e, se ha i suoi 12 V, il lato K-line. Meglio a quadro spento.</x:String>
     <x:String x:Key="Connect_TestRunning">Prova del cavo in corso…</x:String>

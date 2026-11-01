@@ -24,7 +24,11 @@ Il programma aspetta la centralina fino a 10 secondi: si annuncia da sola quando
 
 Queste centraline danno il codice ISO, che indica l'auto esatta, solo da sole quando il quadro si accende, e solo se erano del tutto spente. Non c'è modo di chiederlo dopo. Spento il quadro restano in dormiveglia per circa 90 secondi, oppure si spengono del tutto quasi subito se c'è stata una sessione di diagnosi attiva, come un test attuatori.
 
-Quindi per identificare l'auto: **quadro spento per 90 secondi, Connetti, poi quadro acceso.** Altrimenti l'auto compare come sconosciuta e un messaggio spiega perché. La diagnosi funziona lo stesso. L'informazione viene dall'autore originale del programma ([issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8)).
+Quindi per identificare l'auto: **quadro spento per 90 secondi, Connetti, poi quadro acceso.** Quando scegli una di queste centraline, la pagina Connetti ti guida e ti dice quando accendere il quadro:
+
+![La pagina Connetti con una IAW-6F/16F scelta, che chiede di accendere il quadro ora](../screenshots/it/01-connect-iaw16f.png)
+
+Se il momento va perso, l'auto compare come sconosciuta e un messaggio spiega perché. La diagnosi funziona lo stesso. L'informazione viene dall'autore originale del programma ([issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8)).
 
 ### Controllare il cavo su Windows 11
 

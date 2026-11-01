@@ -115,7 +115,11 @@
 
                         <StackPanel Spacing="8" IsVisible="{Binding IsConnecting}">
                             <ProgressBar IsIndeterminate="True" Height="4" MinHeight="4" />
-                            <TextBlock Text="{DynamicResource Connect_Waiting}" Classes="small muted" TextWrapping="Wrap" />
+                            <TextBlock Text="{DynamicResource Connect_Waiting}" Classes="small muted" TextWrapping="Wrap" IsVisible="{Binding !IsoOnlyAtIgnitionOn}" />
+                            <StackPanel Spacing="2" IsVisible="{Binding IsoOnlyAtIgnitionOn}">
+                                <TextBlock Text="{DynamicResource Connect_WaitingTurnOn}" Classes="h3" TextWrapping="Wrap" />
+                                <TextBlock Text="{DynamicResource Connect_WaitingCode}" Classes="small muted" TextWrapping="Wrap" />
+                            </StackPanel>
                             <Button Classes="ghost" Content="{DynamicResource Connect_Cancel}" Command="{Binding CancelCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
                         </StackPanel>
 
@@ -129,7 +133,8 @@
                 <Border Classes="card">
                     <StackPanel Spacing="8">
                         <TextBlock Text="{DynamicResource Connect_BeforeTitle}" Classes="h3" />
-                        <TextBlock Text="{DynamicResource Connect_Before1}" Classes="small muted" TextWrapping="Wrap" />
+                        <TextBlock Text="{DynamicResource Connect_Before1}" Classes="small muted" TextWrapping="Wrap" IsVisible="{Binding !IsoOnlyAtIgnitionOn}" />
+                        <TextBlock Text="{DynamicResource Connect_BeforeIgnitionOff}" Classes="small muted" TextWrapping="Wrap" IsVisible="{Binding IsoOnlyAtIgnitionOn}" />
                         <TextBlock Text="{DynamicResource Connect_Before2}" Classes="small muted" TextWrapping="Wrap" />
                         <TextBlock Text="{DynamicResource Connect_Before3}" Classes="small muted" TextWrapping="Wrap" />
                     </StackPanel>

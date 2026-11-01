@@ -44,7 +44,10 @@
     <x:String x:Key="Connect_NoPorts">No cable found</x:String>
     <x:String x:Key="Connect_RefreshPorts">Refresh the list of ports</x:String>
     <x:String x:Key="Connect_PlugCable">Plug in the USB K-line cable: it shows up here by itself. Without one, you can try the simulation.</x:String>
-    <x:String x:Key="Connect_IsoOnlyAtIgnitionOn">This ECU gives its code only as the ignition comes on, and only after being fully off. To identify the exact car: ignition off for 90 seconds, Connect, then ignition on.</x:String>
+    <x:String x:Key="Connect_IsoOnlyAtIgnitionOn">To identify the exact car, this ECU needs this order: ignition off for 90 seconds, press Connect, then turn the ignition on when asked. It gives its code only at that moment.</x:String>
+    <x:String x:Key="Connect_BeforeIgnitionOff">Ignition off for at least 90 seconds. You'll turn it on after pressing Connect.</x:String>
+    <x:String x:Key="Connect_WaitingTurnOn">Turn the ignition on now</x:String>
+    <x:String x:Key="Connect_WaitingCode">Waiting for the ECU's code, for up to 10 seconds.</x:String>
     <x:String x:Key="Connect_TestCable">Test the cable</x:String>
     <x:String x:Key="Connect_TestCableTip">Checks the cable with no car needed: the USB side and, if it has its 12 V, the K-line side. Best with the ignition off.</x:String>
     <x:String x:Key="Connect_TestRunning">Testing the cable…</x:String>

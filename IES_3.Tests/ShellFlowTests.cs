@@ -551,6 +551,37 @@ namespace IES_2.Tests
         }
 
         [AvaloniaFact]
+        public void AnIaw16fIsToldWhenToTurnTheIgnitionOn()
+        {
+            using var ui = new UiFixture();
+            var connect = ui.Shell.Connect;
+            bool Shown(string key) => ui.Window.GetVisualDescendants().OfType<global::Avalonia.Controls.TextBlock>()
+                .Any(t => t.Text == Loc.T(key) && t.IsEffectivelyVisible);
+
+            connect.SelectedVehicle = connect.Vehicles.First(v => v.Ecu.Id == iaw16f.name);
+            UiFixture.Pump();
+            Assert.True(Shown("Connect_BeforeIgnitionOff"));
+            Assert.False(Shown("Connect_Before1"));
+
+            connect.IsConnecting = true;
+            UiFixture.Pump();
+            Assert.True(Shown("Connect_WaitingTurnOn"));
+            Assert.False(Shown("Connect_Waiting"));
+            connect.IsConnecting = false;
+
+            connect.SelectedVehicle = connect.Vehicles.First(v => v.Ecu.Id == iaw04k.name);
+            UiFixture.Pump();
+            Assert.True(Shown("Connect_Before1"));
+            Assert.False(Shown("Connect_BeforeIgnitionOff"));
+
+            connect.IsConnecting = true;
+            UiFixture.Pump();
+            Assert.True(Shown("Connect_Waiting"));
+            Assert.False(Shown("Connect_WaitingTurnOn"));
+            connect.IsConnecting = false;
+        }
+
+        [AvaloniaFact]
         public async Task TheCableTestSaysWhenThePortCantBeOpened()
         {
             using var ui = new UiFixture();

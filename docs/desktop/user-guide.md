@@ -24,7 +24,11 @@ The program waits up to 10 seconds for the ECU, which announces itself when the 
 
 These ECUs give their ISO code, which tells the exact car, only by themselves as the ignition comes on, and only when waking from fully off. There's no way to ask for it later. After the ignition goes off they stay half asleep for about 90 seconds, or turn fully off almost at once if an active diagnostic session ran, such as an actuator test.
 
-So to identify the car: **ignition off for 90 seconds, Connect, then ignition on.** Otherwise the car is shown as unknown and a message explains why. Diagnosis works the same. This comes from the original author of the program ([issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8)).
+So to identify the car: **ignition off for 90 seconds, Connect, then ignition on.** When one of these ECUs is chosen, the Connect page guides you through this, and tells you when to turn the ignition on:
+
+![The Connect page with an IAW-6F/16F chosen, asking to turn the ignition on now](../screenshots/en/01-connect-iaw16f.png)
+
+If the moment is missed, the car is shown as unknown and a message explains why. Diagnosis works the same. This comes from the original author of the program ([issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8)).
 
 ### Checking the cable on Windows 11
 
