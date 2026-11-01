@@ -163,6 +163,14 @@ Packages: [experimental pre-release](https://github.com/intilinux-eng/iaw-scan-3
 
 <br clear="right">
 
+### Work in progress: active faults on the LED matrix
+
+The UNO Q has a built-in LED matrix, so the unit could show active faults with no phone around: three letters for each fault, and a dot per fault along the bottom. **It isn't built yet, and these are simulations, not photos.** [The design](docs/coupe/matrice-led.md) (in Italian) has every screen and every code.
+
+<table>
+<tr><td width="25%"><img src="docs/coupe/matrice-led/03-tutto-ok.png" alt="OK, dimly lit"><br><sub>No active faults</sub></td><td width="25%"><img src="docs/coupe/matrice-led/04-un-errore.png" alt="TPS"><br><sub>One active fault</sub></td><td width="25%"><img src="docs/coupe/matrice-led/05-spia-motore.png" alt="MAP with a blinking exclamation mark"><br><sub>It turns on the engine warning light</sub></td><td width="25%"><img src="docs/coupe/matrice-led/06-piu-errori.png" alt="TPS, MAP and O2 in turn"><br><sub>Several, 2 seconds each</sub></td></tr>
+</table>
+
 ## What's different from the original IAW Scan 2
 
 This project is a fork of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 by Tomasz Orczyk ("TzOk"), itself the successor of IAW ECU Scan. **Of the original, it keeps the diagnostic engine:** how signals are read from the ECU and decoded, in `IES_3.Core`, and the same way of handling the serial port and connection. Everything around it is new.

@@ -163,6 +163,14 @@ Pacchetti: [pre-release sperimentale](https://github.com/intilinux-eng/iaw-scan-
 
 <br clear="right">
 
+### Lavoro in corso: gli errori attivi sulla matrice LED
+
+La UNO Q ha una matrice di LED integrata, quindi l'unità potrebbe mostrare gli errori attivi senza bisogno del telefono: tre lettere per ogni errore, e un punto per errore in basso. **Non è ancora realizzata, e queste sono simulazioni, non foto.** [Il progetto](docs/coupe/matrice-led.md) ha tutte le schermate e tutte le sigle.
+
+<table>
+<tr><td width="25%"><img src="docs/coupe/matrice-led/03-tutto-ok.png" alt="OK a bassa luminosità"><br><sub>Nessun errore attivo</sub></td><td width="25%"><img src="docs/coupe/matrice-led/04-un-errore.png" alt="TPS"><br><sub>Un errore attivo</sub></td><td width="25%"><img src="docs/coupe/matrice-led/05-spia-motore.png" alt="MAP con un punto esclamativo che lampeggia"><br><sub>Accende la spia motore</sub></td><td width="25%"><img src="docs/coupe/matrice-led/06-piu-errori.png" alt="TPS, MAP e O2 a rotazione"><br><sub>Più errori, 2 secondi ciascuno</sub></td></tr>
+</table>
+
 ## Cosa cambia rispetto all'originale IAW Scan 2
 
 Questo progetto è un fork di [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 di Tomasz Orczyk ("TzOk"), a sua volta seguito di IAW ECU Scan. **Dell'originale conserva il motore diagnostico:** come i segnali vengono letti dalla centralina e decodificati, in `IES_3.Core`, e lo stesso modo di gestire porta seriale e connessione. Tutto il resto è nuovo.
