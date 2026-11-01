@@ -538,6 +538,19 @@ namespace IES_2.Tests
         }
 
         [AvaloniaFact]
+        public void ChoosingAnIaw16fExplainsWhyTheOrderMatters()
+        {
+            using var ui = new UiFixture();
+            var connect = ui.Shell.Connect;
+
+            connect.SelectedVehicle = connect.Vehicles.First(v => v.Ecu.Id == iaw16f.name);
+            Assert.True(connect.IsoOnlyAtIgnitionOn);
+
+            connect.SelectedVehicle = connect.Vehicles.First(v => v.Ecu.Id == iaw04k.name);
+            Assert.False(connect.IsoOnlyAtIgnitionOn);
+        }
+
+        [AvaloniaFact]
         public async Task TheCableTestSaysWhenThePortCantBeOpened()
         {
             using var ui = new UiFixture();

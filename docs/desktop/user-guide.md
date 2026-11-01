@@ -10,15 +10,21 @@ The function keys work from anywhere: **F2** Dashboard, **F3** Parameters, **F4*
 
 ![Connect page](../screenshots/en/01-connect.png)
 
-1. **Turn the ignition on.** The engine can be off or idling.
+1. **Turn the ignition on.** The engine can be off or idling. With an IAW-6F/16F, [leave it off for now](#iaw-6f16f-identifying-the-car).
 2. **Plug in the cable:** USB K-line cable, 3-pin Fiat adapter on the diagnostic socket, its clips on the battery. The clips are needed: they power the cable's K-line side. Engine ECU and FIAT CODE immobiliser have separate sockets.
 3. **Find your car** by typing part of its name. Words can come in any order (`coupe turbo`). If you already know the ECU family, click its chip instead. **Immobiliser (FIAT CODE)** lists the cars for the immobiliser.
 4. **Check the cable** under *K-line cable*. The list updates by itself when you plug the cable in, and says what each port is: on Windows `COM5 · USB-SERIAL CH340` or similar, on Linux `/dev/ttyUSB0 · CH340`. **Test the cable** checks it, even with no car.
 5. Click **Connect** (or press F10).
 
-The program waits up to 10 seconds for the ECU, which announces itself when the ignition comes on. If the ignition was off, turn it on during that wait. Your choices are remembered for next time.
+The program waits up to 10 seconds for the ECU, which announces itself when the ignition comes on. If the ignition was off, turn it on during that wait. With it already on, the program asks the ECU for its details once the wait is over. Your choices are remembered for next time.
 
 **If nothing answers,** the program checks the cable. If the cable's K-line side is silent, it stops and says so: check the adapter's clips on the battery and the plug. If the cable answers but the ECU doesn't identify itself, it connects anyway, as the original did, and shows a warning under the status bar: check the ignition and that the cable is on the right socket.
+
+### IAW-6F/16F: identifying the car
+
+These ECUs give their ISO code, which tells the exact car, only by themselves as the ignition comes on, and only when waking from fully off. There's no way to ask for it later. After the ignition goes off they stay half asleep for about 90 seconds, or turn fully off almost at once if an active diagnostic session ran, such as an actuator test.
+
+So to identify the car: **ignition off for 90 seconds, Connect, then ignition on.** Otherwise the car is shown as unknown and a message explains why. Diagnosis works the same. This comes from the original author of the program ([issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8)).
 
 ### Checking the cable on Windows 11
 

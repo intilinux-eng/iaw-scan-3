@@ -10,15 +10,21 @@ I tasti funzione valgono ovunque: **F2** Cruscotto, **F3** Parametri, **F4** Cod
 
 ![Pagina Connetti](../screenshots/it/01-connect.png)
 
-1. **Accendi il quadro.** Il motore può essere spento o al minimo.
+1. **Accendi il quadro.** Il motore può essere spento o al minimo. Con una IAW-6F/16F, [per ora lascialo spento](#iaw-6f16f-identificare-lauto).
 2. **Collega il cavo:** cavo USB K-line, adattatore Fiat a 3 poli sulla presa diagnostica, pinze sulla batteria. Le pinze servono: alimentano il lato K-line del cavo. Centralina motore e immobilizer FIAT CODE hanno prese separate.
 3. **Cerca la tua auto** scrivendo parte del nome. Le parole possono essere in qualsiasi ordine (`coupe turbo`). Se conosci già la famiglia di centraline, clicca il suo pulsante. **Immobilizer (FIAT CODE)** elenca le auto per l'immobilizer.
 4. **Controlla il cavo** sotto *Cavo K-line*. L'elenco si aggiorna da solo quando colleghi il cavo, e dice cos'è ciascuna porta: su Windows `COM5 · USB-SERIAL CH340` o simile, su Linux `/dev/ttyUSB0 · CH340`. **Prova il cavo** lo controlla, anche senza auto.
 5. Clicca **Connetti** (o premi F10).
 
-Il programma aspetta la centralina fino a 10 secondi: si annuncia da sola quando il quadro si accende. Se il quadro era spento, accendilo durante quell'attesa. Le tue scelte vengono ricordate per la volta dopo.
+Il programma aspetta la centralina fino a 10 secondi: si annuncia da sola quando il quadro si accende. Se il quadro era spento, accendilo durante quell'attesa. A quadro già acceso, finita l'attesa il programma chiede i dati alla centralina. Le tue scelte vengono ricordate per la volta dopo.
 
 **Se non risponde nessuno,** il programma controlla il cavo. Se il lato K-line del cavo è muto, si ferma e lo dice: controlla le pinze dell'adattatore sulla batteria e la spina. Se il cavo risponde ma la centralina non si identifica, si collega comunque, come faceva l'originale, e mostra un avviso sotto la barra di stato: controlla il quadro e che il cavo sia sulla presa giusta.
+
+### IAW-6F/16F: identificare l'auto
+
+Queste centraline danno il codice ISO, che indica l'auto esatta, solo da sole quando il quadro si accende, e solo se erano del tutto spente. Non c'è modo di chiederlo dopo. Spento il quadro restano in dormiveglia per circa 90 secondi, oppure si spengono del tutto quasi subito se c'è stata una sessione di diagnosi attiva, come un test attuatori.
+
+Quindi per identificare l'auto: **quadro spento per 90 secondi, Connetti, poi quadro acceso.** Altrimenti l'auto compare come sconosciuta e un messaggio spiega perché. La diagnosi funziona lo stesso. L'informazione viene dall'autore originale del programma ([issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8)).
 
 ### Controllare il cavo su Windows 11
 

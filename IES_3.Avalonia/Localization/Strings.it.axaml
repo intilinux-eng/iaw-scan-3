@@ -25,6 +25,7 @@
     <x:String x:Key="Banner_CommLost">Comunicazione con la centralina persa. Spegni e riaccendi il quadro, poi riconnetti.</x:String>
     <x:String x:Key="Banner_Reconnect">Riconnetti</x:String>
     <x:String x:Key="Banner_NotAnswering">Il cavo risponde, ma la centralina non si è identificata. Controlla che il quadro sia acceso e che il cavo sia sulla presa giusta.</x:String>
+    <x:String x:Key="Banner_CarNotIdentified">La diagnosi funziona, ma questa centralina dà il suo codice solo quando il quadro si accende, quindi l'auto esatta non è nota. Per identificarla: quadro spento per 90 secondi, Connetti, poi quadro acceso.</x:String>
     <x:String x:Key="Banner_Simulation">Simulazione: valori inventati, nessuna centralina collegata.</x:String>
 
     <x:String x:Key="Dialog_Cancel">Annulla</x:String>
@@ -43,6 +44,7 @@
     <x:String x:Key="Connect_NoPorts">Nessun cavo trovato</x:String>
     <x:String x:Key="Connect_RefreshPorts">Aggiorna l'elenco delle porte</x:String>
     <x:String x:Key="Connect_PlugCable">Collega il cavo USB K-line: compare qui da solo. Se non ce l'hai, puoi provare la simulazione.</x:String>
+    <x:String x:Key="Connect_IsoOnlyAtIgnitionOn">Questa centralina dà il suo codice solo quando il quadro si accende, e solo se era del tutto spenta. Per identificare l'auto esatta: quadro spento per 90 secondi, Connetti, poi quadro acceso.</x:String>
     <x:String x:Key="Connect_TestCable">Prova il cavo</x:String>
     <x:String x:Key="Connect_TestCableTip">Controlla il cavo senza bisogno dell'auto: il lato USB e, se ha i suoi 12 V, il lato K-line. Meglio a quadro spento.</x:String>
     <x:String x:Key="Connect_TestRunning">Prova del cavo in corso…</x:String>
