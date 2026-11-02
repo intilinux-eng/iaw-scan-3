@@ -27,6 +27,16 @@
 
 > **Beta, provided with no warranty of any kind and at your own risk**, including no warranty that it will correctly diagnose your vehicle. See [how far it has been tested](#how-far-it-has-been-tested).
 
+## Why this fork
+
+IAW Scan 2 does its job well, but its last release is from 2015 and it's built on .NET Framework 2.0, which is no longer maintained. This fork exists to give it **a long life**:
+
+- **a supported base:** a long-term-supported version of .NET, on Windows 11, instead of a dead one;
+- **an interface for today,** easier to use, with the diagnostic engine left exactly as it was;
+- **a future beyond the laptop:** work is under way on Linux, for a small unit that lives in the car instead of being carried in and out each time.
+
+What these ECUs say and how to talk to them is the original project's work: nothing about the communication protocol was reverse-engineered from scratch here.
+
 ## What it does
 
 - **Reads your engine live:** gauges, every parameter the ECU reports, a graph with a lane and a scale for each one.

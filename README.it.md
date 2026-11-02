@@ -27,6 +27,16 @@
 
 > **Beta, fornita senza alcuna garanzia e a tuo rischio**, nemmeno sul corretto funzionamento della diagnosi. Vedi [fin dove è stata provata](#fin-dove-è-stata-provata).
 
+## Perché questo fork
+
+IAW Scan 2 fa bene il suo lavoro, ma l'ultima versione è del 2015 e si basa su .NET Framework 2.0, che non è più mantenuto. Questo fork esiste per dargli **una lunga vita**:
+
+- **una base supportata:** una versione di .NET con supporto a lungo termine, su Windows 11, invece di una ormai morta;
+- **un'interfaccia di oggi,** più facile da usare, lasciando il motore diagnostico esattamente com'era;
+- **un futuro oltre il portatile:** sono in corso i lavori su Linux, per una piccola unità che resta in auto invece di essere portata avanti e indietro ogni volta.
+
+Cosa dicono queste centraline e come parlarci è il lavoro del progetto originale: qui nulla del protocollo di comunicazione è stato ricostruito da zero.
+
 ## Cosa fa
 
 - **Legge il motore dal vivo:** lancette, tutti i parametri che la centralina riporta, un grafico con una corsia e una scala per ciascuno.
