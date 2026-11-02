@@ -25,6 +25,8 @@ namespace IES_2.Tests
     {
         private static EcuOption Iaw04k() => new(iaw04k.name, iaw04k.longName, iaw04k.GetCars());
 
+        private static EcuOption Iaw16f() => new(iaw16f.name, iaw16f.longName, iaw16f.GetCars());
+
         private static void SkipUnlessLinux() => Assert.SkipUnless(OperatingSystem.IsLinux(), "Pseudo-terminals are Linux only.");
 
         [Fact]
@@ -69,6 +71,48 @@ namespace IES_2.Tests
             Assert.True(result.Success, result.Detail);
             using var session = result.Session!;
             Assert.False(result.EcuIdentified);
+        }
+
+        [Fact]
+        public async Task AnIaw16fThatDoesntAnnounceItselfConnectsWithTheCarUnknown()
+        {
+            SkipUnlessLinux();
+            using var fake = new FakeEcu();
+
+            var result = await new EcuConnectionService().ConnectAsync(Iaw16f(), fake.PortName, false, CancellationToken.None);
+
+            Assert.True(result.Success, result.Detail);
+            using var session = result.Session!;
+            Assert.True(result.EcuIdentified);
+            Assert.True(result.CarNotIdentified);
+            Assert.Equal(IES_2.Res.lang.UnknownISO, result.CarModel);
+        }
+
+        [Fact]
+        public async Task AnIaw16fIsIdentifiedWhenItAnnouncesItselfAsTheIgnitionComesOn()
+        {
+            SkipUnlessLinux();
+            using var fake = new FakeEcu { AnnounceIsoAfterOpen = true, AnnouncedIso = new byte[] { 0x55, 0xD0, 0x85, 0x85, 0x94, 0x43 } };
+
+            var result = await new EcuConnectionService().ConnectAsync(Iaw16f(), fake.PortName, false, CancellationToken.None);
+
+            Assert.True(result.Success, result.Detail);
+            using var session = result.Session!;
+            Assert.False(result.CarNotIdentified);
+            Assert.Equal("Cinquecento 899 SPI ECE F2", result.CarModel);
+        }
+
+        [Fact]
+        public async Task OtherEcusCanBeAskedForTheirCodeSoTheCarIsIdentifiedAnyway()
+        {
+            SkipUnlessLinux();
+            using var fake = new FakeEcu();
+
+            var result = await new EcuConnectionService().ConnectAsync(Iaw04k(), fake.PortName, false, CancellationToken.None);
+
+            Assert.True(result.Success, result.Detail);
+            using var session = result.Session!;
+            Assert.False(result.CarNotIdentified);
         }
 
         [Fact]
@@ -306,6 +350,7 @@ namespace IES_2.Tests
 
         public string PortName { get; }
         public bool AnnounceIsoAfterOpen { get; set; }
+        public byte[] AnnouncedIso { get; set; } = Iso;
         public volatile bool IsOffField;
         public bool IsOff { get => IsOffField; set => IsOffField = value; }
 
@@ -351,7 +396,7 @@ namespace IES_2.Tests
                 {
                     announced = true;
                     Thread.Sleep(50);
-                    Send(Iso);
+                    Send(AnnouncedIso);
                 }
 
                 if (!HasInput())

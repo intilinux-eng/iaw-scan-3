@@ -53,7 +53,20 @@ namespace IES_2.Tests
             connect.CableTestPassed = true;
             connect.CableTestMessage = Loc.T("Connect_TestOk");
             UiFixture.Pump();
-            if (!dashboardOnly) ui.Save(Path.Combine(target, "01-connect.png"));
+            if (!dashboardOnly)
+            {
+                ui.Save(Path.Combine(target, "01-connect.png"));
+
+                // An IAW-6F/16F, at the moment the page asks for the ignition.
+                connect.SearchText = "cinquecento 899";
+                UiFixture.Pump();
+                connect.SelectedVehicle = connect.Vehicles[0];
+                connect.CableTestMessage = null;
+                connect.IsConnecting = true;
+                UiFixture.Pump();
+                ui.Save(Path.Combine(target, "01-connect-iaw16f.png"));
+                connect.IsConnecting = false;
+            }
 
             await ui.ConnectSimulated();
             var live = ui.Shell.Live!;

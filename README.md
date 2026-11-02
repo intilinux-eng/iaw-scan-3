@@ -10,11 +10,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe"><img alt="Download for Windows 11 (.exe)" src="https://img.shields.io/badge/Download%20for%20Windows%2011-.exe-2563eb?style=for-the-badge"></a>
+  <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.2-beta/IAWScan3-0.2.2-beta-win-x64.exe"><img alt="Download for Windows 11 (.exe)" src="https://img.shields.io/badge/Download%20for%20Windows%2011-.exe-2563eb?style=for-the-badge"></a>
 </p>
 
 <p align="center">
-  Version 0.2.1-beta ·
+  Version 0.2.2-beta ·
   <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest">All downloads and release notes</a> ·
   <a href="#install-on-windows-11">Install</a> ·
   <a href="docs/desktop/user-guide.md">User guide</a> ·
@@ -50,7 +50,7 @@ What these ECUs say and how to talk to them is the original project's work: noth
 
 ## Install on Windows 11
 
-1. Download **[`IAWScan3-0.2.1-beta-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/IAWScan3-0.2.1-beta-win-x64.exe)**.
+1. Download **[`IAWScan3-0.2.2-beta-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.2-beta/IAWScan3-0.2.2-beta-win-x64.exe)**.
 2. Run it. There's nothing to install, and .NET is included. Windows may warn that the file comes from an unknown publisher, because it isn't signed: click **More info**, then **Run anyway**.
 3. Plug in the K-line cable. **There's nothing to install:** the first time, Windows 11 downloads the driver from the internet by itself. The cable then shows up in the program's list. [How to check it](docs/desktop/user-guide.md#checking-the-cable-on-windows-11).
 
@@ -65,7 +65,7 @@ You need:
 1. **A USB K-line cable:** a standard **VAG-COM KKL 409.1** type. [All about the cable](#the-cable). ELM327 scanners will **not** work with these cars.
 2. **A Fiat 3-pin to OBD-II 16-pin adapter:** these cars have a triangular 3-pin diagnostic socket, usually under the bonnet near the firewall or strut turret, or under the passenger glovebox for the FIAT CODE immobiliser. The adapter's clips go on the battery: that socket has no 12 V, and the cable needs it.
 
-Then, with the ignition on: find your car in the list, check the cable, and click **Connect**. **Test the cable** checks it first, even with no car. The [user guide](docs/desktop/user-guide.md) explains every screen.
+Then, with the ignition on: find your car in the list, check the cable, and click **Connect**. An IAW-6F/16F is the exception: it needs [the ignition off first](docs/desktop/user-guide.md#iaw-6f16f-identifying-the-car) to identify the car. **Test the cable** checks it first, even with no car. The [user guide](docs/desktop/user-guide.md) explains every screen.
 
 ## The cable
 
@@ -78,7 +78,7 @@ This is the cable the project is tested with:
 | **Cable** | USB to OBD-II, labelled **KKL VAG-COM for 409.1** |
 | **USB chip** | **CH340** (USB ID `1A86:7523`) |
 | **On Windows 11** | Nothing to install: the first time it's plugged in, Windows downloads the driver from the internet by itself. It then appears as `USB-SERIAL CH340 (COM5)` |
-| **Adapter** | Fiat 3-pin to OBD-II 16-pin, with clips for the battery |
+| **Adapter** | Fiat 3-pin to OBD-II 16-pin, with clips for the battery, and a wire bridging pins 4 and 5 ([why](#the-bridge-between-pins-4-and-5)) |
 
 The program doesn't depend on the chip, so cables with an FTDI chip, the other common kind, should work the same way. Whatever you have, **Test the cable** tells you where you stand.
 
@@ -95,12 +95,28 @@ You can check this with no car. Transmit and receive share one wire, so a K-line
 | Off | 0 of 24 | - |
 | On | **24 of 24**, all correct | 3.4 ms |
 
+### The bridge between pins 4 and 5
+
+<img src="docs/screenshots/cable/ponte-pin-4-5.jpg" width="320" align="right" alt="The adapter's socket, with a copper wire joining the two middle holes of its top row">
+
+With this cable and this Fiat adapter, no data came through until a wire was added in the adapter's OBD-II socket, joining **pins 4 and 5**. All the measurements above were taken with it in place.
+
+**Why.** OBD-II has two ground pins: 4 is chassis ground, 5 is signal ground. This cable takes its ground from one of them only, and the adapter brings ground to the other. Without the bridge the cable's K-line side has no ground, so it doesn't answer, exactly as with the 12 V off.
+
+**How.** Only on the adapter, with its clips off the battery and nothing else connected. In its socket, pins 4 and 5 are the two middle holes of the row of eight on the wider side. Push a short piece of bare copper wire into both, as in the photo, so that it stays put when the cable is plugged in.
+
+**Only those two holes:** both are ground. A wire into 7 (K-line) or 16 (12 V) could damage the cable or blow a fuse.
+
+Not every cable and adapter need it. If **Test the cable** says the K-line side doesn't answer with the 12 V on, the bridge is the next thing to try.
+
+<br clear="right">
+
 ### How the program handles it
 
 - **Finding it.** The list of ports updates by itself every 2 seconds and says what each one is: `COM5 · USB-SERIAL CH340`. Cables come first, and the one used last time is remembered.
 - **Testing it.** **Test the cable** works with no car: it sends 3 bytes at 1200 baud and 6 at 7680, the two speeds the ECUs use, and expects each one back. It then says whether the cable works, whether the 12 V seems to be missing, or whether the line isn't clean.
 - **If Windows has no driver.** A cable with a known chip that's plugged in without a working driver is reported on the Connect page, with a link to the chip maker's page. Drivers aren't bundled with the program: Windows Update already provides them, and FTDI's license warns that its driver can damage non-genuine chips, which cheap cables may use.
-- **Connecting.** 8 data bits, no parity, 1 stop bit, DTR and RTS off. It listens at 1200 baud for up to 10 seconds for the ECU announcing itself, sends the wake-up bytes `0F AA CC`, and carries on at 7680 baud.
+- **Connecting.** 8 data bits, no parity, 1 stop bit, DTR and RTS off. It listens at 1200 baud for up to 10 seconds for the ECU announcing itself, sends the wake-up bytes `0F AA CC`, and carries on at 7680 baud. IAW-6F/16F ECUs give their ISO code only in that window, after being fully off, so without it the exact car stays unknown, while diagnosis works the same.
 - **If nothing answers.** It checks the echo. With none, it stops and says the cable's K-line side isn't answering. With an echo, it connects as the original did and says the cable answers but the ECU didn't identify itself, so you can turn the ignition on and reconnect.
 - **Reading.** One byte at a time: send the request, discard the echo, read the reply, waiting up to 300 ms, with a 4 ms pause before the next. Two requests in a row without an answer mean communication is lost.
 - **Timing on Windows.** While connected, the program asks Windows for a 2 ms timer, as the original did, so those pauses really are that short.
@@ -262,10 +278,10 @@ The UNO Q has a built-in LED matrix, so the unit could show active faults with n
 
 For Debian, Ubuntu and derivatives, 64-bit. A real cable hasn't been tried on Linux yet.
 
-1. Download **[`iaw-scan3_0.2.1-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.1-beta/iaw-scan3_0.2.1-beta_amd64.deb)**.
+1. Download **[`iaw-scan3_0.2.2-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.2-beta/iaw-scan3_0.2.2-beta_amd64.deb)**.
 2. From the folder you downloaded it to, install it with `apt`, which also fetches the libraries it needs:
    ```
-   sudo apt install ./iaw-scan3_0.2.1-beta_amd64.deb
+   sudo apt install ./iaw-scan3_0.2.2-beta_amd64.deb
    ```
 3. Allow your user to use the cable, then **log out and back in**:
    ```

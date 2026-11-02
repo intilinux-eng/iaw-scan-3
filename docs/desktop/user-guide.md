@@ -10,15 +10,25 @@ The function keys work from anywhere: **F2** Dashboard, **F3** Parameters, **F4*
 
 ![Connect page](../screenshots/en/01-connect.png)
 
-1. **Turn the ignition on.** The engine can be off or idling.
+1. **Turn the ignition on.** The engine can be off or idling. With an IAW-6F/16F, [leave it off for now](#iaw-6f16f-identifying-the-car).
 2. **Plug in the cable:** USB K-line cable, 3-pin Fiat adapter on the diagnostic socket, its clips on the battery. The clips are needed: they power the cable's K-line side. Engine ECU and FIAT CODE immobiliser have separate sockets.
 3. **Find your car** by typing part of its name. Words can come in any order (`coupe turbo`). If you already know the ECU family, click its chip instead. **Immobiliser (FIAT CODE)** lists the cars for the immobiliser.
 4. **Check the cable** under *K-line cable*. The list updates by itself when you plug the cable in, and says what each port is: on Windows `COM5 · USB-SERIAL CH340` or similar, on Linux `/dev/ttyUSB0 · CH340`. **Test the cable** checks it, even with no car.
 5. Click **Connect** (or press F10).
 
-The program waits up to 10 seconds for the ECU, which announces itself when the ignition comes on. If the ignition was off, turn it on during that wait. Your choices are remembered for next time.
+The program waits up to 10 seconds for the ECU, which announces itself when the ignition comes on. If the ignition was off, turn it on during that wait. With it already on, the program asks the ECU for its details once the wait is over. Your choices are remembered for next time.
 
 **If nothing answers,** the program checks the cable. If the cable's K-line side is silent, it stops and says so: check the adapter's clips on the battery and the plug. If the cable answers but the ECU doesn't identify itself, it connects anyway, as the original did, and shows a warning under the status bar: check the ignition and that the cable is on the right socket.
+
+### IAW-6F/16F: identifying the car
+
+These ECUs give their ISO code, which tells the exact car, only by themselves as the ignition comes on, and only when waking from fully off. There's no way to ask for it later. After the ignition goes off they stay half asleep for about 90 seconds, or turn fully off almost at once if an active diagnostic session ran, such as an actuator test.
+
+So to identify the car: **ignition off for 90 seconds, Connect, then ignition on.** When one of these ECUs is chosen, the Connect page guides you through this, and tells you when to turn the ignition on:
+
+![The Connect page with an IAW-6F/16F chosen, asking to turn the ignition on now](../screenshots/en/01-connect-iaw16f.png)
+
+If the moment is missed, the car is shown as unknown and a message explains why. Diagnosis works the same. This comes from the original author of the program ([issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8)).
 
 ### Checking the cable on Windows 11
 
@@ -45,7 +55,7 @@ If it isn't there:
 | It says | What it means |
 |---|---|
 | The cable works | USB and K-line side both answer. If a connection then fails, look at the car: ignition, socket |
-| USB works, but the K-line side doesn't answer | Usually no 12 V: the adapter's clips aren't on the battery, or the plug isn't all the way in |
+| USB works, but the K-line side doesn't answer | Usually no 12 V: the adapter's clips aren't on the battery, or the plug isn't all the way in. With some Fiat adapters, pins 4 and 5 of the socket need [bridging](../../README.md#the-bridge-between-pins-4-and-5) |
 | The cable answers, but not cleanly | Something else is on the line, or the cable is faulty. Try with the ignition off |
 | Can't open the port | Another program is using it. On Linux, also check the `dialout` group |
 
@@ -157,7 +167,7 @@ Language (English, Italiano, or the same as the system), theme (dark, light, or 
 | What you see | What to check |
 |---|---|
 | No cable in the list | Windows: see [Checking the cable on Windows 11](#checking-the-cable-on-windows-11). Linux: `ls /dev/ttyUSB*`, and `sudo dmesg \| tail` right after plugging it in. On Ubuntu, if a CH340 cable's port disappears by itself: `sudo apt remove brltty`, unless you use a braille display. |
-| "The cable's K-line side doesn't answer" | The adapter's clips aren't on the battery, or the plug isn't all the way in. See [The cable test](#the-cable-test). |
+| "The cable's K-line side doesn't answer" | The adapter's clips aren't on the battery, or the plug isn't all the way in. With some Fiat adapters, pins 4 and 5 need [bridging](../../README.md#the-bridge-between-pins-4-and-5). See [The cable test](#the-cable-test). |
 | "Can't open the port" | Close other programs using it. Linux: `sudo usermod -aG dialout $USER`, then log out and back in. |
 | "The cable answers, but the ECU didn't identify itself" or communication lost | Ignition on? Cable on the right socket? Turn the ignition off and on, then **Reconnect**. |
 | Values update slowly | Read fewer parameters. With an FTDI cable, set its latency timer to 1 ms: on Windows in Device Manager, port, Port Settings, Advanced. The Linux package does this by itself. |

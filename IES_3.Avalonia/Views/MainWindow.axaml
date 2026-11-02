@@ -196,6 +196,9 @@
                     <Border Background="{DynamicResource WarnSoftBrush}" Padding="20,8" IsVisible="{Binding EcuNotAnswering}">
                         <TextBlock Text="{DynamicResource Banner_NotAnswering}" TextWrapping="Wrap" />
                     </Border>
+                    <Border Background="{DynamicResource WarnSoftBrush}" Padding="20,8" IsVisible="{Binding CarNotIdentified}">
+                        <TextBlock Text="{DynamicResource Banner_CarNotIdentified}" TextWrapping="Wrap" />
+                    </Border>
                     <Border Background="{DynamicResource AccentSoftBrush}" Padding="20,6" IsVisible="{Binding IsSimulation}">
                         <TextBlock Text="{DynamicResource Banner_Simulation}" FontSize="12" />
                     </Border>

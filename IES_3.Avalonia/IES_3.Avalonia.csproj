@@ -11,7 +11,7 @@
     <Product>IAW Scan 3</Product>
     <Company>https://github.com/intilinux-eng/iaw-scan-3</Company>
     <Copyright>Copyright © TzOk 2011-2015, IAW Scan 3 project 2026</Copyright>
-    <Version>0.2.1-beta</Version>
+    <Version>0.2.2-beta</Version>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <FileVersion>3.0.0.0</FileVersion>
   </PropertyGroup>

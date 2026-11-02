@@ -33,6 +33,12 @@ namespace IES_2.Session
         /// </summary>
         public bool EcuIdentified { get; init; }
 
+        /// <summary>
+        /// The ECU answers, but it's an IAW-6F/16F that didn't give its ISO code, so the exact car isn't
+        /// known. It gives that code only by itself as the ignition comes on, and can't be asked later.
+        /// </summary>
+        public bool CarNotIdentified { get; init; }
+
         public DiagnosticsSession? Session { get; init; }
 
         public static ConnectResult Failure(ConnectError error, string? detail = null) =>

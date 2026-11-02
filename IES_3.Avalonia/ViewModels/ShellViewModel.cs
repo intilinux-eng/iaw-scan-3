@@ -81,6 +81,9 @@ namespace IES_2.Avalonia.ViewModels
         [ObservableProperty]
         private bool ecuNotAnswering;
 
+        [ObservableProperty]
+        private bool carNotIdentified;
+
         public bool IsConnected => Live != null;
         public bool IsSimulation => Live?.IsSimulation == true;
         public bool HasTests => Live?.Session.Ecu.activeTest.Length > 0;
@@ -145,6 +148,7 @@ namespace IES_2.Avalonia.ViewModels
             Graph = new GraphViewModel(session);
             Adjustments = new AdjustmentsViewModel(session, Dialog);
             EcuNotAnswering = !result.EcuIdentified && !session.IsSimulation;
+            CarNotIdentified = result.CarNotIdentified;
             Navigate(PageDashboard);
         }
 
@@ -166,6 +170,7 @@ namespace IES_2.Avalonia.ViewModels
             Graph = null;
             Adjustments = null;
             EcuNotAnswering = false;
+            CarNotIdentified = false;
             Navigate(PageConnect);
 
             await Task.Run(session.Dispose);

@@ -38,12 +38,12 @@ namespace IES_2.Avalonia.ViewModels
         private string searchText = "";
 
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(ChosenEcu), nameof(ChosenTitle), nameof(ChosenSubtitle), nameof(HasChoice))]
+        [NotifyPropertyChangedFor(nameof(ChosenEcu), nameof(ChosenTitle), nameof(ChosenSubtitle), nameof(HasChoice), nameof(IsoOnlyAtIgnitionOn))]
         [NotifyCanExecuteChangedFor(nameof(ConnectCommand))]
         private VehicleChoice? selectedVehicle;
 
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(ChosenEcu), nameof(ChosenTitle), nameof(ChosenSubtitle), nameof(HasChoice))]
+        [NotifyPropertyChangedFor(nameof(ChosenEcu), nameof(ChosenTitle), nameof(ChosenSubtitle), nameof(HasChoice), nameof(IsoOnlyAtIgnitionOn))]
         [NotifyCanExecuteChangedFor(nameof(ConnectCommand))]
         private EcuFilter? selectedFilter;
 
@@ -85,6 +85,9 @@ namespace IES_2.Avalonia.ViewModels
 
         /// <summary>The ECU the connection will talk to: the chosen car's, or the chosen family.</summary>
         public EcuOption? ChosenEcu => SelectedVehicle?.Ecu ?? SelectedFilter?.Ecu;
+
+        /// <summary>An IAW-6F/16F gives its ISO code only as the ignition comes on: the order matters.</summary>
+        public bool IsoOnlyAtIgnitionOn => ChosenEcu?.Id == iaw16f.name;
 
         public string ChosenTitle => SelectedVehicle?.Name ?? ChosenEcu?.DisplayName ?? Loc.T("Connect_NoChoice");
         public string ChosenSubtitle => SelectedVehicle != null ? SelectedVehicle.EcuName : ChosenEcu != null ? Loc.T("Connect_FamilyChosen") : Loc.T("Connect_NoChoiceHint");
