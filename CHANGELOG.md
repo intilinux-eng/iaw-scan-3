@@ -9,6 +9,7 @@ Plain-language summary of what has changed, for people using this tool to diagno
 Thanks to the original author of IAW Scan 2, who reported this in [issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8). Not tried on a real IAW-6F/16F yet.
 
 - **IAW-6F/16F: how to identify the car.** These ECUs give their ISO code only by themselves as the ignition comes on, and only after being fully off, so with the ignition already on the exact car can't be identified: the ignition has to be off for 90 seconds, then Connect, then ignition on. When one is chosen, the Connect page now guides you through this and tells you when to turn the ignition on, and a message says so if the code was missed. Diagnosis works the same. Other ECUs, the Coupé's IAW-04K.P8 included, can be asked for their code, so nothing changes for them.
+- **The bridge between pins 4 and 5 is documented.** With the project's cable and Fiat adapter, no data came through until a wire joined the two ground pins of the adapter's socket: the cable takes its ground from one, the adapter brings it to the other. The README explains how and why, with a photo, and when the K-line side doesn't answer, the cable test and a failed connection now mention it next to the 12 V.
 
 ## 0.2.1-beta
 

@@ -55,7 +55,7 @@ Se non c'è:
 | Cosa dice | Cosa significa |
 |---|---|
 | Il cavo funziona | Rispondono sia il lato USB sia il lato K-line. Se poi la connessione fallisce, guarda l'auto: quadro, presa |
-| Il lato USB funziona, ma il lato K-line non risponde | Di solito mancano i 12 V: le pinze dell'adattatore non sono sulla batteria, o la spina non è inserita fino in fondo |
+| Il lato USB funziona, ma il lato K-line non risponde | Di solito mancano i 12 V: le pinze dell'adattatore non sono sulla batteria, o la spina non è inserita fino in fondo. Con alcuni adattatori Fiat bisogna [unire i pin 4 e 5](../../README.it.md#il-ponte-tra-i-pin-4-e-5) della presa |
 | Il cavo risponde, ma non in modo pulito | C'è altro sulla linea, o il cavo è guasto. Riprova a quadro spento |
 | Impossibile aprire la porta | La sta usando un altro programma. Su Linux, controlla anche il gruppo `dialout` |
 
@@ -167,7 +167,7 @@ Lingua (English, Italiano, o come il sistema), tema (scuro, chiaro, o come il si
 | Cosa vedi | Cosa controllare |
 |---|---|
 | Nessun cavo nell'elenco | Windows: vedi [Controllare il cavo su Windows 11](#controllare-il-cavo-su-windows-11). Linux: `ls /dev/ttyUSB*`, e `sudo dmesg \| tail` subito dopo averlo collegato. Su Ubuntu, se la porta di un cavo CH340 sparisce da sola: `sudo apt remove brltty`, a meno che tu non usi un display braille. |
-| "Il lato K-line del cavo non risponde" | Le pinze dell'adattatore non sono sulla batteria, o la spina non è inserita fino in fondo. Vedi [La prova del cavo](#la-prova-del-cavo). |
+| "Il lato K-line del cavo non risponde" | Le pinze dell'adattatore non sono sulla batteria, o la spina non è inserita fino in fondo. Con alcuni adattatori Fiat bisogna [unire i pin 4 e 5](../../README.it.md#il-ponte-tra-i-pin-4-e-5). Vedi [La prova del cavo](#la-prova-del-cavo). |
 | "Impossibile aprire la porta" | Chiudi gli altri programmi che la usano. Linux: `sudo usermod -aG dialout $USER`, poi esci e rientra nella sessione. |
 | "Il cavo risponde, ma la centralina non si è identificata" o comunicazione persa | Quadro acceso? Cavo sulla presa giusta? Spegni e riaccendi il quadro, poi **Riconnetti**. |
 | I valori si aggiornano lentamente | Leggi meno parametri. Con un cavo FTDI, porta il suo latency timer a 1 ms: su Windows in Gestione dispositivi, porta, Impostazioni porta, Avanzate. Il pacchetto Linux lo fa da solo. |

@@ -55,7 +55,7 @@ If it isn't there:
 | It says | What it means |
 |---|---|
 | The cable works | USB and K-line side both answer. If a connection then fails, look at the car: ignition, socket |
-| USB works, but the K-line side doesn't answer | Usually no 12 V: the adapter's clips aren't on the battery, or the plug isn't all the way in |
+| USB works, but the K-line side doesn't answer | Usually no 12 V: the adapter's clips aren't on the battery, or the plug isn't all the way in. With some Fiat adapters, pins 4 and 5 of the socket need [bridging](../../README.md#the-bridge-between-pins-4-and-5) |
 | The cable answers, but not cleanly | Something else is on the line, or the cable is faulty. Try with the ignition off |
 | Can't open the port | Another program is using it. On Linux, also check the `dialout` group |
 
@@ -167,7 +167,7 @@ Language (English, Italiano, or the same as the system), theme (dark, light, or 
 | What you see | What to check |
 |---|---|
 | No cable in the list | Windows: see [Checking the cable on Windows 11](#checking-the-cable-on-windows-11). Linux: `ls /dev/ttyUSB*`, and `sudo dmesg \| tail` right after plugging it in. On Ubuntu, if a CH340 cable's port disappears by itself: `sudo apt remove brltty`, unless you use a braille display. |
-| "The cable's K-line side doesn't answer" | The adapter's clips aren't on the battery, or the plug isn't all the way in. See [The cable test](#the-cable-test). |
+| "The cable's K-line side doesn't answer" | The adapter's clips aren't on the battery, or the plug isn't all the way in. With some Fiat adapters, pins 4 and 5 need [bridging](../../README.md#the-bridge-between-pins-4-and-5). See [The cable test](#the-cable-test). |
 | "Can't open the port" | Close other programs using it. Linux: `sudo usermod -aG dialout $USER`, then log out and back in. |
 | "The cable answers, but the ECU didn't identify itself" or communication lost | Ignition on? Cable on the right socket? Turn the ignition off and on, then **Reconnect**. |
 | Values update slowly | Read fewer parameters. With an FTDI cable, set its latency timer to 1 ms: on Windows in Device Manager, port, Port Settings, Advanced. The Linux package does this by itself. |

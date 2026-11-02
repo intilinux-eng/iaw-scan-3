@@ -52,7 +52,7 @@
     <x:String x:Key="Connect_TestCableTip">Checks the cable with no car needed: the USB side and, if it has its 12 V, the K-line side. Best with the ignition off.</x:String>
     <x:String x:Key="Connect_TestRunning">Testing the cable…</x:String>
     <x:String x:Key="Connect_TestOk">The cable works: both its USB side and its K-line side answer.</x:String>
-    <x:String x:Key="Connect_TestNoEcho">USB works, but the cable's K-line side doesn't answer. It usually means no 12 V: check the adapter's clips on the battery, and that the plug is pushed all the way in.</x:String>
+    <x:String x:Key="Connect_TestNoEcho">USB works, but the cable's K-line side doesn't answer. It usually means no 12 V: check the adapter's clips on the battery, and that the plug is pushed all the way in. With some Fiat adapters, pins 4 and 5 of the socket also need bridging: see the guide.</x:String>
     <x:String x:Key="Connect_TestGarbled">The cable answers, but not cleanly. If it's plugged into a car, the ECU may be talking on the line: try again with the ignition off.</x:String>
     <x:String x:Key="Connect_DriverMissing">A cable with a {0} chip is plugged in, but Windows has no working driver for it. Windows Update normally installs it by itself, with an internet connection.</x:String>
     <x:String x:Key="Connect_DriverGet">Get the driver from its maker</x:String>

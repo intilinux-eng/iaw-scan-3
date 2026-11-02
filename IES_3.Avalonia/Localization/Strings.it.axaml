@@ -52,7 +52,7 @@
     <x:String x:Key="Connect_TestCableTip">Controlla il cavo senza bisogno dell'auto: il lato USB e, se ha i suoi 12 V, il lato K-line. Meglio a quadro spento.</x:String>
     <x:String x:Key="Connect_TestRunning">Prova del cavo in corso…</x:String>
     <x:String x:Key="Connect_TestOk">Il cavo funziona: rispondono sia il lato USB sia il lato K-line.</x:String>
-    <x:String x:Key="Connect_TestNoEcho">Il lato USB funziona, ma il lato K-line del cavo non risponde. Di solito mancano i 12 V: controlla le pinze dell'adattatore sulla batteria, e che la spina sia inserita fino in fondo.</x:String>
+    <x:String x:Key="Connect_TestNoEcho">Il lato USB funziona, ma il lato K-line del cavo non risponde. Di solito mancano i 12 V: controlla le pinze dell'adattatore sulla batteria, e che la spina sia inserita fino in fondo. Con alcuni adattatori Fiat bisogna anche unire i pin 4 e 5 della presa: vedi la guida.</x:String>
     <x:String x:Key="Connect_TestGarbled">Il cavo risponde, ma non in modo pulito. Se è collegato a un'auto, la centralina può star parlando sulla linea: riprova a quadro spento.</x:String>
     <x:String x:Key="Connect_DriverMissing">È collegato un cavo con chip {0}, ma Windows non ha un driver funzionante. Di solito Windows Update lo installa da solo, con una connessione a internet.</x:String>
     <x:String x:Key="Connect_DriverGet">Scarica il driver dal produttore</x:String>

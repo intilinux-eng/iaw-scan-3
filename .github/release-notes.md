@@ -5,6 +5,7 @@
 Thanks to the original author of IAW Scan 2, who reported this in [issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8).
 
 - **IAW-6F/16F: how to identify the car.** These ECUs give their ISO code only by themselves as the ignition comes on, and only after being fully off: ignition off for 90 seconds, Connect, then ignition on. When one is chosen, the Connect page now guides you through this and tells you when to turn the ignition on, and a message says so if the code was missed. Diagnosis works the same. Nothing changes for other ECUs, the Coupé's IAW-04K.P8 included.
+- **The bridge between pins 4 and 5,** which some cable and Fiat adapter pairs need, is now [explained with a photo](https://github.com/intilinux-eng/iaw-scan-3#the-bridge-between-pins-4-and-5), and the cable test mentions it when the K-line side doesn't answer.
 
 All the details are in the [changelog](https://github.com/intilinux-eng/iaw-scan-3/blob/master/CHANGELOG.md).
 
@@ -21,6 +22,7 @@ All the details are in the [changelog](https://github.com/intilinux-eng/iaw-scan
 Grazie all'autore originale di IAW Scan 2, che l'ha segnalato nella [issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8).
 
 - **IAW-6F/16F: come identificare l'auto.** Queste centraline danno il codice ISO solo da sole quando il quadro si accende, e solo se erano del tutto spente: quadro spento per 90 secondi, Connetti, poi quadro acceso. Quando ne scegli una, la pagina Connetti ora ti guida e ti dice quando accendere il quadro, e un messaggio lo dice se il codice è andato perso. La diagnosi funziona lo stesso. Non cambia nulla per le altre centraline, compresa la IAW-04K.P8 della Coupé.
+- **Il ponte tra i pin 4 e 5,** che serve con alcune coppie di cavo e adattatore Fiat, ora è [spiegato con una foto](https://github.com/intilinux-eng/iaw-scan-3/blob/master/README.it.md#il-ponte-tra-i-pin-4-e-5), e la prova del cavo lo cita quando il lato K-line non risponde.
 
 Tutti i dettagli sono nel [changelog](https://github.com/intilinux-eng/iaw-scan-3/blob/master/CHANGELOG.md) (in inglese).
 

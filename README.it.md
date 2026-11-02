@@ -68,7 +68,7 @@ Questo è il cavo con cui il progetto viene provato:
 | **Cavo** | Da USB a OBD-II, con l'etichetta **KKL VAG-COM for 409.1** |
 | **Chip USB** | **CH340** (ID USB `1A86:7523`) |
 | **Su Windows 11** | Niente da installare: la prima volta che lo colleghi, Windows scarica da solo il driver da internet. Poi compare come `USB-SERIAL CH340 (COM5)` |
-| **Adattatore** | Da Fiat 3 poli a OBD-II 16 poli, con le pinze per la batteria |
+| **Adattatore** | Da Fiat 3 poli a OBD-II 16 poli, con le pinze per la batteria, e un filo che unisce i pin 4 e 5 ([perché](#il-ponte-tra-i-pin-4-e-5)) |
 
 Il programma non dipende dal chip, quindi i cavi con chip FTDI, l'altro tipo diffuso, dovrebbero funzionare allo stesso modo. Qualunque sia il tuo, **Prova il cavo** ti dice a che punto sei.
 
@@ -84,6 +84,22 @@ Puoi verificarlo senza auto. Trasmissione e ricezione condividono un solo filo, 
 |---|---|---|
 | Spenti | 0 su 24 | - |
 | Accesi | **24 su 24**, tutti esatti | 3,4 ms |
+
+### Il ponte tra i pin 4 e 5
+
+<img src="docs/screenshots/cable/ponte-pin-4-5.jpg" width="320" align="right" alt="La presa dell'adattatore, con un filo di rame che unisce i due fori centrali della fila superiore">
+
+Con questo cavo e questo adattatore Fiat non passava nessun dato finché non è stato aggiunto un filo nella presa OBD-II dell'adattatore, che unisce i **pin 4 e 5**. Tutte le misure qui sopra sono state fatte con il ponte al suo posto.
+
+**Perché.** L'OBD-II ha due pin di massa: il 4 è la massa telaio, il 5 la massa di segnale. Questo cavo prende la massa da uno solo dei due, e l'adattatore la porta sull'altro. Senza ponte il lato K-line del cavo resta senza massa, quindi non risponde, esattamente come con i 12 V spenti.
+
+**Come.** Solo sull'adattatore, con le pinze staccate dalla batteria e nient'altro collegato. Nella sua presa, i pin 4 e 5 sono i due fori centrali della fila da otto sul lato più largo. Infila in entrambi un pezzetto di filo di rame nudo, come nella foto, in modo che resti al suo posto quando inserisci il cavo.
+
+**Solo quei due fori:** sono entrambi di massa. Un filo nel 7 (K-line) o nel 16 (12 V) potrebbe danneggiare il cavo o bruciare un fusibile.
+
+Non tutti i cavi e gli adattatori ne hanno bisogno. Se **Prova il cavo** dice che il lato K-line non risponde con i 12 V accesi, il ponte è la prossima cosa da provare.
+
+<br clear="right">
 
 ### Come lo gestisce il programma
 

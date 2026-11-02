@@ -68,7 +68,7 @@ This is the cable the project is tested with:
 | **Cable** | USB to OBD-II, labelled **KKL VAG-COM for 409.1** |
 | **USB chip** | **CH340** (USB ID `1A86:7523`) |
 | **On Windows 11** | Nothing to install: the first time it's plugged in, Windows downloads the driver from the internet by itself. It then appears as `USB-SERIAL CH340 (COM5)` |
-| **Adapter** | Fiat 3-pin to OBD-II 16-pin, with clips for the battery |
+| **Adapter** | Fiat 3-pin to OBD-II 16-pin, with clips for the battery, and a wire bridging pins 4 and 5 ([why](#the-bridge-between-pins-4-and-5)) |
 
 The program doesn't depend on the chip, so cables with an FTDI chip, the other common kind, should work the same way. Whatever you have, **Test the cable** tells you where you stand.
 
@@ -84,6 +84,22 @@ You can check this with no car. Transmit and receive share one wire, so a K-line
 |---|---|---|
 | Off | 0 of 24 | - |
 | On | **24 of 24**, all correct | 3.4 ms |
+
+### The bridge between pins 4 and 5
+
+<img src="docs/screenshots/cable/ponte-pin-4-5.jpg" width="320" align="right" alt="The adapter's socket, with a copper wire joining the two middle holes of its top row">
+
+With this cable and this Fiat adapter, no data came through until a wire was added in the adapter's OBD-II socket, joining **pins 4 and 5**. All the measurements above were taken with it in place.
+
+**Why.** OBD-II has two ground pins: 4 is chassis ground, 5 is signal ground. This cable takes its ground from one of them only, and the adapter brings ground to the other. Without the bridge the cable's K-line side has no ground, so it doesn't answer, exactly as with the 12 V off.
+
+**How.** Only on the adapter, with its clips off the battery and nothing else connected. In its socket, pins 4 and 5 are the two middle holes of the row of eight on the wider side. Push a short piece of bare copper wire into both, as in the photo, so that it stays put when the cable is plugged in.
+
+**Only those two holes:** both are ground. A wire into 7 (K-line) or 16 (12 V) could damage the cable or blow a fuse.
+
+Not every cable and adapter need it. If **Test the cable** says the K-line side doesn't answer with the 12 V on, the bridge is the next thing to try.
+
+<br clear="right">
 
 ### How the program handles it
 
