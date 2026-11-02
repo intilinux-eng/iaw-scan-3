@@ -5,7 +5,7 @@
 <h1 align="center">IAW Scan 3</h1>
 
 <p align="center">
-  <strong>Diagnostics and data logging for 1990s Fiat, Lancia and Alfa Romeo engines</strong><br>
+  <strong>Diagnostics and data logs for 1990s Fiat, Lancia and Alfa Romeo engines</strong><br>
   Marelli IAW engine ECUs and the FIAT CODE immobiliser, over a K-line cable. A fork of IAW Scan 2 by Tomasz Orczyk.
 </p>
 
@@ -18,22 +18,22 @@
   <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest">All downloads and release notes</a> ·
   <a href="#install-on-windows-11">Install</a> ·
   <a href="docs/desktop/user-guide.md">User guide</a> ·
-  <a href="#whats-different-from-the-original-iaw-scan-2">What's new</a> ·
+  <a href="#what-is-different-from-the-original-iaw-scan-2">What is new</a> ·
   <a href="#on-linux-work-in-progress">On Linux: work in progress</a> ·
   <a href="README.it.md">Italiano</a>
 </p>
 
 ![The dashboard of the desktop app](docs/screenshots/en/02-dashboard.png)
 
-> **Beta, provided with no warranty of any kind and at your own risk**, including no warranty that it will correctly diagnose your vehicle. See [how far it has been tested](#how-far-it-has-been-tested).
+> **Beta, provided with no warranty of any kind and at your own risk**, and with no warranty that it will correctly diagnose your vehicle. See [how far it has been tested](#how-far-it-has-been-tested).
 
 ## Why this fork
 
-IAW Scan 2 does its job well, but its last release is from 2015 and it's built on .NET Framework 2.0, which is no longer maintained. This fork exists to give it **a long life**:
+IAW Scan 2 does its job well. But its last release is from 2015, and it uses .NET Framework 2.0, which gets no more updates. This fork exists to give it **a long life**:
 
 - **a supported base:** a long-term-supported version of .NET, on Windows 11, instead of a dead one;
 - **an interface for today,** easier to use, with the diagnostic engine left exactly as it was;
-- **a future beyond the laptop:** work is under way on Linux, for a small unit that lives in the car instead of being carried in and out each time.
+- **a future beyond the laptop:** work is under way on Linux, for a small unit that stays in the car all the time.
 
 What these ECUs say and how to talk to them is the original project's work: nothing about the communication protocol was reverse-engineered from scratch here.
 
@@ -51,8 +51,8 @@ What these ECUs say and how to talk to them is the original project's work: noth
 ## Install on Windows 11
 
 1. Download **[`IAWScan3-0.2.2-beta-win-x64.exe`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.2-beta/IAWScan3-0.2.2-beta-win-x64.exe)**.
-2. Run it. There's nothing to install, and .NET is included. Windows may warn that the file comes from an unknown publisher, because it isn't signed: click **More info**, then **Run anyway**.
-3. Plug in the K-line cable. **There's nothing to install:** the first time, Windows 11 downloads the driver from the internet by itself. The cable then shows up in the program's list. [How to check it](docs/desktop/user-guide.md#checking-the-cable-on-windows-11).
+2. Run it. There is nothing to install, and .NET is included. Windows may warn that the file comes from an unknown publisher, because it is not signed: click **More info**, then **Run anyway**.
+3. Plug in the K-line cable. **There is nothing to install:** the first time, Windows 11 downloads the driver from the internet by itself. The cable then shows up in the program's list. [How to check it](docs/desktop/user-guide.md#checking-the-cable-on-windows-11).
 
 ### Try it right away, with no car
 
@@ -63,7 +63,7 @@ On the **Connect** page, pick a car, turn on **Simulation** and click **Connect*
 You need:
 
 1. **A USB K-line cable:** a standard **VAG-COM KKL 409.1** type. [All about the cable](#the-cable). ELM327 scanners will **not** work with these cars.
-2. **A Fiat 3-pin to OBD-II 16-pin adapter:** these cars have a triangular 3-pin diagnostic socket, usually under the bonnet near the firewall or strut turret, or under the passenger glovebox for the FIAT CODE immobiliser. The adapter's clips go on the battery: that socket has no 12 V, and the cable needs it.
+2. **A Fiat 3-pin to OBD-II 16-pin adapter:** these cars have a triangular 3-pin diagnostic socket. It is usually under the bonnet, near the firewall or strut turret. For the FIAT CODE immobiliser, it is usually under the passenger glovebox. The adapter's clips go on the battery: that socket has no 12 V, and the cable needs it.
 
 Then, with the ignition on: find your car in the list, check the cable, and click **Connect**. An IAW-6F/16F is the exception: it needs [the ignition off first](docs/desktop/user-guide.md#iaw-6f16f-identifying-the-car) to identify the car. **Test the cable** checks it first, even with no car. The [user guide](docs/desktop/user-guide.md) explains every screen.
 
@@ -71,22 +71,22 @@ Then, with the ignition on: find your car in the list, check the cable, and clic
 
 <img src="docs/screenshots/cable/kkl-vag-com.jpg" width="210" align="right" alt="The cable's label: KKL VAG-COM for 409.1">
 
-This is the cable the project is tested with:
+We test the project with this cable:
 
 | | |
 |---|---|
 | **Cable** | USB to OBD-II, labelled **KKL VAG-COM for 409.1** |
 | **USB chip** | **CH340** (USB ID `1A86:7523`) |
-| **On Windows 11** | Nothing to install: the first time it's plugged in, Windows downloads the driver from the internet by itself. It then appears as `USB-SERIAL CH340 (COM5)` |
-| **Adapter** | Fiat 3-pin to OBD-II 16-pin, with clips for the battery, and a wire bridging pins 4 and 5 ([why](#the-bridge-between-pins-4-and-5)) |
+| **On Windows 11** | Nothing to install: the first time you plug it in, Windows downloads the driver from the internet by itself. It then appears as `USB-SERIAL CH340 (COM5)` |
+| **Adapter** | Fiat 3-pin to OBD-II 16-pin, with clips for the battery, and a wire that joins pins 4 and 5 ([why](#the-bridge-between-pins-4-and-5)) |
 
-The program doesn't depend on the chip, so cables with an FTDI chip, the other common kind, should work the same way. Whatever you have, **Test the cable** tells you where you stand.
+The program does not depend on the chip, so cables with an FTDI chip, the other common kind, should work the same way. Whatever you have, **Test the cable** tells you where you stand.
 
 <br clear="right">
 
 ### The 12 V clips are needed
 
-The cable has two sides. The USB side runs on the computer's power, which is why the port appears even with the clips off. The K-line side, which talks to the ECU, runs on the 12 V from the clips, and Fiat's 3-pin socket doesn't supply it.
+The cable has two sides. The USB side runs on the computer's power, which is why the port appears even with the clips off. The K-line side talks to the ECU. It runs on the 12 V from the clips, because Fiat's 3-pin socket does not supply 12 V.
 
 You can check this with no car. Transmit and receive share one wire, so a K-line side that works hands back every byte it sends. Measured on this cable, 8 bytes each at 1200, 7680 and 9600 baud:
 
@@ -99,25 +99,25 @@ You can check this with no car. Transmit and receive share one wire, so a K-line
 
 <img src="docs/screenshots/cable/ponte-pin-4-5.jpg" width="320" align="right" alt="The adapter's socket, with a copper wire joining the two middle holes of its top row">
 
-With this cable and this Fiat adapter, no data came through until a wire was added in the adapter's OBD-II socket, joining **pins 4 and 5**. All the measurements above were taken with it in place.
+With this cable and this Fiat adapter, no data came through until we put a wire in the OBD-II socket of the adapter. The wire joins **pins 4 and 5**. We made all the measurements above with this wire in place.
 
-**Why.** OBD-II has two ground pins: 4 is chassis ground, 5 is signal ground. This cable takes its ground from one of them only, and the adapter brings ground to the other. Without the bridge the cable's K-line side has no ground, so it doesn't answer, exactly as with the 12 V off.
+**Why.** OBD-II has two ground pins: 4 is chassis ground, 5 is signal ground. This cable takes its ground from one of them only, and the adapter brings ground to the other. Without the bridge the cable's K-line side has no ground, so it does not answer, exactly as with the 12 V off.
 
-**How.** Only on the adapter, with its clips off the battery and nothing else connected. In its socket, pins 4 and 5 are the two middle holes of the row of eight on the wider side. Push a short piece of bare copper wire into both, as in the photo, so that it stays put when the cable is plugged in.
+**How.** Only on the adapter, with its clips off the battery and nothing else connected. In its socket, pins 4 and 5 are the two middle holes of the row of eight on the wider side. Push a short piece of bare copper wire into the two holes, as in the photo. Make sure that it stays in place when you plug in the cable.
 
 **Only those two holes:** both are ground. A wire into 7 (K-line) or 16 (12 V) could damage the cable or blow a fuse.
 
-Not every cable and adapter need it. If **Test the cable** says the K-line side doesn't answer with the 12 V on, the bridge is the next thing to try.
+Not every cable and adapter need it. If **Test the cable** says the K-line side does not answer with the 12 V on, the bridge is the next thing to try.
 
 <br clear="right">
 
 ### How the program handles it
 
-- **Finding it.** The list of ports updates by itself every 2 seconds and says what each one is: `COM5 · USB-SERIAL CH340`. Cables come first, and the one used last time is remembered.
-- **Testing it.** **Test the cable** works with no car: it sends 3 bytes at 1200 baud and 6 at 7680, the two speeds the ECUs use, and expects each one back. It then says whether the cable works, whether the 12 V seems to be missing, or whether the line isn't clean.
-- **If Windows has no driver.** A cable with a known chip that's plugged in without a working driver is reported on the Connect page, with a link to the chip maker's page. Drivers aren't bundled with the program: Windows Update already provides them, and FTDI's license warns that its driver can damage non-genuine chips, which cheap cables may use.
-- **Connecting.** 8 data bits, no parity, 1 stop bit, DTR and RTS off. It listens at 1200 baud for up to 10 seconds for the ECU announcing itself, sends the wake-up bytes `0F AA CC`, and carries on at 7680 baud. IAW-6F/16F ECUs give their ISO code only in that window, after being fully off, so without it the exact car stays unknown, while diagnosis works the same.
-- **If nothing answers.** It checks the echo. With none, it stops and says the cable's K-line side isn't answering. With an echo, it connects as the original did and says the cable answers but the ECU didn't identify itself, so you can turn the ignition on and reconnect.
+- **Finding it.** The list of ports updates by itself every 2 seconds and says what each one is: `COM5 · USB-SERIAL CH340`. Cables come first, and the program remembers the last one that you used.
+- **Testing it.** **Test the cable** works with no car: it sends 3 bytes at 1200 baud and 6 at 7680, the two speeds the ECUs use, and expects each one back. It then says whether the cable works, whether the 12 V seems to be missing, or whether the line is not clean.
+- **If Windows has no driver.** If you plug in a cable with a known chip and Windows has no driver for it, the Connect page tells you. It gives a link to the page of the chip maker. Drivers are not bundled with the program: Windows Update already provides them, and FTDI's license warns that its driver can damage non-genuine chips, which cheap cables may use.
+- **Connecting.** 8 data bits, no parity, 1 stop bit, DTR and RTS off. It listens at 1200 baud for up to 10 seconds, because the ECU can announce itself. Then it sends the wake-up bytes `0F AA CC` and continues at 7680 baud. IAW-6F/16F ECUs give their ISO code only at that time, and only after they were fully off. Without the code, the exact car stays unknown, but diagnosis works the same.
+- **If nothing answers.** It checks the echo. With no echo, it stops and says that the K-line side of the cable does not answer. With an echo, it connects as the original did. It says that the cable answers but the ECU did not identify itself. Then you can turn the ignition on and connect again.
 - **Reading.** One byte at a time: send the request, discard the echo, read the reply, waiting up to 300 ms, with a 4 ms pause before the next. Two requests in a row without an answer mean communication is lost.
 - **Timing on Windows.** While connected, the program asks Windows for a 2 ms timer, as the original did, so those pauses really are that short.
 
@@ -142,7 +142,7 @@ Not every cable and adapter need it. If **Test the cable** says the K-line side 
 </tr>
 </table>
 
-## What's different from the original IAW Scan 2
+## What is different from the original IAW Scan 2
 
 This project is a fork of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 by Tomasz Orczyk ("TzOk"), itself the successor of IAW ECU Scan. **Of the original, it keeps the diagnostic engine:** how signals are read from the ECU and decoded, in `IES_3.Core`, and the same way of handling the serial port and connection. Everything around it is new.
 
@@ -153,8 +153,8 @@ This project is a fork of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 b
 | **Installing** | Needs .NET Framework 2.0 | One 32 MB file, .NET included |
 | **Interface** | Windows Forms, tabs and tables | New: sidebar, gauges, dark and light themes |
 | **Interface languages** | 7 (English, German, Croatian, Italian, Polish, Portuguese, Serbian) | English and Italian for now |
-| **Finding your ECU** | Choose the ECU family; automatic detection from the ISO code | Search for your car by name, or choose the family. Automatic detection was removed after proving unreliable on real hardware |
-| **Finding the cable** | A list of bare port names, read once at start-up: a cable plugged in later means restarting the program. When a connection fails, nothing tells the cable from the car | The list updates by itself and says what each port is (`COM5 · USB-SERIAL CH340`), cable first. **Test the cable** works with no car and says if the 12 V is missing. A failed connection says whether it's the cable or the ECU, and a missing driver is pointed out |
+| **Finding your ECU** | Choose the ECU family; automatic detection from the ISO code | Search for your car by name, or choose the family. We removed automatic detection because it was not reliable on real hardware |
+| **Finding the cable** | A list of bare port names, read once at start-up: for a cable that you plug in later, you must restart the program. When a connection fails, nothing tells the cable from the car | The list updates by itself and says what each port is (`COM5 · USB-SERIAL CH340`), cable first. **Test the cable** works with no car and says if the 12 V is missing. A failed connection says whether it is the cable or the ECU, and a missing driver is pointed out |
 | **Trying it without a car** | A hidden Ctrl+click | A switch on the Connect page |
 | **Live values** | One table | Gauges with lowest and highest values, recent history, your own layout, full screen |
 | **Parameters sharing a byte** | Turning one off silently froze the other | Each keeps updating |
@@ -164,7 +164,7 @@ This project is a fork of [IAW Scan 2](http://iaw-scan2.sourceforge.net) v0.85 b
 | **Exporting** | CSV | ZIP with data, events and a description of the format, ready for a script or an AI assistant |
 | **Fault codes** | Read on their tab, or with the parameters if a box is ticked | Always read, with a live count and a history of what appeared and went away |
 | **Clearing codes, actuator tests** | The `C` key clears codes at once, tests start at a click | Always ask first; no single-key shortcut |
-| **While talking to the ECU** | The window stops responding during connection and adjustments | It keeps responding: everything on the serial line runs in the background |
+| **While talking to the ECU** | The window freezes during connection and adjustments | It does not freeze: all work on the serial line runs in the background |
 | **In the car** | No | [Fiat Coupé unit on the Arduino UNO Q](#remote-web-interface-on-the-arduino-uno-q), used from your phone (work in progress) |
 | **Automated tests** | No | Yes, on Windows and Linux, including an emulated ECU |
 
@@ -239,7 +239,7 @@ The original Windows Forms interface is no longer included. Change by change, in
 
 ## On Linux: work in progress
 
-The main project is the Windows 11 app above. On Linux, work is under way on an in-car unit built around the **Arduino UNO Q**, a board that runs Linux, and on the desktop app itself. **None of this has been run on a car yet.**
+The main project is the Windows 11 app above. On Linux, work is under way on two things. One is an in-car unit on the **Arduino UNO Q**, a board that runs Linux. The other is the desktop app itself. **None of this has been run on a car yet.**
 
 | | What it is | Where it stands |
 |---|---|---|
@@ -254,13 +254,13 @@ The main project is the Windows 11 app above. On Linux, work is under way on an 
 For the **Fiat Coupé**: an Arduino UNO Q stays in the car, plugged into the diagnostic socket and powered from the ignition. Your phone joins its Wi-Fi and opens `http://192.168.4.1`, with no app and no internet.
 
 - At every ignition-on it connects to the ECU by itself and logs every parameter, fault code and event, with or without a phone around.
-- It's built to have its power simply cut at key-off.
+- It is built to have its power simply cut at key-off.
 - It takes the date and time from your phone, and works out the times of whatever it recorded before you connected.
 - Each drive downloads as a ZIP for analysis.
 
 **What it takes, besides the K-line cable:** the UNO Q has a single USB-C port, so it needs a USB-C hub with Power Delivery, which powers the board and gives the cable a USB port, and a 12 V to USB-C PD supply of at least 15 W, switched by the ignition.
 
-**It has only been tested in simulation: it has never run on a real UNO Q or been connected to a car.** Installing it means flashing and wiring a board, so it's for people comfortable with that.
+**It has only been tested in simulation: it has never run on a real UNO Q or been connected to a car.** Installing it means flashing and wiring a board, so it is for people comfortable with that.
 
 Packages: [experimental pre-release](https://github.com/intilinux-eng/iaw-scan-3/releases/tag/coupe-experimental). Documentation, in Italian: [overview](docs/coupe/README.md) · [installing on the UNO Q](docs/coupe/installazione-uno-q.md) · [user guide](docs/coupe/guida-uso.md) · [logbook format](docs/coupe/registro-dati.md).
 
@@ -268,7 +268,7 @@ Packages: [experimental pre-release](https://github.com/intilinux-eng/iaw-scan-3
 
 ### LED matrix on the Arduino UNO Q
 
-The UNO Q has a built-in LED matrix, so the unit could show active faults with no phone around: three letters for each fault, and a dot per fault along the bottom. **It isn't built yet, and these are simulations, not photos.** [The design](docs/coupe/matrice-led.md) (in Italian) has every screen and every code.
+The UNO Q has a built-in LED matrix, so the unit could show active faults with no phone around: three letters for each fault, and a dot per fault along the bottom. **It is not built yet, and these are simulations, not photos.** [The design](docs/coupe/matrice-led.md) (in Italian) has every screen and every code.
 
 <table>
 <tr><td width="25%"><img src="docs/coupe/matrice-led/03-tutto-ok.png" alt="OK, dimly lit"><br><sub>No active faults</sub></td><td width="25%"><img src="docs/coupe/matrice-led/04-un-errore.png" alt="TPS"><br><sub>One active fault</sub></td><td width="25%"><img src="docs/coupe/matrice-led/05-spia-motore.png" alt="MAP with a blinking exclamation mark"><br><sub>It turns on the engine warning light</sub></td><td width="25%"><img src="docs/coupe/matrice-led/06-piu-errori.png" alt="TPS, MAP and O2 in turn"><br><sub>Several, 2 seconds each</sub></td></tr>
@@ -276,7 +276,7 @@ The UNO Q has a built-in LED matrix, so the unit could show active faults with n
 
 ### The desktop app on a Linux PC
 
-For Debian, Ubuntu and derivatives, 64-bit. A real cable hasn't been tried on Linux yet.
+For Debian, Ubuntu and derivatives, 64-bit. A real cable has not been tried on Linux yet.
 
 1. Download **[`iaw-scan3_0.2.2-beta_amd64.deb`](https://github.com/intilinux-eng/iaw-scan-3/releases/download/v0.2.2-beta/iaw-scan3_0.2.2-beta_amd64.deb)**.
 2. From the folder you downloaded it to, install it with `apt`, which also fetches the libraries it needs:
@@ -301,10 +301,10 @@ The cable's driver is part of the kernel. On Ubuntu, the `brltty` package can gr
 | **The whole application** | Automated tests in simulation, on Windows and Linux. The final Windows `.exe` driven through its real controls. The Linux package checked with a trial `apt` install (nothing changed on the system), unpacked and started, under WSL |
 | **Serial port on Linux** | The full connect, polling, fault codes, tests, clearing and lost-communication flow, automated, against an emulated ECU on a Linux pseudo-terminal, including the unusual 7680 baud |
 | **A real USB cable on Windows** | A CH340 cable on Windows 11, with no car: found by itself, cable test and connection flow run for real, echo measured with and without its 12 V |
-| **A real ECU on Windows** | The engine and the connection logic are those the earlier betas of this fork ran with on a Fiat Coupé 2.0 16V. **This new interface hasn't been run on a real car yet** |
+| **A real ECU on Windows** | The engine and the connection logic are those the earlier betas of this fork ran with on a Fiat Coupé 2.0 16V. **This new interface has not been run on a real car yet** |
 | **A real USB cable on Linux** | **Not yet** |
 | **The UNO Q in-car unit** | **Only in simulation.** Never run on a real board or in a car |
-| **Other cars** | The vehicle tables come from the original project. They haven't all been checked again in this fork |
+| **Other cars** | The vehicle tables come from the original project. They have not all been checked again in this fork |
 
 A report from a real car is the most useful thing you can send, whether it works or not: [open an issue](https://github.com/intilinux-eng/iaw-scan-3/issues).
 
@@ -330,7 +330,7 @@ bash IES_3.Coupe/packaging/build-deb.sh 0.1.0-experimental                      
 IAW_SCREENSHOTS="$PWD/docs/screenshots" dotnet test IES_3.Tests --filter ScreenshotTests  # these screenshots
 ```
 
-macOS isn't packaged: nothing in the code rules it out, but it hasn't been tried.
+macOS is not packaged: nothing in the code rules it out, but it has not been tried.
 
 ## License
 
@@ -338,4 +338,4 @@ Modified BSD license, see [license.txt](license.txt). Copyright (c) 2011, Tomasz
 
 Open source components: .NET, Avalonia, CommunityToolkit.Mvvm, SkiaSharp and HarfBuzzSharp (MIT), and the Inter font (SIL Open Font License 1.1).
 
-**In plain words: no warranty.** This software is provided "as is", with no warranty of any kind, express or implied, including no warranty that it will correctly diagnose your vehicle. The author(s) and contributors are not liable for any damage, to your car or otherwise, arising from its use.
+**In plain words: no warranty.** This software is provided "as is", with no warranty of any kind, express or implied, and with no warranty that it will correctly diagnose your vehicle. The author(s) and contributors are not liable for any damage, to your car or otherwise, arising from its use.

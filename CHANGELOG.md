@@ -1,6 +1,6 @@
 # Changelog
 
-Plain-language summary of what has changed, for people using this tool to diagnose cars rather than to write software. This project starts from the official, last release of IAW Scan 2 (v0.85, by Tomasz Orczyk / "TzOk"). See [readme.txt](readme.txt) for the original project's own changelog, and the [comparison in the README](README.md#whats-different-from-the-original-iaw-scan-2) for the differences at a glance.
+Plain-language summary of what has changed, for people using this tool to diagnose cars rather than to write software. This project starts from the official, last release of IAW Scan 2 (v0.85, by Tomasz Orczyk / "TzOk"). See [readme.txt](readme.txt) for the original project's own changelog, and the [comparison in the README](README.md#what-is-different-from-the-original-iaw-scan-2) for the differences at a glance.
 
 **The diagnostic engine is unchanged.** Every reading and error code is calculated exactly as it was in IAW Scan 2 - nothing here has been recalculated or reinterpreted. An automated test now checks this on every build.
 
