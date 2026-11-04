@@ -9,7 +9,7 @@ Thanks to the original author of IAW Scan 2, who reported this in [issue #8](htt
 
 All the details are in the [changelog](https://github.com/intilinux-eng/iaw-scan-3/blob/master/CHANGELOG.md).
 
-**This is a beta.** It passes the automated tests on Windows and Linux and it is been tried with a real cable on Windows 11, but **this new interface has not been run on a real car yet**, and this change has not been tried on a real IAW-6F/16F. A report from a real car, good or bad, is the most useful thing you can send: [open an issue](https://github.com/intilinux-eng/iaw-scan-3/issues).
+**This is a beta.** It passes the automated tests on Windows and Linux and it has been tried with a real cable on Windows 11, but **this new interface has not been run on a real car yet**, and this change has not been tried on a real IAW-6F/16F. A report from a real car, good or bad, is the most useful thing you can send: [open an issue](https://github.com/intilinux-eng/iaw-scan-3/issues).
 
 **Provided with no warranty** of any kind, including that it will correctly diagnose your vehicle: see the License section of the README.
 
