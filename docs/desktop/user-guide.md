@@ -1,6 +1,6 @@
 # IAW Scan 3 desktop app: user guide
 
-How to use the desktop app once it's installed ([Windows 11 instructions](../../README.md#install-on-windows-11), [Linux PC](../../README.md#the-desktop-app-on-a-linux-pc)). Everything here can be tried with no car and no cable: turn on **Simulation** on the Connect page.
+How to use the desktop app once it is installed ([Windows 11 instructions](../../README.md#install-on-windows-11), [Linux PC](../../README.md#the-desktop-app-on-a-linux-pc)). Everything here can be tried with no car and no cable: turn on **Simulation** on the Connect page.
 
 > Italiano: [guida utente](guida-utente.md).
 
@@ -10,29 +10,29 @@ The function keys work from anywhere: **F2** Dashboard, **F3** Parameters, **F4*
 
 ![Connect page](../screenshots/en/01-connect.png)
 
-1. **Turn the ignition on.** The engine can be off or idling. With an IAW-6F/16F, [leave it off for now](#iaw-6f16f-identifying-the-car).
+1. **Turn the ignition on.** The engine can be off or at idle. With an IAW-6F/16F, [leave it off for now](#iaw-6f16f-identifying-the-car).
 2. **Plug in the cable:** USB K-line cable, 3-pin Fiat adapter on the diagnostic socket, its clips on the battery. The clips are needed: they power the cable's K-line side. Engine ECU and FIAT CODE immobiliser have separate sockets.
-3. **Find your car** by typing part of its name. Words can come in any order (`coupe turbo`). If you already know the ECU family, click its chip instead. **Immobiliser (FIAT CODE)** lists the cars for the immobiliser.
+3. **Find your car:** type part of its name. Words can come in any order (`coupe turbo`). If you already know the ECU family, click its chip instead. **Immobiliser (FIAT CODE)** lists the cars for the immobiliser.
 4. **Check the cable** under *K-line cable*. The list updates by itself when you plug the cable in, and says what each port is: on Windows `COM5 · USB-SERIAL CH340` or similar, on Linux `/dev/ttyUSB0 · CH340`. **Test the cable** checks it, even with no car.
 5. Click **Connect** (or press F10).
 
-The program waits up to 10 seconds for the ECU, which announces itself when the ignition comes on. If the ignition was off, turn it on during that wait. With it already on, the program asks the ECU for its details once the wait is over. Your choices are remembered for next time.
+The program waits up to 10 seconds for the ECU, which announces itself when the ignition comes on. If the ignition was off, turn it on during that wait. With it already on, the program asks the ECU for its details once the wait is over. The program remembers your choices for the next time.
 
-**If nothing answers,** the program checks the cable. If the cable's K-line side is silent, it stops and says so: check the adapter's clips on the battery and the plug. If the cable answers but the ECU doesn't identify itself, it connects anyway, as the original did, and shows a warning under the status bar: check the ignition and that the cable is on the right socket.
+**If nothing answers,** the program checks the cable. If the cable's K-line side is silent, it stops and says so: check the adapter's clips on the battery and the plug. If the cable answers but the ECU does not identify itself, it connects anyway, as the original did. A message under the status bar then tells you to check the ignition and the socket.
 
 ### IAW-6F/16F: identifying the car
 
-These ECUs give their ISO code, which tells the exact car, only by themselves as the ignition comes on, and only when waking from fully off. There's no way to ask for it later. After the ignition goes off they stay half asleep for about 90 seconds, or turn fully off almost at once if an active diagnostic session ran, such as an actuator test.
+These ECUs give their ISO code, which tells the exact car, only by themselves when the ignition comes on. They do this only when they wake up from fully off. There is no way to ask for it later. After the ignition goes off, they stay half asleep for about 90 seconds. After an active diagnostic session, such as an actuator test, they turn fully off almost at once.
 
-So to identify the car: **ignition off for 90 seconds, Connect, then ignition on.** When one of these ECUs is chosen, the Connect page guides you through this, and tells you when to turn the ignition on:
+So to identify the car: **ignition off for 90 seconds, Connect, then ignition on.** When you choose one of these ECUs, the Connect page guides you through this, and tells you when to turn the ignition on:
 
 ![The Connect page with an IAW-6F/16F chosen, asking to turn the ignition on now](../screenshots/en/01-connect-iaw16f.png)
 
-If the moment is missed, the car is shown as unknown and a message explains why. Diagnosis works the same. This comes from the original author of the program ([issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8)).
+If you miss the moment, the program shows the car as unknown, and a message tells you why. Diagnosis works the same. This comes from the original author of the program ([issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8)).
 
 ### Checking the cable on Windows 11
 
-There's normally nothing to do: the first time you plug the cable in, Windows 11 downloads its driver from the internet by itself, without asking anything. A few seconds later the cable is in the program's list.
+There is normally nothing to do: the first time you plug the cable in, Windows 11 downloads its driver from the internet by itself, and it asks you nothing. A few seconds later the cable is in the program's list.
 
 To see it for yourself:
 
@@ -43,27 +43,27 @@ To see it for yourself:
 
 A CH340 cable appears as `USB-SERIAL CH340`, an FTDI one as `USB Serial Port`. The number can differ, and can change if you use another USB socket: the program finds it either way.
 
-If it isn't there:
+If it is not there:
 
-- **It's under Other devices, with a warning triangle:** the driver is missing, for example because the computer was offline the first time. Connect to the internet and plug the cable in again, or look in Settings, Windows Update, Advanced options, Optional updates. The Connect page points this out too, with a link to the chip maker's driver page.
+- **It is under Other devices, with a warning triangle:** the driver is missing, for example because the computer was offline the first time. Connect to the internet and plug the cable in again, or look in Settings, Windows Update, Advanced options, Optional updates. The Connect page points this out too, with a link to the chip maker's driver page.
 - **Nothing changes when you plug it in:** try another USB socket. If nothing ever appears, the cable may be faulty.
 
 ### The cable test
 
-**Test the cable** needs no car. It works because transmit and receive share one wire: a K-line side that works hands back every byte it sends. It's best done with the ignition off, because a running ECU can talk on the line at the same time.
+**Test the cable** needs no car. It works because transmit and receive share one wire: a K-line side that works hands back every byte it sends. Do it with the ignition off, because an ECU that is on can talk on the line at the same time.
 
 | It says | What it means |
 |---|---|
 | The cable works | USB and K-line side both answer. If a connection then fails, look at the car: ignition, socket |
-| USB works, but the K-line side doesn't answer | Usually no 12 V: the adapter's clips aren't on the battery, or the plug isn't all the way in. With some Fiat adapters, pins 4 and 5 of the socket need [bridging](../../README.md#the-bridge-between-pins-4-and-5) |
+| USB works, but the K-line side does not answer | Usually no 12 V: the adapter's clips are not on the battery, or the plug is not all the way in. With some Fiat adapters, pins 4 and 5 of the socket need [bridging](../../README.md#the-bridge-between-pins-4-and-5) |
 | The cable answers, but not cleanly | Something else is on the line, or the cable is faulty. Try with the ignition off |
-| Can't open the port | Another program is using it. On Linux, also check the `dialout` group |
+| Cannot open the port | Another program uses it. On Linux, also check the `dialout` group |
 
 ## Dashboard
 
 ![Dashboard](../screenshots/en/02-dashboard.png)
 
-The parameters you've chosen, as gauges. On each one:
+The parameters you have chosen, as gauges. On each one:
 
 - the **arc** shows the value on a scale that widens by itself if the value goes beyond it;
 - the two **small marks** and the **↓ ↑** figures are the lowest and highest values since connecting. **Reset min/max** starts them again from now;
@@ -81,7 +81,7 @@ The first time you connect to an ECU, the dashboard starts with engine speed, te
 
 ![Parameters](../screenshots/en/03-parameters.png)
 
-Everything the ECU can report. Click a parameter to start reading it: it joins the dashboard and the graph, and goes into the recording. Reading fewer parameters makes each one update more often, because the ECU answers one byte at a time on a slow line.
+Everything the ECU can report. Click a parameter to read it: it joins the dashboard and the graph, and goes into the recording. Reading fewer parameters makes each one update more often, because the ECU answers one byte at a time on a slow line.
 
 Where two parameters convert the same raw value differently (manifold pressure for naturally aspirated and turbo engines), only the one matching your engine is meaningful.
 
@@ -95,32 +95,32 @@ Codes are read all the time, whatever page is open, so the red number in the sid
 - **MIL:** the fault turns on the engine warning light. The red bar marks these.
 - **This session** lists what appeared (+) and went away (−), and when.
 
-**Clear codes** erases the codes stored in the ECU. It always asks first, and it can't be undone, but what was there stays in the session log. It isn't available in simulation.
+**Clear codes** erases the codes stored in the ECU. It always asks first, and it cannot be undone, but what was there stays in the session log. It is not available in simulation.
 
 ## Actuator tests
 
 ![Actuator tests](../screenshots/en/05-tests.png)
 
-These really drive the components: fuel pump, injectors, coils and others. Each test asks for confirmation, says whether the engine must be off or running, and stops by itself after the time shown. **Cancel** stops it sooner. Keep clear of moving parts and heat. The page only appears for ECUs that have tests.
+These really drive the components: fuel pump, injectors, coils and others. Each test asks for confirmation, says whether the engine must be off or running, and stops by itself after the time shown. **Cancel** stops it sooner. Keep away from parts that move and from hot parts. The page only appears for ECUs that have tests.
 
 ## Graph
 
 ![Graph](../screenshots/en/06-graph.png)
 
-History of what's being read, from the moment you selected it, for up to an hour. Each parameter has its own lane with its own scale, so 6000 rpm doesn't flatten 14 V.
+History of what is being read, from the moment you selected it, for up to an hour. Each parameter has its own lane with its own scale, so 6000 rpm does not flatten 14 V.
 
 - **Wheel:** zoom. **Drag:** move through time. **Pointer:** reads the values at that moment. **Double-click:** back to the latest values.
 - **15 s to 15 min:** how much to show. **Follow:** keep showing the latest values.
 - **Overlay:** all traces in one plot, each on its own scale, to compare their shapes. The readings stay true.
-- **Traces:** untick what you don't want to see.
+- **Traces:** untick what you do not want to see.
 
-**Record** saves the values to the session log. It's the same button as the one in the status bar.
+**Record** saves the values to the session log. It is the same button as the one in the status bar.
 
 ## Session log
 
 ![Session log](../screenshots/en/07-sessions.png)
 
-Every connection to a real ECU is logged: what was connected, every fault code change, tests, clearing, communication problems, and the values read if recording was on. With **Record automatically** on (the default) recording starts as soon as a real ECU connects. A simulation is only logged if you press Record.
+The program logs every connection to a real ECU: what was connected, every fault code change, tests, clearing, communication problems, and the values read if recording was on. With **Record automatically** on (the default) recording starts as soon as a real ECU connects. The program logs a simulation only if you press Record.
 
 **Open** a session to study it:
 
@@ -138,7 +138,7 @@ Every connection to a real ECU is logged: what was connected, every fault code c
 
 | File | Content |
 |---|---|
-| `README.md` | What the files are and how to read them, and an example request (in the language you're using) |
+| `README.md` | What the files are and how to read them, and an example request (in the language you are using) |
 | `session.json` | ECU, vehicle, ISO and spare-part codes, start, end, columns |
 | `events.jsonl` | What happened, one JSON object per line |
 | `data.csv` | The values: `t_s` (seconds from the start), `utc`, then one column per parameter. Separator `;`, decimal point `.`, empty cell = no valid answer or not being read |
@@ -152,7 +152,7 @@ The ZIP is meant to be readable as it is by a person, a script or an AI assistan
 - Windows: `%LOCALAPPDATA%\IAWScan3`
 - Linux: `~/.local/share/IAWScan3`
 
-Sessions are in `Sessions`, one folder each. Beyond the size limit in Settings (2 GB by default), the oldest are deleted. To keep everything somewhere else, on a USB stick for example, set the environment variable `IAWSCAN_DATA` to that folder.
+Sessions are in `Sessions`, one folder each. When the log gets larger than the limit in Settings (2 GB by default), the program deletes the oldest sessions. To keep everything somewhere else, on a USB stick for example, set the environment variable `IAWSCAN_DATA` to that folder.
 
 ## Adjustments
 
@@ -167,8 +167,8 @@ Language (English, Italiano, or the same as the system), theme (dark, light, or 
 | What you see | What to check |
 |---|---|
 | No cable in the list | Windows: see [Checking the cable on Windows 11](#checking-the-cable-on-windows-11). Linux: `ls /dev/ttyUSB*`, and `sudo dmesg \| tail` right after plugging it in. On Ubuntu, if a CH340 cable's port disappears by itself: `sudo apt remove brltty`, unless you use a braille display. |
-| "The cable's K-line side doesn't answer" | The adapter's clips aren't on the battery, or the plug isn't all the way in. With some Fiat adapters, pins 4 and 5 need [bridging](../../README.md#the-bridge-between-pins-4-and-5). See [The cable test](#the-cable-test). |
-| "Can't open the port" | Close other programs using it. Linux: `sudo usermod -aG dialout $USER`, then log out and back in. |
-| "The cable answers, but the ECU didn't identify itself" or communication lost | Ignition on? Cable on the right socket? Turn the ignition off and on, then **Reconnect**. |
+| "The cable's K-line side does not answer" | The adapter's clips are not on the battery, or the plug is not all the way in. With some Fiat adapters, pins 4 and 5 need [bridging](../../README.md#the-bridge-between-pins-4-and-5). See [The cable test](#the-cable-test). |
+| "Cannot open the port" | Close other programs using it. Linux: `sudo usermod -aG dialout $USER`, then log out and back in. |
+| "The cable answers, but the ECU did not identify itself" or communication lost | Ignition on? Cable on the right socket? Turn the ignition off and on, then **Reconnect**. |
 | Values update slowly | Read fewer parameters. With an FTDI cable, set its latency timer to 1 ms: on Windows in Device Manager, port, Port Settings, Advanced. The Linux package does this by itself. |
-| The program won't start on Linux | Install with `apt`, which also fetches the libraries it needs. |
+| The program will not start on Linux | Install with `apt`, which also fetches the libraries it needs. |

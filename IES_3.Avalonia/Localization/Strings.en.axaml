@@ -19,13 +19,13 @@
     <x:String x:Key="Status_Connected">Connected</x:String>
     <x:String x:Key="Status_Recording">Recording</x:String>
     <x:String x:Key="Status_Record">Record</x:String>
-    <x:String x:Key="Status_RecordTip">Writes the values being read to this session's log</x:String>
+    <x:String x:Key="Status_RecordTip">Writes the values that it reads to the log of this session</x:String>
     <x:String x:Key="Status_Disconnect">Disconnect</x:String>
 
     <x:String x:Key="Banner_CommLost">Communication with the ECU was lost. Turn the ignition off and on, then reconnect.</x:String>
     <x:String x:Key="Banner_Reconnect">Reconnect</x:String>
-    <x:String x:Key="Banner_NotAnswering">The cable answers, but the ECU didn't identify itself. Check that the ignition is on and the cable is on the right socket.</x:String>
-    <x:String x:Key="Banner_CarNotIdentified">Diagnosis works, but this ECU gives its code only as the ignition comes on, so the exact car isn't known. To identify it: ignition off for 90 seconds, Connect, then ignition on.</x:String>
+    <x:String x:Key="Banner_NotAnswering">The cable answers, but the ECU did not identify itself. Check that the ignition is on and the cable is on the right socket.</x:String>
+    <x:String x:Key="Banner_CarNotIdentified">Diagnosis works, but this ECU gives its code only as the ignition comes on, so the exact car is not known. To identify it: ignition off for 90 seconds, Connect, then ignition on.</x:String>
     <x:String x:Key="Banner_Simulation">Simulation: invented values, no ECU connected.</x:String>
 
     <x:String x:Key="Dialog_Cancel">Cancel</x:String>
@@ -36,7 +36,7 @@
     <x:String x:Key="Connect_NoResults">No car matches this search.</x:String>
     <x:String x:Key="Connect_AllEngines">All engine ECUs</x:String>
     <x:String x:Key="Connect_Immobiliser">Immobiliser (FIAT CODE)</x:String>
-    <x:String x:Key="Connect_Chosen">YOU'RE CONNECTING TO</x:String>
+    <x:String x:Key="Connect_Chosen">You are CONNECTING TO</x:String>
     <x:String x:Key="Connect_NoChoice">No car chosen yet</x:String>
     <x:String x:Key="Connect_NoChoiceHint">Choose a car from the list.</x:String>
     <x:String x:Key="Connect_FamilyChosen">ECU family chosen directly: the exact car is identified once connected.</x:String>
@@ -45,15 +45,15 @@
     <x:String x:Key="Connect_RefreshPorts">Refresh the list of ports</x:String>
     <x:String x:Key="Connect_PlugCable">Plug in the USB K-line cable: it shows up here by itself. Without one, you can try the simulation.</x:String>
     <x:String x:Key="Connect_IsoOnlyAtIgnitionOn">To identify the exact car, this ECU needs this order: ignition off for 90 seconds, press Connect, then turn the ignition on when asked. It gives its code only at that moment.</x:String>
-    <x:String x:Key="Connect_BeforeIgnitionOff">Ignition off for at least 90 seconds. You'll turn it on after pressing Connect.</x:String>
+    <x:String x:Key="Connect_BeforeIgnitionOff">Ignition off for at least 90 seconds. You will turn it on after pressing Connect.</x:String>
     <x:String x:Key="Connect_WaitingTurnOn">Turn the ignition on now</x:String>
     <x:String x:Key="Connect_WaitingCode">Waiting for the ECU's code, for up to 10 seconds.</x:String>
     <x:String x:Key="Connect_TestCable">Test the cable</x:String>
     <x:String x:Key="Connect_TestCableTip">Checks the cable with no car needed: the USB side and, if it has its 12 V, the K-line side. Best with the ignition off.</x:String>
     <x:String x:Key="Connect_TestRunning">Testing the cable…</x:String>
     <x:String x:Key="Connect_TestOk">The cable works: both its USB side and its K-line side answer.</x:String>
-    <x:String x:Key="Connect_TestNoEcho">USB works, but the cable's K-line side doesn't answer. It usually means no 12 V: check the adapter's clips on the battery, and that the plug is pushed all the way in. With some Fiat adapters, pins 4 and 5 of the socket also need bridging: see the guide.</x:String>
-    <x:String x:Key="Connect_TestGarbled">The cable answers, but not cleanly. If it's plugged into a car, the ECU may be talking on the line: try again with the ignition off.</x:String>
+    <x:String x:Key="Connect_TestNoEcho">USB works, but the cable's K-line side does not answer. It usually means no 12 V: check the adapter's clips on the battery, and that you pushed the plug all the way in. With some Fiat adapters, pins 4 and 5 of the socket also need bridging: see the guide.</x:String>
+    <x:String x:Key="Connect_TestGarbled">The cable answers, but not cleanly. If it is plugged into a car, the ECU may be talking on the line: try again with the ignition off.</x:String>
     <x:String x:Key="Connect_DriverMissing">A cable with a {0} chip is plugged in, but Windows has no working driver for it. Windows Update normally installs it by itself, with an internet connection.</x:String>
     <x:String x:Key="Connect_DriverGet">Get the driver from its maker</x:String>
     <x:String x:Key="Connect_Simulation">Simulation</x:String>
@@ -62,12 +62,12 @@
     <x:String x:Key="Connect_Waiting">Waiting for the ECU, for up to 10 seconds. If the ignition is off, turn it on now.</x:String>
     <x:String x:Key="Connect_Cancel">Cancel</x:String>
     <x:String x:Key="Connect_BeforeTitle">Before connecting</x:String>
-    <x:String x:Key="Connect_Before1">Ignition on. Engine off or idling.</x:String>
+    <x:String x:Key="Connect_Before1">Ignition on. Engine off or at idle.</x:String>
     <x:String x:Key="Connect_Before2">USB K-line cable (VAG-COM KKL 409.1 type) with the 3-pin Fiat adapter. Its clips go on the battery: that 12 V powers the cable's K-line side.</x:String>
-    <x:String x:Key="Connect_Before3">Engine ECU and immobiliser have separate sockets: use the one for what you're diagnosing.</x:String>
+    <x:String x:Key="Connect_Before3">Engine ECU and immobiliser have separate sockets: use the one for what you are diagnosing.</x:String>
     <x:String x:Key="Connect_ErrorNoPort">Choose the cable's port first.</x:String>
-    <x:String x:Key="Connect_ErrorPortOpen">Can't open the port. It may be in use by another program; on Linux, your user must also be in the dialout group. Details: {0}</x:String>
-    <x:String x:Key="Connect_ErrorInvalidEcu">This ECU type isn't valid.</x:String>
+    <x:String x:Key="Connect_ErrorPortOpen">Cannot open the port. It may be in use by another program; on Linux, your user must also be in the dialout group. Details: {0}</x:String>
+    <x:String x:Key="Connect_ErrorInvalidEcu">This ECU type is not valid.</x:String>
     <x:String x:Key="Connect_ErrorCommunication">Communication with the ECU failed: {0}</x:String>
 
     <x:String x:Key="Dashboard_Title">Dashboard</x:String>
@@ -82,7 +82,7 @@
     <x:String x:Key="Dashboard_ExitFullscreen">Exit full screen</x:String>
     <x:String x:Key="Dashboard_MoveBack">Move back</x:String>
     <x:String x:Key="Dashboard_MoveForward">Move forward</x:String>
-    <x:String x:Key="Dashboard_Remove">Stop reading this parameter</x:String>
+    <x:String x:Key="Dashboard_Remove">Do not read this parameter</x:String>
     <x:String x:Key="Dashboard_Empty">The dashboard shows the parameters you choose.</x:String>
     <x:String x:Key="Dashboard_Choose">Choose parameters</x:String>
 
@@ -95,17 +95,17 @@
 
     <x:String x:Key="Faults_Title">Fault codes</x:String>
     <x:String x:Key="Faults_Clear">Clear codes</x:String>
-    <x:String x:Key="Faults_SimulationNote">In simulation these codes are examples, and clearing isn't available.</x:String>
+    <x:String x:Key="Faults_SimulationNote">In simulation these codes are examples, and clearing is not available.</x:String>
     <x:String x:Key="Faults_Active">Active</x:String>
     <x:String x:Key="Faults_Verified">Verified</x:String>
     <x:String x:Key="Faults_Stored">Stored</x:String>
     <x:String x:Key="Faults_Reading">Reading the fault codes…</x:String>
     <x:String x:Key="Faults_None">No active, verified or stored faults.</x:String>
     <x:String x:Key="Faults_HistoryTitle">This session</x:String>
-    <x:String x:Key="Faults_HistoryEmpty">Faults appearing or going away will be listed here.</x:String>
+    <x:String x:Key="Faults_HistoryEmpty">This list shows the faults that appear or go away.</x:String>
     <x:String x:Key="Faults_Legend">MIL means the fault turns on the engine warning light.</x:String>
     <x:String x:Key="Faults_ClearTitle">Clear the fault codes?</x:String>
-    <x:String x:Key="Faults_ClearBody">The codes stored in the ECU will be erased. This can't be undone. They stay in this session's log.</x:String>
+    <x:String x:Key="Faults_ClearBody">This erases the codes stored in the ECU. This cannot be undone. They stay in this session's log.</x:String>
     <x:String x:Key="Faults_ClearConfirm">Clear codes</x:String>
     <x:String x:Key="Faults_Cleared">Fault codes cleared.</x:String>
     <x:String x:Key="Faults_ClearFailed">Clearing the codes failed.</x:String>
@@ -115,12 +115,12 @@
     <x:String x:Key="Tests_Max">up to</x:String>
     <x:String x:Key="Tests_Run">Run test</x:String>
     <x:String x:Key="Tests_Cancel">Cancel</x:String>
-    <x:String x:Key="Tests_ConfirmBodyOff">The component will really be driven, for up to {0} seconds. Ignition on, engine off.</x:String>
-    <x:String x:Key="Tests_ConfirmBodyRunning">The component will really be driven, for up to {0} seconds. This test needs the engine running.</x:String>
+    <x:String x:Key="Tests_ConfirmBodyOff">The test really drives the component, for up to {0} seconds. Ignition on, engine off.</x:String>
+    <x:String x:Key="Tests_ConfirmBodyRunning">The test really drives the component, for up to {0} seconds. This test needs the engine on.</x:String>
 
     <x:String x:Key="Graph_Title">Graph</x:String>
     <x:String x:Key="Graph_Follow">Follow</x:String>
-    <x:String x:Key="Graph_FollowTip">Keep showing the latest values</x:String>
+    <x:String x:Key="Graph_FollowTip">Always show the latest values</x:String>
     <x:String x:Key="Graph_Overlay">Overlay</x:String>
     <x:String x:Key="Graph_OverlayTip">Draw all traces in one plot, each on its own scale, to compare their shapes</x:String>
     <x:String x:Key="Graph_Record">Record</x:String>
@@ -149,28 +149,28 @@
     <x:String x:Key="Sessions_FaultCount">Faults: {0}</x:String>
     <x:String x:Key="Sessions_InProgress">in progress</x:String>
     <x:String x:Key="Sessions_Open">Open</x:String>
-    <x:String x:Key="Sessions_Empty">No sessions yet. Every connection to an ECU will be logged here, with the values read and everything that happened.</x:String>
+    <x:String x:Key="Sessions_Empty">No sessions yet. The program logs every connection to an ECU here, with the values that it reads and all events.</x:String>
     <x:String x:Key="Sessions_Back">Back to the log</x:String>
     <x:String x:Key="Sessions_FitAll">Whole session</x:String>
     <x:String x:Key="Sessions_CompareWith">Compare with</x:String>
     <x:String x:Key="Sessions_CompareNone">No other session</x:String>
     <x:String x:Key="Sessions_CompareNothingInCommon">These two sessions have no parameters in common.</x:String>
-    <x:String x:Key="Sessions_NoData">No values were recorded in this session, only its events.</x:String>
+    <x:String x:Key="Sessions_NoData">This session has no values, only events.</x:String>
     <x:String x:Key="Sessions_Parameters">PARAMETERS</x:String>
     <x:String x:Key="Sessions_Min">MIN</x:String>
     <x:String x:Key="Sessions_Avg">AVG</x:String>
     <x:String x:Key="Sessions_Max">MAX</x:String>
     <x:String x:Key="Sessions_Events">WHAT HAPPENED</x:String>
-    <x:String x:Key="Sessions_Used">Using {0} of {1}. Beyond that, the oldest sessions are deleted.</x:String>
-    <x:String x:Key="Sessions_OpenFailed">Can't open it: {0}</x:String>
-    <x:String x:Key="Sessions_ImportNotRecognised">This file isn't a recording this program recognises.</x:String>
+    <x:String x:Key="Sessions_Used">Using {0} of {1}. Beyond that, the program deletes the oldest sessions.</x:String>
+    <x:String x:Key="Sessions_OpenFailed">Cannot open it: {0}</x:String>
+    <x:String x:Key="Sessions_ImportNotRecognised">This file is not a recording this program recognises.</x:String>
     <x:String x:Key="Sessions_Exported">Exported.</x:String>
     <x:String x:Key="Sessions_ExportFailed">Export failed: {0}</x:String>
     <x:String x:Key="Sessions_InUse">This session is in progress: disconnect first.</x:String>
     <x:String x:Key="Sessions_DeleteTitle">Delete this session?</x:String>
-    <x:String x:Key="Sessions_DeleteBody">{0}, {1}. Its values and events will be erased.</x:String>
+    <x:String x:Key="Sessions_DeleteBody">{0}, {1}. This erases its values and events.</x:String>
     <x:String x:Key="Sessions_DeleteConfirm">Delete</x:String>
-    <x:String x:Key="Sessions_DeleteFailed">Can't delete it: {0}</x:String>
+    <x:String x:Key="Sessions_DeleteFailed">Cannot delete it: {0}</x:String>
 
     <x:String x:Key="Settings_Title">Settings</x:String>
     <x:String x:Key="Settings_Appearance">Appearance</x:String>
@@ -187,7 +187,7 @@
     <x:String x:Key="Settings_AutoRecord">Record automatically</x:String>
     <x:String x:Key="Settings_AutoRecordHint">Start recording values as soon as a real ECU connects.</x:String>
     <x:String x:Key="Settings_MaxLog">Maximum size (MB)</x:String>
-    <x:String x:Key="Settings_MaxLogHint">Beyond this, the oldest sessions are deleted.</x:String>
+    <x:String x:Key="Settings_MaxLogHint">Beyond this, the program deletes the oldest sessions.</x:String>
     <x:String x:Key="Settings_DataFolder">Where sessions are kept</x:String>
     <x:String x:Key="Settings_Open">Open</x:String>
     <x:String x:Key="Settings_Version">Version</x:String>
@@ -198,7 +198,7 @@
     <x:String x:Key="Outcome_Demo">Demo</x:String>
     <x:String x:Key="Outcome_Passed">Passed</x:String>
     <x:String x:Key="Outcome_Timeout">Timed out</x:String>
-    <x:String x:Key="Outcome_InitFailed">Couldn't start</x:String>
+    <x:String x:Key="Outcome_InitFailed">Could not start</x:String>
     <x:String x:Key="Outcome_Cancelled">Cancelled</x:String>
     <x:String x:Key="Outcome_Failed">Failed</x:String>
 
