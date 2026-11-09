@@ -1,6 +1,6 @@
 **Windows 11:** download `IAWScan3-0.2.2-beta-win-x64.exe` below and run it, there is nothing to install. [Step-by-step instructions](https://github.com/intilinux-eng/iaw-scan-3#install-on-windows-11). **Linux PC, work in progress:** `iaw-scan3_0.2.2-beta_amd64.deb`, then `sudo apt install ./iaw-scan3_0.2.2-beta_amd64.deb`.
 
-## What is new
+## Changes in this version
 
 Thanks to the original author of IAW Scan 2, who reported this in [issue #8](https://github.com/intilinux-eng/iaw-scan-3/issues/8).
 

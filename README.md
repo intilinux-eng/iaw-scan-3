@@ -18,7 +18,7 @@
   <a href="https://github.com/intilinux-eng/iaw-scan-3/releases/latest">All downloads and release notes</a> ·
   <a href="#install-on-windows-11">Install</a> ·
   <a href="docs/desktop/user-guide.md">User guide</a> ·
-  <a href="#what-is-different-from-the-original-iaw-scan-2">What is new</a> ·
+  <a href="#what-is-different-from-the-original-iaw-scan-2">Changes</a> ·
   <a href="#on-linux-work-in-progress">On Linux: work in progress</a> ·
   <a href="README.it.md">Italiano</a>
 </p>
